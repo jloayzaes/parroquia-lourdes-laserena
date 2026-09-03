@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #E9EDF2; font-family: Montserrat, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #2C5F92; text-decoration: none; }
+  a:hover { color: #6E9CC9; }
+  * { box-sizing: border-box; }
+  input, select, textarea { font-family: Montserrat, system-ui, sans-serif; }
+  input:focus, select:focus { border-color: #6E9CC9 !important; }
+</style>
+</helmet>
+
+<div style="width:1180px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 0 60px rgba(27,58,97,.14)">
+  <div style="background:#6E9CC9;color:#fff;padding:0 36px;display:flex;justify-content:space-between;align-items:center;font:500 13px/1 Montserrat,sans-serif;letter-spacing:.07em;min-height:44px">
+    <div style="display:flex;gap:28px;align-items:center"><span>Av. Balmaceda 1596, La Serena</span><span>+56 9 9280 3442</span></div>
+    <div style="display:flex;align-items:center;gap:22px"><span>secretariaplourdes@gmail.com</span><span style="display:inline-flex;align-items:center;gap:7px"><i class="ph-thin ph-instagram-logo" style="font-size:18px;color:#fff;line-height:1;flex:none"></i>Instagram</span></div>
+  </div>
+  <div style="padding:22px 36px;display:flex;align-items:center;justify-content:space-between;gap:40px">
+    <div data-goto="inicio" style="display:flex;align-items:center;gap:18px;flex:none;cursor:pointer">
+      <img src="assets/marca-navy.png" alt="Templo de la Parroquia Nuestra Señora de Lourdes" style="height:66px;width:auto;display:block;flex:none" />
+      <div style="border-left:1px solid #DCE7F1;padding-left:18px;flex:none">
+        <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.26em;color:#2C5F92;text-transform:uppercase;white-space:nowrap">Parroquia</div>
+        <div style="font:300 24px/1.2 Montserrat,sans-serif;color:#1B3A61;margin-top:7px;white-space:nowrap">Nuestra Señora de <span style="font-weight:700">Lourdes</span></div>
+        <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.22em;color:#2C5F92;margin-top:8px;text-transform:uppercase;white-space:nowrap">La Serena</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:24px;flex:none">
+      <div style="display:flex;align-items:center;gap:12px"><div style="display:flex;align-items:center;gap:5px;flex:none"><i class="ph-thin ph-calendar-dots" style="font-size:28px;color:#6E9CC9;line-height:1"></i><i class="ph-thin ph-clock" style="font-size:28px;color:#6E9CC9;line-height:1"></i></div><div style="font:400 15px/1.5 Montserrat,sans-serif;color:#5a6879;white-space:nowrap">Secretaría: martes a sábado<br />10:00 a 13:00 y 16:00 a 19:00 hrs.</div></div>
+    </div>
+  </div>
+  <nav style="border-top:1px solid #E4EDF5;border-bottom:1px solid #E4EDF5;padding:0 36px;display:flex;gap:30px;white-space:nowrap;position:relative">
+    <sc-for list="{{ menu }}" as="item" hint-placeholder-count="8">
+      <div style="{{ item.contenedor }}" onMouseEnter="{{ item.abrir }}" onMouseLeave="{{ item.cerrar }}">
+        <span style="{{ item.estilo }}" style-hover="color:#1B3A61;text-shadow:0 0 .6px #1B3A61,0 0 .6px #1B3A61" onClick="{{ item.ir }}">{{ item.etiqueta }}</span>
+        <div style="{{ item.panel }}">
+          <sc-for list="{{ item.sub }}" as="s" hint-placeholder-count="3">
+            <div style="{{ s.estilo }}" style-hover="color:#1B3A61;background:#EAF3FA;text-shadow:0 0 .6px #1B3A61,0 0 .6px #1B3A61" onClick="{{ s.ir }}">{{ s.texto }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </nav>
+
+  <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
+
+      <div style="position:relative;height:530px;background:repeating-linear-gradient(135deg,#D9E6F2 0 12px,#E8F1F8 12px 24px);display:flex;align-items:center">
+        <div style="position:absolute;right:16px;bottom:14px;font:400 12px/1.5 ui-monospace,monospace;color:#8FA3BC">FOTO PORTADA · fachada o asamblea dominical · 1180 × 530</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,58,97,.84) 0%,rgba(44,95,146,.62) 46%,rgba(110,156,201,.12) 100%)"></div>
+        <div style="position:relative;padding:0 36px;max-width:700px">
+          <h2 style="margin:0 0 24px;font:200 58px/1.06 Montserrat,sans-serif;color:#fff;letter-spacing:-.005em">Celebración<br /><span style="font-weight:600">Santa Misa</span></h2>
+          <div style="font:300 23px/1.75 Montserrat,sans-serif;color:#EDF4FA;margin-bottom:32px">Martes a sábado · <span style="font-weight:600">19:00 hrs.</span><br />Domingo · <span style="font-weight:600">11:00 hrs.</span></div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <span data-goto="horarios" style="background:#fff;color:#2C5F92;font:700 14px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:20px 28px;text-transform:uppercase;cursor:pointer">Ver todos los horarios</span>
+            <span style="border:1px solid rgba(255,255,255,.8);color:#fff;font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:19px 26px;text-transform:uppercase">Cómo llegar</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#EAF3FA;padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+        <div style="font:300 26px/1.35 Montserrat,sans-serif;color:#1B3A61">1% a mi Iglesia: <span style="font-weight:700">tu aporte sostiene la misión y la vida de nuestra comunidad</span></div>
+        <span data-goto="unopor" style="background:#6E9CC9;color:#fff;font:700 14px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:20px 28px;white-space:nowrap;text-transform:uppercase;cursor:pointer">Conoce más</span>
+      </div>
+
+      <div style="padding:68px 36px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-church" style="font-size:48px;color:#fff;line-height:1"></i></div>
+          <h3 data-goto="horarios" style="margin:0;font:600 21px/1.25 Montserrat,sans-serif;color:#1B3A61;cursor:pointer">Horarios de Misa</h3>
+          <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Santa Misa: martes a sábado<br />19:00 hrs.<br />Domingo 11:00 hrs.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hands-praying" style="font-size:48px;color:#fff;line-height:1"></i></div>
+          <h3 style="margin:0;font:600 21px/1.25 Montserrat,sans-serif;color:#1B3A61">Confesiones</h3>
+          <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Martes y viernes<br />17:00 a 18:45 hrs.<br />En el templo parroquial</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-clock" style="font-size:48px;color:#fff;line-height:1"></i></div>
+          <h3 style="margin:0;font:600 21px/1.25 Montserrat,sans-serif;color:#1B3A61">Secretaría parroquial</h3>
+          <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Martes a sábado<br />10:00 a 13:00 hrs.<br />16:00 a 19:00 hrs.</p>
+        </div>
+      </div>
+
+      <div style="padding:56px 36px 68px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <img src="assets/icono-adoracion.png" alt="Adoración al Santísimo" style="width:88px;height:88px;display:block;flex:none" />
+          <h3 style="margin:0;font:600 21px/1.25 Montserrat,sans-serif;color:#1B3A61">Adoración al Santísimo</h3>
+          <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Un espacio de encuentro y oración junto al Señor.<br />Lunes a viernes 10:00 a 19:00 hrs.<br />Sábado 09:00 a 19:00 hrs.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hand-heart" style="font-size:48px;color:#fff;line-height:1"></i></div>
+          <h3 data-goto="unopor" style="margin:0;font:600 21px/1.25 Montserrat,sans-serif;color:#1B3A61;cursor:pointer">Aporta a tu Parroquia</h3>
+          <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Tu aporte nos ayuda a seguir sosteniendo la misión y la vida de nuestra comunidad parroquial.<br /><span data-goto="unopor" style="font-weight:600;color:#2C5F92;cursor:pointer">Aporta a tu Parroquia</span></p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-envelope-simple" style="font-size:48px;color:#fff;line-height:1"></i></div>
+          <h3 style="margin:0;font:600 21px/1.25 Montserrat,sans-serif;color:#1B3A61">Comunícate con nosotros</h3>
+          <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Teléfono: +56 9 9280 3442<br />secretariaplourdes@gmail.com<br />Av. Balmaceda 1596, La Serena</p>
+        </div>
+      </div>
+
+      <div style="position:relative;height:360px;background:repeating-linear-gradient(135deg,#D9E6F2 0 12px,#E8F1F8 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,58,97,.78),rgba(44,95,146,.68))"></div>
+        <div style="position:absolute;right:16px;bottom:14px;font:400 12px/1.5 ui-monospace,monospace;color:rgba(255,255,255,.5)">FOTO · imagen de la Virgen de Lourdes · 1180 × 360</div>
+        <div style="position:relative;max-width:660px;padding:0 36px">
+          <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#BBD4EA;margin-bottom:16px;text-transform:uppercase">Nuestra patrona</div>
+          <h3 style="margin:0 0 16px;font:200 42px/1.15 Montserrat,sans-serif;color:#fff">Nuestra Señora de <span style="font-weight:600">Lourdes</span></h3>
+          <p style="margin:0 0 26px;font:300 20px/1.6 Montserrat,sans-serif;color:#E4EEF7">Su historia y su significado para nuestra comunidad parroquial.</p>
+          <span data-goto="parroquia#sub:patrona" style="border:1px solid rgba(255,255,255,.8);color:#fff;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.12em;padding:18px 26px;text-transform:uppercase;cursor:pointer">Conoce su historia</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ mostrarAvisos }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:68px 36px 0;text-align:center">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:14px;text-transform:uppercase">Vida parroquial</div>
+        <h3 style="margin:0 0 36px;font:200 38px/1.15 Montserrat,sans-serif;color:#1B3A61">Noticias y <span style="font-weight:600">avisos</span></h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;text-align:left">
+          <div style="display:flex;gap:20px">
+            <div style="width:200px;height:152px;flex:none;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO<br />200×152</div>
+            <div>
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;margin-bottom:10px">02/09/2026</div>
+              <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61;margin-bottom:8px">Adoración al Santísimo: días y horario</div>
+              <p style="margin:0;font:400 17px/1.6 Montserrat,sans-serif;color:#54637a">Estamos definiendo los días y el lugar; lo publicaremos aquí.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px">
+            <div style="width:200px;height:152px;flex:none;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO<br />200×152</div>
+            <div>
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;margin-bottom:10px">28/08/2026</div>
+              <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61;margin-bottom:8px">Inscripciones de catequesis familiar 2026</div>
+              <p style="margin:0;font:400 17px/1.6 Montserrat,sans-serif;color:#54637a">Primer y segundo año. Consulta requisitos en secretaría.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px">
+            <div style="width:200px;height:152px;flex:none;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO<br />200×152</div>
+            <div>
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;margin-bottom:10px">20/08/2026</div>
+              <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61;margin-bottom:8px">Club Adulto Mayor «Amanecer de Lourdes»</div>
+              <p style="margin:0;font:400 17px/1.6 Montserrat,sans-serif;color:#54637a">Un espacio de encuentro para nuestros mayores.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px">
+            <div style="width:200px;height:152px;flex:none;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO<br />200×152</div>
+            <div>
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;margin-bottom:10px">15/08/2026</div>
+              <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61;margin-bottom:8px">Misioneros del 1% visitan los sectores</div>
+              <p style="margin:0;font:400 17px/1.6 Montserrat,sans-serif;color:#54637a">Conoce cómo sumarte a la misión.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:36px"><span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.12em;padding:19px 30px;text-transform:uppercase">Ver más noticias</span></div>
+      </div>
+      </sc-if>
+
+      <div style="padding:68px 36px 0">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:12px;text-transform:uppercase">Dónde celebramos</div>
+        <h3 style="margin:0 0 8px;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Parroquia, capillas y <span style="font-weight:600">santuario</span></h3>
+        <p style="margin:0 0 30px;font:400 18px/1.6 Montserrat,sans-serif;color:#6c7a90">Además de la parroquia matriz, seis lugares de celebración en nuestro territorio.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          <div style="border:1px solid #E4EDF5;padding:24px 26px"><div style="font:600 18px/1.4 Montserrat,sans-serif;color:#1B3A61;margin-bottom:14px">Santuario Santa Teresa de los Andes</div><div style="display:flex;flex-direction:column;gap:10px;font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879"><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-map-pin" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Av. Balmaceda 2774, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-church" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Santa Misa: domingo 11:00 hrs.</span></div></div><div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-top:14px">Ver ubicación →</div></div>
+          <div style="border:1px solid #E4EDF5;padding:24px 26px"><div style="font:600 18px/1.4 Montserrat,sans-serif;color:#1B3A61;margin-bottom:14px">Capilla Sagrado Corazón de Jesús y María</div><div style="display:flex;flex-direction:column;gap:10px;font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879"><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-map-pin" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>La Colina 1674, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-church" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Santa Misa: sábado 17:30 hrs.</span></div></div><div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-top:14px">Ver ubicación →</div></div>
+          <div style="border:1px solid #E4EDF5;padding:24px 26px"><div style="font:600 18px/1.4 Montserrat,sans-serif;color:#1B3A61;margin-bottom:14px">Capilla San Joaquín y Santa Ana</div><div style="display:flex;flex-direction:column;gap:10px;font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879"><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-map-pin" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Alberto Arenas esq. Ernesto Molina Garmendia, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-church" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Santa Misa: sábado 17:30 hrs.</span></div></div><div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-top:14px">Ver ubicación →</div></div>
+          <div style="border:1px solid #E4EDF5;padding:24px 26px"><div style="font:600 18px/1.4 Montserrat,sans-serif;color:#1B3A61;margin-bottom:14px">Capilla Jesús de la Misericordia</div><div style="display:flex;flex-direction:column;gap:10px;font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879"><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-map-pin" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Av. Guillermo Ulriksen 1771, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-church" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Santa Misa: domingo 12:30 hrs.</span></div></div><div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-top:14px">Ver ubicación →</div></div>
+          <div style="border:1px solid #E4EDF5;padding:24px 26px"><div style="font:600 18px/1.4 Montserrat,sans-serif;color:#1B3A61;margin-bottom:14px">Capilla Corpus Christi</div><div style="display:flex;flex-direction:column;gap:10px;font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879"><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-map-pin" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Av. Gabriel González Videla con Julio Díaz, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-church" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Santa Misa: sábado 19:00 hrs.</span></div></div><div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-top:14px">Ver ubicación →</div></div>
+          <div style="border:1px solid #E4EDF5;padding:24px 26px"><div style="font:600 18px/1.4 Montserrat,sans-serif;color:#1B3A61;margin-bottom:14px">Capilla Santiago Apóstol</div><div style="display:flex;flex-direction:column;gap:10px;font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879"><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-map-pin" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Aguirre Valín con 1 de mayo, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:10px"><i class="ph-thin ph-church" style="font-size:22px;color:#6E9CC9;line-height:1;flex:none"></i><span>Santa Misa: domingo 09:30 hrs.</span></div></div><div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-top:14px">Ver ubicación →</div></div>
+        </div>
+      </div>
+
+      
+  </sc-if>
+  <sc-if value="{{ esParroquia }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Nuestra parroquia</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Una comunidad de fe <span style="font-weight:600">al servicio de La Serena</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">Nuestra historia, nuestra patrona y los sacerdotes que acompañan la vida de la parroquia.</p>
+      </div>
+      
+      <div style="padding:36px 36px 0">
+        <div style="display:flex;gap:0;border-bottom:1px solid #E4EDF5">
+          <sc-for list="{{ pestanasParroquia }}" as="t" hint-placeholder-count="3">
+            <span style="{{ t.estilo }}" style-hover="color:#1B3A61;text-shadow:0 0 .6px #1B3A61,0 0 .6px #1B3A61" onClick="{{ t.ir }}">{{ t.texto }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <sc-if value="{{ verPar_historia }}" hint-placeholder-val="{{ true }}">
+<div id="par-historia" style="height:0;overflow:hidden"></div><div style="padding:56px 36px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div style="height:340px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTOGRAFÍA · el templo en los años 80<br />554×340</div>
+        <div style="height:340px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTOGRAFÍA · el templo hoy, mismo ángulo<br />554×340</div>
+      </div>
+      <div style="padding:52px 36px 0;display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:start">
+        <div>
+          <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:14px;text-transform:uppercase">Nuestra historia</div>
+          <h3 style="margin:0 0 16px;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Más de seis décadas <span style="font-weight:600">de comunidad</span></h3>
+          <div style="border-top:1px solid #E4EDF5;padding-top:20px;font:400 17px/1.9 Montserrat,sans-serif;color:#5a6879"><span style="font-weight:600;color:#1B3A61">1958</span> · Primera piedra<br /><span style="font-weight:600;color:#1B3A61">11 de mayo de 1961</span> · Fundación de la parroquia<br /><span style="font-weight:600;color:#1B3A61">2011</span> · 50 años de vida parroquial<br /><span style="font-weight:600;color:#1B3A61">2014</span> · Primera Capilla de Adoración Perpetua de la Arquidiócesis<br /><span style="font-weight:600;color:#1B3A61">2025</span> · Sede de la Jornada Nacional de la Juventud</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px;max-width:74ch">
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">La historia de la Parroquia Nuestra Señora de Lourdes de La Serena comenzó mucho antes de contar con un templo propio. En la entonces Población Juan Soldado, el Padre Waldo Alcalde Rivera acompañaba a las familias y jóvenes del sector, celebrando semanalmente la Eucaristía en una casa. Poco a poco fue creciendo una comunidad unida por la fe y por un sueño común: tener su propia iglesia.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">En 1958, año en que se conmemoraba el centenario de las apariciones de la Virgen María a santa Bernardita en Lourdes, fue bendecida y colocada la primera piedra del futuro templo. Este acontecimiento marcaría también la advocación que acompañaría para siempre a la comunidad: Nuestra Señora de Lourdes.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">El crecimiento de La Serena hizo necesaria la creación de una nueva parroquia. Así, el 26 de abril de 1961 se promulgó su decreto de fundación y, el 11 de mayo de ese mismo año, nació formalmente la Parroquia Nuestra Señora de Lourdes, siendo su primer párroco el Pbro. Waldo Alcalde Rivera.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Desde entonces, generaciones de familias han encontrado aquí un lugar para celebrar su fe y compartir la vida: bautizos, primeras comuniones, confirmaciones, matrimonios, despedidas, encuentros de oración y numerosas iniciativas de servicio y solidaridad. A través de sus comunidades, pastorales y agentes pastorales, la parroquia fue creciendo junto con el sector al que sirve.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">En 2011, la comunidad celebró sus 50 años de vida parroquial y, en 2014, el templo se convirtió en sede de la primera Capilla de Adoración Perpetua de la Arquidiócesis de La Serena, fortaleciendo aún más su vocación de oración y encuentro con Jesús Sacramentado.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Un nuevo capítulo se escribió en 2025, cuando Nuestra Señora de Lourdes fue la sede de la Jornada Nacional de la Juventud realizada en La Serena. Durante aquellos días, la parroquia abrió sus puertas para recibir a cerca de mil peregrinos y se transformó en un importante centro de encuentro, trabajo pastoral, oración y servicio para jóvenes provenientes de distintos lugares del país.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Hoy, después de más de seis décadas, Nuestra Señora de Lourdes continúa siendo una comunidad de puertas abiertas, que busca vivir y anunciar el Evangelio, acompañar a las personas y seguir construyendo su historia junto a quienes encuentran en esta parroquia un lugar para crecer en la fe, servir y encontrarse con Cristo.</p>
+        </div>
+      </div>
+      </sc-if>
+      <sc-if value="{{ verPar_patrona }}" hint-placeholder-val="{{ false }}">
+<div id="par-patrona" style="height:0;overflow:hidden"></div><div style="padding:72px 36px 0;display:grid;grid-template-columns:440px 1fr;gap:56px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="height:420px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTOGRAFÍA · gruta de la parroquia<br />440×420</div>
+          <div style="display:flex;align-items:center;gap:14px;background:#EAF3FA;padding:20px 26px">
+            <i class="ph-thin ph-calendar-dots" style="font-size:34px;color:#6E9CC9;line-height:1"></i>
+            <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Día de celebración</div><div style="font:600 20px/1.2 Montserrat,sans-serif;color:#1B3A61">11 de febrero</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:14px;text-transform:uppercase">Nuestra patrona</div>
+          <h3 style="margin:0 0 22px;font:200 36px/1.2 Montserrat,sans-serif;color:#1B3A61">Nuestra Señora de <span style="font-weight:600">Lourdes</span></h3>
+          <div style="display:flex;flex-direction:column;gap:22px;max-width:74ch">
+            <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">La historia de Nuestra Señora de Lourdes comienza el 11 de febrero de 1858, en Lourdes, una pequeña localidad ubicada al sur de Francia. Ese día, Bernardita Soubirous, una joven de 14 años perteneciente a una familia humilde, se encontraba cerca de la gruta de Massabielle cuando contempló por primera vez a una hermosa Señora vestida de blanco.</p>
+            <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Aquel encuentro fue el primero de 18 apariciones, ocurridas entre febrero y julio de ese mismo año. Durante ellas, la Virgen invitó especialmente a la oración, la penitencia y la conversión, y pidió que se construyera una capilla en aquel lugar y que las personas acudieran allí en procesión.</p>
+            <div style="border-left:3px solid #6E9CC9;padding:6px 0 6px 24px;font:300 30px/1.35 Montserrat,sans-serif;color:#1B3A61">«Yo soy la Inmaculada Concepción»<div style="font:400 16px/1.5 Montserrat,sans-serif;color:#6c7a90;margin-top:12px">Respuesta de la Señora a Bernardita, el 25 de marzo de 1858.</div></div>
+            <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Con el paso del tiempo, la gruta de Massabielle se convirtió en un lugar de oración y peregrinación para millones de personas. Lourdes se encuentra especialmente unido a los enfermos y a quienes sufren, que llegan hasta allí buscando en María consuelo, fortaleza y esperanza, poniendo su confianza en Jesucristo.</p>
+            <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">En 1862, después de un proceso de investigación y discernimiento, la Iglesia reconoció oficialmente las apariciones de Lourdes. Desde entonces, la devoción a Nuestra Señora de Lourdes se ha extendido por todo el mundo y cada 11 de febrero la Iglesia celebra su memoria.</p>
+            <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Nuestra parroquia lleva con alegría su nombre, confiándose a la protección maternal de María y haciendo suyo el mensaje que brota de Lourdes: acercarnos a Cristo por medio de la oración, la conversión, el servicio y una especial cercanía con quienes más necesitan consuelo y esperanza.</p>
+            <div style="font:400 19px/1.8 Montserrat,sans-serif;font-style:italic;color:#1B3A61;text-align:center;border-top:1px solid #E4EDF5;padding-top:26px;margin-top:6px">Nuestra Señora de Lourdes, <span style="font-weight:600">ruega por nosotros</span></div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+      <sc-if value="{{ verPar_sacerdotes }}" hint-placeholder-val="{{ false }}">
+<div id="par-sacerdotes" style="height:0;overflow:hidden"></div><div style="padding:72px 36px 0">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:14px;text-transform:uppercase">Personas a su servicio</div>
+        <h3 style="margin:0 0 34px;font:200 36px/1.2 Montserrat,sans-serif;color:#1B3A61">Nuestros <span style="font-weight:600">sacerdotes</span></h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+          <div style="border:1px solid #E4EDF5">
+            <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTOGRAFÍA<br />Pbro. Ariel Roldán Díaz<br />356×300</div>
+            <div style="padding:26px 28px 30px">
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:12px">Párroco</div>
+              <div style="font:600 21px/1.35 Montserrat,sans-serif;color:#1B3A61">Pbro. Ariel Roldán Díaz</div>
+              
+            </div>
+          </div><div style="border:1px solid #E4EDF5">
+            <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTOGRAFÍA<br />Pbro. Juan Carlos Álvarez S.<br />356×300</div>
+            <div style="padding:26px 28px 30px">
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:12px">Vicario parroquial</div>
+              <div style="font:600 21px/1.35 Montserrat,sans-serif;color:#1B3A61">Pbro. Juan Carlos Álvarez S.</div>
+              <div style="font:400 17px/1.6 Montserrat,sans-serif;color:#54637a;margin-top:10px">Párroco de Nuestra Señora de las Mercedes de La Higuera</div>
+            </div>
+          </div><div style="border:1px solid #E4EDF5">
+            <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTOGRAFÍA<br />Pbro. Marcelo Gálvez Húmeres<br />356×300</div>
+            <div style="padding:26px 28px 30px">
+              <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:12px">Vicario parroquial</div>
+              <div style="font:600 21px/1.35 Montserrat,sans-serif;color:#1B3A61">Pbro. Marcelo Gálvez Húmeres</div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+  </sc-if>
+  <sc-if value="{{ esHorarios }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Horarios</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Celebración de la <span style="font-weight:600">Santa Misa</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">Todos los horarios de la parroquia matriz, el santuario y las cinco capillas. Si un horario cambia por una fiesta o feriado, lo avisamos en esta misma página.</p>
+      </div>
+      <div id="par-historia" style="height:0;overflow:hidden"></div><div style="padding:56px 36px 0;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div style="border:1px solid #6E9CC9;padding:0;display:flex;flex-direction:column;grid-column:span 2;">
+              <div style="height:210px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Parroquia Nuestra Señora de Lourdes<br />1108×210</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.16em;color:#6E9CC9;text-transform:uppercase;margin-bottom:12px">Parroquia matriz</div>
+                <h3 style="margin:0 0 10px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Parroquia Nuestra Señora de Lourdes</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">Av. Balmaceda 1596, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Martes a sábado 19:00 hrs.<br />Domingo 11:00 hrs.</div></div>
+                </div>
+                
+              <div style="margin-top:22px;border-top:1px solid #E4EDF5;padding-top:20px">
+                <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.16em;color:#6E9CC9;text-transform:uppercase;margin-bottom:14px">Celebraciones especiales</div>
+                <div style="font:400 18px/1.9 Montserrat,sans-serif;color:#54637a">Miércoles · Misa por los enfermos<br />Jueves · Misa por las vocaciones<br />Sábado · Misa por los niños y jóvenes<br />Día 12 de cada mes · Misa de San Carlo Acutis, en el horario del día que corresponda</div>
+              </div>
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E4EDF5;padding:0;display:flex;flex-direction:column;">
+              <div style="height:170px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Santuario Santa Teresa de los Andes<br />542×170</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                
+                <h3 style="margin:0 0 10px;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Santuario Santa Teresa de los Andes</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">Av. Balmaceda 2774, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Domingo 11:00 hrs.</div></div>
+                </div>
+                
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  <span style="color:#6E9CC9;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 0;text-transform:uppercase" data-goto="capillas" style="cursor:pointer">Conocer esta comunidad →</span>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E4EDF5;padding:0;display:flex;flex-direction:column;">
+              <div style="height:170px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Capilla Sagrado Corazón de Jesús y María<br />542×170</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                
+                <h3 style="margin:0 0 10px;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Sagrado Corazón de Jesús y María</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">La Colina 1674, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Sábado 17:30 hrs.</div></div>
+                </div>
+                
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  <span style="color:#6E9CC9;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 0;text-transform:uppercase" data-goto="capillas" style="cursor:pointer">Conocer esta comunidad →</span>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E4EDF5;padding:0;display:flex;flex-direction:column;">
+              <div style="height:170px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Capilla San Joaquín y Santa Ana<br />542×170</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                
+                <h3 style="margin:0 0 10px;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla San Joaquín y Santa Ana</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">Alberto Arenas esq. Ernesto Molina Garmendia, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Sábado 17:30 hrs.</div></div>
+                </div>
+                
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  <span style="color:#6E9CC9;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 0;text-transform:uppercase" data-goto="capillas" style="cursor:pointer">Conocer esta comunidad →</span>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E4EDF5;padding:0;display:flex;flex-direction:column;">
+              <div style="height:170px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Capilla Jesús de la Misericordia<br />542×170</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                
+                <h3 style="margin:0 0 10px;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Jesús de la Misericordia</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">Av. Guillermo Ulriksen 1771, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Domingo 12:30 hrs.</div></div>
+                </div>
+                
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  <span style="color:#6E9CC9;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 0;text-transform:uppercase" data-goto="capillas" style="cursor:pointer">Conocer esta comunidad →</span>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E4EDF5;padding:0;display:flex;flex-direction:column;">
+              <div style="height:170px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Capilla Corpus Christi<br />542×170</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                
+                <h3 style="margin:0 0 10px;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Corpus Christi</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">Av. Gabriel González Videla con Julio Díaz, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Sábado 19:00 hrs.</div></div>
+                </div>
+                
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  <span style="color:#6E9CC9;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 0;text-transform:uppercase" data-goto="capillas" style="cursor:pointer">Conocer esta comunidad →</span>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E4EDF5;padding:0;display:flex;flex-direction:column;">
+              <div style="height:170px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Capilla Santiago Apóstol<br />542×170</div>
+              <div style="padding:26px 28px 28px;display:flex;flex-direction:column;flex:1">
+                
+                <h3 style="margin:0 0 10px;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Santiago Apóstol</h3>
+                <div style="font:400 18px/1.6 Montserrat,sans-serif;color:#5a6879;margin-bottom:16px">Aguirre Valín con 1 de mayo, La Serena</div>
+                <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px">
+                  <i class="ph-thin ph-church" style="font-size:34px;color:#6E9CC9;line-height:1;flex:none"></i>
+                  <div><div style="font:600 14px/1 Montserrat,sans-serif;letter-spacing:.1em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 19px/1.6 Montserrat,sans-serif;color:#1B3A61">Domingo 09:30 hrs.</div></div>
+                </div>
+                
+                <div style="margin-top:auto;padding-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+                  <span style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 20px;text-transform:uppercase">Ver ubicación</span>
+                  <span style="color:#6E9CC9;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:15px 0;text-transform:uppercase" data-goto="capillas" style="cursor:pointer">Conocer esta comunidad →</span>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div style="padding:64px 36px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:36px">
+        <div style="background:#EAF3FA;padding:32px 30px;display:flex;flex-direction:column;gap:16px">
+          <div style="width:76px;height:76px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hands-praying" style="font-size:42px;color:#fff;line-height:1"></i></div>
+          <h3 style="margin:0;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Confesiones</h3>
+          <div style="font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">Martes y viernes<br />17:00 a 18:45 hrs.<br />En el templo parroquial.<br /><span style="font-weight:600;color:#2C5F92">Fuera de ese horario, consulta en Secretaría.</span></div>
+        </div>
+        <div style="background:#EAF3FA;padding:32px 30px;display:flex;flex-direction:column;gap:16px">
+          <img src="assets/icono-adoracion.png" alt="Adoración al Santísimo" style="width:76px;height:76px;display:block;flex:none" />
+          <h3 style="margin:0;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Adoración al Santísimo</h3>
+          <div style="font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">Un espacio de encuentro y oración junto al Señor.<br />Lunes a viernes 10:00 a 19:00 hrs.<br />Sábado 09:00 a 19:00 hrs.</div>
+        </div>
+        <div style="background:#EAF3FA;padding:32px 30px;display:flex;flex-direction:column;gap:16px">
+          <div style="width:76px;height:76px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-clock" style="font-size:42px;color:#fff;line-height:1"></i></div>
+          <h3 style="margin:0;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Secretaría parroquial</h3>
+          <div style="font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">Martes a sábado<br />10:00 a 13:00 hrs.<br />16:00 a 19:00 hrs.<br /><span style="font-weight:600;color:#2C5F92">+56 9 9280 3442</span></div>
+        </div>
+      </div>
+      
+  </sc-if>
+  <sc-if value="{{ esSacramentos }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Sacramentos</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Celebrar la fe en <span style="font-weight:600">comunidad</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">Cada sacramento con su significado, a quién está dirigido, los requisitos, los documentos necesarios y cómo inscribirse. Las inscripciones se realizan en la Secretaría Parroquial.</p>
+      </div>
+
+      <div style="padding:56px 36px 0;display:flex;flex-direction:column;gap:28px">
+        <div id="sac-bautismo" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:360px 1fr">
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Bautismo<br />360 × alto de la ficha</div>
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-drop" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Bautismo</h3></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">El Bautismo es la puerta de entrada a la vida cristiana: por el agua y el Espíritu Santo nacemos como hijos de Dios y somos incorporados a la Iglesia.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Niños, niñas y también adultos que deseen iniciar su camino de fe.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Inscripción</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Secretaría Parroquial · martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div></div>
+            </div>
+          </div>
+          
+        </div><div id="sac-primera-comunion" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:1fr 360px">
+          
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-wine" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Primera Comunión</h3></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">En la Eucaristía recibimos por primera vez el Cuerpo de Cristo, alimento de la vida cristiana. La preparación se realiza a través de la catequesis.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Niños y niñas en edad de catequesis, acompañados por sus familias.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Inscripción</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Secretaría Parroquial · martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div></div>
+            </div>
+          </div>
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Primera Comunión<br />360 × alto de la ficha</div>
+        </div><div id="sac-confirmacion" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:360px 1fr">
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Confirmación<br />360 × alto de la ficha</div>
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-fire" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Confirmación</h3></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">La Confirmación completa la iniciación cristiana: el don del Espíritu Santo fortalece a la persona para vivir y anunciar su fe en la comunidad.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Jóvenes y adultos que ya han recibido el Bautismo.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Inscripción</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Secretaría Parroquial · martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div></div>
+            </div>
+          </div>
+          
+        </div><div id="sac-matrimonio" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:1fr 360px">
+          
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-heart" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Matrimonio</h3></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">El Matrimonio es la alianza por la que los novios se entregan mutuamente ante Dios y la comunidad. Incluye la catequesis prematrimonial.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Parejas que desean celebrar su matrimonio en la parroquia.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Inscripción</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Secretaría Parroquial · martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div></div>
+            </div>
+          </div>
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Matrimonio<br />360 × alto de la ficha</div>
+        </div><div id="sac-uncion" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:360px 1fr">
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Unción de los Enfermos<br />360 × alto de la ficha</div>
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hand-heart" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Unción de los Enfermos</h3></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">La Unción acompaña a quienes atraviesan una enfermedad o la fragilidad de la edad, con la gracia del consuelo, la paz y la fortaleza.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Personas enfermas, sus familias y adultos mayores.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Solicitud y coordinación</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Se coordina directamente con la parroquia · +56 9 9280 3442</div></div>
+            </div>
+          </div>
+          
+        </div><div id="sac-confesion" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:1fr 360px">
+          
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hands-praying" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Confesión</h3></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">En la Reconciliación nos encontramos con la misericordia de Dios, que perdona, sana y devuelve la paz al corazón.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Toda persona que desee acercarse al sacramento.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario habitual</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Martes y viernes, 17:00 a 18:45 hrs., en el templo parroquial. No requiere inscripción previa.</div></div>
+            </div>
+          </div>
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Confesión<br />360 × alto de la ficha</div>
+        </div>
+        <div id="sac-catequesis-adultos" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:360px 1fr">
+          <div style="min-height:340px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Catequesis adultos<br />360 × alto de la ficha</div>
+          <div style="padding:34px 34px 36px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-users-three" style="font-size:36px;color:#fff;line-height:1"></i></div><div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Catequesis adultos</h3><div style="font:400 16px/1.5 Montserrat,sans-serif;color:#6c7a90;margin-top:6px">Camino de formación e iniciación cristiana</div></div></div>
+            <p style="margin:0 0 24px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a;max-width:62ch">Proceso de formación para personas adultas que desean completar su iniciación cristiana: Bautismo, Primera Comunión o Confirmación. Tiene sus propios requisitos y su propio calendario, distintos de la Confirmación juvenil.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;border-top:1px solid #E4EDF5;padding-top:24px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Destinatarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Personas adultas que no han recibido alguno de los sacramentos de iniciación.</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Requisitos</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Documentos necesarios</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Inscripción</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Secretaría Parroquial · martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:64px 36px 0">
+        <div style="background:#EAF3FA;padding:40px 36px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+          <div>
+            <h3 style="margin:0 0 12px;font:200 32px/1.2 Montserrat,sans-serif;color:#1B3A61">Inscripciones y <span style="font-weight:600">consultas</span></h3>
+            <p style="margin:0;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Todos los sacramentos se gestionan a través de la Secretaría Parroquial. En la Unción de los Enfermos hablamos de solicitud y coordinación, no de inscripción.</p>
+          </div>
+          <div style="font:400 18px/1.9 Montserrat,sans-serif;color:#1B3A61">Martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.<br />Av. Balmaceda 1596, La Serena<br />+56 9 9280 3442<br />secretariaplourdes@gmail.com</div>
+        </div>
+      </div>
+  </sc-if>
+  <sc-if value="{{ esServicios }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Servicios</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Acompañamos a las <span style="font-weight:600">familias</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">Gestiones y celebraciones que no requieren una inscripción sacramental. Cada servicio indica cómo solicitarlo y con quién coordinarlo.</p>
+      </div>
+      <div style="padding:56px 36px 0;display:flex;flex-direction:column;gap:36px">
+        <div id="ser-funerales" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:420px 1fr">
+          <div style="min-height:380px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · acompañamiento a las familias<br />420 × alto de la ficha</div>
+          <div style="padding:36px 34px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-church" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Funerales y velatorios</h3></div>
+            <p style="margin:0;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">La parroquia acompaña a las familias en la despedida de sus seres queridos y coordina la celebración de las exequias. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+            
+            <div style="background:#EAF3FA;padding:24px 26px;margin-top:22px">
+              <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:12px">Coordinación en Secretaría Parroquial</div>
+              <div style="font:400 17px/1.8 Montserrat,sans-serif;color:#1B3A61">Martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.<br />Av. Balmaceda 1596, La Serena · +56 9 9280 3442<br />secretariaplourdes@gmail.com</div>
+            </div>
+          </div>
+        </div>
+        <div id="ser-intenciones" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:1fr 420px">
+          <div style="padding:36px 34px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hands-praying" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Intenciones de Misa</h3></div>
+            <p style="margin:0 0 20px;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">Puedes pedir que una Santa Misa se ofrezca por una persona enferma o por un difunto. Las intenciones se inscriben directamente antes de la celebración, sin trámite previo.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 24px;border-top:1px solid #E4EDF5;padding-top:22px">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Miércoles</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Intenciones por los enfermos</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Otros días</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Intenciones por los difuntos</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Aporte</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Voluntario</div></div>
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dónde</div><div style="font:400 17px/1.6 Montserrat,sans-serif;color:#1B3A61">Antes de la Santa Misa</div></div>
+            </div>
+          </div>
+          <div style="min-height:380px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · celebración de la Misa<br />420 × alto de la ficha</div>
+        </div>
+        <div id="ser-coronas" style="height:0;overflow:hidden"></div><div style="border:1px solid #E4EDF5;display:grid;grid-template-columns:420px 1fr">
+          <div style="min-height:300px;align-self:stretch;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.5 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO · Coronas de Caridad<br />420 × alto de la ficha</div>
+          <div style="padding:36px 34px">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:64px;height:64px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-flower" style="font-size:36px;color:#fff;line-height:1"></i></div><h3 style="margin:0;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Coronas de Caridad</h3></div>
+            <p style="margin:0;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">Qué son y en qué ocasiones se solicitan. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+            <p style="margin:14px 0 0;font:400 18px/1.75 Montserrat,sans-serif;color:#54637a">Forma de solicitud y coordinación. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+          </div>
+        </div>
+      </div>
+      
+  </sc-if>
+  <sc-if value="{{ esCapillas }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Capillas y Santuario</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Nuestras <span style="font-weight:600">comunidades</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">La parroquia matriz acompaña a un santuario y cinco capillas. Cada comunidad tiene su propia ficha con dirección, horarios y contacto.</p>
+      </div>
+      <div style="padding:56px 36px 0">
+            <div id="cap-santuario" style="height:0;overflow:hidden"></div><div style="display:grid;grid-template-columns:460px 1fr;gap:36px;align-items:center;padding:0 0 44px;border-bottom:1px solid #E4EDF5">
+              <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO PRINCIPAL<br />Santuario Santa Teresa de los Andes<br />460×300</div>
+              <div>
+                <h3 style="margin:0 0 12px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Santuario Santa Teresa de los Andes</h3>
+                <p style="margin:0 0 22px;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Breve descripción de la comunidad, su historia y su vida pastoral. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+                <div id="cap-sagrado-corazon" style="height:0;overflow:hidden"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;border-top:1px solid #E4EDF5;padding-top:22px">
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dirección</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Av. Balmaceda 2774, La Serena</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Domingo 11:00 hrs.</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario de atención</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                  <span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:17px 24px;text-transform:uppercase">Ver ubicación</span>
+                </div>
+              </div>
+              
+            </div>
+            <div id="cap-san-joaquin" style="height:0;overflow:hidden"></div><div style="display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center;padding:44px 0 44px;border-bottom:1px solid #E4EDF5">
+              
+              <div>
+                <h3 style="margin:0 0 12px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Sagrado Corazón de Jesús y María</h3>
+                <p style="margin:0 0 22px;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Breve descripción de la comunidad, su historia y su vida pastoral. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+                <div id="cap-misericordia" style="height:0;overflow:hidden"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;border-top:1px solid #E4EDF5;padding-top:22px">
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dirección</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">La Colina 1674, La Serena</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Sábado 17:30 hrs.</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario de atención</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                  <span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:17px 24px;text-transform:uppercase">Ver ubicación</span>
+                </div>
+              </div>
+              <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO PRINCIPAL<br />Capilla Sagrado Corazón de Jesús y María<br />460×300</div>
+            </div>
+            <div id="cap-corpus" style="height:0;overflow:hidden"></div><div style="display:grid;grid-template-columns:460px 1fr;gap:36px;align-items:center;padding:44px 0 44px;border-bottom:1px solid #E4EDF5">
+              <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO PRINCIPAL<br />Capilla San Joaquín y Santa Ana<br />460×300</div>
+              <div>
+                <h3 style="margin:0 0 12px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla San Joaquín y Santa Ana</h3>
+                <p style="margin:0 0 22px;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Breve descripción de la comunidad, su historia y su vida pastoral. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+                <div id="cap-santiago" style="height:0;overflow:hidden"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;border-top:1px solid #E4EDF5;padding-top:22px">
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dirección</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Alberto Arenas esq. Ernesto Molina Garmendia, La Serena</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Sábado 17:30 hrs.</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario de atención</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                  <span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:17px 24px;text-transform:uppercase">Ver ubicación</span>
+                </div>
+              </div>
+              
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center;padding:44px 0 44px;border-bottom:1px solid #E4EDF5">
+              
+              <div>
+                <h3 style="margin:0 0 12px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Jesús de la Misericordia</h3>
+                <p style="margin:0 0 22px;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Breve descripción de la comunidad, su historia y su vida pastoral. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;border-top:1px solid #E4EDF5;padding-top:22px">
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dirección</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Av. Guillermo Ulriksen 1771, La Serena</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Domingo 12:30 hrs.</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario de atención</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                  <span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:17px 24px;text-transform:uppercase">Ver ubicación</span>
+                </div>
+              </div>
+              <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO PRINCIPAL<br />Capilla Jesús de la Misericordia<br />460×300</div>
+            </div>
+            <div style="display:grid;grid-template-columns:460px 1fr;gap:36px;align-items:center;padding:44px 0 44px;border-bottom:1px solid #E4EDF5">
+              <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO PRINCIPAL<br />Capilla Corpus Christi<br />460×300</div>
+              <div>
+                <h3 style="margin:0 0 12px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Corpus Christi</h3>
+                <p style="margin:0 0 22px;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Breve descripción de la comunidad, su historia y su vida pastoral. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;border-top:1px solid #E4EDF5;padding-top:22px">
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dirección</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Av. Gabriel González Videla con Julio Díaz, La Serena</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Sábado 19:00 hrs.</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario de atención</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                  <span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:17px 24px;text-transform:uppercase">Ver ubicación</span>
+                </div>
+              </div>
+              
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center;padding:44px 0 44px;border-bottom:1px solid #E4EDF5">
+              
+              <div>
+                <h3 style="margin:0 0 12px;font:600 26px/1.3 Montserrat,sans-serif;color:#1B3A61">Capilla Santiago Apóstol</h3>
+                <p style="margin:0 0 22px;font:400 18px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Breve descripción de la comunidad, su historia y su vida pastoral. <span style="color:#8FA3BC">[POR COMPLETAR]</span></p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;border-top:1px solid #E4EDF5;padding-top:22px">
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Dirección</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Aguirre Valín con 1 de mayo, La Serena</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Santa Misa</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Domingo 09:30 hrs.</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                  <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:8px">Horario de atención</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#8FA3BC">[POR COMPLETAR]</div></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                  <span style="background:#6E9CC9;color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:17px 24px;text-transform:uppercase">Ver ubicación</span>
+                </div>
+              </div>
+              <div style="height:300px;background:repeating-linear-gradient(135deg,#D9E6F2 0 10px,#E8F1F8 10px 20px);display:flex;align-items:center;justify-content:center;font:400 11px/1.4 ui-monospace,monospace;color:#8FA3BC;text-align:center">FOTO PRINCIPAL<br />Capilla Santiago Apóstol<br />460×300</div>
+            </div>
+      </div>
+      
+  </sc-if>
+  <sc-if value="{{ esPastorales }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Pastorales y grupos</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Encuentra dónde <span style="font-weight:600">participar</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">Nuestros grupos se organizan en cinco categorías. Elige una en el índice y revisa sus comunidades con toda su información.</p>
+      </div>
+      <div id="pas-panel" style="height:0;overflow:hidden"></div>
+      <div style="padding:52px 36px 0;display:grid;grid-template-columns:308px 1fr;gap:40px;align-items:start">
+        <div style="position:sticky;top:20px;border:1px solid #E4EDF5">
+          <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.16em;color:#6E9CC9;text-transform:uppercase;padding:22px 24px 16px">Categorías</div>
+          <sc-for list="{{ indicePastoral }}" as="c" hint-placeholder-count="5">
+            <div style="{{ c.estilo }}" onClick="{{ c.ir }}">{{ c.texto }}<span style="{{ c.badge }}">{{ c.n }}</span></div>
+          </sc-for>
+        </div>
+        <div>
+      <sc-if value="{{ verPas_catequesis }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:flex-start;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4EDF5">
+          <div style="width:68px;height:68px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-users-three" style="font-size:38px;color:#fff;line-height:1"></i></div>
+          <div>
+            <h3 style="margin:0;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Catequesis y formación</h3>
+            <p style="margin:10px 0 0;font:400 18px/1.6 Montserrat,sans-serif;color:#54637a;max-width:62ch">Acompañamos el camino de la fe de niños, jóvenes, adultos y familias. <span style="color:#8FA3BC">· 5 grupos</span></p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:26px">
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Catequesis bautismal</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Catequesis de niños · Primera Comunión</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Reúne a los niños de primer y segundo año que participan en este proceso de formación, junto a sus encargados y catequistas, quienes los acompañan y guían en su camino de fe. Es un espacio de encuentro, aprendizaje y preparación para la Primera Comunión, vivido en comunidad y como parte de la vida parroquial.</div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Catequesis de Confirmación</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Reúne a los jóvenes de primer y segundo año que participan en este proceso de formación, junto a sus encargados y catequistas, quienes los acompañan y guían en su camino de fe. Es un espacio de encuentro, aprendizaje y preparación para la Confirmación, fortaleciendo también su participación en la vida de la comunidad parroquial.</div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Catequesis matrimonial</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Catequesis adultos</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Reúne a las personas adultas que participan en este proceso de formación, junto a sus encargados y catequistas, quienes los acompañan y guían en su camino de fe. Es un espacio de encuentro, aprendizaje y preparación sacramental, que favorece también una mayor integración a la vida de la comunidad parroquial.</div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ verPas_juvenil }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:flex-start;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4EDF5">
+          <div style="width:68px;height:68px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-fire" style="font-size:38px;color:#fff;line-height:1"></i></div>
+          <div>
+            <h3 style="margin:0;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Pastoral juvenil y vocacional</h3>
+            <p style="margin:10px 0 0;font:400 18px/1.6 Montserrat,sans-serif;color:#54637a;max-width:62ch">Espacios de encuentro, servicio y discernimiento para los jóvenes de la parroquia. <span style="color:#8FA3BC">· 3 grupos</span></p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:26px">
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral Juvenil KERYGMA</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral Prejuvenil KAIROS</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral de Acólitos San Carlo Acutis</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ verPas_ministerios }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:flex-start;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4EDF5">
+          <div style="width:68px;height:68px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hands-praying" style="font-size:38px;color:#fff;line-height:1"></i></div>
+          <div>
+            <h3 style="margin:0;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Ministerios y espiritualidad</h3>
+            <p style="margin:10px 0 0;font:400 18px/1.6 Montserrat,sans-serif;color:#54637a;max-width:62ch">Comunidades de oración, liturgia y servicio al altar. <span style="color:#8FA3BC">· 8 grupos</span></p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:26px">
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Comunidad de Ministros Mandatados</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Comunidad de Adoradores</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Cursillo de Cristiandad</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Renovación Carismática</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Legión de María «María Madre del Salvador»</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Taller de Oración Ignacio Larrañaga</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral de Liturgia</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Comunidad Waldo Alcalde</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ verPas_servicio }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:flex-start;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4EDF5">
+          <div style="width:68px;height:68px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hand-heart" style="font-size:38px;color:#fff;line-height:1"></i></div>
+          <div>
+            <h3 style="margin:0;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Servicio y misión</h3>
+            <p style="margin:10px 0 0;font:400 18px/1.6 Montserrat,sans-serif;color:#54637a;max-width:62ch">Grupos que llevan el Evangelio y la caridad a los sectores de la parroquia. <span style="color:#8FA3BC">· 6 grupos</span></p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:26px">
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Misioneros del 1%</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral Social Santa Marta</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral de Migrantes</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Reúne a personas migrantes que llegan a nuestra ciudad desde otros países, así como también a chilenos provenientes de otras regiones, junto a quienes forman parte de esta pastoral. Su misión es generar un espacio de acogida, cercanía e integración, favoreciendo su participación y vinculación con la comunidad parroquial.</div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Matrimonio coordinador</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Yxora Vacaro y Francisco Herrera</div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral de Servidores</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Pastoral de Redes Sociales</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Reúne a quienes colaboran en la comunicación digital de la parroquia, apoyando la difusión de sus actividades, celebraciones, pastorales y vida comunitaria. A través de las redes sociales y otros medios digitales, busca acercar la parroquia a la comunidad, mantenerla informada y dar visibilidad al trabajo de sus distintos grupos, fortaleciendo también la coordinación y participación entre ellos.</div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Matrimonio coordinador</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61">Jimena Ceballos y Joaquín Loayza</div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Club Adulto Mayor «Amanecer de Lourdes»</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ verPas_musica }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:flex-start;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4EDF5">
+          <div style="width:68px;height:68px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-flower" style="font-size:38px;color:#fff;line-height:1"></i></div>
+          <div>
+            <h3 style="margin:0;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Música y expresión religiosa</h3>
+            <p style="margin:10px 0 0;font:400 18px/1.6 Montserrat,sans-serif;color:#54637a;max-width:62ch">Coros y expresiones que animan nuestras celebraciones. <span style="color:#8FA3BC">· 7 grupos</span></p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:26px">
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Coro Aguinaldito (venezolano)</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Coro Santa Bernardita</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Coro de Pastoral Juvenil</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Coro Matrimonio Rodríguez Gallardo</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Coro Patricio Pastén</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Solista Pilar Ángel</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+          <div style="border:1px solid #E4EDF5;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61">Baile Religioso Toba Guerreros de Dios</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Descripción del grupo, su misión y a quién está dirigido. <span style="color:#8FA3BC">[POR COMPLETAR]</span></div>
+            <div style="border-top:1px solid #E4EDF5;padding-top:18px;display:flex;flex-direction:column;gap:16px;margin-top:auto">
+              <div><div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:7px">Coordinador/a</div><div style="font:400 17px/1.55 Montserrat,sans-serif;color:#1B3A61"><span style="color:#8FA3BC">[POR COMPLETAR]</span></div></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+        <div style="background:#EAF3FA;padding:26px 28px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div>
+            <div style="font:600 20px/1.35 Montserrat,sans-serif;color:#1B3A61;margin-bottom:12px">¿Quieres ser parte de alguno de nuestros grupos?</div>
+            <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#54637a">Las inscripciones y consultas se realizan a través de la Secretaría Parroquial, de martes a sábado.</div>
+          </div>
+          <div style="font:400 17px/1.7 Montserrat,sans-serif;color:#1B3A61">Martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.<br />Av. Balmaceda 1596, La Serena<br />+56 9 9280 3442<br />secretariaplourdes@gmail.com</div>
+        </div>
+
+        </div>
+      </div>
+  </sc-if>
+
+  <sc-if value="{{ esCertificados }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EAF3FA;padding:52px 36px">
+        <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#6E9CC9;margin-bottom:16px;text-transform:uppercase">Solicitud en línea</div>
+        <h2 style="margin:0 0 14px;font:200 46px/1.12 Montserrat,sans-serif;color:#1B3A61">Solicitar <span style="font-weight:600">certificados</span></h2>
+        <p style="margin:0;font:400 19px/1.6 Montserrat,sans-serif;color:#54637a;max-width:76ch;text-wrap:pretty">Completa el formulario y la solicitud llegará directamente a la Secretaría Parroquial. La secretaría revisa los libros parroquiales y luego te confirma la emisión del certificado.</p>
+      </div>
+      
+    <sc-if value="{{ formularioVisible }}" hint-placeholder-val="{{ true }}"><div style="padding:56px 36px 0;display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:24px">
+          
+          <div style="border:1px solid #E4EDF5;padding:32px 34px">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+              <span style="width:38px;height:38px;border-radius:50%;background:#EAF3FA;color:#2C5F92;font:700 17px/38px Montserrat,sans-serif;text-align:center;flex:none">1</span>
+              <h3 style="margin:0;font:600 22px/1.3 Montserrat,sans-serif;color:#1B3A61">Datos del solicitante</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 24px">
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Nombre completo</label>
+                <input type="text" placeholder="Nombre y apellidos" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">RUT</label>
+                <input type="text" placeholder="12.345.678-9" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Teléfono</label>
+                <input type="text" placeholder="+56 9 ..." style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Correo electrónico</label>
+                <input type="text" placeholder="nombre@correo.cl" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div></div>
+          </div>
+          
+          <div style="border:1px solid #E4EDF5;padding:32px 34px">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+              <span style="width:38px;height:38px;border-radius:50%;background:#EAF3FA;color:#2C5F92;font:700 17px/38px Montserrat,sans-serif;text-align:center;flex:none">2</span>
+              <h3 style="margin:0;font:600 22px/1.3 Montserrat,sans-serif;color:#1B3A61">Certificado solicitado</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 24px">
+              <div style="grid-column:span 2;display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">¿Qué certificado necesita?</label>
+                <select style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:15px 16px;border:1px solid #CFDDEA;background:#fff;min-height:56px;width:100%;appearance:none"><option selected>Seleccione una opción</option><option>Certificado de Bautismo</option><option>Certificado de Primera Comunión</option><option>Certificado de Confirmación</option><option>Certificado de Matrimonio</option></select>
+                <div style="font:400 16px/1.7 Montserrat,sans-serif;color:#8FA3BC">Bautismo · Primera Comunión · Confirmación · Matrimonio</div>
+              </div></div>
+          </div>
+          
+          <div style="border:1px solid #E4EDF5;padding:32px 34px">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+              <span style="width:38px;height:38px;border-radius:50%;background:#EAF3FA;color:#2C5F92;font:700 17px/38px Montserrat,sans-serif;text-align:center;flex:none">3</span>
+              <h3 style="margin:0;font:600 22px/1.3 Montserrat,sans-serif;color:#1B3A61">Datos de la persona que recibió el sacramento</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 24px">
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Nombre completo</label>
+                <input type="text" placeholder="Nombre y apellidos" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">RUT</label>
+                <input type="text" placeholder="12.345.678-9" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Fecha de nacimiento</label>
+                <input type="text" placeholder="DD / MM / AAAA" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Fecha del sacramento</label>
+                <input type="text" placeholder="DD / MM / AAAA" style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:16px 16px;border:1px solid #CFDDEA;background:#fff;outline:none;min-height:56px" />
+              </div>
+              <div style="grid-column:span 2;display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">¿Dónde se celebró el sacramento?</label>
+                <select style="font:400 18px/1.4 Montserrat,sans-serif;color:#1B3A61;padding:15px 16px;border:1px solid #CFDDEA;background:#fff;min-height:56px;width:100%;appearance:none"><option selected>Seleccione el templo</option><option>Parroquia Nuestra Señora de Lourdes</option><option>Santuario Santa Teresa de los Andes</option><option>Capilla Sagrado Corazón de Jesús y María</option><option>Capilla San Joaquín y Santa Ana</option><option>Capilla Jesús de la Misericordia</option><option>Capilla Corpus Christi</option><option>Capilla Santiago Apóstol</option></select>
+              </div>
+              <div style="grid-column:span 2;display:flex;flex-direction:column;gap:9px">
+                <label style="font:600 15px/1.3 Montserrat,sans-serif;color:#1B3A61">Información que ayude a la búsqueda (opcional)</label>
+                <div style="font:400 18px/1.5 Montserrat,sans-serif;color:#8FA3BC;padding:16px;border:1px solid #CFDDEA;background:#fff;min-height:110px">Parroquia o capilla donde se celebró, nombres de los padres o padrinos, año aproximado…</div>
+              </div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;background:#EAF3FA;padding:24px 26px">
+            <input type="checkbox" style="width:24px;height:24px;accent-color:#6E9CC9;flex:none;margin-top:2px" />
+            <div style="font:400 17px/1.6 Montserrat,sans-serif;color:#54637a">Autorizo el uso de estos datos únicamente para gestionar mi solicitud de certificado.</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+            <span data-enviar="1" style="background:#6E9CC9;color:#fff;font:700 15px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:23px 34px;text-transform:uppercase;cursor:pointer">Enviar solicitud</span>
+            <span style="font:400 17px/1.5 Montserrat,sans-serif;color:#5a6879">Responderemos al correo indicado.</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E4EDF5;padding:30px 30px 34px;display:flex;flex-direction:column;gap:18px">
+          <div style="width:76px;height:76px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-clock" style="font-size:42px;color:#fff;line-height:1"></i></div>
+          <h3 style="margin:0;font:600 21px/1.3 Montserrat,sans-serif;color:#1B3A61">Secretaría Parroquial</h3>
+          <div style="font:400 18px/1.8 Montserrat,sans-serif;color:#54637a">Martes a sábado<br />10:00 a 13:00 hrs.<br />16:00 a 19:00 hrs.</div>
+          <div style="border-top:1px solid #E4EDF5;padding-top:18px;font:400 18px/1.8 Montserrat,sans-serif;color:#54637a">Av. Balmaceda 1596, La Serena<br />+56 9 9280 3442<br />secretariaplourdes@gmail.com</div>
+          <div style="font:400 17px/1.6 Montserrat,sans-serif;color:#8FA3BC">También puedes solicitar tu certificado presencialmente en el horario de atención.</div>
+        </div>
+      </div>
+      
+    </sc-if>
+    <sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:72px 36px 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px">
+        <div style="width:96px;height:96px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-check" style="font-size:54px;color:#fff;line-height:1"></i></div>
+        <h3 style="margin:0;font:200 40px/1.15 Montserrat,sans-serif;color:#1B3A61">Solicitud <span style="font-weight:600">enviada</span></h3>
+        <p style="margin:0;font:400 19px/1.7 Montserrat,sans-serif;color:#54637a;max-width:60ch">Recibimos tu solicitud y llegó al correo de la Secretaría Parroquial. Revisaremos los libros parroquiales y te escribiremos para confirmar la emisión del certificado.</p>
+        <div style="background:#EAF3FA;padding:26px 30px;font:400 18px/1.8 Montserrat,sans-serif;color:#1B3A61">Consultas: +56 9 9280 3442 · secretariaplourdes@gmail.com<br />Secretaría: martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div>
+        <span data-goto="inicio" style="border:1px solid #6E9CC9;color:#2C5F92;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:18px 26px;text-transform:uppercase;cursor:pointer">Volver al inicio</span>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ esUno }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;background:#1B3A61;padding:72px 36px;overflow:hidden">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 12px,rgba(255,255,255,0) 12px 24px)"></div>
+        <div style="position:relative;max-width:70ch">
+          <div style="font:500 13px/1 Montserrat,sans-serif;letter-spacing:.3em;color:#BBD4EA;margin-bottom:18px;text-transform:uppercase">Aporta a tu parroquia</div>
+          <h2 style="margin:0 0 16px;font:200 56px/1.08 Montserrat,sans-serif;color:#fff">1% a mi <span style="font-weight:600">Iglesia</span></h2>
+          <p style="margin:0 0 34px;font:300 24px/1.5 Montserrat,sans-serif;color:#E4EEF7">Un pequeño gesto que sostiene una gran misión.</p>
+          <a href="https://forms.gle/hzTBrMmzRcHZa6Zp8" target="_blank" rel="noopener" style="display:inline-block;background:#fff;color:#2C5F92;font:700 15px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:23px 34px;text-transform:uppercase;text-decoration:none">Inscribirme al 1%</a>
+        </div>
+      </div>
+
+      <div style="padding:64px 36px 0;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">El 1% a la Iglesia es una invitación permanente a colaborar, de manera libre y voluntaria, con un aporte mensual que ayuda a sostener la vida y misión de nuestra comunidad parroquial.</p>
+          <p style="margin:0;font:400 19px/1.8 Montserrat,sans-serif;color:#54637a;text-wrap:pretty">Como referencia, este aporte puede corresponder al 1% de tus ingresos, pero no existe un monto obligatorio. Cada persona aporta de acuerdo con sus posibilidades.</p>
+        </div>
+        <div style="background:#EAF3FA;padding:34px 36px;font:300 26px/1.5 Montserrat,sans-serif;color:#1B3A61">Cada aporte, grande o pequeño, nos ayuda a seguir construyendo <span style="font-weight:600">una parroquia viva, acogedora y al servicio de toda la comunidad.</span></div>
+      </div>
+
+      <div style="padding:64px 36px 0">
+        <h3 style="margin:0 0 34px;font:200 34px/1.2 Montserrat,sans-serif;color:#1B3A61">Tu aporte nos <span style="font-weight:600">ayuda a</span></h3>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+          <div style="display:flex;flex-direction:column;gap:18px"><div style="width:72px;height:72px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-church" style="font-size:40px;color:#fff;line-height:1"></i></div><div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a">Mantener nuestra parroquia y sus capillas</div></div><div style="display:flex;flex-direction:column;gap:18px"><div style="width:72px;height:72px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-lightning" style="font-size:40px;color:#fff;line-height:1"></i></div><div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a">Cubrir gastos de funcionamiento como agua, luz y otros servicios</div></div><div style="display:flex;flex-direction:column;gap:18px"><div style="width:72px;height:72px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-hammer" style="font-size:40px;color:#fff;line-height:1"></i></div><div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a">Realizar reparaciones y mantenciones</div></div><div style="display:flex;flex-direction:column;gap:18px"><div style="width:72px;height:72px;border-radius:50%;background:#6E9CC9;display:flex;align-items:center;justify-content:center;flex:none"><i class="ph-thin ph-users-three" style="font-size:40px;color:#fff;line-height:1"></i></div><div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a">Sostener durante todo el año nuestra labor pastoral y evangelizadora</div></div>
+        </div>
+      </div>
+
+      <div style="padding:64px 36px 0;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch">
+        <div style="border:1px solid #E4EDF5;padding:36px 34px;display:flex;flex-direction:column;gap:18px">
+          <h3 style="margin:0;font:600 24px/1.3 Montserrat,sans-serif;color:#1B3A61">Inscríbete</h3>
+          <div style="font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Puedes incorporarte a la campaña de manera online o directamente en nuestra parroquia.</div>
+          <div style="border-top:1px solid #E4EDF5;padding-top:20px">
+            <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:10px">Inscripción online</div>
+            <div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a;margin-bottom:18px">Completa el formulario con tus datos y forma parte de esta misión.</div>
+            <a href="https://forms.gle/hzTBrMmzRcHZa6Zp8" target="_blank" rel="noopener" style="display:inline-block;background:#6E9CC9;color:#fff;font:700 14px/1 Montserrat,sans-serif;letter-spacing:.1em;padding:20px 28px;text-transform:uppercase;text-decoration:none">Inscribirme al 1%</a>
+          </div>
+          <div style="border-top:1px solid #E4EDF5;padding-top:20px;margin-top:auto">
+            <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:10px">Inscripción presencial</div>
+            <div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a">También puedes inscribirte en la Secretaría Parroquial, donde podremos orientarte y registrar tus datos.<br />Martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.</div>
+          </div>
+        </div>
+        <div style="background:#EAF3FA;padding:36px 34px;display:flex;flex-direction:column;gap:18px">
+          <h3 style="margin:0;font:600 24px/1.3 Montserrat,sans-serif;color:#1B3A61">Datos de transferencia</h3>
+          <div style="font:400 18px/1.7 Montserrat,sans-serif;color:#54637a">Tu aporte mensual puede realizarse por transferencia bancaria o directamente en la Secretaría Parroquial.</div>
+          <div style="background:#fff;padding:26px 28px;display:grid;grid-template-columns:auto 1fr;gap:14px 22px;font:400 18px/1.5 Montserrat,sans-serif">
+            <span style="color:#6E9CC9;font-weight:600">Destinatario</span><span style="color:#1B3A61">Parroquia Nuestra Sra. de Lourdes</span>
+            <span style="color:#6E9CC9;font-weight:600">Banco</span><span style="color:#1B3A61">BancoEstado</span>
+            <span style="color:#6E9CC9;font-weight:600">Tipo de cuenta</span><span style="color:#1B3A61">Cuenta corriente</span>
+            <span style="color:#6E9CC9;font-weight:600">N.º de cuenta</span><span style="color:#1B3A61;font-weight:600">12800002921</span>
+            <span style="color:#6E9CC9;font-weight:600">Correo</span><span style="color:#1B3A61">miunoporciento.plourdes@gmail.com</span>
+          </div>
+          <div style="border-top:1px solid #CFDDEA;padding-top:20px;margin-top:auto">
+            <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;color:#6E9CC9;text-transform:uppercase;margin-bottom:10px">Al realizar tu transferencia</div>
+            <div style="font:400 18px/1.65 Montserrat,sans-serif;color:#54637a">En el asunto o comentario escribe <span style="font-weight:600;color:#1B3A61">uno por ciento + tu nombre y apellido</span>.<br />Ejemplo: uno por ciento María González</div>
+          </div>
+        </div>
+      </div>
+  </sc-if>
+
+  <div style="margin-top:72px;background:#1B3A61;color:#fff;padding:56px 36px 0">
+    <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;padding-bottom:44px">
+      <div>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+          <img src="assets/marca-blanco.png" alt="Templo parroquial" style="height:54px;width:auto;display:block;opacity:.9" />
+          <div style="border-left:1px solid rgba(255,255,255,.25);padding-left:16px">
+            <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.26em;color:#BBD4EA;text-transform:uppercase">Parroquia</div>
+            <div style="font:300 21px/1.25 Montserrat,sans-serif;color:#fff;margin-top:6px">Nuestra Señora de <span style="font-weight:700">Lourdes</span></div>
+            <div style="font:600 12px/1 Montserrat,sans-serif;letter-spacing:.22em;color:#BBD4EA;margin-top:8px;text-transform:uppercase">La Serena</div>
+          </div>
+        </div>
+        <p style="margin:0;font:400 17px/1.75 Montserrat,sans-serif;color:#C4D3E5">Comunidad de la Arquidiócesis de La Serena.</p>
+      </div>
+      <div>
+        <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.2em;color:#BBD4EA;margin-bottom:20px;text-transform:uppercase">Información de contacto</div>
+        <div style="font:400 17px/1.6 Montserrat,sans-serif;color:#C4D3E5;display:flex;flex-direction:column;gap:14px"><div style="display:flex;align-items:flex-start;gap:12px"><i class="ph-thin ph-map-pin" style="font-size:24px;color:#BBD4EA;line-height:1;flex:none"></i><span>Av. Balmaceda 1596, La Serena</span></div><div style="display:flex;align-items:flex-start;gap:12px"><i class="ph-thin ph-phone" style="font-size:24px;color:#BBD4EA;line-height:1;flex:none"></i><span>+56 9 9280 3442</span></div><div style="display:flex;align-items:flex-start;gap:12px"><i class="ph-thin ph-envelope-simple" style="font-size:24px;color:#BBD4EA;line-height:1;flex:none"></i><span>secretariaplourdes@gmail.com</span></div><div style="display:flex;align-items:flex-start;gap:12px"><i class="ph-thin ph-clock" style="font-size:24px;color:#BBD4EA;line-height:1;flex:none"></i><span>Secretaría: martes a sábado,<br />10:00 a 13:00 y 16:00 a 19:00 hrs.</span></div></div>
+      </div>
+      <div>
+        <div style="font:600 13px/1 Montserrat,sans-serif;letter-spacing:.2em;color:#BBD4EA;margin-bottom:20px;text-transform:uppercase">Redes sociales</div>
+        <div style="font:400 17px/1.95 Montserrat,sans-serif;color:#C4D3E5;display:flex;flex-direction:column"><span style="display:inline-flex;align-items:center;gap:9px"><i class="ph-thin ph-instagram-logo" style="font-size:22px;color:#BBD4EA;line-height:1;flex:none"></i>Instagram</span></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.18);padding:20px 0;font:400 14px/1 Montserrat,sans-serif;color:#8FA7C4">© 2026 Parroquia Nuestra Señora de Lourdes · Arquidiócesis de La Serena</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900},&quot;pantallaInicial&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;inicio&quot;,&quot;parroquia&quot;,&quot;horarios&quot;,&quot;sacramentos&quot;,&quot;servicios&quot;,&quot;certificados&quot;,&quot;capillas&quot;,&quot;pastorales&quot;],&quot;default&quot;:&quot;inicio&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Maqueta&quot;}}">
+class Component extends DCLogic {
+  state = { pantalla: this.props.pantallaInicial || "inicio", enviado: false, menuAbierto: null, catPastoral: "catequesis", subParroquia: "historia" };
+
+  componentDidMount() {
+    this.onDocClick = (e) => {
+      const t = e.target;
+      if (!t || !t.closest) return;
+      const enviar = t.closest("[data-enviar]");
+      if (enviar) { this.setState({ enviado: true }); this.top(); return; }
+      const goto = t.closest("[data-goto]");
+      if (goto) {
+        const partes = goto.getAttribute("data-goto").split("#");
+        this.ir(partes[0], partes[1]);
+        return;
+      }
+      const acc = t.closest("[data-acc]");
+      if (acc) {
+        const ficha = acc.nextElementSibling;
+        if (ficha && ficha.hasAttribute("data-ficha")) {
+          const abierta = ficha.style.display !== "none";
+          ficha.style.display = abierta ? "none" : "grid";
+          const ic = acc.querySelector("i");
+          if (ic) ic.className = "ph-thin " + (abierta ? "ph-plus" : "ph-minus");
+        }
+      }
+    };
+    document.addEventListener("click", this.onDocClick);
+  }
+
+  componentWillUnmount() { document.removeEventListener("click", this.onDocClick); }
+
+  seguirAncla(ancla) {
+    const t0 = Date.now();
+    let quietos = 0;
+    const paso = () => {
+      const el = document.getElementById(ancla);
+      if (!el) return;
+      const actual = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const destino = Math.max(0, actual + el.getBoundingClientRect().top - 24);
+      const delta = destino - actual;
+      if (Math.abs(delta) < 2) {
+        if (++quietos >= 3) return;
+      } else {
+        quietos = 0;
+        window.scrollTo(0, Math.round(actual + delta * 0.24));
+      }
+      if (Date.now() - t0 < 1400) requestAnimationFrame(paso);
+      else window.scrollTo(0, Math.round(destino));
+    };
+    requestAnimationFrame(paso);
+  }
+
+  irCat(id) {
+    this.setState({ catPastoral: id });
+  }
+
+  top() {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
+  ir(pantalla, ancla) {
+    if (ancla && ancla.indexOf("sub:") === 0) {
+      this.setState({ pantalla: pantalla, enviado: false, menuAbierto: null, subParroquia: ancla.slice(4) });
+      this.top();
+      return;
+    }
+    if (ancla && ancla.indexOf("cat:") === 0) {
+      this.setState({ pantalla: pantalla, enviado: false, menuAbierto: null, catPastoral: ancla.slice(4) });
+      ancla = "pas-panel";
+    } else {
+      this.setState({ pantalla: pantalla, enviado: false, menuAbierto: null });
+    }
+    if (!ancla) { this.top(); return; }
+    let intentos = 0;
+    const buscar = () => {
+      if (document.getElementById(ancla)) this.seguirAncla(ancla);
+      else if (intentos++ < 30) requestAnimationFrame(buscar);
+    };
+    requestAnimationFrame(buscar);
+  }
+
+  renderVals() {
+    const p = this.state.pantalla;
+    const items = [
+      ["inicio", "Inicio", []],
+      ["parroquia", "Nuestra parroquia", [["Nuestra historia", "sub:historia"], ["Nuestra Patrona", "sub:patrona"], ["Sacerdotes", "sub:sacerdotes"]]],
+      ["horarios", "Horarios", []],
+      ["sacramentos", "Sacramentos", [["Bautismo", "sac-bautismo"], ["Primera Comunión", "sac-primera-comunion"], ["Confirmación", "sac-confirmacion"], ["Matrimonio", "sac-matrimonio"], ["Unción de los Enfermos", "sac-uncion"], ["Confesión", "sac-confesion"], ["Catequesis adultos", "sac-catequesis-adultos"]]],
+      ["servicios", "Servicios", [["Funerales y velatorios", "ser-funerales"], ["Intenciones de Misa", "ser-intenciones"], ["Coronas de Caridad", "ser-coronas"]]],
+      ["certificados", "Certificados", []],
+      ["capillas", "Capillas", [["Santuario Santa Teresa de los Andes", "cap-santuario"], ["Capilla Sagrado Corazón de Jesús y María", "cap-sagrado-corazon"], ["Capilla San Joaquín y Santa Ana", "cap-san-joaquin"], ["Capilla Jesús de la Misericordia", "cap-misericordia"], ["Capilla Corpus Christi", "cap-corpus"], ["Capilla Santiago Apóstol", "cap-santiago"]]],
+      ["pastorales", "Pastorales", [["Catequesis y formación", "cat:catequesis"], ["Pastoral juvenil y vocacional", "cat:juvenil"], ["Ministerios y espiritualidad", "cat:ministerios"], ["Servicio y misión", "cat:servicio"], ["Música y expresión religiosa", "cat:musica"]]]
+    ];
+    const base = "display:block;padding:17px 0;font-family:Montserrat,sans-serif;font-size:13px;line-height:1;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;";
+    const subBase = "padding:13px 24px;font-family:Montserrat,sans-serif;font-size:16px;line-height:1.4;font-weight:500;color:#1B3A61;white-space:nowrap;cursor:pointer;";
+    const cp = this.state.catPastoral;
+    const sp = this.state.subParroquia || "historia";
+    const catsPastoral = [
+      ["catequesis", "Catequesis y formación", 5],
+      ["juvenil", "Pastoral juvenil y vocacional", 3],
+      ["ministerios", "Ministerios y espiritualidad", 8],
+      ["servicio", "Servicio y misión", 6],
+      ["musica", "Música y expresión religiosa", 7]
+    ];
+    const indBase = "display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 24px;border-top:1px solid #E4EDF5;font-family:Montserrat,sans-serif;font-size:16px;line-height:1.4;font-weight:500;background:transparent;box-shadow:none;cursor:pointer;";
+    return {
+      menu: items.map(([id, etiqueta, sub], i) => ({
+        etiqueta: etiqueta,
+        ir: () => this.ir(id),
+        abrir: () => { if (sub.length) this.setState({ menuAbierto: id }); },
+        cerrar: () => this.setState({ menuAbierto: null }),
+        contenedor: "position:relative;flex:none",
+        sub: sub.map((s) => ({ texto: s[0], ir: () => this.ir(id, s[1]), estilo: subBase })),
+        panel: "position:absolute;top:100%;" + (i >= 6 ? "right:-16px" : "left:-16px") +
+          ";min-width:260px;background:#fff;border:1px solid #E4EDF5;box-shadow:0 20px 44px rgba(27,58,97,.18);padding:8px 0;z-index:30;display:" +
+          (this.state.menuAbierto === id && sub.length ? "block" : "none"),
+        estilo: base + (p === id
+          ? "color:#6E9CC9;font-weight:700;box-shadow:inset 0 -3px 0 #6E9CC9"
+          : "color:#1B3A61;font-weight:500;box-shadow:none")
+      })),
+      esInicio: p === "inicio",
+      esParroquia: p === "parroquia",
+      esHorarios: p === "horarios",
+      esSacramentos: p === "sacramentos",
+      esServicios: p === "servicios",
+      esCapillas: p === "capillas",
+      esPastorales: p === "pastorales",
+      esCertificados: p === "certificados",
+      esUno: p === "unopor",
+      pestanasParroquia: [["historia", "Nuestra historia"], ["patrona", "Nuestra Patrona"], ["sacerdotes", "Sacerdotes"]].map(([id, texto]) => ({
+        texto: texto,
+        ir: () => { this.setState({ subParroquia: id }); this.top(); },
+        estilo: "padding:16px 26px;font-family:Montserrat,sans-serif;font-size:15px;line-height:1;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;" +
+          (sp === id
+            ? "color:#1B3A61;font-weight:700;box-shadow:inset 0 -3px 0 #6E9CC9"
+            : "color:#5a6879;font-weight:500;box-shadow:none")
+      })),
+      verPar_historia: sp === "historia",
+      verPar_patrona: sp === "patrona",
+      verPar_sacerdotes: sp === "sacerdotes",
+      indicePastoral: catsPastoral.map(([id, texto, n]) => ({
+        texto: texto,
+        n: n,
+        ir: () => this.irCat(id),
+        estilo: indBase + (cp === id
+          ? "background:#EAF3FA;color:#1B3A61;font-weight:700;box-shadow:inset 3px 0 0 #6E9CC9"
+          : "color:#1B3A61;font-weight:500"),
+        badge: "font:600 14px/1 Montserrat,sans-serif;color:" + (cp === id ? "#2C5F92" : "#8FA3BC")
+      })),
+      verPas_catequesis: cp === "catequesis",
+      verPas_juvenil: cp === "juvenil",
+      verPas_ministerios: cp === "ministerios",
+      verPas_servicio: cp === "servicio",
+      verPas_musica: cp === "musica",
+      enviado: this.state.enviado,
+      formularioVisible: !this.state.enviado
+    };
+  }
+}
+</script>
+</body>
+</html>

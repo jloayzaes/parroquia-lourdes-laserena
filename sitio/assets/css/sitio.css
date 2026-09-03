@@ -1,0 +1,945 @@
+/* ==========================================================================
+   Parroquia Nuestra Señora de Lourdes · La Serena
+   Hoja de estilos única del sitio.
+   Los valores provienen del handoff de diseño (tokens, tipografía, espaciado).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colores de marca */
+  --azul: #1B3A61;              /* Azul parroquial */
+  --azul-medio: #2C5F92;
+  --celeste: #6E9CC9;           /* Acento principal */
+  --celeste-claro: #EAF3FA;     /* Fondo de franjas y portadas */
+  --celeste-muy-claro: #F6FAFD;
+  --celeste-sobre-azul: #BBD4EA;
+
+  /* Texto */
+  --texto: #54637a;
+  --texto-2: #5a6879;
+  --texto-3: #6c7a90;
+  --pendiente: #8FA3BC;         /* [POR COMPLETAR] y etiquetas de foto */
+
+  /* Superficies */
+  --blanco: #FFFFFF;
+  --lienzo: #E9EDF2;            /* Fondo alrededor del contenedor */
+  --borde: #E4EDF5;
+  --borde-campo: #CFDDEA;
+
+  /* Pie de página */
+  --pie-texto: #C4D3E5;
+  --pie-credito: #8FA7C4;
+
+  /* Medidas */
+  --ancho: 1180px;
+  --lateral: 36px;
+  --fuente: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Marcador de fotografía pendiente */
+  --rayado: repeating-linear-gradient(135deg, #D9E6F2 0 12px, #E8F1F8 12px 24px);
+  --rayado-fino: repeating-linear-gradient(135deg, #D9E6F2 0 10px, #E8F1F8 10px 20px);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* El atributo hidden manda sobre cualquier display de este archivo */
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--lienzo);
+  font-family: var(--fuente);
+  font-size: 17px;              /* Mínimo de accesibilidad acordado */
+  color: var(--texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; }
+
+a { color: var(--azul-medio); text-decoration: none; }
+a:hover { color: var(--celeste); }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+p, figure, blockquote, dl, dd, fieldset { margin: 0; }
+fieldset { min-width: 0; border: 0; padding: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+input, select, textarea { font-family: var(--fuente); }
+
+:focus-visible { outline: 3px solid var(--celeste); outline-offset: 2px; }
+
+/* Todo destino de ancla deja aire sobre sí al desplazarse */
+[id] { scroll-margin-top: 24px; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Salto al contenido, para teclado y lectores de pantalla */
+.salto-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--azul);
+  color: #fff;
+  padding: 14px 22px;
+  font: 600 15px/1 var(--fuente);
+}
+.salto-contenido:focus { left: 0; color: #fff; }
+
+/* --------------------------------------------------------------------------
+   3. Contenedor de página
+   -------------------------------------------------------------------------- */
+.pagina {
+  width: 100%;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  background: var(--blanco);
+  min-height: 100vh;
+  box-shadow: 0 0 60px rgba(27, 58, 97, .14);
+  overflow-x: hidden;
+}
+
+/* Bloque estándar: ancho útil con el padding lateral del diseño */
+.bloque { padding-left: var(--lateral); padding-right: var(--lateral); }
+.bloque--sup { padding-top: 68px; }
+.bloque--sup-corto { padding-top: 56px; }
+
+/* --------------------------------------------------------------------------
+   4. Cabecera
+   -------------------------------------------------------------------------- */
+.barra-superior {
+  background: var(--celeste);
+  color: #fff;
+  padding: 10px var(--lateral);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 28px;
+  flex-wrap: wrap;
+  font: 500 13px/1.4 var(--fuente);
+  letter-spacing: .07em;
+  min-height: 44px;
+}
+.barra-superior a { color: #fff; }
+.barra-superior a:hover { color: #fff; text-decoration: underline; }
+.barra-superior__grupo { display: flex; align-items: center; gap: 16px 28px; flex-wrap: wrap; }
+.barra-superior__dato { display: inline-flex; align-items: center; gap: 7px; }
+.barra-superior i { font-size: 18px; line-height: 1; flex: none; }
+
+.marca {
+  padding: 22px var(--lateral);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  flex-wrap: wrap;
+}
+.marca__enlace { display: flex; align-items: center; gap: 18px; flex: none; }
+.marca__dibujo { height: 66px; width: auto; display: block; flex: none; }
+.marca__texto { border-left: 1px solid #DCE7F1; padding-left: 18px; flex: none; }
+.marca__linea-sup,
+.marca__linea-inf {
+  display: block;
+  font: 600 13px/1 var(--fuente);
+  color: var(--azul-medio);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marca__linea-sup { letter-spacing: .26em; }
+.marca__linea-inf { letter-spacing: .22em; margin-top: 8px; }
+.marca__nombre {
+  display: block;
+  font: 300 24px/1.2 var(--fuente);
+  color: var(--azul);
+  margin-top: 7px;
+  white-space: nowrap;
+}
+.marca__nombre strong { font-weight: 700; }
+
+.marca__horario { display: flex; align-items: center; gap: 12px; flex: none; }
+.marca__horario-iconos { display: flex; align-items: center; gap: 5px; flex: none; }
+.marca__horario i { font-size: 28px; color: var(--celeste); line-height: 1; }
+.marca__horario-texto { font: 400 15px/1.5 var(--fuente); color: var(--texto-2); white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+   5. Menú principal
+   -------------------------------------------------------------------------- */
+.menu {
+  border-top: 1px solid var(--borde);
+  border-bottom: 1px solid var(--borde);
+  padding: 0 var(--lateral);
+  position: relative;
+}
+.menu__abrir { display: none; }
+
+.menu__lista { display: flex; gap: 30px; white-space: nowrap; }
+.menu__item { position: relative; flex: none; }
+
+.menu__enlace {
+  display: block;
+  padding: 17px 0;
+  font: 500 13px/1 var(--fuente);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+/* Engrosado óptico: nunca cambiar font-weight en hover, movería el layout */
+.menu__enlace:hover,
+.menu__enlace:focus-visible {
+  color: var(--azul);
+  text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul);
+}
+.menu__item--activo > .menu__enlace {
+  color: var(--celeste);
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--celeste);
+}
+.menu__item--activo > .menu__enlace:hover { color: var(--celeste); }
+
+.menu__desplegar { display: none; }
+
+.menu__panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  min-width: 260px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  box-shadow: 0 20px 44px rgba(27, 58, 97, .18);
+  padding: 8px 0;
+  z-index: 30;
+}
+/* Los dos últimos desplegables se alinean a la derecha para no salirse */
+.menu__item--derecha .menu__panel { left: auto; right: -16px; }
+
+/* En escritorio el desplegable se abre al pasar el cursor, sin JavaScript.
+   :focus-within lo abre también al recorrer el menú con el teclado. */
+@media (min-width: 1001px) {
+  .menu__item:hover > .menu__panel,
+  .menu__item:focus-within > .menu__panel { display: block; }
+}
+
+.menu__sub {
+  display: block;
+  padding: 13px 24px;
+  font: 500 16px/1.4 var(--fuente);
+  color: var(--azul);
+  white-space: nowrap;
+}
+.menu__sub:hover,
+.menu__sub:focus-visible {
+  color: var(--azul);
+  background: var(--celeste-claro);
+  text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul);
+}
+
+/* --------------------------------------------------------------------------
+   6. Tipografía de contenido
+   -------------------------------------------------------------------------- */
+.antetitulo {
+  font: 500 13px/1.3 var(--fuente);
+  letter-spacing: .3em;
+  color: var(--celeste);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.antetitulo--claro { color: var(--celeste-sobre-azul); }
+
+.titulo-portada { font: 200 46px/1.12 var(--fuente); color: var(--azul); margin-bottom: 14px; }
+.titulo-grande { font: 200 38px/1.15 var(--fuente); color: var(--azul); }
+.titulo-medio { font: 200 34px/1.2 var(--fuente); color: var(--azul); }
+.titulo-ficha { font: 600 26px/1.3 var(--fuente); color: var(--azul); }
+.titulo-tarjeta { font: 600 20px/1.35 var(--fuente); color: var(--azul); }
+.titulo-tarjeta--grande { font-size: 21px; line-height: 1.25; }
+strong, .fuerte { font-weight: 600; }
+.titulo-portada strong, .titulo-grande strong, .titulo-medio strong { font-weight: 600; }
+
+.parrafo { font: 400 19px/1.8 var(--fuente); color: var(--texto); text-wrap: pretty; }
+.parrafo--corto { font-size: 18px; line-height: 1.7; }
+.bajada { font: 400 19px/1.6 var(--fuente); color: var(--texto); max-width: 76ch; text-wrap: pretty; }
+.texto-tarjeta { font: 400 17px/1.7 var(--fuente); color: var(--texto); }
+.pendiente { color: var(--pendiente); }
+
+.etiqueta-dato {
+  font: 600 12px/1.2 var(--fuente);
+  letter-spacing: .14em;
+  color: var(--celeste);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.valor-dato { font: 400 17px/1.6 var(--fuente); color: var(--azul); }
+
+/* --------------------------------------------------------------------------
+   7. Portada de sección
+   -------------------------------------------------------------------------- */
+.portada-seccion { background: var(--celeste-claro); padding: 52px var(--lateral); }
+
+/* --------------------------------------------------------------------------
+   8. Marcadores de fotografía
+   La parroquia entregará las fotos en HD; cada .foto se reemplaza por un <img>.
+   -------------------------------------------------------------------------- */
+.foto {
+  position: relative;
+  height: var(--alto, 240px);
+  background: var(--rayado-fino);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  font: 400 11px/1.5 var(--mono);
+  color: var(--pendiente);
+}
+.foto--estirada { align-self: stretch; min-height: var(--alto, 340px); height: auto; }
+.foto--esquina {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  font: 400 12px/1.5 var(--mono);
+  color: var(--pendiente);
+  z-index: 2;
+}
+.foto--esquina-clara { color: rgba(255, 255, 255, .5); }
+
+/* --------------------------------------------------------------------------
+   9. Botones
+   -------------------------------------------------------------------------- */
+.boton {
+  display: inline-block;
+  background: var(--celeste);
+  color: #fff;
+  font: 700 14px/1 var(--fuente);
+  letter-spacing: .1em;
+  padding: 20px 28px;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid var(--celeste);
+}
+.boton:hover { background: var(--azul-medio); border-color: var(--azul-medio); color: #fff; }
+
+.boton--blanco { background: #fff; color: var(--azul-medio); border-color: #fff; }
+.boton--blanco:hover { background: var(--celeste-claro); border-color: var(--celeste-claro); color: var(--azul-medio); }
+
+.boton--linea-blanca { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .8); font-weight: 600; }
+.boton--linea-blanca:hover { background: rgba(255, 255, 255, .14); border-color: #fff; color: #fff; }
+
+.boton--linea { background: transparent; color: var(--azul-medio); border: 1px solid var(--celeste); font: 600 13px/1 var(--fuente); padding: 15px 20px; }
+.boton--linea:hover { background: var(--celeste-claro); color: var(--azul-medio); }
+
+.boton--pequeno { font-size: 13px; padding: 17px 24px; }
+.boton--grande { font-size: 15px; padding: 23px 34px; }
+
+.enlace-flecha {
+  display: inline-block;
+  font: 600 13px/1 var(--fuente);
+  letter-spacing: .1em;
+  color: var(--celeste);
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+.enlace-flecha:hover { color: var(--azul-medio); }
+
+/* --------------------------------------------------------------------------
+   10. Badges de ícono
+   -------------------------------------------------------------------------- */
+.badge {
+  width: var(--tam, 64px);
+  height: var(--tam, 64px);
+  border-radius: 50%;
+  background: var(--celeste);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.badge i { color: #fff; line-height: 1; font-size: calc(var(--tam, 64px) * .55); }
+.badge--imagen { width: var(--tam, 64px); height: var(--tam, 64px); display: block; flex: none; }
+
+/* --------------------------------------------------------------------------
+   11. Rejillas y tarjetas genéricas
+   -------------------------------------------------------------------------- */
+.rejilla { display: grid; gap: 24px; }
+.rejilla--2 { grid-template-columns: 1fr 1fr; }
+.rejilla--3 { grid-template-columns: repeat(3, 1fr); }
+.rejilla--4 { grid-template-columns: repeat(4, 1fr); }
+
+.tarjeta { border: 1px solid var(--borde); padding: 24px 26px; }
+.tarjeta--celeste { background: var(--celeste-claro); border: 0; padding: 32px 30px; }
+
+.datos-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 28px;
+  border-top: 1px solid var(--borde);
+  padding-top: 24px;
+}
+
+/* Ficha con fotografía lateral (sacramentos, servicios) */
+.ficha { border: 1px solid var(--borde); display: grid; grid-template-columns: var(--col-foto, 360px) 1fr; }
+.ficha--invertida { grid-template-columns: 1fr var(--col-foto, 360px); }
+.ficha--invertida .ficha__foto { order: 2; }
+.ficha__cuerpo { padding: 34px 34px 36px; }
+.ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.ficha__subtitulo { font: 400 16px/1.5 var(--fuente); color: var(--texto-3); margin-top: 6px; }
+.ficha__descripcion { font: 400 18px/1.75 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
+
+/* --------------------------------------------------------------------------
+   12. Inicio
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 530px;
+  background: var(--rayado);
+  display: flex;
+  align-items: center;
+  padding: 56px 0;
+}
+.hero__velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(27, 58, 97, .84) 0%, rgba(44, 95, 146, .62) 46%, rgba(110, 156, 201, .12) 100%);
+}
+.hero__contenido { position: relative; padding: 0 var(--lateral); max-width: 700px; }
+.hero__titulo { font: 200 58px/1.06 var(--fuente); color: #fff; letter-spacing: -.005em; margin-bottom: 24px; }
+.hero__titulo strong { font-weight: 600; }
+.hero__horario { font: 300 23px/1.75 var(--fuente); color: #EDF4FA; margin-bottom: 32px; }
+.hero__horario strong { font-weight: 600; }
+.hero__botones { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.franja-uno {
+  background: var(--celeste-claro);
+  padding: 30px var(--lateral);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 32px;
+  flex-wrap: wrap;
+}
+.franja-uno__texto { font: 300 26px/1.35 var(--fuente); color: var(--azul); }
+.franja-uno__texto strong { font-weight: 700; }
+
+.acceso { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.acceso p { font: 400 18px/1.7 var(--fuente); color: var(--texto); }
+
+.banda-patrona {
+  position: relative;
+  min-height: 360px;
+  background: var(--rayado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 0;
+}
+.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27, 58, 97, .78), rgba(44, 95, 146, .68)); }
+.banda-patrona__contenido { position: relative; max-width: 660px; padding: 0 var(--lateral); }
+.banda-patrona h2 { font: 200 42px/1.15 var(--fuente); color: #fff; margin-bottom: 16px; }
+.banda-patrona h2 strong { font-weight: 600; }
+.banda-patrona p { font: 300 20px/1.6 var(--fuente); color: #E4EEF7; margin-bottom: 26px; }
+
+.aviso { display: flex; gap: 20px; text-align: left; }
+.aviso__foto { width: 200px; height: 152px; flex: none; }
+.aviso__fecha { font: 600 13px/1 var(--fuente); letter-spacing: .1em; color: var(--celeste); margin-bottom: 10px; }
+.aviso__titulo { font: 600 20px/1.35 var(--fuente); color: var(--azul); margin-bottom: 8px; }
+.aviso p { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
+
+.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 17px/1.5 var(--fuente); color: var(--texto-2); }
+.lugar__fila { display: flex; align-items: flex-start; gap: 10px; }
+.lugar__fila i { font-size: 22px; color: var(--celeste); line-height: 1; flex: none; }
+
+/* --------------------------------------------------------------------------
+   13. Nuestra parroquia
+   -------------------------------------------------------------------------- */
+.pestanas { display: flex; border-bottom: 1px solid var(--borde); flex-wrap: wrap; }
+.pestana {
+  padding: 16px 26px;
+  font: 500 15px/1 var(--fuente);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.pestana:hover, .pestana:focus-visible { color: var(--azul); text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul); }
+.pestana--activa { color: var(--azul); font-weight: 700; box-shadow: inset 0 -3px 0 var(--celeste); }
+
+.linea-tiempo {
+  border-top: 1px solid var(--borde);
+  padding-top: 20px;
+  font: 400 17px/1.9 var(--fuente);
+  color: var(--texto-2);
+}
+.linea-tiempo strong { font-weight: 600; color: var(--azul); }
+
+.cita {
+  border-left: 3px solid var(--celeste);
+  padding: 6px 0 6px 24px;
+  font: 300 30px/1.35 var(--fuente);
+  color: var(--azul);
+}
+.cita__fuente { font: 400 16px/1.5 var(--fuente); color: var(--texto-3); margin-top: 12px; }
+
+.cierre-oracion {
+  font: 400 19px/1.8 var(--fuente);
+  font-style: italic;
+  color: var(--azul);
+  text-align: center;
+  border-top: 1px solid var(--borde);
+  padding-top: 26px;
+  margin-top: 6px;
+}
+.cierre-oracion strong { font-weight: 600; }
+
+.recuadro-dato { display: flex; align-items: center; gap: 14px; background: var(--celeste-claro); padding: 20px 26px; }
+.recuadro-dato i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
+.recuadro-dato__valor { font: 600 20px/1.2 var(--fuente); color: var(--azul); }
+
+.sacerdote { border: 1px solid var(--borde); }
+.sacerdote__cuerpo { padding: 26px 28px 30px; }
+.sacerdote__cargo { font: 600 13px/1 var(--fuente); letter-spacing: .14em; color: var(--celeste); text-transform: uppercase; margin-bottom: 12px; }
+.sacerdote__nombre { font: 600 21px/1.35 var(--fuente); color: var(--azul); }
+.sacerdote__nota { font: 400 17px/1.6 var(--fuente); color: var(--texto); margin-top: 10px; }
+
+/* --------------------------------------------------------------------------
+   14. Horarios
+   -------------------------------------------------------------------------- */
+.templo { border: 1px solid var(--borde); display: flex; flex-direction: column; }
+.templo--matriz { border-color: var(--celeste); grid-column: span 2; }
+.templo__cuerpo { padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1; }
+.templo__etiqueta { font: 600 13px/1 var(--fuente); letter-spacing: .16em; color: var(--celeste); text-transform: uppercase; margin-bottom: 12px; }
+.templo__nombre { font: 600 21px/1.3 var(--fuente); color: var(--azul); margin-bottom: 10px; }
+.templo--matriz .templo__nombre { font-size: 26px; }
+.templo__direccion { font: 400 18px/1.6 var(--fuente); color: var(--texto-2); margin-bottom: 16px; }
+.templo__misa { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+.templo__misa i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
+.templo__misa-etiqueta { font: 600 14px/1 var(--fuente); letter-spacing: .1em; color: var(--celeste); text-transform: uppercase; margin-bottom: 8px; }
+.templo__misa-horas { font: 400 19px/1.6 var(--fuente); color: var(--azul); }
+.templo__especiales { margin-top: 22px; border-top: 1px solid var(--borde); padding-top: 20px; }
+.templo__especiales-lista { font: 400 18px/1.9 var(--fuente); color: var(--texto); }
+.templo__acciones { margin-top: auto; padding-top: 22px; display: flex; gap: 12px 20px; flex-wrap: wrap; align-items: center; }
+
+.tarjeta-horario { font: 400 18px/1.75 var(--fuente); color: var(--texto); }
+.tarjeta-horario strong { font-weight: 600; color: var(--azul-medio); }
+
+/* --------------------------------------------------------------------------
+   15. Capillas
+   -------------------------------------------------------------------------- */
+.capilla {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--borde);
+}
+.capilla:first-of-type { padding-top: 0; }
+.capilla--invertida { grid-template-columns: 1fr 460px; }
+.capilla--invertida .capilla__foto { order: 2; }
+.capilla__descripcion { font: 400 18px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
+.capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--borde); padding-top: 22px; }
+.capilla__valor { font: 400 17px/1.55 var(--fuente); color: var(--azul); }
+
+/* --------------------------------------------------------------------------
+   16. Pastorales
+   -------------------------------------------------------------------------- */
+.pastorales { display: grid; grid-template-columns: 308px 1fr; gap: 40px; align-items: start; }
+
+.indice { position: sticky; top: 20px; border: 1px solid var(--borde); }
+.indice__titulo { font: 600 12px/1 var(--fuente); letter-spacing: .16em; color: var(--celeste); text-transform: uppercase; padding: 22px 24px 16px; }
+.indice__enlace {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 17px 24px;
+  border-top: 1px solid var(--borde);
+  font: 500 16px/1.4 var(--fuente);
+  color: var(--azul);
+}
+.indice__enlace:hover { color: var(--azul); background: var(--celeste-muy-claro); }
+.indice__enlace--activo { background: var(--celeste-claro); font-weight: 700; box-shadow: inset 3px 0 0 var(--celeste); }
+.indice__n { font: 600 14px/1 var(--fuente); color: var(--pendiente); }
+.indice__enlace--activo .indice__n { color: var(--azul-medio); }
+
+.categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--borde); }
+.categoria__titulo { font: 200 34px/1.2 var(--fuente); color: var(--azul); }
+.categoria__bajada { font: 400 18px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
+.categoria__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 26px; }
+
+.grupo { border: 1px solid var(--borde); padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
+.grupo__pie { border-top: 1px solid var(--borde); padding-top: 18px; margin-top: auto; }
+.grupo__valor { font: 400 17px/1.55 var(--fuente); color: var(--azul); }
+
+.franja-inscripcion {
+  background: var(--celeste-claro);
+  padding: 26px 28px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.franja-inscripcion__datos { font: 400 17px/1.7 var(--fuente); color: var(--azul); }
+
+/* Sin JavaScript se muestran todas las categorías, una tras otra */
+.js .categoria[hidden] { display: none; }
+
+/* --------------------------------------------------------------------------
+   17. Certificados (formulario)
+   -------------------------------------------------------------------------- */
+.certificados { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
+.formulario { display: flex; flex-direction: column; gap: 24px; }
+
+.paso { border: 1px solid var(--borde); padding: 32px 34px; }
+.paso__encabezado { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.paso__numero {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--celeste-claro);
+  color: var(--azul-medio);
+  font: 700 17px/38px var(--fuente);
+  text-align: center;
+  flex: none;
+}
+.paso__titulo { font: 600 22px/1.3 var(--fuente); color: var(--azul); }
+.paso__campos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
+
+.campo { display: flex; flex-direction: column; gap: 9px; }
+.campo--ancho { grid-column: span 2; }
+.campo label { font: 600 15px/1.3 var(--fuente); color: var(--azul); }
+.campo input,
+.campo select,
+.campo textarea {
+  font: 400 18px/1.4 var(--fuente);
+  color: var(--azul);
+  padding: 16px;
+  border: 1px solid var(--borde-campo);
+  background: #fff;
+  min-height: 56px;
+  width: 100%;
+  border-radius: 0;
+}
+.campo textarea { min-height: 110px; line-height: 1.5; resize: vertical; }
+.campo select { padding: 15px 46px 15px 16px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C5F92' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--celeste); outline: 2px solid var(--celeste); outline-offset: -2px; }
+.campo__ayuda { font: 400 16px/1.7 var(--fuente); color: var(--pendiente); }
+
+.privacidad { display: flex; align-items: flex-start; gap: 14px; background: var(--celeste-claro); padding: 24px 26px; }
+.privacidad input { width: 24px; height: 24px; accent-color: var(--celeste); flex: none; margin: 2px 0 0; }
+.privacidad label { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
+
+.formulario__envio { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.formulario__nota { font: 400 17px/1.5 var(--fuente); color: var(--texto-2); }
+.formulario__aviso {
+  font: 400 17px/1.6 var(--fuente);
+  color: var(--azul);
+  background: var(--celeste-claro);
+  border-left: 3px solid var(--celeste);
+  padding: 18px 22px;
+}
+
+.aparte { border: 1px solid var(--borde); padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 18px; }
+.aparte__datos { font: 400 18px/1.8 var(--fuente); color: var(--texto); }
+.aparte__datos--separado { border-top: 1px solid var(--borde); padding-top: 18px; }
+.aparte__nota { font: 400 17px/1.6 var(--fuente); color: var(--pendiente); }
+
+.exito { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+.exito__titulo { font: 200 40px/1.15 var(--fuente); color: var(--azul); }
+.exito__titulo strong { font-weight: 600; }
+.exito p { font: 400 19px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; }
+.exito__datos { background: var(--celeste-claro); padding: 26px 30px; font: 400 18px/1.8 var(--fuente); color: var(--azul); }
+
+/* --------------------------------------------------------------------------
+   18. 1% a mi Iglesia
+   -------------------------------------------------------------------------- */
+.uno-hero { position: relative; background: var(--azul); padding: 72px var(--lateral); overflow: hidden; }
+.uno-hero__textura { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 12px, rgba(255, 255, 255, 0) 12px 24px); }
+.uno-hero__contenido { position: relative; max-width: 70ch; }
+.uno-hero h1 { font: 200 56px/1.08 var(--fuente); color: #fff; margin-bottom: 16px; }
+.uno-hero h1 strong { font-weight: 600; }
+.uno-hero p { font: 300 24px/1.5 var(--fuente); color: #E4EEF7; margin-bottom: 34px; }
+
+.destacado-celeste { background: var(--celeste-claro); padding: 34px 36px; font: 300 26px/1.5 var(--fuente); color: var(--azul); }
+.destacado-celeste strong { font-weight: 600; }
+
+.ayuda { display: flex; flex-direction: column; gap: 18px; }
+.ayuda p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+
+.aporte { display: flex; flex-direction: column; gap: 18px; padding: 36px 34px; }
+.aporte--borde { border: 1px solid var(--borde); }
+.aporte--celeste { background: var(--celeste-claro); }
+.aporte h2, .aporte h3 { font: 600 24px/1.3 var(--fuente); color: var(--azul); }
+.aporte p { font: 400 18px/1.7 var(--fuente); color: var(--texto); }
+.aporte__seccion { border-top: 1px solid var(--borde); padding-top: 20px; }
+.aporte__seccion--final { margin-top: auto; }
+.aporte--celeste .aporte__seccion { border-top-color: var(--borde-campo); }
+
+.transferencia {
+  background: #fff;
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px 22px;
+  font: 400 18px/1.5 var(--fuente);
+}
+.transferencia dt { color: var(--celeste); font-weight: 600; white-space: nowrap; }
+.transferencia dd { color: var(--azul); margin: 0; }
+.transferencia dd strong { font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   19. Pie de página
+   -------------------------------------------------------------------------- */
+.pie { margin-top: 72px; background: var(--azul); color: #fff; padding: 56px var(--lateral) 0; }
+.pie__rejilla { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 44px; padding-bottom: 44px; }
+.pie__marca { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.pie__dibujo { height: 54px; width: auto; display: block; opacity: .9; }
+.pie__lockup { border-left: 1px solid rgba(255, 255, 255, .25); padding-left: 16px; }
+.pie__lockup-sup, .pie__lockup-inf { font: 600 12px/1 var(--fuente); color: var(--celeste-sobre-azul); text-transform: uppercase; }
+.pie__lockup-sup { letter-spacing: .26em; }
+.pie__lockup-inf { letter-spacing: .22em; margin-top: 8px; }
+.pie__nombre { font: 300 21px/1.25 var(--fuente); color: #fff; margin-top: 6px; }
+.pie__nombre strong { font-weight: 700; }
+.pie__texto { font: 400 17px/1.75 var(--fuente); color: var(--pie-texto); }
+.pie__titulo { font: 600 13px/1 var(--fuente); letter-spacing: .2em; color: var(--celeste-sobre-azul); margin-bottom: 20px; text-transform: uppercase; }
+.pie__lista { font: 400 17px/1.6 var(--fuente); color: var(--pie-texto); display: flex; flex-direction: column; gap: 14px; }
+.pie__fila { display: flex; align-items: flex-start; gap: 12px; }
+.pie__fila i { font-size: 24px; color: var(--celeste-sobre-azul); line-height: 1; flex: none; }
+.pie a { color: var(--pie-texto); }
+.pie a:hover { color: #fff; text-decoration: underline; }
+.pie__credito {
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  padding: 20px 0;
+  font: 400 14px/1.5 var(--fuente);
+  color: var(--pie-credito);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 28px;
+  flex-wrap: wrap;
+}
+/* El crédito de autoría se mantiene discreto, pero legible como enlace */
+.pie__credito a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.pie__credito a:hover { color: #fff; }
+
+/* --------------------------------------------------------------------------
+   20. Utilidades
+   -------------------------------------------------------------------------- */
+.solo-lectores {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.centrado { text-align: center; }
+.pila { display: flex; flex-direction: column; }
+.pila--22 { gap: 22px; }
+.pila--28 { gap: 28px; }
+.pila--36 { gap: 36px; }
+.medida { max-width: 74ch; }
+.mt-8 { margin-top: 8px; }
+.mt-30 { margin-top: 30px; }
+.mt-36 { margin-top: 36px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-30 { margin-bottom: 30px; }
+.mb-34 { margin-bottom: 34px; }
+.mb-36 { margin-bottom: 36px; }
+
+/* ==========================================================================
+   21. Adaptación a pantallas menores
+   La versión móvil quedó pendiente en el handoff; se resuelve aquí sobre el
+   mismo sistema de diseño: una sola columna, menú desplegable y áreas
+   táctiles de 44px como mínimo.
+   ========================================================================== */
+
+/* --- Hasta 1180px: el contenedor ocupa todo el ancho ---------------------- */
+@media (max-width: 1180px) {
+  .pagina { box-shadow: none; }
+  body { background: var(--blanco); }
+}
+
+/* --- Hasta 1000px: menú desplegable y cabecera compacta ------------------- */
+@media (max-width: 1000px) {
+  :root { --lateral: 24px; }
+
+  .marca__horario { display: none; }  /* El horario sigue en el pie */
+
+  .menu { padding: 0; }
+  .menu__abrir {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px var(--lateral);
+    font: 700 14px/1 var(--fuente);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--azul);
+    min-height: 56px;
+  }
+  .menu__abrir i { font-size: 26px; color: var(--celeste); }
+  .menu__abrir .ph-x { display: none; }
+  .menu__abrir[aria-expanded="true"] .ph-list { display: none; }
+  .menu__abrir[aria-expanded="true"] .ph-x { display: inline-block; }
+
+  .menu__lista { display: none; flex-direction: column; gap: 0; white-space: normal; border-top: 1px solid var(--borde); }
+  .menu__lista--abierta { display: flex; }
+
+  .menu__item { display: flex; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--borde); }
+  .menu__enlace { flex: 1; padding: 18px var(--lateral); font-size: 15px; min-height: 56px; display: flex; align-items: center; }
+  .menu__item--activo > .menu__enlace { box-shadow: inset 4px 0 0 var(--celeste); }
+
+  .menu__desplegar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    min-height: 56px;
+    align-self: stretch;
+    border-left: 1px solid var(--borde);
+    color: var(--celeste);
+  }
+  .menu__desplegar i { font-size: 24px; transition: transform .18s ease; }
+  .menu__desplegar[aria-expanded="true"] i { transform: rotate(180deg); }
+
+  .menu__panel {
+    display: none;
+    position: static;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    border-top: 1px solid var(--borde);
+    box-shadow: none;
+    background: var(--celeste-muy-claro);
+    padding: 0;
+  }
+  .menu__item--abierto .menu__panel { display: block; }
+  .menu__sub { padding: 16px var(--lateral) 16px calc(var(--lateral) + 14px); white-space: normal; border-bottom: 1px solid var(--borde); min-height: 56px; display: flex; align-items: center; }
+  .menu__item .menu__panel a:last-child { border-bottom: 0; }
+}
+
+/* --- Hasta 960px: rejillas grandes a una o dos columnas ------------------- */
+@media (max-width: 960px) {
+  .rejilla--4 { grid-template-columns: 1fr 1fr; }
+  .rejilla--3 { grid-template-columns: 1fr 1fr; }
+
+  .pastorales { grid-template-columns: 1fr; gap: 28px; }
+  .indice { position: static; }
+
+  .certificados { grid-template-columns: 1fr; }
+
+  .capilla, .capilla--invertida { grid-template-columns: 1fr; gap: 24px; }
+  .capilla--invertida .capilla__foto { order: 0; }
+
+  .templo--matriz { grid-column: span 1; }
+
+  .pie__rejilla { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .pie__rejilla > :first-child { grid-column: span 2; }
+}
+
+/* --- Hasta 860px: fichas y bloques a una columna -------------------------- */
+@media (max-width: 860px) {
+  .titulo-portada { font-size: 38px; }
+  .titulo-grande { font-size: 32px; }
+  .titulo-medio { font-size: 30px; }
+  .hero__titulo { font-size: 44px; }
+  .uno-hero h1 { font-size: 44px; }
+  .banda-patrona h2 { font-size: 34px; }
+
+  .ficha, .ficha--invertida { grid-template-columns: 1fr; }
+  .ficha--invertida .ficha__foto { order: 0; }
+  .ficha__foto { min-height: 240px; height: 240px; }
+  .ficha__cuerpo { padding: 28px 24px 30px; }
+
+  .franja-uno { flex-direction: column; align-items: flex-start; }
+  .franja-uno__texto { font-size: 22px; }
+
+  .destacado-celeste { font-size: 22px; padding: 28px 26px; }
+  .franja-inscripcion { grid-template-columns: 1fr; }
+}
+
+/* --- Hasta 760px: teléfono ------------------------------------------------ */
+@media (max-width: 760px) {
+  .rejilla--2, .rejilla--3, .rejilla--4 { grid-template-columns: 1fr; }
+  .datos-2, .capilla__datos, .categoria__grupos, .paso__campos { grid-template-columns: 1fr; }
+  .campo--ancho { grid-column: span 1; }
+
+  .barra-superior { font-size: 12px; letter-spacing: .04em; padding: 12px var(--lateral); gap: 8px 18px; }
+  .barra-superior__grupo { gap: 8px 18px; }
+
+  .marca { padding: 20px var(--lateral); gap: 16px; }
+  .marca__enlace { gap: 12px; flex: 1 1 auto; min-width: 0; }
+  .marca__dibujo { height: 48px; }
+  .marca__texto { padding-left: 12px; flex: 1; min-width: 0; }
+  .marca__nombre { font-size: 19px; white-space: normal; }
+  .marca__linea-sup, .marca__linea-inf { font-size: 11px; letter-spacing: .18em; white-space: normal; }
+
+  /* Las notas de foto pendiente estorban en pantallas pequeñas */
+  .foto--esquina { display: none; }
+
+  .hero { min-height: 0; padding: 52px 0; }
+  .hero__velo { background: linear-gradient(180deg, rgba(27, 58, 97, .88) 0%, rgba(44, 95, 146, .78) 100%); }
+  .hero__titulo { font-size: 38px; }
+  .hero__horario { font-size: 20px; }
+  .hero__botones .boton { width: 100%; }
+
+  .banda-patrona { min-height: 0; padding: 52px 0; }
+
+  .aviso { flex-direction: column; gap: 14px; }
+  .aviso__foto { width: 100%; height: 180px; }
+
+  .bloque--sup { padding-top: 48px; }
+  .bloque--sup-corto { padding-top: 40px; }
+  .portada-seccion { padding: 40px var(--lateral); }
+  .uno-hero { padding: 52px var(--lateral); }
+  .pie { margin-top: 52px; padding-top: 44px; }
+  .pie__rejilla { grid-template-columns: 1fr; gap: 32px; }
+  .pie__rejilla > :first-child { grid-column: span 1; }
+
+  .paso { padding: 26px 22px; }
+  .aparte { padding: 26px 24px 30px; }
+  .aporte { padding: 28px 24px; }
+  .transferencia { grid-template-columns: 1fr; gap: 4px 0; padding: 22px 24px; }
+  .transferencia dt { white-space: normal; }
+  .transferencia dt { margin-top: 12px; }
+  .transferencia dt:first-child { margin-top: 0; }
+
+  .capilla:first-of-type { padding-top: 0; }
+  .templo__acciones .boton--linea { width: 100%; }
+
+  .cita { font-size: 24px; padding-left: 18px; }
+  .pestanas { gap: 0; }
+  .pestana { padding: 14px 18px; font-size: 14px; }
+
+  .categoria__encabezado { flex-direction: column; gap: 16px; }
+  .categoria__titulo { font-size: 28px; }
+}
+
+/* --- Hasta 460px ---------------------------------------------------------- */
+@media (max-width: 460px) {
+  :root { --lateral: 18px; }
+  .hero__titulo { font-size: 32px; }
+  .titulo-portada { font-size: 30px; }
+  .marca__dibujo { height: 42px; }
+  .marca__nombre { font-size: 17px; }
+  .uno-hero h1 { font-size: 36px; }
+  .exito__titulo { font-size: 30px; }
+  .paso__titulo { font-size: 19px; }
+}
+
+/* --------------------------------------------------------------------------
+   22. Impresión
+   -------------------------------------------------------------------------- */
+@media print {
+  body { background: #fff; }
+  .pagina { box-shadow: none; max-width: none; }
+  .menu, .barra-superior, .hero__botones, .boton, .enlace-flecha { display: none !important; }
+  .foto { display: none; }
+  .pie { background: #fff; color: #000; }
+  .pie__texto, .pie__lista, .pie__credito { color: #000; }
+}

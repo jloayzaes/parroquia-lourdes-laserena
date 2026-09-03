@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+._*
+
+# Ajustes locales de Claude Code (son de esta máquina, no se comparten)
+.claude/settings.local.json
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Por si más adelante se suman herramientas
+node_modules/
