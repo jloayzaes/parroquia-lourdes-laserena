@@ -24,7 +24,6 @@
 
   /* Superficies */
   --blanco: #FFFFFF;
-  --lienzo: #E9EDF2;            /* Fondo alrededor del contenedor */
   --borde: #E4EDF5;
   --borde-campo: #CFDDEA;
 
@@ -32,9 +31,15 @@
   --pie-texto: #C4D3E5;
   --pie-credito: #8FA7C4;
 
-  /* Medidas */
-  --ancho: 1180px;
+  /* Medidas
+     El sitio ocupa todo el ancho de la pantalla: los fondos, la barra superior
+     y el pie llegan de borde a borde. El contenido, en cambio, se detiene en
+     --ancho-contenido para que las líneas de texto no se vuelvan ilegibles en
+     monitores grandes. Cambiar ese valor es lo único que hace falta para que
+     el sitio se sienta más ancho o más angosto. */
+  --ancho-contenido: 1400px;
   --lateral: 36px;
+  --canaleta: max(var(--lateral), (100% - var(--ancho-contenido)) / 2);
   --fuente: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -55,7 +60,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--lienzo);
+  background: var(--blanco);
   font-family: var(--fuente);
   font-size: 17px;              /* Mínimo de accesibilidad acordado */
   color: var(--texto);
@@ -101,16 +106,13 @@ html { scroll-behavior: smooth; }
    -------------------------------------------------------------------------- */
 .pagina {
   width: 100%;
-  max-width: var(--ancho);
-  margin: 0 auto;
   background: var(--blanco);
   min-height: 100vh;
-  box-shadow: 0 0 60px rgba(27, 58, 97, .14);
   overflow-x: hidden;
 }
 
-/* Bloque estándar: ancho útil con el padding lateral del diseño */
-.bloque { padding-left: var(--lateral); padding-right: var(--lateral); }
+/* Bloque estándar: fondo a todo el ancho, contenido centrado y acotado */
+.bloque { padding-left: var(--canaleta); padding-right: var(--canaleta); }
 .bloque--sup { padding-top: 68px; }
 .bloque--sup-corto { padding-top: 56px; }
 
@@ -120,7 +122,7 @@ html { scroll-behavior: smooth; }
 .barra-superior {
   background: var(--celeste);
   color: #fff;
-  padding: 10px var(--lateral);
+  padding: 10px var(--canaleta);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -137,7 +139,7 @@ html { scroll-behavior: smooth; }
 .barra-superior i { font-size: 18px; line-height: 1; flex: none; }
 
 .marca {
-  padding: 22px var(--lateral);
+  padding: 22px var(--canaleta);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,7 +179,7 @@ html { scroll-behavior: smooth; }
 .menu {
   border-top: 1px solid var(--borde);
   border-bottom: 1px solid var(--borde);
-  padding: 0 var(--lateral);
+  padding: 0 var(--canaleta);
   position: relative;
 }
 .menu__abrir { display: none; }
@@ -225,7 +227,7 @@ html { scroll-behavior: smooth; }
 
 /* En escritorio el desplegable se abre al pasar el cursor, sin JavaScript.
    :focus-within lo abre también al recorrer el menú con el teclado. */
-@media (min-width: 1001px) {
+@media (min-width: 1180px) {
   .menu__item:hover > .menu__panel,
   .menu__item:focus-within > .menu__panel { display: block; }
 }
@@ -283,7 +285,7 @@ strong, .fuerte { font-weight: 600; }
 /* --------------------------------------------------------------------------
    7. Portada de sección
    -------------------------------------------------------------------------- */
-.portada-seccion { background: var(--celeste-claro); padding: 52px var(--lateral); }
+.portada-seccion { background: var(--celeste-claro); padding: 52px var(--canaleta); }
 
 /* --------------------------------------------------------------------------
    8. Marcadores de fotografía
@@ -403,14 +405,14 @@ strong, .fuerte { font-weight: 600; }
   background: var(--rayado);
   display: flex;
   align-items: center;
-  padding: 56px 0;
+  padding: 56px var(--canaleta);
 }
 .hero__velo {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(27, 58, 97, .84) 0%, rgba(44, 95, 146, .62) 46%, rgba(110, 156, 201, .12) 100%);
 }
-.hero__contenido { position: relative; padding: 0 var(--lateral); max-width: 700px; }
+.hero__contenido { position: relative; max-width: 700px; }
 .hero__titulo { font: 200 58px/1.06 var(--fuente); color: #fff; letter-spacing: -.005em; margin-bottom: 24px; }
 .hero__titulo strong { font-weight: 600; }
 .hero__horario { font: 300 23px/1.75 var(--fuente); color: #EDF4FA; margin-bottom: 32px; }
@@ -419,7 +421,7 @@ strong, .fuerte { font-weight: 600; }
 
 .franja-uno {
   background: var(--celeste-claro);
-  padding: 30px var(--lateral);
+  padding: 30px var(--canaleta);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -440,10 +442,10 @@ strong, .fuerte { font-weight: 600; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 64px 0;
+  padding: 64px var(--canaleta);
 }
 .banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27, 58, 97, .78), rgba(44, 95, 146, .68)); }
-.banda-patrona__contenido { position: relative; max-width: 660px; padding: 0 var(--lateral); }
+.banda-patrona__contenido { position: relative; max-width: 660px; }
 .banda-patrona h2 { font: 200 42px/1.15 var(--fuente); color: #fff; margin-bottom: 16px; }
 .banda-patrona h2 strong { font-weight: 600; }
 .banda-patrona p { font: 300 20px/1.6 var(--fuente); color: #E4EEF7; margin-bottom: 26px; }
@@ -453,6 +455,14 @@ strong, .fuerte { font-weight: 600; }
 .aviso__fecha { font: 600 13px/1 var(--fuente); letter-spacing: .1em; color: var(--celeste); margin-bottom: 10px; }
 .aviso__titulo { font: 600 20px/1.35 var(--fuente); color: var(--azul); margin-bottom: 8px; }
 .aviso p { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
+
+.aviso-destacado {
+  background: var(--celeste-claro);
+  padding: 34px 36px;
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+}
 
 .lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 17px/1.5 var(--fuente); color: var(--texto-2); }
 .lugar__fila { display: flex; align-items: flex-start; gap: 10px; }
@@ -660,7 +670,7 @@ strong, .fuerte { font-weight: 600; }
 /* --------------------------------------------------------------------------
    18. 1% a mi Iglesia
    -------------------------------------------------------------------------- */
-.uno-hero { position: relative; background: var(--azul); padding: 72px var(--lateral); overflow: hidden; }
+.uno-hero { position: relative; background: var(--azul); padding: 72px var(--canaleta); overflow: hidden; }
 .uno-hero__textura { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 12px, rgba(255, 255, 255, 0) 12px 24px); }
 .uno-hero__contenido { position: relative; max-width: 70ch; }
 .uno-hero h1 { font: 200 56px/1.08 var(--fuente); color: #fff; margin-bottom: 16px; }
@@ -697,7 +707,7 @@ strong, .fuerte { font-weight: 600; }
 /* --------------------------------------------------------------------------
    19. Pie de página
    -------------------------------------------------------------------------- */
-.pie { margin-top: 72px; background: var(--azul); color: #fff; padding: 56px var(--lateral) 0; }
+.pie { margin-top: 72px; background: var(--azul); color: #fff; padding: 56px var(--canaleta) 0; }
 .pie__rejilla { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 44px; padding-bottom: 44px; }
 .pie__marca { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
 .pie__dibujo { height: 54px; width: auto; display: block; opacity: .9; }
@@ -757,14 +767,8 @@ strong, .fuerte { font-weight: 600; }
    táctiles de 44px como mínimo.
    ========================================================================== */
 
-/* --- Hasta 1180px: el contenedor ocupa todo el ancho ---------------------- */
-@media (max-width: 1180px) {
-  .pagina { box-shadow: none; }
-  body { background: var(--blanco); }
-}
-
-/* --- Hasta 1000px: menú desplegable y cabecera compacta ------------------- */
-@media (max-width: 1000px) {
+/* --- Hasta 1179px: menú desplegable y cabecera compacta ------------------- */
+@media (max-width: 1179px) {
   :root { --lateral: 24px; }
 
   .marca__horario { display: none; }  /* El horario sigue en el pie */
@@ -882,16 +886,17 @@ strong, .fuerte { font-weight: 600; }
   /* Las notas de foto pendiente estorban en pantallas pequeñas */
   .foto--esquina { display: none; }
 
-  .hero { min-height: 0; padding: 52px 0; }
+  .hero { min-height: 0; padding: 52px var(--canaleta); }
   .hero__velo { background: linear-gradient(180deg, rgba(27, 58, 97, .88) 0%, rgba(44, 95, 146, .78) 100%); }
   .hero__titulo { font-size: 38px; }
   .hero__horario { font-size: 20px; }
   .hero__botones .boton { width: 100%; }
 
-  .banda-patrona { min-height: 0; padding: 52px 0; }
+  .banda-patrona { min-height: 0; padding: 52px var(--canaleta); }
 
   .aviso { flex-direction: column; gap: 14px; }
   .aviso__foto { width: 100%; height: 180px; }
+  .aviso-destacado { flex-direction: column; gap: 20px; padding: 28px 24px; }
 
   .bloque--sup { padding-top: 48px; }
   .bloque--sup-corto { padding-top: 40px; }

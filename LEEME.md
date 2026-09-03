@@ -18,6 +18,7 @@ sitio/
 ├── patrona.html            Nuestra parroquia · Nuestra Patrona
 ├── sacerdotes.html         Nuestra parroquia · Sacerdotes
 ├── horarios.html           Horarios de Misa
+├── avisos.html             Avisos de la parroquia
 ├── sacramentos.html        Sacramentos (7 fichas)
 ├── servicios.html          Servicios (3 fichas)
 ├── certificados.html       Solicitud de certificados (formulario)
@@ -31,7 +32,8 @@ sitio/
 ```
 
 Cada pantalla del prototipo es ahora **una página real con su propia
-dirección**, como pedía el handoff. Las tres pestañas de «Nuestra parroquia»
+dirección**, como pedía el handoff. A las nueve del diseño se sumó **Avisos**,
+que no estaba en el prototipo. Las tres pestañas de «Nuestra parroquia»
 son tres páginas; las categorías de Pastorales viven en una sola página y se
 pueden enlazar directamente (`pastorales.html#ministerios`).
 
@@ -68,6 +70,16 @@ Después hay que apuntar el dominio de la parroquia al hosting elegido.
 
 Los textos están dentro de los archivos `.html`. Se abren con cualquier editor
 de texto plano (Visual Studio Code, Bloc de notas, TextEdit en modo texto).
+
+### Publicar un aviso
+
+Los avisos —cambios de horario, celebraciones especiales, inscripciones— van en
+`avisos.html`. Ese archivo trae, justo antes de la lista, un comentario con las
+instrucciones paso a paso: se copia un bloque `<article class="aviso">` completo,
+se pega arriba de los demás y se cambian fecha, título y texto.
+
+La portada muestra los **cuatro avisos más recientes** y los tiene copiados
+aparte, así que un aviso importante conviene ponerlo en los dos archivos.
 
 ### Cambiar un horario o un dato de contacto
 
@@ -180,6 +192,9 @@ vacía (`var ENDPOINT_CERTIFICADOS = "";`).
   tiene su propia ancla correcta.
 - **Categoría «Música y expresión religiosa»**: no muestra la línea de
   inscripción, como indica el informe de contenidos.
+- **Ancho completo**: el sitio ocupa toda la pantalla. El contenido se detiene
+  en 1400px para que las líneas de texto sigan siendo legibles en monitores
+  grandes; ese valor es la variable `--ancho-contenido`, al inicio de `sitio.css`.
 - **Accesibilidad**: texto base de 17 px, jerarquía correcta de encabezados,
   enlace «Ir al contenido» para teclado, foco visible, etiquetas en todos los
   campos del formulario y textos alternativos en las imágenes.
@@ -195,10 +210,9 @@ vacía (`var ENDPOINT_CERTIFICADOS = "";`).
 ## Lo que falta
 
 - **Fotografías reales** (ver más arriba).
-- **Sistema de noticias**: los cuatro avisos del Inicio están escritos a mano y
-  el botón «Ver más noticias» todavía no lleva a ninguna parte. Si la parroquia
-  quiere publicar avisos con frecuencia, este es el punto donde un CMS ligero
-  empieza a rendir.
+- **Vigencia de los avisos**: hoy se agregan y se borran a mano, y hay que
+  mantener sincronizada la portada con `avisos.html`. Si la parroquia empieza a
+  publicar avisos seguido, este es el punto donde un CMS ligero empieza a rendir.
 - **Página de Contacto** con mapa incrustado (hoy los datos viven en el Inicio,
   la barra superior y el pie).
 - **Imagen para compartir enlaces**: cuando el sitio tenga dominio, agregar la

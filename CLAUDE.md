@@ -28,7 +28,7 @@ parroquia. **Leerlo antes de tocar cualquier decisión visual.**
 sitio/
 ├── index.html                        Inicio
 ├── historia.html · patrona.html · sacerdotes.html    Nuestra parroquia
-├── horarios.html · sacramentos.html · servicios.html
+├── horarios.html · avisos.html · sacramentos.html · servicios.html
 ├── certificados.html · capillas.html · pastorales.html
 ├── uno-por-ciento.html               1% a mi Iglesia
 └── assets/{css/sitio.css, js/sitio.js, img/}
@@ -36,9 +36,15 @@ sitio/
 
 ## La regla que más importa
 
-**La cabecera, el menú y el pie están duplicados en las 11 páginas.** Es el
+**La cabecera, el menú y el pie están duplicados en las 12 páginas.** Es el
 precio de no tener build. Cualquier cambio en un elemento compartido —un dato de
-contacto, un ítem del menú, el pie— hay que aplicarlo en **las once**, no en una.
+contacto, un ítem del menú, el pie— hay que aplicarlo en **las doce**, no en una.
+
+El menú tiene **nueve botones**: Inicio · Nuestra parroquia · Horarios · Avisos ·
+Sacramentos · Servicios · Certificados · Capillas · Pastorales. Con nueve ya no
+cabe en horizontal bajo 1180px, por eso el menú táctil entra en ese umbral y la
+holgura sobrante es de solo 32px: **agregar un décimo botón obliga a repensar el
+menú**, no basta con sumarlo.
 
 Conviene hacerlo con un script en vez de a mano:
 
@@ -57,6 +63,11 @@ Secretaría y el teléfono aparecen en varias páginas.
 
 ## Convenciones
 
+- **Ancho**: el sitio ocupa la pantalla completa. Los fondos (barra superior,
+  hero, portadas de sección, franjas, pie) llegan de borde a borde; el contenido
+  se detiene en `--ancho-contenido` (1400px) y se centra. El mecanismo es la
+  variable `--canaleta`, que se usa como padding lateral en vez de `--lateral`.
+  Al crear una sección nueva a todo el ancho, usar `padding: X var(--canaleta)`.
 - **Colores**: siempre vía variables CSS del bloque `:root` en `sitio.css`
   (`var(--azul)`, `var(--celeste)`, `var(--borde)`…). Nunca un hex suelto.
 - **Clases**: en español, estilo BEM suave — `.templo__nombre`,
@@ -81,6 +92,17 @@ Al completarlo se borra el `<span>` entero y se escribe el texto real. **No
 inventar** requisitos, documentos, nombres de coordinadores ni horarios: si el
 dato no está, se deja marcado.
 
+## Avisos
+
+`avisos.html` es la página de avisos: cambios de horario, celebraciones
+especiales e inscripciones. **No hay noticias en este sitio, solo avisos** —
+decisión del cliente. No reintroducir la palabra «noticias» en ningún texto.
+
+La portada repite los **cuatro avisos más recientes**; la lista completa vive en
+`avisos.html`. Al agregar un aviso importante hay que tocar los dos archivos.
+`avisos.html` lleva un comentario HTML con las instrucciones de copiar y pegar
+para quien edite sin ser programador: mantenerlo al día si cambia la estructura.
+
 ## Fotografías
 
 Todas las fotos son marcadores rayados con su medida:
@@ -99,7 +121,8 @@ descriptivo y `width`/`height` (evitan el salto de layout mientras carga):
 
 Exportar al doble de la medida indicada (retina) y comprimir. El hero de
 `index.html` y la banda de la Patrona son **fondo de sección**: esas van en
-`sitio.css`, en `.hero` y `.banda-patrona`, reemplazando `var(--rayado)`.
+`sitio.css`, en `.hero` y `.banda-patrona`, reemplazando `var(--rayado)`. Como
+esas dos secciones son de borde a borde, conviene una imagen de 1920px de ancho.
 
 ## Accesibilidad (requisito del cliente, no opcional)
 
