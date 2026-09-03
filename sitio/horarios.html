@@ -53,9 +53,22 @@
       </span>
     </a>
     <div class="marca__horario">
-      <span class="marca__horario-iconos" aria-hidden="true">
-        <i class="ph-thin ph-calendar-dots"></i><i class="ph-thin ph-clock"></i>
-      </span>
+      <svg class="marca__horario-icono" viewBox="0 0 256 256" width="34" height="34" fill="none"
+           stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true" focusable="false">
+        <mask id="hueco-reloj">
+          <rect width="256" height="256" fill="#fff" />
+          <circle cx="196" cy="196" r="56" fill="#000" />
+        </mask>
+        <g mask="url(#hueco-reloj)">
+          <rect x="24" y="48" width="176" height="160" rx="8" />
+          <line x1="24" y1="96" x2="200" y2="96" />
+          <line x1="72" y1="24" x2="72" y2="64" />
+          <line x1="152" y1="24" x2="152" y2="64" />
+        </g>
+        <circle cx="196" cy="196" r="44" />
+        <polyline points="196,168 196,196 220,208" />
+      </svg>
       <p class="marca__horario-texto">Secretaría: martes a sábado<br>10:00 a 13:00 y 16:00 a 19:00 hrs.</p>
     </div>
   </div>
@@ -81,9 +94,6 @@
       </li>
       <li class="menu__item menu__item--activo">
         <a class="menu__enlace" href="horarios.html" aria-current="page">Horarios</a>
-      </li>
-      <li class="menu__item">
-        <a class="menu__enlace" href="avisos.html">Avisos</a>
       </li>
       <li class="menu__item">
         <a class="menu__enlace" href="sacramentos.html">Sacramentos</a>
@@ -132,6 +142,9 @@
           <a class="menu__sub" href="pastorales.html#servicio">Servicio y misión</a>
           <a class="menu__sub" href="pastorales.html#musica">Música y expresión religiosa</a>
         </div>
+      </li>
+      <li class="menu__item">
+        <a class="menu__enlace menu__enlace--destacado" href="avisos.html"><i class="ph-thin ph-megaphone-simple" aria-hidden="true"></i>Avisos</a>
       </li>
     </ul>
   </nav>

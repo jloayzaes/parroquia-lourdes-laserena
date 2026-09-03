@@ -40,10 +40,18 @@ sitio/
 precio de no tener build. Cualquier cambio en un elemento compartido —un dato de
 contacto, un ítem del menú, el pie— hay que aplicarlo en **las doce**, no en una.
 
-El menú tiene **nueve botones**: Inicio · Nuestra parroquia · Horarios · Avisos ·
-Sacramentos · Servicios · Certificados · Capillas · Pastorales. Con nueve ya no
-cabe en horizontal bajo 1180px, por eso el menú táctil entra en ese umbral y la
-holgura sobrante es de solo 32px: **agregar un décimo botón obliga a repensar el
+El menú tiene **nueve botones**: Inicio · Nuestra parroquia · Horarios ·
+Sacramentos · Servicios · Certificados · Capillas · Pastorales · **Avisos**.
+
+**Avisos cierra la fila y es el único con forma de botón** (`.menu__enlace--destacado`):
+fondo celeste, texto blanco, ícono de megáfono. En su propia página se oscurece a
+azul parroquial en vez de llevar el subrayado de los demás. En el menú táctil no
+puede ser un bloque celeste a lo ancho —parecería un encabezado de sección—, así
+que ahí va con fondo claro y barra lateral.
+
+Ese botón ensancha la fila unos 60px, así que el menú horizontal ya no cabe bajo
+**1240px**: ese es el umbral del menú táctil, y la separación entre ítems bajó de
+30px a 26px. Quedan 61px de holgura. **Un décimo botón obliga a repensar el
 menú**, no basta con sumarlo.
 
 Conviene hacerlo con un script en vez de a mano:
@@ -74,6 +82,12 @@ Secretaría y el teléfono aparecen en varias páginas.
   `.ficha--invertida`, `.indice__enlace--activo`.
 - **Tipografía**: solo Montserrat. **Íconos**: solo Phosphor Thin
   (`<i class="ph-thin ph-church" aria-hidden="true">`), por CDN.
+  Dos excepciones, ambas porque Phosphor no tiene el glifo: el ostensorio de
+  Adoración (`assets/img/icono-adoracion.png`) y el calendario-con-reloj del
+  horario de Secretaría en la cabecera, que es un SVG en línea dibujado con el
+  mismo trazo de 8/256 y una máscara que abre el hueco del reloj sin suponer
+  color de fondo. Si hace falta otro ícono compuesto, seguir ese patrón antes
+  que mezclar familias.
 - **Sin `border-radius`** en tarjetas ni botones. Solo círculos perfectos en los
   badges de ícono (`.badge`).
 - **Sin animaciones decorativas.**
