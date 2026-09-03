@@ -71,6 +71,10 @@ img { max-width: 100%; }
 
 a { color: var(--azul-medio); text-decoration: none; }
 a:hover { color: var(--celeste); }
+/* Un correo es una sola palabra y no se puede cortar por sílabas. En pantallas
+   angostas ensancharía su tarjeta más allá del borde y el texto quedaría
+   cortado, así que aquí sí se le permite partir. */
+a[href^="mailto:"] { overflow-wrap: anywhere; }
 
 h1, h2, h3, h4 { margin: 0; font-weight: 400; }
 p, figure, blockquote, dl, dd, fieldset { margin: 0; }
@@ -378,9 +382,17 @@ strong, .fuerte { font-weight: 600; }
 .rejilla--2 { grid-template-columns: 1fr 1fr; }
 .rejilla--3 { grid-template-columns: repeat(3, 1fr); }
 .rejilla--4 { grid-template-columns: repeat(4, 1fr); }
+/* Columna lateral de ancho fijo + texto. El ancho se pasa con --col-lateral. */
+.rejilla--con-lateral {
+  grid-template-columns: var(--col-lateral, 300px) 1fr;
+  gap: 56px;
+  align-items: start;
+}
 
 .tarjeta { border: 1px solid var(--borde); padding: 24px 26px; }
 .tarjeta--celeste { background: var(--celeste-claro); border: 0; padding: 32px 30px; }
+/* Panel de cierre de página: la pregunta a un lado, Secretaría al otro. */
+.panel-cierre { background: var(--celeste-claro); padding: 40px 36px; gap: 40px; align-items: center; }
 
 .datos-2 {
   display: grid;
@@ -859,6 +871,8 @@ strong, .fuerte { font-weight: 600; }
   .uno-hero h1 { font-size: 44px; }
   .banda-patrona h2 { font-size: 34px; }
 
+  .rejilla--con-lateral { grid-template-columns: 1fr; gap: 32px; }
+
   .ficha, .ficha--invertida { grid-template-columns: 1fr; }
   .ficha--invertida .ficha__foto { order: 0; }
   .ficha__foto { min-height: 240px; height: 240px; }
@@ -887,6 +901,12 @@ strong, .fuerte { font-weight: 600; }
   .marca__nombre { font-size: 19px; white-space: normal; }
   .marca__linea-sup, .marca__linea-inf { font-size: 11px; letter-spacing: .18em; white-space: normal; }
 
+  /* Los marcadores de foto llevan un alto fijo pensado para el escritorio.
+     En el teléfono ese mismo alto se come media pantalla, así que se limita
+     en proporción al ancho. min() conserva el alto original cuando cabe. */
+  .foto { height: min(var(--alto, 240px), 58vw); }
+  .foto--estirada { min-height: min(var(--alto, 340px), 58vw); }
+
   /* Las notas de foto pendiente estorban en pantallas pequeñas */
   .foto--esquina { display: none; }
 
@@ -909,6 +929,8 @@ strong, .fuerte { font-weight: 600; }
   .pie { margin-top: 52px; padding-top: 44px; }
   .pie__rejilla { grid-template-columns: 1fr; gap: 32px; }
   .pie__rejilla > :first-child { grid-column: span 1; }
+
+  .panel-cierre { padding: 28px 24px; gap: 24px; }
 
   .paso { padding: 26px 22px; }
   .aparte { padding: 26px 24px 30px; }
@@ -939,6 +961,9 @@ strong, .fuerte { font-weight: 600; }
   .uno-hero h1 { font-size: 36px; }
   .exito__titulo { font-size: 30px; }
   .paso__titulo { font-size: 19px; }
+  /* Bajo 340px el badge y el título de la ficha ya no caben en una línea. */
+  .ficha__encabezado .badge { --tam: 54px; }
+  .titulo-ficha { font-size: 23px; }
 }
 
 /* --------------------------------------------------------------------------

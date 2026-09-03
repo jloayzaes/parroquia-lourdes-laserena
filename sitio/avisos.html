@@ -37,7 +37,7 @@
       <span class="barra-superior__dato"><i class="ph-thin ph-phone" aria-hidden="true"></i><a href="tel:+56992803442">+56 9 9280 3442</a></span>
     </div>
     <div class="barra-superior__grupo">
-      <span class="barra-superior__dato"><i class="ph-thin ph-envelope-simple" aria-hidden="true"></i><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@gmail.com</a></span>
+      <span class="barra-superior__dato"><i class="ph-thin ph-envelope-simple" aria-hidden="true"></i><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a></span>
       <span class="barra-superior__dato"><i class="ph-thin ph-instagram-logo" aria-hidden="true"></i><a href="https://www.instagram.com/lourdes_laserena/?hl=es" target="_blank" rel="noopener">Instagram</a></span>
     </div>
   </div>
@@ -175,23 +175,34 @@
       <h2 class="titulo-medio mb-30">Avisos <strong>vigentes</strong></h2>
 
       <!-- ======================================================================
-           CÓMO AGREGAR UN AVISO
+           LOS CINCO AVISOS DE ABAJO ESTÁN EN BLANCO, LISTOS PARA LLENAR
 
-           1. Copia un bloque <article class="aviso"> … </article> completo.
-           2. Pégalo arriba de los demás: el más reciente va primero.
-           3. Cambia la fecha en los DOS lugares del <time>:
-                datetime="2026-09-03"  → formato AAAA-MM-DD, lo lee el navegador
-                03/09/2026             → lo que ve la gente
-           4. Cambia el título y el texto.
-           5. Si no hay foto, borra el <div class="foto aviso__foto"> completo:
+           Son plantillas: «Aviso 1», «Aviso 2»… con la fecha y el texto
+           marcados como pendientes. Se llenan de arriba hacia abajo, porque el
+           más reciente va primero.
+
+           CÓMO LLENAR UN AVISO
+
+           1. Reemplaza [FECHA] por la fecha, escrita así:
+                <time datetime="2026-09-03">03/09/2026</time>
+              El datetime va en formato AAAA-MM-DD y lo lee el navegador;
+              03/09/2026 es lo que ve la gente. Los dos deben coincidir.
+           2. Cambia «Aviso 1» por el título de verdad.
+           3. Reemplaza [POR COMPLETAR] por el texto del aviso, y borra el
+              <span class="pendiente"> que lo envuelve.
+           4. Si no hay foto, borra el <div class="foto aviso__foto"> completo:
               el aviso se ve bien igual, solo con texto.
+
+           CÓMO AGREGAR OTRO AVISO
+           Copia un bloque <article class="aviso"> … </article> completo y
+           pégalo arriba de los demás.
 
            CÓMO QUITAR UN AVISO
            Borra su <article class="aviso"> … </article> completo, desde la
            etiqueta de apertura hasta la de cierre.
 
            IMPORTANTE: la portada (index.html) muestra los cuatro avisos más
-           recientes y los tiene copiados aparte. Al agregar uno importante,
+           recientes y los tiene copiados aparte. Al llenar o agregar uno,
            conviene actualizarla también.
            ====================================================================== -->
 
@@ -200,45 +211,45 @@
         <article class="aviso">
           <div class="foto aviso__foto" aria-hidden="true">FOTO<br>200×152</div>
           <div>
-            <p class="aviso__fecha"><time datetime="2026-09-03">03/09/2026</time></p>
-            <h3 class="aviso__titulo">Misas por intención durante la semana</h3>
-            <p>Los miércoles la Santa Misa se ofrece por los enfermos; los jueves, por las vocaciones; los sábados, por los niños y jóvenes de la comunidad.</p>
+            <p class="aviso__fecha"><span class="pendiente">[FECHA]</span></p>
+            <h3 class="aviso__titulo">Aviso 1</h3>
+            <p><span class="pendiente">[POR COMPLETAR]</span></p>
           </div>
         </article>
 
         <article class="aviso">
           <div class="foto aviso__foto" aria-hidden="true">FOTO<br>200×152</div>
           <div>
-            <p class="aviso__fecha"><time datetime="2026-09-02">02/09/2026</time></p>
-            <h3 class="aviso__titulo">Adoración al Santísimo: días y horario</h3>
-            <p>Estamos definiendo los días y el lugar; lo publicaremos aquí.</p>
+            <p class="aviso__fecha"><span class="pendiente">[FECHA]</span></p>
+            <h3 class="aviso__titulo">Aviso 2</h3>
+            <p><span class="pendiente">[POR COMPLETAR]</span></p>
           </div>
         </article>
 
         <article class="aviso">
           <div class="foto aviso__foto" aria-hidden="true">FOTO<br>200×152</div>
           <div>
-            <p class="aviso__fecha"><time datetime="2026-08-28">28/08/2026</time></p>
-            <h3 class="aviso__titulo">Inscripciones de catequesis familiar 2026</h3>
-            <p>Primer y segundo año. Consulta requisitos en secretaría.</p>
+            <p class="aviso__fecha"><span class="pendiente">[FECHA]</span></p>
+            <h3 class="aviso__titulo">Aviso 3</h3>
+            <p><span class="pendiente">[POR COMPLETAR]</span></p>
           </div>
         </article>
 
         <article class="aviso">
           <div class="foto aviso__foto" aria-hidden="true">FOTO<br>200×152</div>
           <div>
-            <p class="aviso__fecha"><time datetime="2026-08-20">20/08/2026</time></p>
-            <h3 class="aviso__titulo">Club Adulto Mayor «Amanecer de Lourdes»</h3>
-            <p>Un espacio de encuentro para nuestros mayores.</p>
+            <p class="aviso__fecha"><span class="pendiente">[FECHA]</span></p>
+            <h3 class="aviso__titulo">Aviso 4</h3>
+            <p><span class="pendiente">[POR COMPLETAR]</span></p>
           </div>
         </article>
 
         <article class="aviso">
           <div class="foto aviso__foto" aria-hidden="true">FOTO<br>200×152</div>
           <div>
-            <p class="aviso__fecha"><time datetime="2026-08-15">15/08/2026</time></p>
-            <h3 class="aviso__titulo">Misioneros del 1% visitan los sectores</h3>
-            <p>Conoce cómo sumarte a la misión.</p>
+            <p class="aviso__fecha"><span class="pendiente">[FECHA]</span></p>
+            <h3 class="aviso__titulo">Aviso 5</h3>
+            <p><span class="pendiente">[POR COMPLETAR]</span></p>
           </div>
         </article>
 
@@ -247,12 +258,12 @@
 
     <!-- Cierre -->
     <section class="bloque" style="padding-top:64px">
-      <div class="rejilla rejilla--2" style="background:var(--celeste-claro);padding:40px 36px;gap:40px;align-items:center">
+      <div class="rejilla rejilla--2 panel-cierre">
         <div>
           <h2 class="titulo-medio" style="font-size:32px;margin-bottom:12px">¿Buscas un <strong>horario</strong>?</h2>
           <p class="parrafo--corto" style="font:400 18px/1.7 var(--fuente);color:var(--texto)">Los horarios habituales de la Santa Misa en la parroquia, el santuario y las cinco capillas, junto a los de confesiones, adoración y Secretaría, están siempre en la página de <a href="horarios.html">Horarios</a>. Aquí publicamos solo los cambios y las celebraciones especiales.</p>
         </div>
-        <p style="font:400 18px/1.9 var(--fuente);color:var(--azul)">Consultas en Secretaría Parroquial<br>Martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.<br><a href="tel:+56992803442">+56 9 9280 3442</a><br><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@gmail.com</a></p>
+        <p style="font:400 18px/1.9 var(--fuente);color:var(--azul)">Consultas en Secretaría Parroquial<br>Martes a sábado, 10:00 a 13:00 y 16:00 a 19:00 hrs.<br><a href="tel:+56992803442">+56 9 9280 3442</a><br><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a></p>
       </div>
     </section>
   </main>
@@ -284,7 +295,7 @@
           </div>
           <div class="pie__fila">
             <i class="ph-thin ph-envelope-simple" aria-hidden="true"></i>
-            <a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@gmail.com</a>
+            <a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a>
           </div>
           <div class="pie__fila">
             <i class="ph-thin ph-clock" aria-hidden="true"></i>

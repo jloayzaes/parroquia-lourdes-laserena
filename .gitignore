@@ -13,3 +13,6 @@
 
 # Por si más adelante se suman herramientas
 node_modules/
+
+# Documentos generados para enviar (no forman parte del sitio)
+*.pdf

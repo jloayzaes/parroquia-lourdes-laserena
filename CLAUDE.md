@@ -116,6 +116,16 @@ La portada repite los **cuatro avisos más recientes**; la lista completa vive e
 `avisos.html` lleva un comentario HTML con las instrucciones de copiar y pegar
 para quien edite sin ser programador: mantenerlo al día si cambia la estructura.
 
+Los avisos están **en blanco a propósito**: «Aviso 1», «Aviso 2»… con `[FECHA]` y
+`[POR COMPLETAR]`. Son plantillas listas para llenar, cinco en `avisos.html` y
+las cuatro primeras repetidas en la portada. Los ejemplos que traía el handoff
+(catequesis, adulto mayor, misioneros del 1%) eran inventados y se sacaron: no
+volver a poner avisos de muestra en el sitio publicado. Se llenan de arriba hacia
+abajo, porque el más reciente va primero.
+
+El **aviso destacado** sí es información real —la Misa de San Carlo Acutis del día
+12, que también aparece en `horarios.html`— y por eso se mantuvo.
+
 ## Fotografías
 
 Todas las fotos son marcadores rayados con su medida:
@@ -155,6 +165,39 @@ hasta 320px.
 En escritorio los desplegables del menú se abren por CSS puro (`:hover` /
 `:focus-within`); en móvil, con el botón de cada ítem. JavaScript solo interviene
 en móvil, en las categorías de Pastorales y en el formulario.
+
+### Tres trampas que ya rompieron el móvil una vez
+
+**`.pagina` lleva `overflow-x: hidden`.** Eso significa que lo que se sale del
+ancho no se puede arrastrar para verlo: queda cortado y el visitante nunca se
+entera. Un desborde en móvil no se ve como un error, se ve como texto que falta.
+Por eso conviene medirlo, no mirarlo: en la consola del navegador, a 375px,
+
+```js
+const vw = document.documentElement.clientWidth;
+[...document.querySelectorAll('body *')]
+  .filter(el => el.getBoundingClientRect().right > vw + 1 && el.className !== 'salto-contenido')
+  .forEach(el => console.log(el.tagName, el.className, Math.round(el.getBoundingClientRect().width)));
+```
+
+**Un `style=` en línea le gana a cualquier media query.** Una rejilla con
+`style="grid-template-columns:300px 1fr"` se queda en dos columnas en el
+teléfono aunque `sitio.css` diga lo contrario, y la segunda columna —el texto—
+desaparece de la pantalla. Es lo que pasaba en `historia.html` y `patrona.html`.
+Si un valor tiene que cambiar en móvil, va en una clase, no en línea. Para eso
+existen `.rejilla--con-lateral` (con `--col-lateral` para el ancho) y
+`.panel-cierre`. En línea solo quedan valores que no cambian con el ancho.
+
+**Un correo es una sola palabra.** No se puede cortar por sílabas, así que
+ensancha su tarjeta más allá del borde de la pantalla. Se resuelve por los dos
+lados: `a[href^="mailto:"] { overflow-wrap: anywhere }` en el CSS, y un `<wbr>`
+después de la arroba en el HTML —`secretariaplourdes@<wbr>gmail.com`— para que
+el corte caiga en el lugar correcto y no en mitad del dominio. **Todo correo que
+se agregue al sitio necesita ese `<wbr>`.**
+
+Por lo mismo, los marcadores de foto llevan el alto limitado en el teléfono
+(`min(var(--alto), 58vw)`): el alto fijo del handoff está pensado para el
+escritorio y en un celular se come media pantalla.
 
 ## Formulario de certificados
 
