@@ -465,11 +465,15 @@ strong, .fuerte { font-weight: 600; }
 .banda-patrona h2 strong { font-weight: 600; }
 .banda-patrona p { font: 300 20px/1.6 var(--fuente); color: #E4EEF7; margin-bottom: 26px; }
 
+/* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
+   así que necesita ancho: bajo 1180px pasa a una sola columna. */
+.rejilla--avisos { grid-template-columns: 1fr 1fr; gap: 30px; }
 .aviso { display: flex; gap: 20px; text-align: left; }
-.aviso__foto { width: 200px; height: 152px; flex: none; }
-.aviso__fecha { font: 600 13px/1 var(--fuente); letter-spacing: .1em; color: var(--celeste); margin-bottom: 10px; }
+/* object-fit recorta la foto al hueco sin deformarla; los marcadores <div> lo ignoran. */
+.aviso__foto { width: 200px; height: 152px; flex: none; object-fit: cover; }
+.aviso__fecha { font: 600 13px/1.4 var(--fuente); letter-spacing: .1em; color: var(--celeste); margin-bottom: 8px; }
 .aviso__titulo { font: 600 20px/1.35 var(--fuente); color: var(--azul); margin-bottom: 8px; }
-.aviso p { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
+.aviso p { font: 400 17px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; }
 
 .aviso-destacado {
   background: var(--celeste-claro);
@@ -785,6 +789,8 @@ strong, .fuerte { font-weight: 600; }
 /* --- Hasta 1179px: menú desplegable y cabecera compacta ------------------- */
 @media (max-width: 1179px) {
   :root { --lateral: 24px; }
+
+  .rejilla--avisos { grid-template-columns: 1fr; }
 
   .marca__horario { display: none; }  /* El horario sigue en el pie */
 

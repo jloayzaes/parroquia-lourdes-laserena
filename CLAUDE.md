@@ -116,15 +116,30 @@ La portada repite los **cuatro avisos más recientes**; la lista completa vive e
 `avisos.html` lleva un comentario HTML con las instrucciones de copiar y pegar
 para quien edite sin ser programador: mantenerlo al día si cambia la estructura.
 
-Los avisos están **en blanco a propósito**: «Aviso 1», «Aviso 2»… con `[FECHA]` y
-`[POR COMPLETAR]`. Son plantillas listas para llenar, cinco en `avisos.html` y
-las cuatro primeras repetidas en la portada. Los ejemplos que traía el handoff
-(catequesis, adulto mayor, misioneros del 1%) eran inventados y se sacaron: no
-volver a poner avisos de muestra en el sitio publicado. Se llenan de arriba hacia
-abajo, porque el más reciente va primero.
+Hay **tres avisos reales**, entregados por la parroquia con sus fotos: la kermés
+del 13 de septiembre, la inscripción de pymes y el inicio de la campaña del 1%.
+Los ejemplos que traía el handoff (catequesis, adulto mayor, misioneros del 1%)
+eran inventados y se sacaron: **no volver a poner avisos de muestra en el sitio
+publicado**. Si en algún momento no hay avisos vigentes, es preferible borrar la
+sección antes que dejar plantillas en blanco a la vista.
+
+La línea celeste de arriba no es solo una fecha: es **fecha o estado**. Puede ser
+un día («Domingo 13 de septiembre de 2026»), un plazo («Hasta el viernes 11 de
+septiembre») o una situación («Inscripciones abiertas»). Cuando es una fecha
+concreta va dentro de `<time datetime="AAAA-MM-DD">`; cuando es un estado, no
+lleva `<time>`.
 
 El **aviso destacado** sí es información real —la Misa de San Carlo Acutis del día
 12, que también aparece en `horarios.html`— y por eso se mantuvo.
+
+La rejilla de avisos tiene clase propia, `.rejilla--avisos`: cada ficha es una
+foto de 200px más el texto al lado, así que **necesita ancho**. Sobre 1180px van
+dos columnas; bajo eso, una sola. Con dos columnas en pantallas medianas la
+columna de texto quedaba en 150px y el contenido se salía.
+
+Las fotos van en `assets/img/aviso-*.jpg`, exportadas a **800px de ancho** y
+comprimidas (unos 150–200 KB). El hueco mide 200×152 en escritorio, así que la
+foto se recorta con `object-fit: cover`: conviene que el motivo esté al centro.
 
 ## Fotografías
 
