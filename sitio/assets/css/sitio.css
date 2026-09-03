@@ -573,6 +573,10 @@ strong, .fuerte { font-weight: 600; }
 .capilla:first-of-type { padding-top: 0; }
 .capilla--invertida { grid-template-columns: 1fr 460px; }
 .capilla--invertida .capilla__foto { order: 2; }
+/* Fotografías reales de los templos. Reemplazan al marcador <div class="foto">
+   y ocupan el mismo hueco: object-fit recorta al alto pedido sin deformar. */
+.templo__foto { width: 100%; height: 170px; object-fit: cover; }
+img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .capilla__descripcion { font: 400 18px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
 .capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--borde); padding-top: 22px; }
 .capilla__valor { font: 400 17px/1.55 var(--fuente); color: var(--azul); }

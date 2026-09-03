@@ -150,12 +150,43 @@ Todas las fotos son marcadores rayados con su medida:
 ```
 
 Al llegar la foto real se reemplaza el bloque completo por un `<img>` con `alt`
-descriptivo y `width`/`height` (evitan el salto de layout mientras carga):
+descriptivo, `width`/`height` (evitan el salto de layout mientras carga) y
+`loading="lazy"` si está bajo el pliegue:
 
 ```html
 <img class="capilla__foto" src="assets/img/capilla-corpus-christi.jpg"
-     alt="Fachada de la Capilla Corpus Christi" width="460" height="300">
+     alt="Fachada roja y blanca con techo de zinc y campanario de ladrillo"
+     width="920" height="600" loading="lazy">
 ```
+
+El `alt` **describe la foto**, no repite el nombre que ya está en el `<h3>` de al
+lado: quien usa lector de pantalla ya escuchó el nombre.
+
+Las clases `.templo__foto` (Horarios) e `img.capilla__foto` (Capillas) llevan
+`object-fit: cover`, así que la foto se recorta al hueco sin deformarse. Aun así
+conviene entregar el recorte hecho, porque **cada templo se muestra en dos huecos
+de proporción muy distinta**:
+
+| Página | Hueco | Se exporta a |
+|---|---|---|
+| Capillas | 460×300 (relación 1,53) | 920×600 |
+| Horarios | 688×170 (relación 4,05) | 1376×340 |
+
+La banda de Horarios es tan apaisada que no cabe una torre entera: hay que elegir
+qué franja se ve. Para eso está `herramientas/recortar-fotos.py`, que hace los
+dos recortes de una vez:
+
+```bash
+python3 herramientas/recortar-fotos.py "~/Downloads/Santiago Apóstol.png" capilla-santiago --centro 0.45
+```
+
+`--centro` va de 0 a 1 sobre el alto del original y decide qué franja sobrevive.
+**Hay que mirar el resultado**: si cortó la torre o la cruz, se repite con otro
+valor. Cuando el original viene vertical —como el de San Joaquín— la banda queda
+en una franja angosta, así que conviene centrarla en el elemento reconocible
+(ahí, la cruz vidriada).
+
+Peso: JPEG con calidad 80, entre 50 y 110 KB por archivo.
 
 Exportar al doble de la medida indicada (retina) y comprimir. El hero de
 `index.html` y la banda de la Patrona son **fondo de sección**: esas van en
