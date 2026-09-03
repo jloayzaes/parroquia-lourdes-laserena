@@ -183,7 +183,7 @@ html { scroll-behavior: smooth; }
 }
 .menu__abrir { display: none; }
 
-.menu__lista { display: flex; gap: 26px; white-space: nowrap; }
+.menu__lista { display: flex; gap: 30px; white-space: nowrap; }
 .menu__item { position: relative; flex: none; }
 
 .menu__enlace {
@@ -207,32 +207,9 @@ html { scroll-behavior: smooth; }
 }
 .menu__item--activo > .menu__enlace:hover { color: var(--celeste); }
 
-/* Avisos: el único ítem del menú con forma de botón, para que se distinga
-   de los ocho enlaces de texto. Cierra la fila, a la derecha. */
-.menu__enlace--destacado {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0;
-  padding: 11px 18px;
-  background: var(--celeste);
-  color: #fff;
-  font-weight: 700;
-}
-.menu__enlace--destacado i { font-size: 19px; line-height: 1; }
-.menu__enlace--destacado:hover,
-.menu__enlace--destacado:focus-visible {
-  background: var(--azul-medio);
-  color: #fff;
-  text-shadow: none;
-}
-/* En su propia página se oscurece, en vez del subrayado de los demás */
-.menu__item--activo > .menu__enlace--destacado,
-.menu__item--activo > .menu__enlace--destacado:hover {
-  background: var(--azul);
-  color: #fff;
-  box-shadow: none;
-}
+/* Avisos cierra la fila. Se distingue solo por el peso: mismo azul parroquial
+   que los demás, en negrita. Cuando está activo sigue la regla general. */
+.menu__enlace--destacado { font-weight: 700; }
 
 .menu__desplegar { display: none; }
 
@@ -253,7 +230,7 @@ html { scroll-behavior: smooth; }
 
 /* En escritorio el desplegable se abre al pasar el cursor, sin JavaScript.
    :focus-within lo abre también al recorrer el menú con el teclado. */
-@media (min-width: 1240px) {
+@media (min-width: 1180px) {
   .menu__item:hover > .menu__panel,
   .menu__item:focus-within > .menu__panel { display: block; }
 }
@@ -793,8 +770,8 @@ strong, .fuerte { font-weight: 600; }
    táctiles de 44px como mínimo.
    ========================================================================== */
 
-/* --- Hasta 1239px: menú desplegable y cabecera compacta ------------------- */
-@media (max-width: 1239px) {
+/* --- Hasta 1179px: menú desplegable y cabecera compacta ------------------- */
+@media (max-width: 1179px) {
   :root { --lateral: 24px; }
 
   .marca__horario { display: none; }  /* El horario sigue en el pie */
@@ -852,25 +829,6 @@ strong, .fuerte { font-weight: 600; }
   .menu__sub { padding: 16px var(--lateral) 16px calc(var(--lateral) + 14px); white-space: normal; border-bottom: 1px solid var(--borde); min-height: 56px; display: flex; align-items: center; }
   .menu__item .menu__panel a:last-child { border-bottom: 0; }
 
-  /* El destacado no puede ser un bloque celeste a lo ancho: parecería un
-     encabezado de sección. Se marca con fondo claro, peso y una barra. */
-  .menu__enlace--destacado {
-    margin: 0;
-    padding: 18px var(--lateral);
-    background: var(--celeste-claro);
-    color: var(--azul-medio);
-    box-shadow: inset 4px 0 0 var(--celeste);
-  }
-  .menu__enlace--destacado i { font-size: 22px; color: var(--celeste); }
-  .menu__enlace--destacado:hover,
-  .menu__enlace--destacado:focus-visible { background: var(--celeste-claro); color: var(--azul); }
-  .menu__item--activo > .menu__enlace--destacado,
-  .menu__item--activo > .menu__enlace--destacado:hover {
-    background: var(--celeste);
-    color: #fff;
-    box-shadow: inset 4px 0 0 var(--azul-medio);
-  }
-  .menu__item--activo > .menu__enlace--destacado i { color: #fff; }
 }
 
 /* --- Hasta 960px: rejillas grandes a una o dos columnas ------------------- */

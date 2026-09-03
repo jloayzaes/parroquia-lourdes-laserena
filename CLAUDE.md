@@ -43,16 +43,15 @@ contacto, un ítem del menú, el pie— hay que aplicarlo en **las doce**, no en
 El menú tiene **nueve botones**: Inicio · Nuestra parroquia · Horarios ·
 Sacramentos · Servicios · Certificados · Capillas · Pastorales · **Avisos**.
 
-**Avisos cierra la fila y es el único con forma de botón** (`.menu__enlace--destacado`):
-fondo celeste, texto blanco, ícono de megáfono. En su propia página se oscurece a
-azul parroquial en vez de llevar el subrayado de los demás. En el menú táctil no
-puede ser un bloque celeste a lo ancho —parecería un encabezado de sección—, así
-que ahí va con fondo claro y barra lateral.
+**Avisos cierra la fila** y se distingue solo por el peso
+(`.menu__enlace--destacado`): mismo azul parroquial que los demás, en negrita, sin
+fondo ni ícono. Es deliberadamente sutil —se probó como botón celeste y el cliente
+lo pidió más discreto—, así que no volver a agregarle caja, color propio ni ícono.
+Cuando está activo sigue la regla general: celeste con subrayado inset.
 
-Ese botón ensancha la fila unos 60px, así que el menú horizontal ya no cabe bajo
-**1240px**: ese es el umbral del menú táctil, y la separación entre ítems bajó de
-30px a 26px. Quedan 61px de holgura. **Un décimo botón obliga a repensar el
-menú**, no basta con sumarlo.
+El menú horizontal ocupa 1076px y cabe justo sobre **1180px**, que es el umbral del
+menú táctil; quedan 32px de holgura. **Un décimo botón obliga a repensar el menú**,
+no basta con sumarlo.
 
 Conviene hacerlo con un script en vez de a mano:
 
