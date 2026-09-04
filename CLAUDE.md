@@ -285,10 +285,16 @@ Exportar al doble de la medida indicada (retina) y comprimir.
 navegador los usa como alto y el `aspect-ratio` del CSS no se aplica. Hay que
 agregar `height: auto` en la regla. Pasó en el par de la historia y en la gruta.
 
-Sobre las dos fotos de fondo va un **velo blanco**, no azul: la parroquia lo
-pidió así para que la fotografía se vea. Por eso el texto de esas dos bandas va
+Sobre las **tres** fotos de fondo va un **velo blanco**, no azul: la parroquia lo
+pidió así para que la fotografía se vea. Por eso el texto de esas bandas va
 en `--azul` y `--azul-medio`, y sus botones son el relleno normal y
-`.boton--linea-azul`. Si alguna vez se vuelve al velo oscuro, hay que devolver
+`.boton--linea-azul`. Son el hero de la portada, la banda de la Patrona y la
+banda del 1%, esta última con la asamblea del domingo.
+
+Los velos con **degradado horizontal** —más denso donde va el texto, más
+transparente donde está el motivo— se vuelven en contra en el teléfono, porque
+ahí el texto ocupa todo el ancho y termina cayendo sobre la parte clara. En el
+quiebre de 760px hay que pasarlos a un degradado vertical parejo. Si alguna vez se vuelve al velo oscuro, hay que devolver
 también los textos a blanco y los botones a `--blanco` y `--linea-blanca`.
 
 El hero de `index.html` y la banda de la Patrona son **fondo de sección**, en

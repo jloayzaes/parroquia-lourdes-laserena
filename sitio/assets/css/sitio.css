@@ -752,12 +752,15 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 /* --------------------------------------------------------------------------
    18. 1% a mi Iglesia
    -------------------------------------------------------------------------- */
-.uno-hero { position: relative; background: var(--azul); padding: 72px var(--canaleta); overflow: hidden; }
-.uno-hero__textura { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 12px, rgba(255, 255, 255, 0) 12px 24px); }
+/* La banda del 1% muestra la asamblea del domingo. El velo es blanco y más
+   denso a la izquierda, donde va el texto, para que a la derecha se siga viendo
+   el altar con la imagen de la Patrona. */
+.uno-hero { position: relative; background: url("../img/uno-asamblea.jpg") center 45% / cover no-repeat; padding: 72px var(--canaleta); overflow: hidden; }
+.uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .82) 44%, rgba(255, 255, 255, .34) 100%); }
 .uno-hero__contenido { position: relative; max-width: 70ch; }
-.uno-hero h1 { font: 200 56px/1.08 var(--fuente); color: #fff; margin-bottom: 16px; }
-.uno-hero h1 strong { font-weight: 600; }
-.uno-hero p { font: 300 24px/1.5 var(--fuente); color: #E4EEF7; margin-bottom: 34px; }
+.uno-hero h1 { font: 300 56px/1.08 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+.uno-hero h1 strong { font-weight: 700; }
+.uno-hero p { font: 400 24px/1.5 var(--fuente); color: var(--azul-medio); margin-bottom: 34px; }
 
 .destacado-celeste { background: var(--celeste-claro); padding: 34px 36px; font: 300 26px/1.5 var(--fuente); color: var(--azul); }
 .destacado-celeste strong { font-weight: 600; }
@@ -1005,7 +1008,13 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .bloque--sup { padding-top: 48px; }
   .bloque--sup-corto { padding-top: 40px; }
   .portada-seccion { padding: 40px var(--lateral); }
-  .uno-hero { padding: 52px var(--lateral); }
+  .uno-hero { padding: 52px var(--lateral);
+    background-image: url("../img/uno-asamblea-movil.jpg");
+    background-position: 62% 42%; }
+  /* En el teléfono el texto ocupa todo el ancho, así que el degradado de
+     izquierda a derecha lo dejaría sobre la parte clara del velo: aquí va
+     parejo, de arriba abajo. */
+  .uno-hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93), rgba(255, 255, 255, .86)); }
   .pie { margin-top: 52px; padding-top: 44px; }
   .pie__rejilla { grid-template-columns: 1fr; gap: 32px; }
   .pie__rejilla > :first-child { grid-column: span 1; }
