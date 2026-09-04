@@ -434,8 +434,10 @@ strong, .fuerte { font-weight: 600; }
 /* Servicios ya no lleva fotografía: la ficha ocupa una sola columna. */
 .ficha--sin-foto { grid-template-columns: 1fr; }
 .ficha--invertida .ficha__foto { order: 2; }
-/* Ilustración del sacramento: llena la columna sin deformarse. */
-img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
+/* Ilustración del sacramento. Vienen sobre fondo blanco, igual que la ficha,
+   así que se muestran enteras con contain: recortarlas cortaría el cirio o la
+   rama que acompañan al símbolo, y el sobrante no se nota. */
+img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
 .ficha__cuerpo { padding: 34px 34px 36px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .ficha__subtitulo { font: 400 16px/1.5 var(--fuente); color: var(--texto-3); margin-top: 6px; }

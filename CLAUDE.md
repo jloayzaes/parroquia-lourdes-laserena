@@ -195,13 +195,27 @@ foto se recorta con `object-fit: cover`: conviene que el motivo esté al centro.
 
 ## Ilustraciones de los sacramentos
 
-Las seis fichas con ilustración (`assets/img/sacramento-*.jpg`) son acuarelas
-cuadradas entregadas por la parroquia, exportadas a 720×720 y unos 50 KB. Van en
-`img.ficha__foto`, que llena la columna con `object-fit: cover`: en escritorio
-recorta un poco los costados y en el teléfono se ven completas, porque la ficha
-pasa a una columna.
+Las siete fichas llevan ilustración (`assets/img/sacramento-*.jpg`): acuarelas
+cuadradas sobre **fondo blanco**, entregadas por la parroquia, exportadas a
+720×720 y unos 55 KB. Van en `img.ficha__foto` con `object-fit: contain`, no
+`cover`: como el fondo de la ilustración es el mismo blanco de la ficha, se ven
+enteras sin costura, y recortarlas cortaba el cirio o la rama que acompañan al
+símbolo.
 
-**Catequesis de adultos es la única sin ilustración** y conserva su marcador.
+El orden de las fichas y del desplegable del menú lo fijó la parroquia:
+**Bautismo · Primera Comunión · Confirmación · Catequesis de adultos ·
+Matrimonio · Reconciliación · Unción**. Si se reordena, hay que recalcular la
+alternancia: las fichas impares son `.ficha` y las pares
+`.ficha ficha--invertida`, para que la ilustración vaya cambiando de lado.
+
+## Coordinador, coordinadora, coordinadores
+
+La etiqueta se escribe según quién coordina, no en genérico: **Coordinador** si
+es un hombre, **Coordinadora** si es una mujer, **Coordinadoras** si son dos
+mujeres y **Coordinadores** si hay un hombre y una mujer. Donde coordina un
+matrimonio la etiqueta es **Matrimonio coordinador** —Pastoral de Migrantes,
+Pastoral de Redes Sociales y el Coro Matrimonio Rodríguez Gallardo—. Mientras el
+nombre esté sin confirmar se deja **Coordinador/a**.
 
 ## Fotografías
 
