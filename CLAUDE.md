@@ -91,11 +91,13 @@ Secretaría y el teléfono aparecen en varias páginas.
   Si hace falta otro ícono compuesto, seguir ese patrón antes que mezclar
   familias.
 
-  **La paloma de Confirmación quedó pendiente.** La parroquia la pidió como guía
-  y se intentó dibujar siete veces: ninguna versión aguanta al lado de un ícono
-  de Phosphor, así que la ficha usa `ph-bird`, que es un ave de la familia y no
-  una paloma litúrgica. Es una tarea de ilustración, no de trazado a ojo: si se
-  retoma, conviene encargarla o partir de un SVG ya dibujado.
+  La **paloma de Confirmación** es la quinta excepción y llegó dibujada desde la
+  parroquia, en un SVG que traía un texto al pie: se recortó ese texto, se
+  normalizó el trazado a un `viewBox` de 256 y se centró. Es un contorno
+  *relleno*, no un trazo, y su línea es más fina que la de Phosphor, así que a
+  tamaño de ícono se desvanecía. Se corrige con `.badge svg.paloma`, que le
+  agrega `stroke` para engrosarla y le da un 69 % del badge en vez del 55 %,
+  porque es una figura ancha y con mucho aire.
 - **Sin `border-radius`** en tarjetas ni botones. Solo círculos perfectos en los
   badges de ícono (`.badge`).
 - **Sin animaciones decorativas.**
@@ -190,6 +192,16 @@ columna de texto quedaba en 150px y el contenido se salía.
 Las fotos van en `assets/img/aviso-*.jpg`, exportadas a **800px de ancho** y
 comprimidas (unos 150–200 KB). El hueco mide 200×152 en escritorio, así que la
 foto se recorta con `object-fit: cover`: conviene que el motivo esté al centro.
+
+## Ilustraciones de los sacramentos
+
+Las seis fichas con ilustración (`assets/img/sacramento-*.jpg`) son acuarelas
+cuadradas entregadas por la parroquia, exportadas a 720×720 y unos 50 KB. Van en
+`img.ficha__foto`, que llena la columna con `object-fit: cover`: en escritorio
+recorta un poco los costados y en el teléfono se ven completas, porque la ficha
+pasa a una columna.
+
+**Catequesis de adultos es la única sin ilustración** y conserva su marcador.
 
 ## Fotografías
 

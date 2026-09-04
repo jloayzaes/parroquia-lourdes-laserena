@@ -384,6 +384,15 @@ strong, .fuerte { font-weight: 600; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* La paloma de Confirmación la entregó la parroquia como contorno relleno, con
+   un trazo más fino que el de la familia: se engruesa con stroke y ocupa algo
+   más del badge, porque es una figura ancha y con mucho aire. */
+.badge svg.paloma {
+  width: calc(var(--tam, 64px) * .69);
+  height: calc(var(--tam, 64px) * .69);
+  fill: #fff;
+  stroke-width: 16;
+}
 .badge--imagen { width: var(--tam, 64px); height: var(--tam, 64px); display: block; flex: none; }
 
 /* --------------------------------------------------------------------------
@@ -419,6 +428,8 @@ strong, .fuerte { font-weight: 600; }
 /* Servicios ya no lleva fotografía: la ficha ocupa una sola columna. */
 .ficha--sin-foto { grid-template-columns: 1fr; }
 .ficha--invertida .ficha__foto { order: 2; }
+/* Ilustración del sacramento: llena la columna sin deformarse. */
+img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 .ficha__cuerpo { padding: 34px 34px 36px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .ficha__subtitulo { font: 400 16px/1.5 var(--fuente); color: var(--texto-3); margin-top: 6px; }
