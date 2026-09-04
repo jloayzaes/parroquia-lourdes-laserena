@@ -756,7 +756,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
    denso a la izquierda, donde va el texto, para que a la derecha se siga viendo
    el altar con la imagen de la Patrona. */
 .uno-hero { position: relative; background: url("../img/uno-asamblea.jpg") center 45% / cover no-repeat; padding: 72px var(--canaleta); overflow: hidden; }
-.uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .82) 44%, rgba(255, 255, 255, .34) 100%); }
+.uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(238, 241, 245, .95) 0%, rgba(236, 239, 244, .88) 44%, rgba(232, 236, 241, .58) 100%); }
 .uno-hero__contenido { position: relative; max-width: 70ch; }
 .uno-hero h1 { font: 300 56px/1.08 var(--fuente); color: var(--azul); margin-bottom: 16px; }
 .uno-hero h1 strong { font-weight: 700; }
@@ -1014,7 +1014,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   /* En el teléfono el texto ocupa todo el ancho, así que el degradado de
      izquierda a derecha lo dejaría sobre la parte clara del velo: aquí va
      parejo, de arriba abajo. */
-  .uno-hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93), rgba(255, 255, 255, .86)); }
+  .uno-hero__velo { background: linear-gradient(180deg, rgba(238, 241, 245, .95), rgba(234, 238, 243, .89)); }
   .pie { margin-top: 52px; padding-top: 44px; }
   .pie__rejilla { grid-template-columns: 1fr; gap: 32px; }
   .pie__rejilla > :first-child { grid-column: span 1; }
