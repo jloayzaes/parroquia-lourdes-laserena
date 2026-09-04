@@ -524,7 +524,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   text-align: left;
 }
 .aviso-tarjeta:hover, .aviso-tarjeta:focus-within { border-color: var(--celeste); }
-.aviso-tarjeta__foto { width: 100%; height: 172px; object-fit: cover; display: block; }
+.aviso-tarjeta__foto { width: 100%; height: 230px; object-fit: cover; display: block; }
 .aviso-tarjeta__cuerpo { display: flex; flex-direction: column; flex: 1; gap: 10px; padding: 24px 26px 26px; }
 .aviso-tarjeta__meta {
   display: flex; align-items: flex-start; gap: 8px;
@@ -532,11 +532,10 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   text-transform: uppercase; color: var(--celeste);
 }
 .aviso-tarjeta__meta i { font-size: 19px; line-height: 1; flex: none; }
-.aviso-tarjeta__titulo { font: 600 21px/1.35 var(--fuente); color: var(--azul); }
-.aviso-tarjeta__texto {
-  font: 400 17px/1.65 var(--fuente); color: var(--texto);
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-}
+.aviso-tarjeta__titulo { font: 600 19px/1.35 var(--fuente); color: var(--azul); }
+/* Sin recorte: la parroquia pidió que el aviso se lea completo en la portada.
+   El cuerpo se queda en 17px, que es el mínimo del sitio. */
+.aviso-tarjeta__texto { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 .aviso-tarjeta__pie { margin-top: auto; border-top: 1px solid var(--borde); padding-top: 16px; }
 .aviso-tarjeta__enlace {
   font: 700 12px/1 var(--fuente); letter-spacing: .12em;
