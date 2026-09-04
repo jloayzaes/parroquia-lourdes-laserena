@@ -294,7 +294,21 @@ banda del 1%, esta última con la asamblea del domingo.
 Los velos con **degradado horizontal** —más denso donde va el texto, más
 transparente donde está el motivo— se vuelven en contra en el teléfono, porque
 ahí el texto ocupa todo el ancho y termina cayendo sobre la parte clara. En el
-quiebre de 760px hay que pasarlos a un degradado vertical parejo. Si alguna vez se vuelve al velo oscuro, hay que devolver
+quiebre de 760px hay que pasarlos a un degradado vertical parejo.
+
+**El velo y el color del texto se ajustan juntos.** El texto de estas bandas va
+en `--azul`, no en `--azul-medio`: con el azul medio no queda margen para
+transparentar el velo sin bajar del mínimo AA. Antes de tocar la opacidad de un
+velo hay que medir, porque el promedio engaña —lo que decide es el píxel más
+oscuro bajo el texto—:
+
+```bash
+python3 herramientas/medir-velos.py     # ver el encabezado del archivo
+```
+
+El script compone el velo sobre la foto con la misma geometría del navegador.
+Así se detectó que el horario de la portada estaba en 4,37:1 pese a *parecer*
+legible. Hoy las tres bandas están entre 5,1 y 6,9:1. Si alguna vez se vuelve al velo oscuro, hay que devolver
 también los textos a blanco y los botones a `--blanco` y `--linea-blanca`.
 
 El hero de `index.html` y la banda de la Patrona son **fondo de sección**, en
