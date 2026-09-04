@@ -254,8 +254,14 @@ de proporción muy distinta**:
 
 | Página | Hueco | Se exporta a |
 |---|---|---|
-| Capillas | 460×300 (relación 1,53) | 920×600 |
-| Horarios | 688×170 (relación 4,05) | 1376×340 |
+| Capillas y Horarios | relación 46/30 | 920×600 |
+| Horarios · ficha de la parroquia | banda de 1400×400 en escritorio | 1400×400 y 920×600 |
+
+La ficha de la parroquia ocupa las dos columnas y por eso lleva **banda ancha**,
+pero bajo 960px vuelve a una columna y esa banda deja el Cristo del frontis en
+una franja. Ahí `<picture>` cambia al archivo de 920×600, y el CSS le devuelve
+la proporción 46/30. **Es el único sitio con dos archivos para la misma foto**:
+si se agrega otra ficha ancha, conviene repetir el patrón.
 
 La banda de Horarios es tan apaisada que no cabe una torre entera: hay que elegir
 qué franja se ve. Para eso está `herramientas/recortar-fotos.py`, que hace los
