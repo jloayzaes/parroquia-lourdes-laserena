@@ -326,20 +326,26 @@ strong, .fuerte { font-weight: 600; }
    -------------------------------------------------------------------------- */
 .boton {
   display: inline-block;
-  background: var(--celeste);
+  /* Azul medio y no celeste: con celeste, el texto blanco de 14px quedaba en
+     2,89:1 de contraste, bajo el mínimo AA de 4,5:1 que pidió la parroquia.
+     Con azul medio sube a 6,1:1, y era el color que ya tenía al pasar encima. */
+  background: var(--azul-medio);
   color: #fff;
   font: 700 14px/1 var(--fuente);
   letter-spacing: .1em;
   padding: 20px 28px;
   text-transform: uppercase;
   text-align: center;
-  border: 1px solid var(--celeste);
+  border: 1px solid var(--azul-medio);
 }
-.boton:hover { background: var(--azul-medio); border-color: var(--azul-medio); color: #fff; }
+.boton:hover { background: var(--azul); border-color: var(--azul); color: #fff; }
 
 .boton--blanco { background: #fff; color: var(--azul-medio); border-color: #fff; }
 .boton--blanco:hover { background: var(--celeste-claro); border-color: var(--celeste-claro); color: var(--azul-medio); }
 
+/* Contorno azul, del mismo tamaño que .boton: para el velo claro sobre foto. */
+.boton--linea-azul { background: transparent; color: var(--azul-medio); border-color: var(--celeste); }
+.boton--linea-azul:hover { background: var(--celeste-claro); border-color: var(--azul-medio); color: var(--azul-medio); }
 .boton--linea-blanca { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .8); font-weight: 600; }
 .boton--linea-blanca:hover { background: rgba(255, 255, 255, .14); border-color: #fff; color: #fff; }
 
@@ -441,7 +447,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 .hero {
   position: relative;
   min-height: 530px;
-  background: url("../img/portada-parroquia.jpg") center 52% / cover no-repeat;
+  background: url("../img/portada-parroquia.jpg") center 24% / cover no-repeat;
   display: flex;
   align-items: center;
   padding: 56px var(--canaleta);
@@ -449,12 +455,12 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 .hero__velo {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(27, 58, 97, .84) 0%, rgba(44, 95, 146, .62) 46%, rgba(110, 156, 201, .12) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .78) 46%, rgba(255, 255, 255, .38) 100%);
 }
 .hero__contenido { position: relative; max-width: 700px; }
-.hero__titulo { font: 200 58px/1.06 var(--fuente); color: #fff; letter-spacing: -.005em; margin-bottom: 24px; }
+.hero__titulo { font: 200 58px/1.06 var(--fuente); color: var(--azul); letter-spacing: -.005em; margin-bottom: 24px; }
 .hero__titulo strong { font-weight: 600; }
-.hero__horario { font: 300 23px/1.75 var(--fuente); color: #EDF4FA; margin-bottom: 32px; }
+.hero__horario { font: 300 23px/1.75 var(--fuente); color: var(--azul-medio); margin-bottom: 32px; }
 .hero__horario strong { font-weight: 600; }
 .hero__botones { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -483,11 +489,11 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
   text-align: center;
   padding: 64px var(--canaleta);
 }
-.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27, 58, 97, .78), rgba(44, 95, 146, .68)); }
+.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .80)); }
 .banda-patrona__contenido { position: relative; max-width: 660px; }
-.banda-patrona h2 { font: 200 42px/1.15 var(--fuente); color: #fff; margin-bottom: 16px; }
+.banda-patrona h2 { font: 200 42px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
 .banda-patrona h2 strong { font-weight: 600; }
-.banda-patrona p { font: 300 20px/1.6 var(--fuente); color: #E4EEF7; margin-bottom: 26px; }
+.banda-patrona p { font: 300 20px/1.6 var(--fuente); color: var(--azul-medio); margin-bottom: 26px; }
 
 /* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
    así que necesita ancho: bajo 1180px pasa a una sola columna. */
@@ -969,7 +975,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
      un tercio. */
   .hero { min-height: 0; padding: 52px var(--canaleta);
     background-image: url("../img/portada-parroquia-movil.jpg"); }
-  .hero__velo { background: linear-gradient(180deg, rgba(27, 58, 97, .88) 0%, rgba(44, 95, 146, .78) 100%); }
+  .hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .84) 100%); }
   .hero__titulo { font-size: 38px; }
   .hero__horario { font-size: 20px; }
   .hero__botones .boton { width: 100%; }

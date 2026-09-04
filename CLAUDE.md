@@ -256,6 +256,12 @@ Exportar al doble de la medida indicada (retina) y comprimir.
 navegador los usa como alto y el `aspect-ratio` del CSS no se aplica. Hay que
 agregar `height: auto` en la regla. Pasó en el par de la historia y en la gruta.
 
+Sobre las dos fotos de fondo va un **velo blanco**, no azul: la parroquia lo
+pidió así para que la fotografía se vea. Por eso el texto de esas dos bandas va
+en `--azul` y `--azul-medio`, y sus botones son el relleno normal y
+`.boton--linea-azul`. Si alguna vez se vuelve al velo oscuro, hay que devolver
+también los textos a blanco y los botones a `--blanco` y `--linea-blanca`.
+
 El hero de `index.html` y la banda de la Patrona son **fondo de sección**, en
 `.hero` y `.banda-patrona` de `sitio.css`. Van a 1600px de ancho y con calidad
 68, porque encima llevan un velo oscuro que tapa el detalle fino, y **tienen una
@@ -266,6 +272,13 @@ se agrega otro fondo de sección, conviene repetir ese par.
 ## Accesibilidad (requisito del cliente, no opcional)
 
 - Cuerpo mínimo **17px**. Contraste AA (4.5:1) en todo texto pequeño.
+- **El botón `.boton` va en `--azul-medio`, no en `--celeste`.** Con celeste, su
+  texto blanco de 14px quedaba en 2,89:1, muy por debajo de AA; en azul medio
+  sube a 6,6:1. Cualquier color de fondo nuevo para texto blanco hay que
+  medirlo antes.
+- Queda pendiente el mismo problema en `.antetitulo`, que usa `--celeste` sobre
+  blanco (2,7:1). Es el rótulo pequeño en mayúsculas que encabeza las secciones;
+  cambiarlo toca todas las páginas, así que está a la espera de decisión.
 - Áreas táctiles de **44px o más** en móvil (hoy el menú usa 56px).
 - Jerarquía correcta de encabezados, `alt` en toda imagen informativa,
   `<label>` visible en todo campo de formulario.
