@@ -373,6 +373,17 @@ strong, .fuerte { font-weight: 600; }
   flex: none;
 }
 .badge i { color: #fff; line-height: 1; font-size: calc(var(--tam, 64px) * .55); }
+/* Íconos dibujados aquí, con el trazo de Phosphor Thin (8 sobre 256).
+   Se usan solo cuando la familia no tiene el símbolo: cáliz y anillos. */
+.badge svg {
+  width: calc(var(--tam, 64px) * .55);
+  height: calc(var(--tam, 64px) * .55);
+  fill: none;
+  stroke: #fff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .badge--imagen { width: var(--tam, 64px); height: var(--tam, 64px); display: block; flex: none; }
 
 /* --------------------------------------------------------------------------

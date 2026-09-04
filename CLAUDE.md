@@ -81,12 +81,21 @@ Secretaría y el teléfono aparecen en varias páginas.
   `.ficha--invertida`, `.indice__enlace--activo`.
 - **Tipografía**: solo Montserrat. **Íconos**: solo Phosphor Thin
   (`<i class="ph-thin ph-church" aria-hidden="true">`), por CDN.
-  Dos excepciones, ambas porque Phosphor no tiene el glifo: el ostensorio de
-  Adoración (`assets/img/icono-adoracion.png`) y el calendario-con-reloj del
-  horario de Secretaría en la cabecera, que es un SVG en línea dibujado con el
-  mismo trazo de 8/256 y una máscara que abre el hueco del reloj sin suponer
-  color de fondo. Si hace falta otro ícono compuesto, seguir ese patrón antes
-  que mezclar familias.
+  Cuatro excepciones, todas porque Phosphor no tiene el glifo: el ostensorio de
+  Adoración (`assets/img/icono-adoracion.png`), el calendario-con-reloj del
+  horario de Secretaría en la cabecera, el **cáliz con hostia** de Primera
+  Comunión y los **anillos** de Matrimonio. Los tres SVG van en línea, dibujados
+  con el mismo trazo de 8 sobre un `viewBox` de 256, y los anillos usan una
+  máscara para abrir el hueco donde uno cruza al otro sin suponer color de
+  fondo. Dentro de un `.badge` se dimensionan solos con la regla `.badge svg`.
+  Si hace falta otro ícono compuesto, seguir ese patrón antes que mezclar
+  familias.
+
+  **La paloma de Confirmación quedó pendiente.** La parroquia la pidió como guía
+  y se intentó dibujar siete veces: ninguna versión aguanta al lado de un ícono
+  de Phosphor, así que la ficha usa `ph-bird`, que es un ave de la familia y no
+  una paloma litúrgica. Es una tarea de ilustración, no de trazado a ojo: si se
+  retoma, conviene encargarla o partir de un SVG ya dibujado.
 - **Sin `border-radius`** en tarjetas ni botones. Solo círculos perfectos en los
   badges de ícono (`.badge`).
 - **Sin animaciones decorativas.**
