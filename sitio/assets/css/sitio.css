@@ -405,6 +405,8 @@ strong, .fuerte { font-weight: 600; }
 /* Ficha con fotografía lateral (sacramentos, servicios) */
 .ficha { border: 1px solid var(--borde); display: grid; grid-template-columns: var(--col-foto, 360px) 1fr; }
 .ficha--invertida { grid-template-columns: 1fr var(--col-foto, 360px); }
+/* Servicios ya no lleva fotografía: la ficha ocupa una sola columna. */
+.ficha--sin-foto { grid-template-columns: 1fr; }
 .ficha--invertida .ficha__foto { order: 2; }
 .ficha__cuerpo { padding: 34px 34px 36px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
@@ -557,6 +559,16 @@ strong, .fuerte { font-weight: 600; }
 .templo__acciones { margin-top: auto; padding-top: 22px; display: flex; gap: 12px 20px; flex-wrap: wrap; align-items: center; }
 
 .tarjeta-horario { font: 400 18px/1.75 var(--fuente); color: var(--texto); }
+/* Dato acompañado de su ícono: calendario para los días, reloj para las horas,
+   ubicación, teléfono o sobre para el contacto. Mismo patrón que el pie. */
+.datos-icono { display: flex; flex-direction: column; gap: 12px; }
+.datos-icono li { display: flex; align-items: flex-start; gap: 12px; }
+.datos-icono i { font-size: 24px; color: var(--celeste); line-height: 1.15; flex: none; }
+.datos-icono span { font: 400 18px/1.55 var(--fuente); color: var(--texto); }
+.datos-icono a { color: var(--azul-medio); font-weight: 600; }
+/* Aclaración que acompaña a un dato: un punto más chica y en gris medio. */
+.aclaracion { font: 400 16px/1.6 var(--fuente); color: var(--texto-3); }
+.aclaracion--cursiva { font-style: italic; }
 .tarjeta-horario strong { font-weight: 600; color: var(--azul-medio); }
 
 /* --------------------------------------------------------------------------
@@ -575,7 +587,9 @@ strong, .fuerte { font-weight: 600; }
 .capilla--invertida .capilla__foto { order: 2; }
 /* Fotografías reales de los templos. Reemplazan al marcador <div class="foto">
    y ocupan el mismo hueco: object-fit recorta al alto pedido sin deformar. */
-.templo__foto { width: 100%; height: 170px; object-fit: cover; }
+.templo__foto { width: 100%; height: auto; aspect-ratio: 46 / 30; object-fit: cover; }
+/* Vale también para el marcador <div class="foto">, que trae alto fijo. */
+div.templo__foto { display: flex; }
 img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .capilla__descripcion { font: 400 18px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
 .capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--borde); padding-top: 22px; }

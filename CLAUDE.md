@@ -93,6 +93,47 @@ Secretaría y el teléfono aparecen en varias páginas.
 - En hover de menú y pestañas se engruesa con `text-shadow`, **nunca** con
   `font-weight`: cambiar el peso mueve el layout.
 
+## Reglas de redacción que pidió la parroquia
+
+- **«Parroquia», nunca «parroquia matriz».** Es una sola parroquia con un
+  santuario y cinco capillas; la distinción entre ellos se mantiene, pero sin
+  esa palabra.
+- **Los días van en plural** cuando el horario se repite cada semana:
+  «Sábados 19:00 hrs.», «Domingos 11:00 hrs.». En español solo cambian sábado y
+  domingo; lunes a viernes son invariables. Los rangos se dejan como están
+  («martes a sábado»), porque «martes a sábados» no es correcto. El singular se
+  reserva para una celebración con fecha propia: «Domingo 13 de septiembre».
+- **El sacramento se llama «Reconciliación · Confesión»**, en el menú, en la
+  ficha y en las tarjetas de Inicio y Horarios.
+- **«Unción de los enfermos»**, con minúscula en «enfermos».
+- En las fichas de sacramentos con catequesis el campo es **«Duración de la
+  catequesis»**, no «Destinatarios» ni «¿A quién está dirigido?». La edad y las
+  condiciones para participar van en «Requisitos».
+- Unción y Reconciliación **no llevan** Destinatarios, Requisitos ni Documentos.
+- Las fichas de pastorales **no llevan** frecuencia de reunión, actividades ni
+  cantidad de integrantes.
+- Las capillas **no publican horario de atención**, solo el de la Santa Misa.
+
+## Datos con ícono
+
+Todo dato de contacto o de horario va acompañado de su ícono, siempre el mismo:
+
+| Dato | Ícono |
+|---|---|
+| Días de atención | `ph-calendar-blank` |
+| Horas | `ph-clock` |
+| Dirección | `ph-map-pin` |
+| Teléfono | `ph-phone` |
+| Correo | `ph-envelope-simple` |
+
+La estructura es `.datos-icono`, una lista donde cada `<li>` lleva el ícono y un
+`<span>`. Está en Horarios, Sacramentos, Servicios, Certificados y Pastorales:
+**si se agrega un bloque de contacto nuevo, usar esa misma lista.** Los días y
+las horas van en líneas separadas, cada una con su ícono.
+
+`.aclaracion` es la nota que acompaña a un dato: un punto más chica y en gris
+medio. Con `--cursiva` para la aclaración de la Misa de San Carlo Acutis.
+
 ## Contenido pendiente
 
 Lo que la parroquia aún no confirma se marca literalmente así:
