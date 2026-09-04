@@ -172,8 +172,23 @@ dato no está, se deja marcado.
 especiales e inscripciones. **No hay noticias en este sitio, solo avisos** —
 decisión del cliente. No reintroducir la palabra «noticias» en ningún texto.
 
-La portada repite los **cuatro avisos más recientes**; la lista completa vive en
+La portada repite los **tres avisos más recientes**; la lista completa vive en
 `avisos.html`. Al agregar un aviso importante hay que tocar los dos archivos.
+
+Los dos usan maquetas distintas a propósito. En `avisos.html` la ficha es
+horizontal —foto al lado del texto— porque ahí el aviso se lee entero. En la
+portada se ojea, así que van tres **tarjetas verticales de la misma altura**
+(`.avisos-portada` y `.aviso-tarjeta`): foto arriba, texto recortado a tres
+líneas y el enlace anclado abajo con `margin-top: auto`. La ficha horizontal
+dejaba huecos grandes, porque los avisos tienen largos muy distintos.
+
+La tarjeta entera se puede pinchar sin anidar enlaces: el enlace del pie lleva
+un `::after` que cubre la tarjeta. Si se agrega otro enlace dentro de la
+tarjeta, quedará tapado por ese `::after` — hay que dejarlo fuera o levantarlo
+con `position: relative`.
+
+Cada aviso de `avisos.html` tiene `id` (`aviso-kermes`, `aviso-pymes`…) para que
+la tarjeta de la portada lleve al aviso correcto.
 `avisos.html` lleva un comentario HTML con las instrucciones de copiar y pegar
 para quien edite sin ser programador: mantenerlo al día si cambia la estructura.
 

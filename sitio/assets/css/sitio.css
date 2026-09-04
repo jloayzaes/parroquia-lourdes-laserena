@@ -462,7 +462,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .hero__velo {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(238, 241, 245, .82) 0%, rgba(238, 241, 245, .68) 46%, rgba(238, 241, 245, .24) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .78) 46%, rgba(255, 255, 255, .38) 100%);
 }
 .hero__contenido { position: relative; max-width: 700px; }
 .hero__titulo { font: 200 58px/1.06 var(--fuente); color: var(--azul); letter-spacing: -.005em; margin-bottom: 24px; }
@@ -496,7 +496,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   text-align: center;
   padding: 64px var(--canaleta);
 }
-.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(238, 241, 245, .78), rgba(238, 241, 245, .72)); }
+.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .86)); }
 .banda-patrona__contenido { position: relative; max-width: 660px; }
 /* Peso 400 y no 200: sobre la fotografía, la Montserrat extrafina costaba
    de leer. La parroquia lo pidió expresamente. */
@@ -507,6 +507,46 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 /* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
    así que necesita ancho: bajo 1180px pasa a una sola columna. */
 .rejilla--avisos { grid-template-columns: 1fr 1fr; gap: 30px; }
+
+/* --- Avisos de la portada: tres tarjetas verticales parejas --------------
+   En la portada los avisos no se leen enteros, se ojean. Por eso van en
+   tarjetas de la misma altura, con el texto recortado a tres líneas y el
+   enlace anclado abajo, en vez de la ficha horizontal de avisos.html, que
+   dejaba huecos porque los avisos tienen largos muy distintos. */
+.avisos-portada { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+.aviso-tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--borde);
+  background: #fff;
+  text-align: left;
+}
+.aviso-tarjeta:hover, .aviso-tarjeta:focus-within { border-color: var(--celeste); }
+.aviso-tarjeta__foto { width: 100%; height: 172px; object-fit: cover; display: block; }
+.aviso-tarjeta__cuerpo { display: flex; flex-direction: column; flex: 1; gap: 10px; padding: 24px 26px 26px; }
+.aviso-tarjeta__meta {
+  display: flex; align-items: flex-start; gap: 8px;
+  font: 600 12px/1.4 var(--fuente); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--celeste);
+}
+.aviso-tarjeta__meta i { font-size: 19px; line-height: 1; flex: none; }
+.aviso-tarjeta__titulo { font: 600 21px/1.35 var(--fuente); color: var(--azul); }
+.aviso-tarjeta__texto {
+  font: 400 17px/1.65 var(--fuente); color: var(--texto);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.aviso-tarjeta__pie { margin-top: auto; border-top: 1px solid var(--borde); padding-top: 16px; }
+.aviso-tarjeta__enlace {
+  font: 700 12px/1 var(--fuente); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--azul-medio);
+}
+/* El enlace del pie se estira sobre toda la tarjeta: se puede pinchar en
+   cualquier parte sin anidar enlaces y sin que el lector de pantalla lea la
+   tarjeta entera como nombre del enlace. */
+.aviso-tarjeta__enlace::after { content: ""; position: absolute; inset: 0; }
+.aviso-tarjeta:hover .aviso-tarjeta__enlace { color: var(--celeste); }
 /* Las dos fotos de la historia son el mismo ángulo con cuarenta años de
    diferencia: van verticales, del mismo tamaño y juntas, para compararlas.
    La antigua es un escaneo de baja resolución, así que no se amplía más. */
@@ -758,7 +798,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
    denso a la izquierda, donde va el texto, para que a la derecha se siga viendo
    el altar con la imagen de la Patrona. */
 .uno-hero { position: relative; background: url("../img/uno-asamblea.jpg") center 45% / cover no-repeat; padding: 72px var(--canaleta); overflow: hidden; }
-.uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(238, 241, 245, .86) 0%, rgba(238, 241, 245, .78) 44%, rgba(238, 241, 245, .40) 100%); }
+.uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(238, 241, 245, .95) 0%, rgba(236, 239, 244, .88) 44%, rgba(232, 236, 241, .58) 100%); }
 .uno-hero__contenido { position: relative; max-width: 70ch; }
 .uno-hero h1 { font: 300 56px/1.08 var(--fuente); color: var(--azul); margin-bottom: 16px; }
 .uno-hero h1 strong { font-weight: 700; }
@@ -922,6 +962,8 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .rejilla--4 { grid-template-columns: 1fr 1fr; }
   .rejilla--3 { grid-template-columns: 1fr 1fr; }
 
+  .avisos-portada { grid-template-columns: 1fr 1fr; }
+
   .pastorales { grid-template-columns: 1fr; gap: 28px; }
   .indice { position: static; }
 
@@ -966,6 +1008,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 /* --- Hasta 760px: teléfono ------------------------------------------------ */
 @media (max-width: 760px) {
   .rejilla--2, .rejilla--3, .rejilla--4 { grid-template-columns: 1fr; }
+  .avisos-portada { grid-template-columns: 1fr; }
   .datos-2, .capilla__datos, .categoria__grupos, .paso__campos { grid-template-columns: 1fr; }
   .campo--ancho { grid-column: span 1; }
 
@@ -995,14 +1038,13 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
     /* El hueco del teléfono es casi cuadrado y recorta a lo ancho: se corre el
        encuadre hacia el frontis para que no quede solo palmera y pavimento. */
     background-position: 38% 45%; }
-  .hero__velo { background: linear-gradient(180deg, rgba(238, 241, 245, .86) 0%, rgba(238, 241, 245, .80) 100%); }
+  .hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .84) 100%); }
   .hero__titulo { font-size: 38px; }
   .hero__horario { font-size: 20px; }
   .hero__botones .boton { width: 100%; }
 
   .banda-patrona { min-height: 0; padding: 52px var(--canaleta);
     background-image: url("../img/banda-gruta-movil.jpg"); }
-  .banda-patrona__velo { background: linear-gradient(180deg, rgba(238, 241, 245, .82), rgba(238, 241, 245, .76)); }
 
   .aviso { flex-direction: column; gap: 14px; }
   .aviso__foto { width: 100%; height: 180px; }
@@ -1017,7 +1059,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   /* En el teléfono el texto ocupa todo el ancho, así que el degradado de
      izquierda a derecha lo dejaría sobre la parte clara del velo: aquí va
      parejo, de arriba abajo. */
-  .uno-hero__velo { background: linear-gradient(180deg, rgba(238, 241, 245, .88), rgba(238, 241, 245, .82)); }
+  .uno-hero__velo { background: linear-gradient(180deg, rgba(238, 241, 245, .95), rgba(234, 238, 243, .89)); }
   .pie { margin-top: 52px; padding-top: 44px; }
   .pie__rejilla { grid-template-columns: 1fr; gap: 32px; }
   .pie__rejilla > :first-child { grid-column: span 1; }
