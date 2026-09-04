@@ -250,10 +250,18 @@ en una franja angosta, así que conviene centrarla en el elemento reconocible
 
 Peso: JPEG con calidad 80, entre 50 y 110 KB por archivo.
 
-Exportar al doble de la medida indicada (retina) y comprimir. El hero de
-`index.html` y la banda de la Patrona son **fondo de sección**: esas van en
-`sitio.css`, en `.hero` y `.banda-patrona`, reemplazando `var(--rayado)`. Como
-esas dos secciones son de borde a borde, conviene una imagen de 1920px de ancho.
+Exportar al doble de la medida indicada (retina) y comprimir.
+
+**Ojo con `aspect-ratio`**: si el `<img>` trae atributos `width`/`height`, el
+navegador los usa como alto y el `aspect-ratio` del CSS no se aplica. Hay que
+agregar `height: auto` en la regla. Pasó en el par de la historia y en la gruta.
+
+El hero de `index.html` y la banda de la Patrona son **fondo de sección**, en
+`.hero` y `.banda-patrona` de `sitio.css`. Van a 1600px de ancho y con calidad
+68, porque encima llevan un velo oscuro que tapa el detalle fino, y **tienen una
+versión chica para el teléfono** (`-movil.jpg`, 900px) que se cambia en el
+quiebre de 760px: pesan un tercio y en un celular no se nota la diferencia. Si
+se agrega otro fondo de sección, conviene repetir ese par.
 
 ## Accesibilidad (requisito del cliente, no opcional)
 

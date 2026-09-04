@@ -441,7 +441,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 .hero {
   position: relative;
   min-height: 530px;
-  background: var(--rayado);
+  background: url("../img/portada-parroquia.jpg") center 52% / cover no-repeat;
   display: flex;
   align-items: center;
   padding: 56px var(--canaleta);
@@ -476,7 +476,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 .banda-patrona {
   position: relative;
   min-height: 360px;
-  background: var(--rayado);
+  background: url("../img/banda-gruta.jpg") center 40% / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -492,6 +492,11 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 /* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
    así que necesita ancho: bajo 1180px pasa a una sola columna. */
 .rejilla--avisos { grid-template-columns: 1fr 1fr; gap: 30px; }
+/* Las dos fotos de la historia son el mismo ángulo con cuarenta años de
+   diferencia: van verticales, del mismo tamaño y juntas, para compararlas.
+   La antigua es un escaneo de baja resolución, así que no se amplía más. */
+.par-historico { max-width: 900px; }
+.par-historico img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 .aviso { display: flex; gap: 20px; text-align: left; }
 /* object-fit recorta la foto al hueco sin deformarla; los marcadores <div> lo ignoran. */
 .aviso__foto { width: 200px; height: 152px; flex: none; object-fit: cover; }
@@ -612,7 +617,11 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: cover; }
 .templo__foto { width: 100%; height: auto; aspect-ratio: 46 / 30; object-fit: cover; }
 /* Vale también para el marcador <div class="foto">, que trae alto fijo. */
 div.templo__foto { display: flex; }
+/* La ficha de la parroquia ocupa las dos columnas, así que su foto es
+   una banda más ancha que la de las capillas. */
+.templo--matriz .templo__foto { aspect-ratio: 1400 / 400; }
 img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
+.foto-gruta { width: 100%; height: auto; aspect-ratio: 44 / 42; object-fit: cover; }
 .capilla__descripcion { font: 400 18px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
 .capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--borde); padding-top: 22px; }
 .capilla__valor { font: 400 17px/1.55 var(--fuente); color: var(--azul); }
@@ -956,13 +965,17 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   /* Las notas de foto pendiente estorban en pantallas pequeñas */
   .foto--esquina { display: none; }
 
-  .hero { min-height: 0; padding: 52px var(--canaleta); }
+  /* Fondos livianos: en el teléfono no se aprecia la diferencia y pesan
+     un tercio. */
+  .hero { min-height: 0; padding: 52px var(--canaleta);
+    background-image: url("../img/portada-parroquia-movil.jpg"); }
   .hero__velo { background: linear-gradient(180deg, rgba(27, 58, 97, .88) 0%, rgba(44, 95, 146, .78) 100%); }
   .hero__titulo { font-size: 38px; }
   .hero__horario { font-size: 20px; }
   .hero__botones .boton { width: 100%; }
 
-  .banda-patrona { min-height: 0; padding: 52px var(--canaleta); }
+  .banda-patrona { min-height: 0; padding: 52px var(--canaleta);
+    background-image: url("../img/banda-gruta-movil.jpg"); }
 
   .aviso { flex-direction: column; gap: 14px; }
   .aviso__foto { width: 100%; height: 180px; }
