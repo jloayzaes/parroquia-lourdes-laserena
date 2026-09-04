@@ -449,7 +449,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .hero {
   position: relative;
   min-height: 530px;
-  background: url("../img/portada-parroquia.jpg") center 24% / cover no-repeat;
+  background: url("../img/portada-parroquia.jpg") center 48% / cover no-repeat;
   display: flex;
   align-items: center;
   padding: 56px var(--canaleta);
@@ -976,7 +976,10 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   /* Fondos livianos: en el teléfono no se aprecia la diferencia y pesan
      un tercio. */
   .hero { min-height: 0; padding: 52px var(--canaleta);
-    background-image: url("../img/portada-parroquia-movil.jpg"); }
+    background-image: url("../img/portada-parroquia-movil.jpg");
+    /* El hueco del teléfono es casi cuadrado y recorta a lo ancho: se corre el
+       encuadre hacia el frontis para que no quede solo palmera y pavimento. */
+    background-position: 38% 45%; }
   .hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .84) 100%); }
   .hero__titulo { font-size: 38px; }
   .hero__horario { font-size: 20px; }
