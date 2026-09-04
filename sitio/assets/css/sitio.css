@@ -400,6 +400,9 @@ strong, .fuerte { font-weight: 600; }
   stroke-width: 16;
 }
 .badge--imagen { width: var(--tam, 64px); height: var(--tam, 64px); display: block; flex: none; }
+/* Dibujo entregado por la parroquia, ya recortado y en blanco con
+   transparencia, para ir dentro del badge como los <i> de Phosphor. */
+.badge__dibujo { width: calc(var(--tam, 64px) * .60); height: calc(var(--tam, 64px) * .60); object-fit: contain; }
 
 /* --------------------------------------------------------------------------
    11. Rejillas y tarjetas genéricas
@@ -491,11 +494,13 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   text-align: center;
   padding: 64px var(--canaleta);
 }
-.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .80)); }
+.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .86)); }
 .banda-patrona__contenido { position: relative; max-width: 660px; }
-.banda-patrona h2 { font: 200 42px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
-.banda-patrona h2 strong { font-weight: 600; }
-.banda-patrona p { font: 300 20px/1.6 var(--fuente); color: var(--azul-medio); margin-bottom: 26px; }
+/* Peso 400 y no 200: sobre la fotografía, la Montserrat extrafina costaba
+   de leer. La parroquia lo pidió expresamente. */
+.banda-patrona h2 { font: 400 42px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+.banda-patrona h2 strong { font-weight: 700; }
+.banda-patrona p { font: 400 20px/1.6 var(--fuente); color: var(--azul-medio); margin-bottom: 26px; }
 
 /* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
    así que necesita ancho: bajo 1180px pasa a una sola columna. */

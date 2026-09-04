@@ -81,14 +81,23 @@ Secretaría y el teléfono aparecen en varias páginas.
   `.ficha--invertida`, `.indice__enlace--activo`.
 - **Tipografía**: solo Montserrat. **Íconos**: solo Phosphor Thin
   (`<i class="ph-thin ph-church" aria-hidden="true">`), por CDN.
-  Cuatro excepciones, todas porque Phosphor no tiene el glifo: el ostensorio de
-  Adoración (`assets/img/icono-adoracion.png`), el calendario-con-reloj del
-  horario de Secretaría en la cabecera, el **cáliz con hostia** de Primera
-  Comunión y los **anillos** de Matrimonio. Los tres SVG van en línea, dibujados
-  con el mismo trazo de 8 sobre un `viewBox` de 256, y los anillos usan una
-  máscara para abrir el hueco donde uno cruza al otro sin suponer color de
-  fondo. Dentro de un `.badge` se dimensionan solos con la regla `.badge svg`.
-  Si hace falta otro ícono compuesto, seguir ese patrón antes que mezclar
+  Varias excepciones, todas porque Phosphor no tiene el glifo. **Dibujadas
+  aquí, en SVG en línea** con el mismo trazo de 8 sobre un `viewBox` de 256: el
+  calendario-con-reloj del horario de Secretaría en la cabecera, los **anillos**
+  de Matrimonio —que usan una máscara para abrir el hueco donde uno cruza al
+  otro— y el **cirio** de Bautismo. Dentro de un `.badge` se dimensionan solas
+  con la regla `.badge svg`.
+
+  **Entregadas por la parroquia**: el ostensorio de Adoración
+  (`assets/img/icono-adoracion.png`, que reemplaza al badge entero) y el
+  **cáliz** de Primera Comunión (`icono-primera-comunion.png`, que va dentro del
+  badge con `.badge__dibujo`). Los dibujos llegan como línea oscura sobre
+  blanco y hay que convertirlos: recortar a la caja del dibujo, engrosar el
+  trazo —el suyo es unas cuatro veces más fino que el de Phosphor y a 38px
+  desaparece— y guardarlo en blanco con transparencia. El script está en el
+  historial del commit que los incorporó.
+
+  Si hace falta otro ícono compuesto, seguir estos patrones antes que mezclar
   familias.
 
   La **paloma de Confirmación** es la quinta excepción y llegó dibujada desde la
