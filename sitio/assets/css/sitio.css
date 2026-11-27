@@ -35,8 +35,16 @@
      tenue y no alcanza el mínimo de contraste. */
   --pendiente: #7E93AE;
 
-  /* Superficies */
-  --blanco: #FFFFFF;
+  /* Superficies.
+     v2: la página deja de ser blanca. El blanco pasa a ser la superficie de las
+     tarjetas, y el fondo toma un arena cálido. Antes todo el sitio vivía a
+     menos de 1,4 de distancia del blanco —el borde de las tarjetas daba 1,18:1
+     sobre su propio fondo, es decir no se veía— y el resultado era un campo
+     plano sin relieve. Ahora hay cuatro planos: arena, blanco, celeste pálido
+     y el azul del pie. */
+  --papel: #F1EBE0;             /* fondo de página */
+  --papel-linea: #E0D5C2;       /* separador sobre el arena */
+  --blanco: #FFFFFF;            /* superficie de tarjeta */
   --borde: #E4EDF5;
   --borde-campo: #CFDDEA;
 
@@ -60,6 +68,17 @@
   --lateral: 36px;
   --canaleta: max(var(--lateral), (100% - var(--ancho-contenido)) / 2);
   --fuente: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Segunda familia, solo para títulos. Petrona es una serif humanista pensada
+     para el español —la diseñó una tipógrafa argentina— y aporta la calidez que
+     una grotesca sola no da. Rompe la regla de «una sola familia» del documento
+     de tipografía a propósito: era lo que más distancia marcaba con las
+     referencias. El cuerpo, los datos y los rótulos siguen en Nunito Sans. */
+  --display: "Petrona", Georgia, "Times New Roman", serif;
+  /* Esquinas y elevación. También estaban prohibidas, y también se abren: una
+     esquina blanda es más amable y una sombra mínima es lo que hace que la
+     tarjeta se apoye en el papel en vez de flotar. */
+  --radio: 6px;
+  --sombra: 0 1px 2px rgba(27, 58, 97, .05), 0 10px 28px -14px rgba(27, 58, 97, .18);
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Marcador de fotografía pendiente */
@@ -79,7 +98,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--blanco);
+  background: var(--papel);
   font-family: var(--fuente);
   font-size: 17px;              /* Mínimo de accesibilidad acordado */
   color: var(--texto);
@@ -132,15 +151,25 @@ html { scroll-behavior: smooth; }
    -------------------------------------------------------------------------- */
 .pagina {
   width: 100%;
-  background: var(--blanco);
+  /* El arena lleva una textura de líneas finísimas, casi imperceptible. Es el
+     recurso que usa Cedarcrest para que el fondo se sienta de papel y no de
+     pantalla: un plano liso lee frío por más cálido que sea el tono. El
+     contraste de la textura es de menos de un 2 %, así que no estorba al texto. */
+  background-color: var(--papel);
+  background-image: repeating-linear-gradient(
+    0deg, rgba(255, 255, 255, .38) 0 1px, rgba(255, 255, 255, 0) 1px 3px);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* Bloque estándar: fondo a todo el ancho, contenido centrado y acotado */
-.bloque { padding-left: var(--canaleta); padding-right: var(--canaleta); }
-.bloque--sup { padding-top: 68px; }
-.bloque--sup-corto { padding-top: 56px; }
+/* Ritmo vertical. Una sola idea por sección y aire de verdad entre ellas: es
+   lo que separa un sitio que respira de uno que apila bloques. Los valores son
+   una escala de cuatro pasos y no cifras sueltas. */
+.bloque { padding-left: var(--canaleta); padding-right: var(--canaleta); padding-bottom: 76px; }
+.bloque--sup { padding-top: 76px; }
+.bloque--sup-corto { padding-top: 60px; }
+.bloque + .bloque { padding-top: 0; }
 
 /* --------------------------------------------------------------------------
    4. Cabecera
@@ -284,9 +313,9 @@ html { scroll-behavior: smooth; }
 }
 .antetitulo--claro { color: var(--celeste-sobre-azul); }
 
-.titulo-portada { font: 300 44px/1.1 var(--fuente); letter-spacing: -.01em; color: var(--azul); margin-bottom: 14px; }
-.titulo-grande { font: 300 32px/1.2 var(--fuente); color: var(--azul); }
-.titulo-medio { font: 300 32px/1.2 var(--fuente); color: var(--azul); }
+.titulo-portada { font: 300 44px/1.1 var(--display); letter-spacing: -.01em; color: var(--azul); margin-bottom: 14px; }
+.titulo-grande { font: 300 32px/1.2 var(--display); color: var(--azul); }
+.titulo-medio { font: 300 32px/1.2 var(--display); color: var(--azul); }
 .titulo-ficha { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
 .titulo-tarjeta { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
 .titulo-tarjeta--grande { font-size: 21px; line-height: 1.3; }
@@ -309,7 +338,9 @@ strong, .fuerte { font-weight: 600; }
 /* --------------------------------------------------------------------------
    7. Portada de sección
    -------------------------------------------------------------------------- */
-.portada-seccion { background: var(--celeste-claro); padding: 52px var(--canaleta); }
+/* Plano blanco arriba de cada página: el título se apoya en él y el
+   contenido cae después sobre el arena. Da el primer escalón de ritmo. */
+.portada-seccion { background: var(--blanco); padding: 52px var(--canaleta) 56px; }
 
 /* --------------------------------------------------------------------------
    8. Marcadores de fotografía
@@ -342,6 +373,7 @@ strong, .fuerte { font-weight: 600; }
    9. Botones
    -------------------------------------------------------------------------- */
 .boton {
+  border-radius: var(--radio);
   display: inline-block;
   /* Azul medio y no celeste: con celeste, el texto blanco de 14px quedaba en
      2,89:1 de contraste, bajo el mínimo AA de 4,5:1 que pidió la parroquia.
@@ -433,7 +465,7 @@ strong, .fuerte { font-weight: 600; }
   align-items: start;
 }
 
-.tarjeta { border: 1px solid var(--borde); padding: 24px 26px; }
+.tarjeta { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 24px 26px; }
 .tarjeta--celeste { background: var(--celeste-claro); border: 0; padding: 32px 30px; }
 /* Panel de cierre de página: la pregunta a un lado, Secretaría al otro. */
 .panel-cierre { background: var(--celeste-claro); padding: 40px 36px; gap: 40px; align-items: center; }
@@ -447,7 +479,7 @@ strong, .fuerte { font-weight: 600; }
 }
 
 /* Ficha con fotografía lateral (sacramentos, servicios) */
-.ficha { border: 1px solid var(--borde); display: grid; grid-template-columns: var(--col-foto, 360px) 1fr; }
+.ficha { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); display: grid; grid-template-columns: var(--col-foto, 360px) 1fr; }
 .ficha--invertida { grid-template-columns: 1fr var(--col-foto, 360px); }
 /* Servicios ya no lleva fotografía: la ficha ocupa una sola columna. */
 .ficha--sin-foto { grid-template-columns: 1fr; }
@@ -478,7 +510,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   background: linear-gradient(90deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .78) 46%, rgba(255, 255, 255, .38) 100%);
 }
 .hero__contenido { position: relative; max-width: 700px; }
-.hero__titulo { font: 300 44px/1.1 var(--fuente); color: var(--azul); letter-spacing: -.01em; margin-bottom: 24px; }
+.hero__titulo { font: 300 44px/1.1 var(--display); color: var(--azul); letter-spacing: -.01em; margin-bottom: 24px; }
 .hero__titulo strong { font-weight: 600; }
 .hero__horario { font: 600 24px/1.25 var(--fuente); color: var(--azul); margin-bottom: 32px; }
 .hero__horario strong { font-weight: 600; }
@@ -511,10 +543,24 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   gap: 14px;
   height: 100%;
   padding: 30px 30px 32px;
-  border: 1px solid var(--borde);
-  background: #fff;
+  background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra);
+  
 }
-.acceso:hover, .acceso:focus-within { border-color: var(--celeste); }
+.acceso:hover, .acceso:focus-within { box-shadow: inset 0 0 0 1px var(--celeste); }
+
+/* El ícono va sin el círculo celeste y más grande. Seis círculos idénticos en
+   fila eran lo más mecánico de la portada; dibujado directo sobre el blanco de
+   la tarjeta, el ícono acompaña en vez de competir. El círculo se conserva
+   donde el símbolo tiene peso propio: los sacramentos y los servicios. */
+.acceso .badge, .acceso .badge--imagen {
+  background: transparent;
+  width: auto; height: auto;
+  align-self: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 2px;
+}
+.acceso .badge i { color: var(--azul-medio); font-size: 44px; }
+.acceso .badge--imagen { width: 44px; height: 44px; }
 .acceso p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
 
 /* Cuatro de los seis llevan a alguna parte; los dos de contacto son solo
@@ -565,7 +611,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    otra vez con Nunito Sans—. El <strong> de «Lourdes» queda en 700, así que la
    diferencia entre las dos mitades es sutil; es el precio de la legibilidad y
    está aceptado. */
-.banda-patrona h2 { font: 600 44px/1.1 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+.banda-patrona h2 { font: 600 44px/1.1 var(--display); color: var(--azul); margin-bottom: 16px; }
 .banda-patrona h2 strong { font-weight: 700; }
 .banda-patrona p { font: 400 18px/1.65 var(--fuente); color: var(--azul); margin-bottom: 26px; }
 
@@ -584,8 +630,8 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid var(--borde);
-  background: #fff;
+  background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra);
+  
   text-align: left;
 }
 .aviso-tarjeta:hover, .aviso-tarjeta:focus-within { border-color: var(--celeste); }
@@ -657,7 +703,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   font-style: italic;
   border-left: 3px solid var(--celeste);
   padding: 6px 0 6px 24px;
-  font: 300 20px/1.35 var(--fuente);
+  font: 300 20px/1.35 var(--display);
   color: var(--azul);
 }
 .cita__fuente { font: 600 14px/1.4 var(--fuente); color: var(--texto-3); margin-top: 12px; }
@@ -677,7 +723,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .recuadro-dato i { font-size: 32px; color: var(--celeste); line-height: 1; flex: none; }
 .recuadro-dato__valor { font: 600 24px/1.25 var(--fuente); color: var(--azul); }
 
-.sacerdote { border: 1px solid var(--borde); }
+.sacerdote { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
 .sacerdote__cuerpo { padding: 26px 28px 30px; }
 .sacerdote__cargo { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
 .sacerdote__nombre { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
@@ -686,7 +732,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 /* --------------------------------------------------------------------------
    14. Horarios
    -------------------------------------------------------------------------- */
-.templo { border: 1px solid var(--borde); display: flex; flex-direction: column; }
+.templo { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); display: flex; flex-direction: column; }
 .templo--matriz { border-color: var(--celeste); grid-column: span 2; }
 .templo__cuerpo { padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1; }
 .templo__etiqueta { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
@@ -754,7 +800,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
    -------------------------------------------------------------------------- */
 .pastorales { display: grid; grid-template-columns: 308px 1fr; gap: 40px; align-items: start; }
 
-.indice { position: sticky; top: 20px; border: 1px solid var(--borde); }
+.indice { position: sticky; top: 20px; background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
 .indice__titulo { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); padding: 22px 24px 16px; }
 .indice__enlace {
   display: flex;
@@ -772,11 +818,11 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .indice__enlace--activo .indice__n { color: var(--azul-medio); }
 
 .categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--borde); }
-.categoria__titulo { font: 300 32px/1.2 var(--fuente); color: var(--azul); }
+.categoria__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
 .categoria__bajada { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
 .categoria__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 26px; }
 
-.grupo { border: 1px solid var(--borde); padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
+.grupo { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
 .grupo__pie { border-top: 1px solid var(--borde); padding-top: 18px; margin-top: auto; }
 .grupo__valor { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
 
@@ -799,7 +845,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .certificados { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
 .formulario { display: flex; flex-direction: column; gap: 24px; }
 
-.paso { border: 1px solid var(--borde); padding: 32px 34px; }
+.paso { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 32px 34px; }
 .paso__encabezado { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
 .paso__numero {
   width: 38px; height: 38px;
@@ -826,7 +872,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   background: #fff;
   min-height: 56px;
   width: 100%;
-  border-radius: 0;
+  border-radius: var(--radio);
 }
 .campo textarea { min-height: 110px; line-height: 1.5; resize: vertical; }
 .campo select { padding: 15px 46px 15px 16px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C5F92' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; }
@@ -849,7 +895,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   padding: 18px 22px;
 }
 
-.aparte { border: 1px solid var(--borde); padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 18px; }
+.aparte { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 18px; }
 .aparte__datos { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
 .aparte__datos--separado { border-top: 1px solid var(--borde); padding-top: 18px; }
 .aparte__nota { font: 400 18px/1.65 var(--fuente); color: var(--texto-3); }
@@ -858,7 +904,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
    solicitud salió. */
 .exito .badge { background: var(--exito); }
 .exito { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
-.exito__titulo { font: 300 32px/1.2 var(--fuente); color: var(--azul); }
+.exito__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
 .exito__titulo strong { font-weight: 600; }
 .exito p { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; }
 .exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 18px/1.65 var(--fuente); color: var(--azul); }
@@ -872,7 +918,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .uno-hero { position: relative; background: url("../img/uno-asamblea.jpg") center 45% / cover no-repeat; padding: 72px var(--canaleta); overflow: hidden; }
 .uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(238, 241, 245, .95) 0%, rgba(236, 239, 244, .88) 44%, rgba(232, 236, 241, .58) 100%); }
 .uno-hero__contenido { position: relative; max-width: 70ch; }
-.uno-hero h1 { font: 300 44px/1.1 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+.uno-hero h1 { font: 300 44px/1.1 var(--display); color: var(--azul); margin-bottom: 16px; }
 .uno-hero h1 strong { font-weight: 700; }
 .uno-hero p { font: 300 21px/1.35 var(--fuente); color: var(--azul); margin-bottom: 34px; }
 
@@ -883,7 +929,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .ayuda p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
 
 .aporte { display: flex; flex-direction: column; gap: 18px; padding: 36px 34px; }
-.aporte--borde { border: 1px solid var(--borde); }
+.aporte--borde { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
 .aporte--celeste { background: var(--celeste-claro); }
 .aporte h2, .aporte h3 { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
 .aporte p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
