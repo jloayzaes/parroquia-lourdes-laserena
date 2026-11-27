@@ -133,7 +133,8 @@ Secretaría y el teléfono aparecen en varias páginas.
   | 18 | 400 | 1.65 | **Cuerpo** | 17 |
   | 14 | 600 | 1.4 | Dato y etiqueta: menú, botones, rótulos | 14 |
   | 13 | 600 | 1.4 | **Antetítulo** · `letter-spacing: .25em` | 12 |
-  | 13 | 400 | 1.5 | Nota y texto secundario | 13 |
+  | 17 | 400 | 1.6 | Contenido secundario: aclaraciones, ayudas, subtítulos | 17 |
+  | 13 | 400 | 1.5 | Solo accesorio: crédito del pie y marcadores de foto | 13 |
 
   **Las mayúsculas sostenidas quedan solo en el antetítulo.** El menú, los
   botones, las pestañas y todos los rótulos van en minúscula normal, y sin
@@ -145,6 +146,18 @@ Secretaría y el teléfono aparecen en varias páginas.
 
   `body` lleva `font-variant-numeric: lining-nums tabular-nums`, para que los
   horarios y los teléfonos queden alineados en columna.
+
+  **El documento es referencia, no ley**, y donde choca con lo que ya estaba
+  medido gana lo medido. Dos casos concretos:
+
+  - Su «nota y texto secundario» en **13px** se subió a **17px** donde el texto
+    es contenido real —`.aclaracion`, `.campo__ayuda`, `.ficha__subtitulo`,
+    `.formulario__nota`—, porque el mínimo de 17px del cuerpo es un requisito
+    de la parroquia y ahí dentro no hay notas al pie sino frases como «Si aún
+    no estás bautizado, puedes prepararte…». Los 13px quedan para el crédito
+    del pie y los marcadores de foto.
+  - Su paleta (sección 3) **no se aplicó a los textos**: ver el apartado de
+    colores. El celeste y el azul medio que propone no alcanzan el mínimo AA.
 
   **Pendiente del documento:** su sección 1 dice que el logotipo es siempre la
   imagen SVG oficial (símbolo + nombre) y que el nombre de la parroquia nunca se
@@ -417,6 +430,17 @@ se agrega otro fondo de sección, conviene repetir ese par.
 ## Accesibilidad (requisito del cliente, no opcional)
 
 - Cuerpo mínimo **17px**. Contraste AA (4.5:1) en todo texto pequeño.
+- **Los colores del sitio son los medidos aquí, no los del documento de
+  tipografía.** Su sección 3 reproduce la paleta del manual de identidad, y dos
+  de esos valores no sirven para texto: el celeste `#6E9CC9` que propone para
+  los antetítulos da **2,89:1** y el azul medio `#5C82AB` para datos y
+  etiquetas da **4,01:1**, los dos bajo el mínimo que el propio documento exige
+  en su sección 8. Siguen vigentes `--celeste: #5083B6` y
+  `--azul-medio: #2C5F92`. Del manual sí se tomaron los dos grises de texto,
+  porque mejoran: `--texto: #44536B` (7,79:1) y `--texto-3: #5C6F8A` (5,13:1).
+  Si alguna vez se quiere el antetítulo en celeste de verdad, `#507191` es el
+  mismo tono y llega a 5,11:1.
+
 - **El celeste no es un color de texto.** Es la regla que más se repite en este
   archivo porque es la que más veces se rompió: `.antetitulo`, `.etiqueta-dato`,
   el ítem activo del menú, la barra de contacto y el botón llegaron todos a

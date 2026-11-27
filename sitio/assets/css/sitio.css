@@ -369,8 +369,8 @@ strong, .fuerte { font-weight: 600; }
 .boton--linea { background: transparent; color: var(--azul-medio); border: 1px solid var(--celeste); font: 600 14px/1.4 var(--fuente); padding: 15px 20px; }
 .boton--linea:hover { background: var(--celeste-claro); color: var(--azul-medio); }
 
-.boton--pequeno { font-size: 13px; padding: 17px 24px; }
-.boton--grande { font-size: 16px; padding: 23px 34px; }
+.boton--pequeno { font-size: 14px; padding: 17px 24px; }
+.boton--grande { font-size: 17px; padding: 23px 34px; }
 
 .enlace-flecha {
   display: inline-block;
@@ -458,7 +458,7 @@ strong, .fuerte { font-weight: 600; }
 img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
 .ficha__cuerpo { padding: 34px 34px 36px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-.ficha__subtitulo { font: 400 13px/1.5 var(--fuente); color: var(--texto-3); margin-top: 6px; }
+.ficha__subtitulo { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); margin-top: 6px; }
 .ficha__descripcion { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
 
 /* --------------------------------------------------------------------------
@@ -670,7 +670,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .cierre-oracion strong { font-weight: 600; }
 
 .recuadro-dato { display: flex; align-items: center; gap: 14px; background: var(--celeste-claro); padding: 20px 26px; }
-.recuadro-dato i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
+.recuadro-dato i { font-size: 32px; color: var(--celeste); line-height: 1; flex: none; }
 .recuadro-dato__valor { font: 600 24px/1.25 var(--fuente); color: var(--azul); }
 
 .sacerdote { border: 1px solid var(--borde); }
@@ -690,7 +690,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .templo--matriz .templo__nombre { font-size: 21px; }
 .templo__direccion { font: 400 18px/1.65 var(--fuente); color: var(--texto); margin-bottom: 16px; }
 .templo__misa { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
-.templo__misa i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
+.templo__misa i { font-size: 32px; color: var(--celeste); line-height: 1; flex: none; }
 .templo__misa-etiqueta { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 8px; }
 .templo__misa-horas { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
 .templo__especiales { margin-top: 22px; border-top: 1px solid var(--borde); padding-top: 20px; }
@@ -706,7 +706,13 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .datos-icono span { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
 .datos-icono a { color: var(--azul-medio); font-weight: 600; }
 /* Aclaración que acompaña a un dato: un punto más chica y en gris medio. */
-.aclaracion { font: 400 13px/1.5 var(--fuente); color: var(--texto-3); }
+/* 17px, no 13: el documento de tipografía fija las notas en 13px, pero aquí
+   dentro no hay notas al pie sino contenido —«Si aún no estás bautizado, puedes
+   prepararte…», los pies de las fotos históricas, «No requiere inscripción
+   previa»—. Manda el mínimo de 17px que pidió la parroquia. Los 13px quedan
+   solo para lo accesorio de verdad: el crédito del pie y los marcadores de
+   foto. */
+.aclaracion { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); }
 .aclaracion--cursiva { font-style: italic; }
 .tarjeta-horario strong { font-weight: 600; color: var(--azul-medio); }
 
@@ -821,14 +827,14 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .campo textarea { min-height: 110px; line-height: 1.5; resize: vertical; }
 .campo select { padding: 15px 46px 15px 16px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C5F92' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; }
 .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--celeste); outline: 2px solid var(--celeste); outline-offset: -2px; }
-.campo__ayuda { font: 400 13px/1.5 var(--fuente); color: var(--texto-3); }
+.campo__ayuda { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); }
 
 .privacidad { display: flex; align-items: flex-start; gap: 14px; background: var(--celeste-claro); padding: 24px 26px; }
 .privacidad input { width: 24px; height: 24px; accent-color: var(--celeste); flex: none; margin: 2px 0 0; }
 .privacidad label { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
 
 .formulario__envio { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.formulario__nota { font: 400 13px/1.5 var(--fuente); color: var(--texto); }
+.formulario__nota { font: 400 17px/1.65 var(--fuente); color: var(--texto); }
 /* Solo aparece cuando algo salió mal: tiene que distinguirse de una nota
    informativa, que es como se veía antes. */
 .formulario__aviso {
@@ -984,7 +990,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .menu__lista--abierta { display: flex; }
 
   .menu__item { display: flex; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--borde); }
-  .menu__enlace { flex: 1; padding: 18px var(--lateral); font-size: 16px; min-height: 56px; display: flex; align-items: center; }
+  .menu__enlace { flex: 1; padding: 18px var(--lateral); font-size: 17px; min-height: 56px; display: flex; align-items: center; }
   .menu__item--activo > .menu__enlace { box-shadow: inset 4px 0 0 var(--acento); }
 
   .menu__desplegar {
@@ -1044,11 +1050,11 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 
 /* --- Hasta 860px: fichas y bloques a una columna -------------------------- */
 @media (max-width: 860px) {
-  .titulo-portada { font-size: 36px; }
+  .titulo-portada { font-size: 32px; }
   .titulo-grande { font-size: 26px; }
   .titulo-medio { font-size: 26px; }
-  .hero__titulo { font-size: 36px; }
-  .uno-hero h1 { font-size: 36px; }
+  .hero__titulo { font-size: 32px; }
+  .uno-hero h1 { font-size: 32px; }
   .banda-patrona h2 { font-size: 32px; }
 
   .rejilla--con-lateral { grid-template-columns: 1fr; gap: 32px; }
@@ -1099,7 +1105,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
        encuadre hacia el frontis para que no quede solo palmera y pavimento. */
     background-position: 38% 45%; }
   .hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .84) 100%); }
-  .hero__titulo { font-size: 34px; }
+  .hero__titulo { font-size: 32px; }
   .hero__horario { font-size: 22px; }
   .hero__botones .boton { width: 100%; }
 
