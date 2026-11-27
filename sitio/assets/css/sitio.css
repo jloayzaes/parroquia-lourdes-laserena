@@ -575,6 +575,32 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .acceso .badge--imagen { width: 44px; height: 44px; }
 .acceso p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
 
+/* El horario, en grande.
+   Antes los datos iban como texto corrido con <br>, y la hora —que es a lo que
+   la gente entra a la portada— pesaba lo mismo que el resto del párrafo. Peor
+   aún: el salto dejaba «martes a sábado» y «19:00 hrs.» en renglones distintos,
+   así que la hora quedaba huérfana. Ahora el día es el rótulo y la hora el
+   dato: se lee sin leer. */
+.acceso__horario + .acceso__horario { margin-top: 2px; }
+.acceso__dia {
+  font: 600 14px/1.4 var(--fuente);
+  color: var(--azul-medio);
+  margin-bottom: 1px;
+}
+.acceso p.acceso__hora {
+  font: 600 24px/1.25 var(--fuente);
+  color: var(--azul);
+}
+/* El lugar acompaña al horario, no compite con él. */
+.acceso p.acceso__lugar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font: 400 17px/1.5 var(--fuente);
+  color: var(--texto-3);
+}
+.acceso__lugar i { font-size: 20px; color: var(--celeste); flex: none; }
+
 /* Cuatro de los seis llevan a alguna parte; los dos de contacto son solo
    información y no inventan un destino. El pie va anclado abajo para que las
    tarjetas de una misma fila terminen parejas. */

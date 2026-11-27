@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,300&family=Petrona:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
-<link rel="stylesheet" href="assets/css/sitio.css?v=08ff5cb2">
+<link rel="stylesheet" href="assets/css/sitio.css?v=cbd386c3">
 </head>
 <body>
 <a class="salto-contenido" href="#contenido">Ir al contenido</a>
@@ -179,24 +179,46 @@
         <div class="acceso">
           <div class="badge" style="--tam:64px"><i class="ph-thin ph-church" aria-hidden="true"></i></div>
           <h3 class="titulo-tarjeta titulo-tarjeta--grande">Horarios de Misa</h3>
-          <p>Santa Misa: martes a sábado<br>19:00 hrs.<br>Domingos 11:00 hrs.</p>
+          <div class="acceso__horario">
+            <p class="acceso__dia">Martes a sábado</p>
+            <p class="acceso__hora">19:00 hrs.</p>
+          </div>
+          <div class="acceso__horario">
+            <p class="acceso__dia">Domingos</p>
+            <p class="acceso__hora">11:00 hrs.</p>
+          </div>
           <p class="acceso__pie"><a class="acceso__enlace" href="horarios.html">Ver todos los horarios <span aria-hidden="true">&rarr;</span></a></p>
         </div>
         <div class="acceso">
           <div class="badge" style="--tam:64px"><i class="ph-thin ph-hands-praying" aria-hidden="true"></i></div>
           <h3 class="titulo-tarjeta titulo-tarjeta--grande">Reconciliación · Confesión</h3>
-          <p>Martes y viernes<br>17:00 a 18:45 hrs.<br>En el templo parroquial</p>
+          <div class="acceso__horario">
+            <p class="acceso__dia">Martes y viernes</p>
+            <p class="acceso__hora">17:00 a 18:45 hrs.</p>
+          </div>
+          <p class="acceso__lugar"><i class="ph-thin ph-map-pin" aria-hidden="true"></i>En el templo parroquial</p>
           <p class="acceso__pie"><a class="acceso__enlace" href="sacramentos.html#sac-confesion">Más sobre este sacramento <span aria-hidden="true">&rarr;</span></a></p>
         </div>
         <div class="acceso">
           <div class="badge" style="--tam:64px"><i class="ph-thin ph-clock" aria-hidden="true"></i></div>
           <h3 class="titulo-tarjeta titulo-tarjeta--grande">Secretaría parroquial</h3>
-          <p>Martes a sábado<br>10:00 a 13:00 hrs.<br>16:00 a 19:00 hrs.</p>
+          <div class="acceso__horario">
+            <p class="acceso__dia">Martes a sábado</p>
+            <p class="acceso__hora">10:00 a 13:00<br>16:00 a 19:00</p>
+          </div>
         </div>
         <div class="acceso">
           <img class="badge--imagen" style="--tam:44px" src="assets/img/icono-adoracion-linea.png" alt="" width="256" height="256">
           <h3 class="titulo-tarjeta titulo-tarjeta--grande">Adoración al Santísimo</h3>
-          <p>Un espacio de encuentro y oración.<br>Lunes a viernes 10:00 a 19:00 hrs.<br>Sábados 09:00 a 19:00 hrs.</p>
+          <div class="acceso__horario">
+            <p class="acceso__dia">Lunes a viernes</p>
+            <p class="acceso__hora">10:00 a 19:00 hrs.</p>
+          </div>
+          <div class="acceso__horario">
+            <p class="acceso__dia">Sábados</p>
+            <p class="acceso__hora">09:00 a 19:00 hrs.</p>
+          </div>
+          <p class="acceso__lugar"><i class="ph-thin ph-church" aria-hidden="true"></i>En el templo parroquial</p>
           <p class="acceso__pie"><a class="acceso__enlace" href="horarios.html">Ver en los horarios <span aria-hidden="true">&rarr;</span></a></p>
         </div>
         <div class="acceso">
@@ -208,7 +230,11 @@
         <div class="acceso">
           <div class="badge" style="--tam:64px"><i class="ph-thin ph-envelope-simple" aria-hidden="true"></i></div>
           <h3 class="titulo-tarjeta titulo-tarjeta--grande">Comunícate con nosotros</h3>
-          <p>Teléfono: <a href="tel:+56992803442">+56 9 9280 3442</a><br><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a><br>Av. Balmaceda 1596, La Serena</p>
+          <ul class="datos-icono">
+            <li><i class="ph-thin ph-phone" aria-hidden="true"></i><span><a href="tel:+56992803442">+56 9 9280 3442</a></span></li>
+            <li><i class="ph-thin ph-envelope-simple" aria-hidden="true"></i><span><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a></span></li>
+            <li><i class="ph-thin ph-map-pin" aria-hidden="true"></i><span>Av. Balmaceda 1596, La Serena</span></li>
+          </ul>
         </div>
       </div>
     </section>
