@@ -29,11 +29,11 @@
 
   /* Texto */
   --texto: #44536B;             /* absorbió a --texto-2, que era indistinguible */
-  --texto-3: #5C6F8A;           /* secundario: aclaraciones, ayudas, subtítulos */
+  --texto-3: #566881;           /* secundario. Subido al pasar la página a arena: #5C6F8A daba 4,32 ahí */
   /* Solo para lo que FALTA: [POR COMPLETAR] y marcadores de foto. No usarlo
      como gris secundario —para eso está --texto-3—, porque es deliberadamente
      tenue y no alcanza el mínimo de contraste. */
-  --pendiente: #7E93AE;
+  --pendiente: #56687E;         /* [POR COMPLETAR] es texto que se lee: 4,81 sobre arena, 5,71 sobre blanco */
 
   /* Superficies.
      v2: la página deja de ser blanca. El blanco pasa a ser la superficie de las
@@ -43,7 +43,7 @@
      plano sin relieve. Ahora hay cuatro planos: arena, blanco, celeste pálido
      y el azul del pie. */
   --papel: #F1EBE0;             /* fondo de página */
-  --papel-linea: #E0D5C2;       /* separador sobre el arena */
+  --papel-linea: #D6C9B2;       /* separador sobre el arena (1,38) y sobre blanco (1,63) */
   --blanco: #FFFFFF;            /* superficie de tarjeta */
   --borde: #E4EDF5;
   --borde-campo: #CFDDEA;
@@ -242,8 +242,8 @@ html { scroll-behavior: smooth; }
    5. Menú principal
    -------------------------------------------------------------------------- */
 .menu {
-  border-top: 1px solid var(--borde);
-  border-bottom: 1px solid var(--borde);
+  border-top: 1px solid var(--papel-linea);
+  border-bottom: 1px solid var(--papel-linea);
   padding: 0 var(--canaleta);
   position: relative;
 }
@@ -694,7 +694,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 /* --------------------------------------------------------------------------
    13. Nuestra parroquia
    -------------------------------------------------------------------------- */
-.pestanas { display: flex; border-bottom: 1px solid var(--borde); flex-wrap: wrap; }
+.pestanas { display: flex; border-bottom: 1px solid var(--papel-linea); flex-wrap: wrap; }
 .pestana {
   padding: 16px 26px;
   font: 600 14px/1.4 var(--fuente);
@@ -704,7 +704,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .pestana--activa { color: var(--azul); font-weight: 700; box-shadow: inset 0 -3px 0 var(--acento); }
 
 .linea-tiempo {
-  border-top: 1px solid var(--borde);
+  border-top: 1px solid var(--papel-linea);
   padding-top: 20px;
   font: 400 18px/1.65 var(--fuente);
   color: var(--texto);
@@ -725,7 +725,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   font-style: italic;
   color: var(--azul);
   text-align: center;
-  border-top: 1px solid var(--borde);
+  border-top: 1px solid var(--papel-linea);
   padding-top: 26px;
   margin-top: 6px;
 }
@@ -737,6 +737,10 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 
 .sacerdote { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
 .sacerdote__cuerpo { padding: 26px 28px 30px; }
+/* Mientras no lleguen los retratos, la ficha va sin foto y con más aire. El
+   marcador rayado que había —azul frío sobre el arena— se leía como una imagen
+   rota, y encima de una persona con nombre y apellido queda peor. */
+.sacerdote--sin-foto .sacerdote__cuerpo { padding: 34px 28px 36px; }
 .sacerdote__cargo { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
 .sacerdote__nombre { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
 .sacerdote__nota { font: 400 18px/1.65 var(--fuente); color: var(--texto); margin-top: 10px; }
@@ -787,7 +791,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   gap: 36px;
   align-items: center;
   padding: 44px 0;
-  border-bottom: 1px solid var(--borde);
+  border-bottom: 1px solid var(--papel-linea);
 }
 .capilla:first-of-type { padding-top: 0; }
 .capilla--invertida { grid-template-columns: 1fr 460px; }
@@ -812,7 +816,7 @@ div.templo__foto { display: flex; }
 img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .foto-gruta { width: 100%; height: auto; aspect-ratio: 44 / 42; object-fit: cover; }
 .capilla__descripcion { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
-.capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--borde); padding-top: 22px; }
+.capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--papel-linea); padding-top: 22px; }
 .capilla__valor { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
@@ -837,7 +841,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .indice__n { font: 600 14px/1.4 var(--fuente); color: var(--texto-3); }
 .indice__enlace--activo .indice__n { color: var(--azul-medio); }
 
-.categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--borde); }
+.categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--papel-linea); }
 .categoria__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
 .categoria__bajada { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
 .categoria__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 26px; }

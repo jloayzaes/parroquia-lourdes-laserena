@@ -229,6 +229,23 @@ Secretaría y el teléfono aparecen en varias páginas.
   scroll y eso anula el `position: sticky` del menú. Fue exactamente lo que
   pasó al montarlo.
 
+- **Al cambiar el fondo hay que volver a medir el contraste.** Pasar la página
+  de blanco a arena rompió tres cosas en silencio, porque todo estaba medido
+  contra blanco: las aclaraciones caían a 4,32, el `[POR COMPLETAR]` a 2,65 y
+  **siete separadores quedaban en 1,00 sobre el arena, es decir invisibles**
+  —los de Capillas, las pestañas, la línea de tiempo y el encabezado de
+  categoría—. Por eso existe `--papel-linea`: la línea que va sobre la página,
+  distinta de `--borde`, que va dentro de las tarjetas blancas. Si algún día
+  cambia `--papel`, se repite la medición de los dos tokens y de los siete
+  selectores.
+
+- **Ya no queda ningún marcador rayado.** Eran once y se fueron todos: cuatro en
+  Capillas y Horarios, tres en Sacerdotes, el resto antes. Mientras no llegue la
+  fotografía, la ficha va sin imagen —`.capilla--sin-foto`,
+  `.sacerdote--sin-foto`—. Un recuadro a rayas al lado de fichas con foto real
+  se lee como una imagen rota, y sobre el arena, siendo azul frío, peor todavía.
+  **No reintroducirlos.**
+
 - **El fondo lleva grano, no líneas.** `.pagina` combina el arena con un ruido
   fractal en SVG al 5,5 % de opacidad. Un plano liso se lee frío por más cálido
   que sea el tono, pero **la primera versión usaba líneas finas y se veían como
