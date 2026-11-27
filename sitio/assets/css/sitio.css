@@ -173,9 +173,9 @@ html { scroll-behavior: smooth; }
 /* Ritmo vertical. Una sola idea por sección y aire de verdad entre ellas: es
    lo que separa un sitio que respira de uno que apila bloques. Los valores son
    una escala de cuatro pasos y no cifras sueltas. */
-.bloque { padding-left: var(--canaleta); padding-right: var(--canaleta); padding-bottom: 76px; }
-.bloque--sup { padding-top: 76px; }
-.bloque--sup-corto { padding-top: 60px; }
+.bloque { padding-left: var(--canaleta); padding-right: var(--canaleta); padding-bottom: 56px; }
+.bloque--sup { padding-top: 56px; }
+.bloque--sup-corto { padding-top: 44px; }
 .bloque + .bloque { padding-top: 0; }
 
 /* --------------------------------------------------------------------------
@@ -500,7 +500,7 @@ strong, .fuerte { font-weight: 600; }
    así que se muestran enteras con contain: recortarlas cortaría el cirio o la
    rama que acompañan al símbolo, y el sobrante no se nota. */
 img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
-.ficha__cuerpo { padding: 34px 34px 36px; }
+.ficha__cuerpo { padding: 26px 32px 28px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .ficha__subtitulo { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); margin-top: 6px; }
 .ficha__descripcion { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
@@ -552,9 +552,9 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   height: 100%;
-  padding: 30px 30px 32px;
+  padding: 24px 26px 26px;
   background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra);
   
 }
@@ -662,7 +662,12 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    tarjetas de la misma altura, con el texto recortado a tres líneas y el
    enlace anclado abajo, en vez de la ficha horizontal de avisos.html, que
    dejaba huecos porque los avisos tienen largos muy distintos. */
-.avisos-portada { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+/* La rejilla tiene que aguantar uno, dos o tres avisos: con repeat(3, 1fr) un
+   aviso solo quedaba en un tercio del ancho con dos huecos al lado. Con el
+   tope de 440px cada tarjeta conserva su medida y la fila se llena desde la
+   izquierda, haya los que haya. */
+.avisos-portada { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 440px));
+  justify-content: start; gap: 26px; align-items: stretch; }
 .aviso-tarjeta {
   position: relative;
   display: flex;
@@ -674,7 +679,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 }
 .aviso-tarjeta:hover, .aviso-tarjeta:focus-within { border-color: var(--celeste); }
 .aviso-tarjeta__foto { width: 100%; height: 230px; object-fit: cover; display: block; }
-.aviso-tarjeta__cuerpo { display: flex; flex-direction: column; flex: 1; gap: 10px; padding: 24px 26px 26px; }
+.aviso-tarjeta__cuerpo { display: flex; flex-direction: column; flex: 1; gap: 9px; padding: 20px 24px 22px; }
 .aviso-tarjeta__meta {
   display: flex; align-items: flex-start; gap: 8px;
   font: 600 14px/1.4 var(--fuente); color: var(--azul-medio);
@@ -762,7 +767,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .recuadro-dato__valor { font: 600 24px/1.25 var(--fuente); color: var(--azul); }
 
 .sacerdote { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
-.sacerdote__cuerpo { padding: 26px 28px 30px; }
+.sacerdote__cuerpo { padding: 22px 26px 24px; }
 /* Mientras no lleguen los retratos, la ficha va sin foto y con más aire. El
    marcador rayado que había —azul frío sobre el arena— se leía como una imagen
    rota, y encima de una persona con nombre y apellido queda peor. */
@@ -776,7 +781,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    -------------------------------------------------------------------------- */
 .templo { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); display: flex; flex-direction: column; }
 .templo--matriz { border-color: var(--celeste); grid-column: span 2; }
-.templo__cuerpo { padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1; }
+.templo__cuerpo { padding: 20px 24px 22px; display: flex; flex-direction: column; flex: 1; }
 .templo__etiqueta { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
 .templo__nombre { font: 700 21px/1.25 var(--fuente); color: var(--azul); margin-bottom: 10px; }
 .templo--matriz .templo__nombre { font-size: 21px; }
@@ -816,7 +821,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   grid-template-columns: 460px 1fr;
   gap: 36px;
   align-items: center;
-  padding: 44px 0;
+  padding: 32px 0;
   border-bottom: 1px solid var(--papel-linea);
 }
 .capilla:first-of-type { padding-top: 0; }
@@ -832,14 +837,17 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .capilla--invertida .capilla__foto { order: 2; }
 /* Fotografías reales de los templos. Reemplazan al marcador <div class="foto">
    y ocupan el mismo hueco: object-fit recorta al alto pedido sin deformar. */
-.templo__foto { width: 100%; height: auto; aspect-ratio: 46 / 30; object-fit: cover; }
+/* 46/18 y no 46/30: la foto se llevaba 438 de los 723px de la tarjeta, para
+   un nombre, una dirección y una hora. A 263 la capilla se sigue reconociendo
+   —campanario, cruz, tejado— y la página pierde media pantalla. */
+.templo__foto { width: 100%; height: auto; aspect-ratio: 46 / 18; object-fit: cover; }
 /* Vale también para el marcador <div class="foto">, que trae alto fijo. */
 div.templo__foto { display: flex; }
 .templo picture { display: block; }
 /* La ficha de la parroquia ocupa las dos columnas, así que su foto es
    una banda más ancha que la de las capillas. */
-.templo--matriz .templo__foto { aspect-ratio: 1400 / 400; }
-img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
+.templo--matriz .templo__foto { aspect-ratio: 1400 / 300; }
+img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .foto-gruta { width: 100%; height: auto; aspect-ratio: 44 / 42; object-fit: cover; }
 .capilla__descripcion { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
 .capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--papel-linea); padding-top: 22px; }
@@ -895,7 +903,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .certificados { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
 .formulario { display: flex; flex-direction: column; gap: 24px; }
 
-.paso { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 32px 34px; }
+.paso { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 26px 30px; }
 .paso__encabezado { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
 .paso__numero {
   width: 38px; height: 38px;
@@ -1059,8 +1067,8 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 }
 .centrado { text-align: center; }
 .pila { display: flex; flex-direction: column; }
-.pila--22 { gap: 22px; }
-.pila--28 { gap: 28px; }
+.pila--22 { gap: 20px; }
+.pila--28 { gap: 24px; }
 .pila--36 { gap: 36px; }
 .medida { max-width: 74ch; }
 .mt-8 { margin-top: 8px; }

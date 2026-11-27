@@ -246,6 +246,31 @@ Secretaría y el teléfono aparecen en varias páginas.
   se lee como una imagen rota, y sobre el arena, siendo azul frío, peor todavía.
   **No reintroducirlos.**
 
+- **Densidad de scroll: medir antes de apretar.** Se hizo una pasada completa y
+  el reparto es claro: en Horarios y Sacramentos **las imágenes son el 63–68 %
+  del alto**; en el resto manda el texto. Apretar el padding de sección y el
+  relleno de todas las tarjetas aportó **apenas un 2 %**. El sitio no tiene
+  grasa de maquetación, tiene contenido, así que a partir de aquí recortar
+  márgenes empieza a recortar legibilidad.
+
+  Lo que sí funcionó: **bajar la foto de las tarjetas de templo de 46/30 a
+  46/18** —se llevaba 438 de los 723px de la tarjeta, para tres líneas de
+  texto— que dejó Horarios un 13 % más corta. Y quitar repeticiones: el dato de
+  inscripción estaba cinco veces en Sacramentos, además de la barra superior y
+  de la bajada de esa misma página.
+
+  **Capillas se queda a todo el ancho.** Se probó en dos columnas y bajaba un
+  25 %, pero es la página con mejor lectura del sitio y la parroquia prefirió
+  conservarla. No reintentarlo.
+
+- **Los avisos caducan, y nadie avisa.** En noviembre de 2026 el sitio seguía
+  anunciando la kermés del 13 de septiembre en la barra de las doce páginas,
+  en la portada y en Avisos, más una inscripción de pymes cerrada el 11 de
+  septiembre. Al quitar un aviso hay que mirar **los tres sitios**: la barra
+  (`herramientas/aviso-barra.py`), la tarjeta de la portada y la ficha de
+  `avisos.html`. La rejilla de la portada aguanta uno, dos o tres avisos sin
+  descuadrarse.
+
 - **El fondo lleva grano, no líneas.** `.pagina` combina el arena con un ruido
   fractal en SVG al 5,5 % de opacidad. Un plano liso se lee frío por más cálido
   que sea el tono, pero **la primera versión usaba líneas finas y se veían como
