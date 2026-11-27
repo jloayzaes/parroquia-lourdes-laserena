@@ -178,6 +178,22 @@ html { scroll-behavior: smooth; }
 .bloque--sup-corto { padding-top: 44px; }
 .bloque + .bloque { padding-top: 0; }
 
+/* Bandas de sección. La portada alternaba arena, blanco y foto en su primera
+   mitad y lo perdía entera en la segunda: Avisos y Dónde celebramos iban las
+   dos sobre el arena y, por la regla de arriba, pegadas sin un píxel de aire.
+   Hoy ninguna banda contigua comparte fondo.
+   Una sección con fondo propio necesita más aire que una transparente: en la
+   transparente el título flota sobre la página; en la banda el canto está ahí
+   y a 56px lo roza. */
+.bloque--blanco { background: var(--blanco); }
+.bloque--celeste { background: var(--celeste-claro); }
+.bloque--blanco.bloque--sup, .bloque--celeste.bloque--sup { padding-top: 72px; }
+.bloque--blanco, .bloque--celeste { padding-bottom: 72px; }
+/* Y el bloque de después recupera su aire: el canto de la banda ya está ahí,
+   así que la regla de arriba deja de tener sentido. Misma especificidad que
+   ella, así que gana por ir después. */
+.bloque--blanco + .bloque, .bloque--celeste + .bloque { padding-top: 56px; }
+
 /* --------------------------------------------------------------------------
    4. Cabecera
    -------------------------------------------------------------------------- */
@@ -570,6 +586,35 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 }
 .acceso:hover, .acceso:focus-within { box-shadow: inset 0 0 0 1px var(--celeste); }
 
+/* Sobre la banda blanca la caja sobra. Eran seis tarjetas blancas flotando
+   sobre el fondo y se probó ponerles un campo de color debajo —ocho tonos de
+   azul, ninguno convencía—; el problema no era el tono. A la sección le
+   faltaba encabezado, que era la única de la portada sin uno, y a las
+   tarjetas les sobraba la caja. Ahora la rejilla sola ordena.
+   Los filetes se recolocan en cada quiebre porque la rejilla pasa de tres
+   columnas a dos y a una: si no, quedan líneas sueltas a mitad de fila. */
+.accesos { gap: 0; }
+.accesos .acceso {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 26px 30px;
+  border-left: 1px solid var(--borde);
+}
+.accesos .acceso:hover, .accesos .acceso:focus-within {
+  box-shadow: none;
+  background: var(--celeste-claro);
+}
+.accesos .acceso:nth-child(3n+1) { border-left: 0; padding-left: 0; }
+.accesos .acceso:nth-child(n+4) { border-top: 1px solid var(--borde); }
+.accesos .acceso:nth-child(-n+3) { padding-top: 0; }
+
+/* El ícono deja de ocupar un renglón para él solo y se pone junto al título:
+   eran 46 de los 338px de alto de la tarjeta. */
+.acceso__cabeza { display: flex; align-items: center; gap: 14px; }
+.acceso__cabeza .badge, .acceso__cabeza .badge--imagen { margin-bottom: 0; }
+.acceso__cabeza .titulo-tarjeta { margin: 0; }
+
 /* El ícono va sin el círculo celeste y más grande. Seis círculos idénticos en
    fila eran lo más mecánico de la portada; dibujado directo sobre el blanco de
    la tarjeta, el ícono acompaña en vez de competir. El círculo se conserva
@@ -593,16 +638,23 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    aún: el salto dejaba «martes a sábado» y «19:00 hrs.» en renglones distintos,
    así que la hora quedaba huérfana. Ahora el día es el rótulo y la hora el
    dato: se lee sin leer. */
+/* Día y hora en la misma línea base, como en las fichas de Capillas: dos
+   renglones por horario eran 118 de los 338px. La hora sigue en 24px, que
+   eso es justo lo que no hay que tocar. */
+.acceso__horario { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .acceso__horario + .acceso__horario { margin-top: 2px; }
 .acceso__dia {
   font: 600 13px/1.4 var(--fuente);
   color: var(--azul-medio);
-  margin-bottom: 1px;
 }
 .acceso p.acceso__hora {
   font: 600 24px/1.25 var(--fuente);
   color: var(--azul);
 }
+/* La Secretaría tiene dos tramos de hora separados por <br>. En línea
+   compartida el segundo cae sangrado bajo el primero, que es correcto pero
+   se lee distinto del resto: con el rótulo arriba vuelve a alinearse. */
+.acceso__horario:has(br) { display: block; }
 /* El lugar acompaña al horario, no compite con él. */
 .acceso p.acceso__lugar {
   display: flex;
@@ -1189,6 +1241,14 @@ div.templo__foto { display: flex; }
   .rejilla--4 { grid-template-columns: 1fr 1fr; }
   .rejilla--3 { grid-template-columns: 1fr 1fr; }
 
+  /* Dos columnas: el filete de la izquierda salta a las impares y el de
+     arriba empieza en la tercera celda. */
+  .accesos .acceso:nth-child(3n+1) { border-left: 1px solid var(--borde); padding-left: 30px; }
+  .accesos .acceso:nth-child(2n+1) { border-left: 0; padding-left: 0; }
+  .accesos .acceso:nth-child(n+3) { border-top: 1px solid var(--borde); }
+  .accesos .acceso:nth-child(-n+2) { border-top: 0; padding-top: 0; }
+  .accesos .acceso:nth-child(3) { padding-top: 26px; }
+
   .avisos-portada { grid-template-columns: 1fr 1fr; }
 
   .pastorales { grid-template-columns: 1fr; gap: 28px; }
@@ -1238,6 +1298,18 @@ div.templo__foto { display: flex; }
 /* --- Hasta 760px: teléfono ------------------------------------------------ */
 @media (max-width: 760px) {
   .rejilla--2, .rejilla--3, .rejilla--4 { grid-template-columns: 1fr; }
+
+  /* Una columna: fuera los filetes verticales, uno horizontal entre cada par. */
+  .accesos .acceso { border-left: 0; padding-left: 0; padding-right: 0; }
+  .accesos .acceso:nth-child(3n+1) { border-left: 0; padding-left: 0; }
+  .accesos .acceso:nth-child(n+2) { border-top: 1px solid var(--borde); padding-top: 26px; }
+  .accesos .acceso:first-child { border-top: 0; padding-top: 0; }
+
+  /* En el teléfono 72px de banda se comen media pantalla: el resto de las
+     secciones usa 52. */
+  .bloque--blanco.bloque--sup, .bloque--celeste.bloque--sup { padding-top: 52px; }
+  .bloque--blanco, .bloque--celeste { padding-bottom: 52px; }
+  .bloque--blanco + .bloque, .bloque--celeste + .bloque { padding-top: 48px; }
   .avisos-portada { grid-template-columns: 1fr; }
   .datos-2, .categoria__grupos, .paso__campos { grid-template-columns: 1fr; }
   .campo--ancho { grid-column: span 1; }
@@ -1433,7 +1505,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 96px; }
    gasta, y además aquí el motivo es la gente, que es justo lo que no conviene
    tapar. Es la única fotografía del sitio que se ve entera.
    -------------------------------------------------------------------------- */
-.banda-comunidad { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; background: var(--blanco); }
+/* Transparente y no blanca: los accesos pasaron a banda blanca y las dos
+   quedaban pegadas, que es justo el problema que veníamos a arreglar. Sobre
+   el arena la fotografía marca el canto y el texto sigue pasando AA
+   —antetítulo 5,6 · título 9,7 · cuerpo 6,57—. */
+.banda-comunidad { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; background: transparent; }
 .banda-comunidad__foto { width: 100%; height: 100%; min-height: 440px; object-fit: cover; display: block; }
 .banda-comunidad__texto { display: flex; flex-direction: column; align-items: flex-start;
   justify-content: center; gap: 18px; padding: 64px clamp(32px, 5vw, 80px); }

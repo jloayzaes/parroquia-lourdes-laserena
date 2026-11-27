@@ -331,6 +331,57 @@ Secretaría y el teléfono aparecen en varias páginas.
   historia de cada comunidad detrás de un clic, y esas historias son de lo
   mejor que tiene el sitio.
 
+- **La portada tiene ritmo de superficies: ninguna sección contigua comparte
+  fondo.** El orden es foto · celeste claro · blanco · arena · foto · celeste
+  claro · arena. Antes la primera mitad alternaba y la segunda no: Avisos y
+  Dónde celebramos iban las dos sobre el arena y encima **pegadas**, porque
+  `.bloque + .bloque { padding-top: 0 }` lleva dos clases y le gana a
+  cualquier selector de una. Por eso existen ahora `.bloque--blanco` y
+  `.bloque--celeste`, y una regla justo detrás —misma especificidad, gana por
+  ir después— que le devuelve el aire al bloque siguiente.
+
+  Las bandas llevan **72px de relleno y no 56**: en una sección transparente el
+  título flota sobre la página, pero en una banda el canto está ahí y a 56 lo
+  roza. En el teléfono bajan a 52, que es lo que usa el resto.
+
+  `.banda-comunidad` pasó a transparente. Era blanca, y al convertir los
+  accesos en banda blanca las dos se fundían: el mismo problema, movido de
+  sitio. Sobre el arena la fotografía marca el canto y el texto sigue pasando
+  AA (antetítulo 5,6 · título 9,7 · cuerpo 6,57).
+
+- **Los accesos de la portada son seis celdas con filete, no seis tarjetas**
+  (`.accesos`). Y aquí hay una lección que costó ocho intentos: se probaron
+  **ocho fondos de color** bajo esas tarjetas —azul profundo, azul medio, azul
+  intermedio, con grano, con degradado interno, con degradado hacia el arena,
+  con escalón de tono, celeste claro— y ninguno convencía. **El problema no
+  era el tono.** La sección era la única de la portada **sin encabezado
+  visible**: su `<h2>` estaba en `.solo-lectores`, así que después de la franja
+  del 1% aparecían seis tarjetas sin que nada las anunciara, y el color se
+  estaba usando para tapar un hueco estructural. Con su antetítulo y su título
+  —«En la parroquia» · «Horarios y **contacto**»— y la sección en blanco, las
+  tarjetas ya no necesitan caja: la rejilla sola ordena.
+
+  **Antes de darle color a un bloque que no se separa, comprobar que tiene
+  encabezado.**
+
+  Los filetes se recolocan en los tres quiebres, porque la rejilla pasa de tres
+  columnas a dos (960px) y a una (760px). Si se tocan, hay que tocar los tres o
+  quedan líneas sueltas a mitad de fila.
+
+- **La tarjeta de acceso bajó de 338 a 220px sin quitar contenido.** De aquellos
+  338, **46 eran el ícono ocupando un renglón para él solo** y 118 los dos
+  horarios, que gastaban dos renglones cada uno porque el día iba encima de la
+  hora. Hoy el ícono va junto al título (`.acceso__cabeza`) y el día comparte
+  línea base con la hora, el mismo patrón de las fichas de Capillas. El bloque
+  pasó de 901 a 722px.
+
+  **La hora sigue en 24px y eso no se toca**: es lo que hace que se lea sin
+  leer. Encoger la hora deshace la mejora, no la continúa.
+
+  La Secretaría es la excepción: tiene dos tramos de hora separados por `<br>`
+  y en línea compartida el segundo caía sangrado bajo el primero. La atrapa
+  `.acceso__horario:has(br)`, que le devuelve el rótulo arriba.
+
 - **Los avisos caducan, y nadie avisa.** En noviembre de 2026 el sitio seguía
   anunciando la kermés del 13 de septiembre en la barra de las doce páginas,
   en la portada y en Avisos, más una inscripción de pymes cerrada el 11 de
