@@ -110,36 +110,46 @@ Secretaría y el teléfono aparecen en varias páginas.
   nota informativa.
 - **Clases**: en español, estilo BEM suave — `.templo__nombre`,
   `.ficha--invertida`, `.indice__enlace--activo`.
-- **Tipografía**: solo Montserrat, en **diez tamaños y cuatro interlineados**.
-  Antes había veintitrés tamaños y dieciocho interlineados —nueve tamaños
-  distintos entre 17px y 26px, diferencias de 1px que nadie percibe como
-  jerarquía pero que hacían que cada página se sintiera levemente distinta—.
-  **Todo texto nuevo usa un paso de esta tabla**, no un valor intermedio:
+- **Tipografía**: solo **Nunito Sans** (Google Fonts, OFL). Reemplazó a
+  Montserrat el 26 de noviembre de 2026, por decisión de la parroquia: sigue la
+  línea de Vatican News, que usa Museo Sans —de pago—, y Nunito Sans es su
+  equivalente libre. El documento original está en
+  `tipografia-web-nunito-sans.md`; venía escrito para un proyecto Next.js con
+  Tailwind, así que **las secciones 2, 3 y 5 no aplican aquí**: este sitio no
+  tiene build. Lo que sí aplica —la familia, los grosores, la escala y las
+  reglas de redacción visual— está traducido a `sitio.css`.
 
-  | px | Peso | Interl. | Rol |
-  |---|---|---|---|
-  | 56 | 300 | 1.15 | Hero de portada y del 1% |
-  | 46 | 300 | 1.15 | Título de portada de sección |
-  | 38 | 300 | 1.15 | Título grande |
-  | 30 | 300 | 1.15 | Título medio y de categoría |
-  | 24 | 600 | 1.3 | Título de ficha · destacados (en 300) |
-  | 21 | 600 | 1.3 | Título de tarjeta, de templo, de paso |
-  | 19 | 400 | 1.6 | **Texto de lectura**: párrafos y descripciones |
-  | 17 | 400 | 1.6 | **Texto denso**: tarjetas, datos, listas, pie |
-  | 15 | — | 1.3 | Botones, pestañas, etiquetas de formulario |
-  | 13 | 500/600 | 1.3 | Rótulos en mayúsculas y menú |
+  **Grosores: 300, 400, 600 y 700.** No hay 200 ni 500, y no se piden al CDN.
+  El contraste lo da el grosor, no una segunda familia.
 
-  Los pesos son **300, 400, 500, 600 y 700**. **El 200 se eliminó**: Montserrat
-  ExtraLight es un trazo de hilo y a 30px se desvanecía, justo lo contrario de
-  lo que necesita un lector de edad. Ya no se pide al CDN.
+  | px | Peso | Interl. | Rol | En móvil |
+  |---|---|---|---|---|
+  | 44 | 300 + `<strong>` 700 | 1.1 | Título mayor: hero, portada de sección, Patrona | 32 |
+  | 32 | 300 | 1.2 | Título de sección | 26 |
+  | 24 | 600 | 1.25 | Cifra destacada: hora de Misa, dato grande | 22 |
+  | 21 | 700 | 1.25 | Título de tarjeta, de ficha, de templo | 19 |
+  | 21 | 300 | 1.35 | Frase destacada: franja del 1 %, bajada del hero | 19 |
+  | 20 | 300 *itálica* | 1.35 | Cita | 18 |
+  | 18 | 400 | 1.65 | **Cuerpo** | 17 |
+  | 14 | 600 | 1.4 | Dato y etiqueta: menú, botones, rótulos | 14 |
+  | 13 | 600 | 1.4 | **Antetítulo** · `letter-spacing: .25em` | 12 |
+  | 13 | 400 | 1.5 | Nota y texto secundario | 13 |
 
-  Tres excepciones deliberadas, no las unifiques:
-  - **Los lockups de marca** (`.marca__*`, `.pie__nombre`, `.pie__lockup-*`) son
-    un logotipo, no texto: conservan sus medidas propias.
-  - **`.banda-patrona h2`** va en peso 400, no 300, porque la parroquia pidió
-    expresamente que ese título fuera más grueso.
-  - **`.paso__numero`** usa `17px/38px`: el interlineado ahí centra el dígito
-    dentro del círculo, es un mecanismo de maquetación y no tipografía.
+  **Las mayúsculas sostenidas quedan solo en el antetítulo.** El menú, los
+  botones, las pestañas y todos los rótulos van en minúscula normal, y sin
+  `letter-spacing`. Eso encogió el menú de 1076px a 821px, así que ahora sobran
+  287px en el quiebre de 1180 en vez de 32: **hoy sí cabría un décimo botón**.
+
+  El `letter-spacing` solo sobrevive en tres sitios: el antetítulo (`.25em`),
+  los títulos mayores (`-.01em`) y los dos lockups de marca.
+
+  `body` lleva `font-variant-numeric: lining-nums tabular-nums`, para que los
+  horarios y los teléfonos queden alineados en columna.
+
+  **Pendiente del documento:** su sección 1 dice que el logotipo es siempre la
+  imagen SVG oficial (símbolo + nombre) y que el nombre de la parroquia nunca se
+  reescribe en Nunito Sans. Hoy la cabecera y el pie sí lo escriben como texto
+  al lado del dibujo. Falta que la parroquia entregue ese SVG.
 
   **Íconos**: solo Phosphor Thin
   (`<i class="ph-thin ph-church" aria-hidden="true">`), por CDN.
