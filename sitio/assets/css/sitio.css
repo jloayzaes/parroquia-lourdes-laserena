@@ -559,9 +559,13 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    zona transparente del velo, y el contraste caía a 2,5:1. Atado al 46 % se
    queda siempre a la izquierda del quiebre del degradado. */
 .banda-patrona__contenido { position: relative; max-width: min(660px, 46%); }
-/* Peso 400 y no 200: sobre la fotografía, la Montserrat extrafina costaba
-   de leer. La parroquia lo pidió expresamente. */
-.banda-patrona h2 { font: 300 44px/1.1 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+/* Peso 600 y no 300: es la única excepción a la regla de que los títulos van
+   livianos. Sobre la fotografía el 300 cuesta de leer, y la parroquia pidió dos
+   veces que este título en concreto fuera más grueso —primero con Montserrat y
+   otra vez con Nunito Sans—. El <strong> de «Lourdes» queda en 700, así que la
+   diferencia entre las dos mitades es sutil; es el precio de la legibilidad y
+   está aceptado. */
+.banda-patrona h2 { font: 600 44px/1.1 var(--fuente); color: var(--azul); margin-bottom: 16px; }
 .banda-patrona h2 strong { font-weight: 700; }
 .banda-patrona p { font: 400 18px/1.65 var(--fuente); color: var(--azul); margin-bottom: 26px; }
 

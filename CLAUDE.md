@@ -128,7 +128,7 @@ Secretaría y el teléfono aparecen en varias páginas.
 
   | px | Peso | Interl. | Rol | En móvil |
   |---|---|---|---|---|
-  | 44 | 300 + `<strong>` 700 | 1.1 | Título mayor: hero, portada de sección, Patrona | 32 |
+  | 44 | 300 + `<strong>` 700 | 1.1 | Título mayor: hero y portada de sección | 32 |
   | 32 | 300 | 1.2 | Título de sección | 26 |
   | 24 | 600 | 1.25 | Cifra destacada: hora de Misa, dato grande | 22 |
   | 21 | 700 | 1.25 | Título de tarjeta, de ficha, de templo | 19 |
@@ -139,6 +139,12 @@ Secretaría y el teléfono aparecen en varias páginas.
   | 13 | 600 | 1.4 | **Antetítulo** · `letter-spacing: .25em` | 12 |
   | 17 | 400 | 1.6 | Contenido secundario: aclaraciones, ayudas, subtítulos | 17 |
   | 13 | 400 | 1.5 | Solo accesorio: crédito del pie y marcadores de foto | 13 |
+
+  **La única excepción al peso 300 es `.banda-patrona h2`**, que va en 600. La
+  parroquia pidió dos veces que ese título fuera más grueso, primero con
+  Montserrat y otra vez con Nunito Sans: sobre la fotografía un 300 cuesta de
+  leer. Su `<strong>` sigue en 700, así que las dos mitades casi no se
+  distinguen; se aceptó a cambio de que el título se lea.
 
   **Las mayúsculas sostenidas quedan solo en el antetítulo.** El menú, los
   botones, las pestañas y todos los rótulos van en minúscula normal, y sin
