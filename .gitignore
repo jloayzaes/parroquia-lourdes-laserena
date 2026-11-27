@@ -16,3 +16,7 @@ node_modules/
 
 # Documentos generados para enviar (no forman parte del sitio)
 *.pdf
+
+# Páginas de prueba y comparación: viven en sitio/ para poder usar el CSS y las
+# fotos reales, pero no se publican. El prefijo _ las marca como temporales.
+sitio/_*.html
