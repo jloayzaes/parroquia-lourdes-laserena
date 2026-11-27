@@ -104,6 +104,10 @@ Secretaría y el teléfono aparecen en varias páginas.
   pantalla. **Repartirlo por antetítulos o enlaces lo convierte en un segundo
   color de marca y deja de marcar nada**; se probó así y se descartó.
 
+  **No está en el manual de identidad y aun así se queda**: la parroquia lo
+  confirmó el 26 de noviembre de 2026, después de ver las tres versiones. Si
+  algún día se actualiza el manual, este es el color que habría que agregarle.
+
   Error y éxito están desaturados a propósito: al lado de este azul, un rojo o
   un verde vivos se leen como un cuerpo extraño. **Sin ellos el formulario no
   comunicaba**: el mensaje de error tenía exactamente el mismo estilo que una
