@@ -155,13 +155,13 @@ html { scroll-behavior: smooth; }
    -------------------------------------------------------------------------- */
 .pagina {
   width: 100%;
-  /* El arena lleva una textura de líneas finísimas, casi imperceptible. Es el
-     recurso que usa Cedarcrest para que el fondo se sienta de papel y no de
-     pantalla: un plano liso lee frío por más cálido que sea el tono. El
-     contraste de la textura es de menos de un 2 %, así que no estorba al texto. */
+  /* El arena lleva un grano finísimo, como el de un papel de impresión: un
+     plano liso se lee frío por más cálido que sea el tono. Es un ruido
+     fractal y no un patrón, de ahí que no tenga dirección —se probó con
+     líneas finas y se veían como rayas—. Va al 5,5 % de opacidad, así que no
+     estorba al texto, y es un SVG en línea: no pesa ni una petición. */
   background-color: var(--papel);
-  background-image: repeating-linear-gradient(
-    0deg, rgba(255, 255, 255, .38) 0 1px, rgba(255, 255, 255, 0) 1px 3px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='.055'/%3E%3C/svg%3E");
   min-height: 100vh;
   /* clip y no hidden: los dos cortan lo que se sale de ancho, pero hidden
      convierte a .pagina en un contenedor de scroll y eso anula el
@@ -1151,12 +1151,23 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .barra-superior { font-size: 14px; padding: 12px var(--lateral); gap: 8px 18px; }
   .barra-superior__grupo { gap: 8px 18px; }
 
-  .marca { padding: 20px var(--lateral); gap: 16px; }
+  /* Cabecera compacta: antes se comía 280px, el 34 % de la pantalla, antes de
+     que empezara el contenido. Ahora ronda los 205px.
+     El teléfono sale de la barra —está en la tarjeta «Comunícate» de la
+     portada y completo en el pie—; el horario de Misa y el aviso se quedan,
+     que es a lo que se entra. La palabra «Menú» también se queda: no ocupa
+     alto propio y una hamburguesa sola se entiende peor. */
+  .barra-superior__dato:not(.barra-superior__misas):not(.barra-superior__aviso) { display: none; }
+  .marca { padding: 13px var(--lateral); gap: 12px; }
+  .marca__dibujo { height: 50px; }
+  .marca__texto { padding-left: 13px; }
+  .menu { min-height: 52px; }
+  .menu__abrir { min-height: 52px; padding-top: 0; padding-bottom: 0; }
   .marca__enlace { gap: 12px; flex: 1 1 auto; min-width: 0; }
   .marca__dibujo { height: 48px; }
   .marca__texto { padding-left: 12px; flex: 1; min-width: 0; }
   .marca__nombre { font-size: 19px; white-space: normal; }
-  .marca__linea-sup, .marca__linea-inf { font-size: 11px; letter-spacing: .18em; white-space: normal; }
+  .marca__linea-sup, .marca__linea-inf { font-size: 10px; letter-spacing: .16em; white-space: normal; }
 
   /* Los marcadores de foto llevan un alto fijo pensado para el escritorio.
      En el teléfono ese mismo alto se come media pantalla, así que se limita

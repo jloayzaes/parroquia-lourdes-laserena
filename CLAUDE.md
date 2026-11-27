@@ -229,6 +229,31 @@ Secretaría y el teléfono aparecen en varias páginas.
   scroll y eso anula el `position: sticky` del menú. Fue exactamente lo que
   pasó al montarlo.
 
+- **El fondo lleva grano, no líneas.** `.pagina` combina el arena con un ruido
+  fractal en SVG al 5,5 % de opacidad. Un plano liso se lee frío por más cálido
+  que sea el tono, pero **la primera versión usaba líneas finas y se veían como
+  rayas**: lo que funciona es una textura sin dirección. Se probaron cinco
+  fondos —liso, grano, puntos, degradado y líneas— y la parroquia eligió el
+  grano. Va embebido en el CSS, así que no cuesta una petición.
+
+- **La cabecera en móvil está apretada a propósito.** Ocupaba 280px, el 34 % de
+  la pantalla, antes de que empezara el contenido; hoy son 226px. El teléfono
+  sale de la barra en el teléfono —está en la tarjeta «Comunícate» y completo en
+  el pie—, el logo baja a 50px y la fila del menú a 52px, que sigue sobre el
+  mínimo táctil de 44. **No quitar la palabra «Menú»**: va en la misma fila que
+  la hamburguesa, no ahorra un solo píxel de alto, y el botón solo con el ícono
+  se entiende peor.
+
+- **El aviso de la barra superior se cambia con una herramienta**, no a mano:
+
+  ```bash
+  python3 herramientas/aviso-barra.py "Misa de Navidad · 24 de diciembre 20:00" "avisos.html#aviso-navidad"
+  python3 herramientas/aviso-barra.py --quitar
+  ```
+
+  Está repetido en las doce páginas, que es exactamente cómo se termina con un
+  aviso de septiembre en noviembre.
+
 - **Visor de fotografías.** Cualquier `<img class="ampliable">` se abre en
   grande. El `alt` hace de pie de foto, así que no se escribe el texto dos
   veces —y eso es un motivo más para que el `alt` describa de verdad—. Se
