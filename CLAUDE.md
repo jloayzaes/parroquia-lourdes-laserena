@@ -77,6 +77,28 @@ Secretaría y el teléfono aparecen en varias páginas.
   Al crear una sección nueva a todo el ancho, usar `padding: X var(--canaleta)`.
 - **Colores**: siempre vía variables CSS del bloque `:root` en `sitio.css`
   (`var(--azul)`, `var(--celeste)`, `var(--borde)`…). Nunca un hex suelto.
+
+  La paleta entera vive en once grados de tono, del 206° al 217°: es un solo
+  azul en catorce claridades. Eso le da unidad, pero significa que **el color no
+  puede crear jerarquía** —si todo es el mismo azul, nada destaca por ser
+  azul—. La jerarquía la hacen el tamaño, el peso y el espaciado; el color solo
+  separa lo oscuro de lo claro. Antes de agregar un token nuevo conviene
+  preguntarse si no hay ya uno que haga lo mismo: `--texto-2` y `--pie-texto` se
+  eliminaron por eso, porque eran indistinguibles de `--texto` y de
+  `--celeste-sobre-azul`.
+
+  Tres tokens tienen un uso acotado y no son grises de propósito general:
+
+  | Token | Solo para |
+  |---|---|
+  | `--pendiente` | `[POR COMPLETAR]` y marcadores de foto. Para texto secundario real va `--texto-3`. |
+  | `--error` · `--error-fondo` | Algo salió mal. Hoy: el aviso del formulario de certificados. |
+  | `--exito` · `--exito-fondo` | Algo salió bien. Hoy: el visto y el recuadro de la confirmación de envío. |
+
+  Error y éxito están desaturados a propósito: al lado de este azul, un rojo o
+  un verde vivos se leen como un cuerpo extraño. **Sin ellos el formulario no
+  comunicaba**: el mensaje de error tenía exactamente el mismo estilo que una
+  nota informativa.
 - **Clases**: en español, estilo BEM suave — `.templo__nombre`,
   `.ficha--invertida`, `.indice__enlace--activo`.
 - **Tipografía**: solo Montserrat. **Íconos**: solo Phosphor Thin
@@ -336,13 +358,15 @@ se agrega otro fondo de sección, conviene repetir ese par.
 ## Accesibilidad (requisito del cliente, no opcional)
 
 - Cuerpo mínimo **17px**. Contraste AA (4.5:1) en todo texto pequeño.
-- **El botón `.boton` va en `--azul-medio`, no en `--celeste`.** Con celeste, su
-  texto blanco de 14px quedaba en 2,89:1, muy por debajo de AA; en azul medio
-  sube a 6,6:1. Cualquier color de fondo nuevo para texto blanco hay que
-  medirlo antes.
-- Queda pendiente el mismo problema en `.antetitulo`, que usa `--celeste` sobre
-  blanco (2,7:1). Es el rótulo pequeño en mayúsculas que encabeza las secciones;
-  cambiarlo toca todas las páginas, así que está a la espera de decisión.
+- **El celeste no es un color de texto.** Es la regla que más se repite en este
+  archivo porque es la que más veces se rompió: `.antetitulo`, `.etiqueta-dato`,
+  el ítem activo del menú, la barra de contacto y el botón llegaron todos a
+  quedar bajo el mínimo por usarlo sobre blanco. Todo texto va en `--azul`,
+  `--azul-medio` o los grises; el celeste se reserva para fondos, badges,
+  bordes, subrayados y el anillo de foco.
+- Hoy el sitio **no tiene ningún par de colores bajo el mínimo**: se midieron
+  los trece pares en uso y el más justo es el gris de las aclaraciones sobre
+  franja celeste, en 4,67:1.
 - Áreas táctiles de **44px o más** en móvil (hoy el menú usa 56px).
 - Jerarquía correcta de encabezados, `alt` en toda imagen informativa,
   `<label>` visible en todo campo de formulario.

@@ -11,24 +11,35 @@
   /* Colores de marca */
   --azul: #1B3A61;              /* Azul parroquial */
   --azul-medio: #2C5F92;
-  --celeste: #6E9CC9;           /* Acento principal */
+  /* Acento principal. Es color de SUPERFICIE —fondos, badges, bordes, foco—,
+     no de texto: el anterior (#6E9CC9) daba 2,89:1 sobre blanco y no llegaba
+     ni al 3:1 que piden los elementos gráficos. */
+  --celeste: #5083B6;
   --celeste-claro: #EAF3FA;     /* Fondo de franjas y portadas */
   --celeste-muy-claro: #F6FAFD;
   --celeste-sobre-azul: #BBD4EA;
 
   /* Texto */
-  --texto: #54637a;
-  --texto-2: #5a6879;
-  --texto-3: #6c7a90;
-  --pendiente: #8FA3BC;         /* [POR COMPLETAR] y etiquetas de foto */
+  --texto: #54637a;             /* absorbió a --texto-2, que era indistinguible */
+  --texto-3: #606D82;           /* secundario: aclaraciones, ayudas, subtítulos */
+  /* Solo para lo que FALTA: [POR COMPLETAR] y marcadores de foto. No usarlo
+     como gris secundario —para eso está --texto-3—, porque es deliberadamente
+     tenue y no alcanza el mínimo de contraste. */
+  --pendiente: #7E93AE;
 
   /* Superficies */
   --blanco: #FFFFFF;
   --borde: #E4EDF5;
   --borde-campo: #CFDDEA;
 
-  /* Pie de página */
-  --pie-texto: #C4D3E5;
+  /* Estado. Desaturados a propósito: al lado de este azul, un rojo o un verde
+     vivos se ven como un cuerpo extraño. */
+  --error: #B23A2E;
+  --error-fondo: #FBEDEB;
+  --exito: #2A7354;
+  --exito-fondo: #E9F3EE;
+
+  /* Pie de página. El texto usa --celeste-sobre-azul. */
   --pie-credito: #8FA7C4;
 
   /* Medidas
@@ -70,7 +81,7 @@ body {
 img { max-width: 100%; }
 
 a { color: var(--azul-medio); text-decoration: none; }
-a:hover { color: var(--celeste); }
+a:hover { color: var(--azul); }
 /* Un correo es una sola palabra y no se puede cortar por sílabas. En pantallas
    angostas ensancharía su tarjeta más allá del borde y el texto quedaría
    cortado, así que aquí sí se le permite partir. */
@@ -124,7 +135,7 @@ html { scroll-behavior: smooth; }
    4. Cabecera
    -------------------------------------------------------------------------- */
 .barra-superior {
-  background: var(--celeste);
+  background: var(--azul-medio);
   color: #fff;
   padding: 10px var(--canaleta);
   display: flex;
@@ -174,7 +185,7 @@ html { scroll-behavior: smooth; }
 
 .marca__horario { display: flex; align-items: center; gap: 14px; flex: none; }
 .marca__horario-icono { color: var(--celeste); flex: none; display: block; }
-.marca__horario-texto { font: 400 15px/1.5 var(--fuente); color: var(--texto-2); white-space: nowrap; }
+.marca__horario-texto { font: 400 15px/1.5 var(--fuente); color: var(--texto); white-space: nowrap; }
 
 /* --------------------------------------------------------------------------
    5. Menú principal
@@ -205,11 +216,11 @@ html { scroll-behavior: smooth; }
   text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul);
 }
 .menu__item--activo > .menu__enlace {
-  color: var(--celeste);
+  color: var(--azul-medio);
   font-weight: 700;
   box-shadow: inset 0 -3px 0 var(--celeste);
 }
-.menu__item--activo > .menu__enlace:hover { color: var(--celeste); }
+.menu__item--activo > .menu__enlace:hover { color: var(--azul-medio); }
 
 /* Avisos cierra la fila. Se distingue solo por el peso: mismo azul parroquial
    que los demás, en negrita. Cuando está activo sigue la regla general. */
@@ -259,7 +270,7 @@ html { scroll-behavior: smooth; }
 .antetitulo {
   font: 500 13px/1.3 var(--fuente);
   letter-spacing: .3em;
-  color: var(--celeste);
+  color: var(--azul-medio);
   text-transform: uppercase;
   margin-bottom: 14px;
 }
@@ -283,7 +294,7 @@ strong, .fuerte { font-weight: 600; }
 .etiqueta-dato {
   font: 600 12px/1.2 var(--fuente);
   letter-spacing: .14em;
-  color: var(--celeste);
+  color: var(--azul-medio);
   text-transform: uppercase;
   margin-bottom: 8px;
 }
@@ -361,11 +372,11 @@ strong, .fuerte { font-weight: 600; }
   display: inline-block;
   font: 600 13px/1 var(--fuente);
   letter-spacing: .1em;
-  color: var(--celeste);
+  color: var(--azul-medio);
   text-transform: uppercase;
   padding: 15px 0;
 }
-.enlace-flecha:hover { color: var(--azul-medio); }
+.enlace-flecha:hover { color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    10. Badges de ícono
@@ -529,7 +540,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso-tarjeta__meta {
   display: flex; align-items: flex-start; gap: 8px;
   font: 600 12px/1.4 var(--fuente); letter-spacing: .1em;
-  text-transform: uppercase; color: var(--celeste);
+  text-transform: uppercase; color: var(--azul-medio);
 }
 .aviso-tarjeta__meta i { font-size: 19px; line-height: 1; flex: none; }
 .aviso-tarjeta__titulo { font: 600 19px/1.35 var(--fuente); color: var(--azul); }
@@ -545,7 +556,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    cualquier parte sin anidar enlaces y sin que el lector de pantalla lea la
    tarjeta entera como nombre del enlace. */
 .aviso-tarjeta__enlace::after { content: ""; position: absolute; inset: 0; }
-.aviso-tarjeta:hover .aviso-tarjeta__enlace { color: var(--celeste); }
+.aviso-tarjeta:hover .aviso-tarjeta__enlace { color: var(--azul); }
 /* Las dos fotos de la historia son el mismo ángulo con cuarenta años de
    diferencia: van verticales, del mismo tamaño y juntas, para compararlas.
    La antigua es un escaneo de baja resolución, así que no se amplía más. */
@@ -554,7 +565,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso { display: flex; gap: 20px; text-align: left; }
 /* object-fit recorta la foto al hueco sin deformarla; los marcadores <div> lo ignoran. */
 .aviso__foto { width: 200px; height: 152px; flex: none; object-fit: cover; }
-.aviso__fecha { font: 600 13px/1.4 var(--fuente); letter-spacing: .1em; color: var(--celeste); margin-bottom: 8px; }
+.aviso__fecha { font: 600 13px/1.4 var(--fuente); letter-spacing: .1em; color: var(--azul-medio); margin-bottom: 8px; }
 .aviso__titulo { font: 600 20px/1.35 var(--fuente); color: var(--azul); margin-bottom: 8px; }
 .aviso p { font: 400 17px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; }
 
@@ -566,7 +577,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   gap: 26px;
 }
 
-.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 17px/1.5 var(--fuente); color: var(--texto-2); }
+.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 17px/1.5 var(--fuente); color: var(--texto); }
 .lugar__fila { display: flex; align-items: flex-start; gap: 10px; }
 .lugar__fila i { font-size: 22px; color: var(--celeste); line-height: 1; flex: none; }
 
@@ -579,7 +590,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   font: 500 15px/1 var(--fuente);
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--texto-2);
+  color: var(--texto);
 }
 .pestana:hover, .pestana:focus-visible { color: var(--azul); text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul); }
 .pestana--activa { color: var(--azul); font-weight: 700; box-shadow: inset 0 -3px 0 var(--celeste); }
@@ -588,7 +599,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   border-top: 1px solid var(--borde);
   padding-top: 20px;
   font: 400 17px/1.9 var(--fuente);
-  color: var(--texto-2);
+  color: var(--texto);
 }
 .linea-tiempo strong { font-weight: 600; color: var(--azul); }
 
@@ -617,7 +628,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 
 .sacerdote { border: 1px solid var(--borde); }
 .sacerdote__cuerpo { padding: 26px 28px 30px; }
-.sacerdote__cargo { font: 600 13px/1 var(--fuente); letter-spacing: .14em; color: var(--celeste); text-transform: uppercase; margin-bottom: 12px; }
+.sacerdote__cargo { font: 600 13px/1 var(--fuente); letter-spacing: .14em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 12px; }
 .sacerdote__nombre { font: 600 21px/1.35 var(--fuente); color: var(--azul); }
 .sacerdote__nota { font: 400 17px/1.6 var(--fuente); color: var(--texto); margin-top: 10px; }
 
@@ -627,13 +638,13 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .templo { border: 1px solid var(--borde); display: flex; flex-direction: column; }
 .templo--matriz { border-color: var(--celeste); grid-column: span 2; }
 .templo__cuerpo { padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1; }
-.templo__etiqueta { font: 600 13px/1 var(--fuente); letter-spacing: .16em; color: var(--celeste); text-transform: uppercase; margin-bottom: 12px; }
+.templo__etiqueta { font: 600 13px/1 var(--fuente); letter-spacing: .16em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 12px; }
 .templo__nombre { font: 600 21px/1.3 var(--fuente); color: var(--azul); margin-bottom: 10px; }
 .templo--matriz .templo__nombre { font-size: 26px; }
-.templo__direccion { font: 400 18px/1.6 var(--fuente); color: var(--texto-2); margin-bottom: 16px; }
+.templo__direccion { font: 400 18px/1.6 var(--fuente); color: var(--texto); margin-bottom: 16px; }
 .templo__misa { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
 .templo__misa i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
-.templo__misa-etiqueta { font: 600 14px/1 var(--fuente); letter-spacing: .1em; color: var(--celeste); text-transform: uppercase; margin-bottom: 8px; }
+.templo__misa-etiqueta { font: 600 14px/1 var(--fuente); letter-spacing: .1em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 8px; }
 .templo__misa-horas { font: 400 19px/1.6 var(--fuente); color: var(--azul); }
 .templo__especiales { margin-top: 22px; border-top: 1px solid var(--borde); padding-top: 20px; }
 .templo__especiales-lista { font: 400 18px/1.9 var(--fuente); color: var(--texto); }
@@ -687,7 +698,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .pastorales { display: grid; grid-template-columns: 308px 1fr; gap: 40px; align-items: start; }
 
 .indice { position: sticky; top: 20px; border: 1px solid var(--borde); }
-.indice__titulo { font: 600 12px/1 var(--fuente); letter-spacing: .16em; color: var(--celeste); text-transform: uppercase; padding: 22px 24px 16px; }
+.indice__titulo { font: 600 12px/1 var(--fuente); letter-spacing: .16em; color: var(--azul-medio); text-transform: uppercase; padding: 22px 24px 16px; }
 .indice__enlace {
   display: flex;
   align-items: center;
@@ -700,7 +711,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 }
 .indice__enlace:hover { color: var(--azul); background: var(--celeste-muy-claro); }
 .indice__enlace--activo { background: var(--celeste-claro); font-weight: 700; box-shadow: inset 3px 0 0 var(--celeste); }
-.indice__n { font: 600 14px/1 var(--fuente); color: var(--pendiente); }
+.indice__n { font: 600 14px/1 var(--fuente); color: var(--texto-3); }
 .indice__enlace--activo .indice__n { color: var(--azul-medio); }
 
 .categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--borde); }
@@ -763,32 +774,37 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .campo textarea { min-height: 110px; line-height: 1.5; resize: vertical; }
 .campo select { padding: 15px 46px 15px 16px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C5F92' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; }
 .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--celeste); outline: 2px solid var(--celeste); outline-offset: -2px; }
-.campo__ayuda { font: 400 16px/1.7 var(--fuente); color: var(--pendiente); }
+.campo__ayuda { font: 400 16px/1.7 var(--fuente); color: var(--texto-3); }
 
 .privacidad { display: flex; align-items: flex-start; gap: 14px; background: var(--celeste-claro); padding: 24px 26px; }
 .privacidad input { width: 24px; height: 24px; accent-color: var(--celeste); flex: none; margin: 2px 0 0; }
 .privacidad label { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 
 .formulario__envio { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.formulario__nota { font: 400 17px/1.5 var(--fuente); color: var(--texto-2); }
+.formulario__nota { font: 400 17px/1.5 var(--fuente); color: var(--texto); }
+/* Solo aparece cuando algo salió mal: tiene que distinguirse de una nota
+   informativa, que es como se veía antes. */
 .formulario__aviso {
   font: 400 17px/1.6 var(--fuente);
-  color: var(--azul);
-  background: var(--celeste-claro);
-  border-left: 3px solid var(--celeste);
+  color: var(--error);
+  background: var(--error-fondo);
+  border-left: 3px solid var(--error);
   padding: 18px 22px;
 }
 
 .aparte { border: 1px solid var(--borde); padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 18px; }
 .aparte__datos { font: 400 18px/1.8 var(--fuente); color: var(--texto); }
 .aparte__datos--separado { border-top: 1px solid var(--borde); padding-top: 18px; }
-.aparte__nota { font: 400 17px/1.6 var(--fuente); color: var(--pendiente); }
+.aparte__nota { font: 400 17px/1.6 var(--fuente); color: var(--texto-3); }
 
+/* El visto del envío va en verde, no en celeste: es la única señal de que la
+   solicitud salió. */
+.exito .badge { background: var(--exito); }
 .exito { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
 .exito__titulo { font: 200 40px/1.15 var(--fuente); color: var(--azul); }
 .exito__titulo strong { font-weight: 600; }
 .exito p { font: 400 19px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; }
-.exito__datos { background: var(--celeste-claro); padding: 26px 30px; font: 400 18px/1.8 var(--fuente); color: var(--azul); }
+.exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 18px/1.8 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    18. 1% a mi Iglesia
@@ -826,7 +842,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   gap: 14px 22px;
   font: 400 18px/1.5 var(--fuente);
 }
-.transferencia dt { color: var(--celeste); font-weight: 600; white-space: nowrap; }
+.transferencia dt { color: var(--azul-medio); font-weight: 600; white-space: nowrap; }
 .transferencia dd { color: var(--azul); margin: 0; }
 .transferencia dd strong { font-weight: 600; }
 
@@ -843,12 +859,12 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .pie__lockup-inf { letter-spacing: .22em; margin-top: 8px; }
 .pie__nombre { font: 300 21px/1.25 var(--fuente); color: #fff; margin-top: 6px; }
 .pie__nombre strong { font-weight: 700; }
-.pie__texto { font: 400 17px/1.75 var(--fuente); color: var(--pie-texto); }
+.pie__texto { font: 400 17px/1.75 var(--fuente); color: var(--celeste-sobre-azul); }
 .pie__titulo { font: 600 13px/1 var(--fuente); letter-spacing: .2em; color: var(--celeste-sobre-azul); margin-bottom: 20px; text-transform: uppercase; }
-.pie__lista { font: 400 17px/1.6 var(--fuente); color: var(--pie-texto); display: flex; flex-direction: column; gap: 14px; }
+.pie__lista { font: 400 17px/1.6 var(--fuente); color: var(--celeste-sobre-azul); display: flex; flex-direction: column; gap: 14px; }
 .pie__fila { display: flex; align-items: flex-start; gap: 12px; }
 .pie__fila i { font-size: 24px; color: var(--celeste-sobre-azul); line-height: 1; flex: none; }
-.pie a { color: var(--pie-texto); }
+.pie a { color: var(--celeste-sobre-azul); }
 .pie a:hover { color: #fff; text-decoration: underline; }
 .pie__credito {
   border-top: 1px solid rgba(255, 255, 255, .18);
