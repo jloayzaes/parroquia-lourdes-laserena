@@ -136,16 +136,38 @@ Secretaría y el teléfono aparecen en varias páginas.
   hasta noviembre de 2026. Bajó a 16, el secundario a 15 y los rótulos a 13, y
   el sitio pasó de 40,8 a 37,6 pantallas.
 
-  **Dos excepciones a 17px, y tienen motivo medido**: `.acceso p`,
+  **Tres excepciones a 17px, y tienen motivo medido**: `.acceso p`,
   `.aviso-tarjeta__texto` y `.texto-tarjeta` viven en columnas estrechas, y a
   16 su línea bajaba a 47–53 caracteres, por debajo del rango cómodo.
 
-  **Bajar el cuerpo obliga a acotar la medida.** Sin tope, los párrafos pasaban
-  de 74 caracteres por línea a 88. Hay `max-width: 39em` en el texto de lectura
-  y 42em en `.aclaracion`; hoy la media del sitio es de 65 caracteres.
+  **Bajar el cuerpo obliga a acotar la medida.** Hay `max-width: 32em` en el
+  texto de lectura y 34em en `.aclaracion`, que va en 15px y por eso necesita
+  más em para la misma línea. Hoy el sitio está entre 55 y 73 caracteres por
+  línea, con 67 de media, y ningún párrafo pasa de 75.
+
   **No usar la unidad `ch`**: mide el ancho del glifo «0», que en Nunito Sans
-  vale 0,6em, así que `68ch` daban 652px, es decir 88 caracteres. Se cometió
-  ese error y solo apareció al medir las líneas reales.
+  vale 0,6em, así que `68ch` daban 652px. En noviembre de 2026 había ocho
+  reglas con `ch` y cuatro de ellas —`.bajada`, `.categoria__bajada`,
+  `.ficha__descripcion` y `.exito p`— llevaban su propia `max-width` **por
+  debajo** de la regla general y con la misma especificidad, así que la
+  anulaban sin que se notara. Si se agrega un selector a esa regla, revisar
+  que no tenga otra `max-width` más abajo.
+
+  **Y medir la línea bien, que es donde se falló dos veces seguidas.** Contar
+  el total de caracteres y dividirlo entre el número de líneas **siempre da de
+  menos**, porque la última línea casi nunca está llena: así salió un «65 de
+  media» cuando la cifra real era 84. Lo que hay que contar son los caracteres
+  de una línea llena, recorriendo el texto con un `Range` hasta que el rectángulo
+  salta de fila:
+
+  ```js
+  const r = document.createRange(); r.setStart(nodo, 0);
+  for (let i = 1; i <= nodo.textContent.length; i++) {
+    r.setEnd(nodo, i);
+    const rc = [...r.getClientRects()].filter(x => x.width > 0);
+    if (rc.length > 1 && rc[rc.length-1].top > rc[0].top) return i - 1;
+  }
+  ```
 
   **Grosores: 300, 400, 600 y 700.** No hay 200 ni 500, y no se piden al CDN.
   El contraste lo da el grosor, no una segunda familia.
@@ -158,11 +180,20 @@ Secretaría y el teléfono aparecen en varias páginas.
   | 21 | 700 | 1.25 | Título de tarjeta, de ficha, de templo | 19 |
   | 21 | 300 | 1.35 | Frase destacada: franja del 1 %, bajada del hero | 19 |
   | 20 | 300 *itálica* | 1.35 | Cita | 18 |
-  | 18 | 400 | 1.65 | **Cuerpo** | 17 |
-  | 14 | 600 | 1.4 | Dato y etiqueta: menú, botones, rótulos | 14 |
+  | 16 | 400 | 1.65 | **Cuerpo** | 16 |
+  | 15 | 600 | 1.4 | **Menú** | 17 |
+  | 15 | 400 | 1.65 | Contenido secundario: aclaraciones, ayudas, subtítulos | 15 |
+  | 13 | 600 | 1.4 | Dato, etiqueta y botón | 13 |
   | 13 | 600 | 1.4 | **Antetítulo** · `letter-spacing: .25em` | 12 |
-  | 17 | 400 | 1.6 | Contenido secundario: aclaraciones, ayudas, subtítulos | 17 |
   | 13 | 400 | 1.5 | Solo accesorio: crédito del pie y marcadores de foto | 13 |
+
+  **El menú va en 15px y no en los 13 del resto de los rótulos.** Quedó en 13
+  por arrastre cuando el cuerpo bajó a 16 y todos los 14px del sitio pasaron a
+  13 de una pasada: el menú se fue con ellos aunque no es un rótulo, es la
+  navegación. Las referencias lo tienen bastante más grande —Vatican News en
+  18/500, Cedarcrest en 16/400—, y 15 en peso 600 queda ópticamente cerca de
+  ese 16/400. Con nueve botones el menú mide 862px y en el quiebre de 1180
+  sobran 246px, así que **todavía cabría un décimo botón**, pero poco más.
 
   **La única excepción al peso 300 es `.banda-patrona h2`**, que va en 600. La
   parroquia pidió dos veces que ese título fuera más grueso, primero con
