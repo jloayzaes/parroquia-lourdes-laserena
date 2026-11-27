@@ -339,10 +339,14 @@ strong, .fuerte { font-weight: 600; }
    caracteres —peor que los 74 que había—. 39em deja la media en 68, dentro
    del rango cómodo. OJO: no usar la unidad ch; en Nunito Sans el glifo «0»
    vale 0,6em y 68ch daban 652px, es decir 88 caracteres. */
+/* Ojo con el orden: esta regla y la de .bajada tienen la misma especificidad,
+   así que una max-width más abajo la anula. Pasó con cuatro de ellas a la vez
+   —.bajada 76ch, .categoria__bajada 62ch, .ficha__descripcion 62ch y .exito p
+   60ch—: se saltaban este tope en silencio y nadie lo veía mirando. */
 .parrafo, .bajada, .ficha__descripcion, .comunidad__desc,
 .categoria__bajada, .aporte p, .exito p { max-width: 39em; }
 .parrafo--corto { font-size: 18px; line-height: 1.6; }
-.bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 76ch; text-wrap: pretty; }
+.bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); text-wrap: pretty; }
 .texto-tarjeta { font: 400 17px/1.65 var(--fuente); color: var(--texto); }
 .pendiente { color: var(--pendiente); }
 
@@ -509,7 +513,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .ficha__cuerpo { padding: 26px 32px 28px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .ficha__subtitulo { font: 400 15px/1.65 var(--fuente); color: var(--texto-3); margin-top: 6px; }
-.ficha__descripcion { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
+.ficha__descripcion { font: 400 16px/1.65 var(--fuente); color: var(--texto); margin-bottom: 24px; }
 
 /* --------------------------------------------------------------------------
    12. Inicio
@@ -716,7 +720,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso__foto { width: 200px; height: 152px; flex: none; object-fit: cover; }
 .aviso__fecha { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 8px; }
 .aviso__titulo { font: 700 21px/1.25 var(--fuente); color: var(--azul); margin-bottom: 8px; }
-.aviso p { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; }
+.aviso p { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 37.2em; }
 
 .aviso-destacado {
   background: var(--celeste-claro);
@@ -910,7 +914,7 @@ div.templo__foto { display: flex; }
 
 .categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--papel-linea); }
 .categoria__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
-.categoria__bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
+.categoria__bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); margin-top: 10px; }
 .categoria__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 26px; }
 
 .grupo { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
@@ -997,7 +1001,7 @@ div.templo__foto { display: flex; }
 .exito { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
 .exito__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
 .exito__titulo strong { font-weight: 600; }
-.exito p { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; }
+.exito p { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 .exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
@@ -1008,7 +1012,7 @@ div.templo__foto { display: flex; }
    el altar con la imagen de la Patrona. */
 .uno-hero { position: relative; background: url("../img/uno-asamblea.jpg") center 45% / cover no-repeat; padding: 72px var(--canaleta); overflow: hidden; }
 .uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(238, 241, 245, .95) 0%, rgba(236, 239, 244, .88) 44%, rgba(232, 236, 241, .58) 100%); }
-.uno-hero__contenido { position: relative; max-width: 70ch; }
+.uno-hero__contenido { position: relative; max-width: 42em; }
 .uno-hero h1 { font: 300 44px/1.1 var(--display); color: var(--azul); margin-bottom: 16px; }
 .uno-hero h1 strong { font-weight: 700; }
 .uno-hero p { font: 300 21px/1.35 var(--fuente); color: var(--azul); margin-bottom: 34px; }
@@ -1023,7 +1027,7 @@ div.templo__foto { display: flex; }
    es lo que el contenido es, y así el título «Tu aporte nos ayuda a» enlaza
    directo con las frases que lo completan.
    El ícono se queda fino y al costado: acompaña sin competir. */
-.ayuda-lista { list-style: none; margin: 0; padding: 0; max-width: 62ch; }
+.ayuda-lista { list-style: none; margin: 0; padding: 0; max-width: 37.2em; }
 .ayuda-lista li {
   display: flex;
   align-items: flex-start;
@@ -1103,7 +1107,7 @@ div.templo__foto { display: flex; }
 .pila--22 { gap: 20px; }
 .pila--28 { gap: 24px; }
 .pila--36 { gap: 36px; }
-.medida { max-width: 74ch; }
+.medida { max-width: 44.4em; }
 .mt-8 { margin-top: 8px; }
 .mt-30 { margin-top: 30px; }
 .mt-36 { margin-top: 36px; }
@@ -1433,7 +1437,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 .banda-comunidad__foto { width: 100%; height: 100%; min-height: 440px; object-fit: cover; display: block; }
 .banda-comunidad__texto { display: flex; flex-direction: column; align-items: flex-start;
   justify-content: center; gap: 18px; padding: 64px clamp(32px, 5vw, 80px); }
-.banda-comunidad__texto .bajada { max-width: 44ch; }
+.banda-comunidad__texto .bajada { max-width: 26em; }
 
 /* --------------------------------------------------------------------------
    24. Visor de fotografías
