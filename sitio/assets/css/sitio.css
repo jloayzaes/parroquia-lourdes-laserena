@@ -949,8 +949,24 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .destacado-celeste { background: var(--celeste-claro); padding: 34px 36px; font: 300 21px/1.35 var(--fuente); color: var(--azul); }
 .destacado-celeste strong { font-weight: 600; }
 
-.ayuda { display: flex; flex-direction: column; gap: 18px; }
-.ayuda p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+/* Los destinos del aporte, en una lista de una columna.
+   Antes eran cuatro bloques en fila con el círculo celeste —los mismos que se
+   quitaron de la portada por mecánicos— flotando sobre el fondo, con los
+   textos de largos muy distintos y mucho aire muerto a la derecha. Una lista
+   es lo que el contenido es, y así el título «Tu aporte nos ayuda a» enlaza
+   directo con las frases que lo completan.
+   El ícono se queda fino y al costado: acompaña sin competir. */
+.ayuda-lista { list-style: none; margin: 0; padding: 0; max-width: 62ch; }
+.ayuda-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 0;
+  font: 400 19px/1.6 var(--fuente);
+  color: var(--texto);
+}
+.ayuda-lista li + li { border-top: 1px solid var(--papel-linea); }
+.ayuda-lista i { font-size: 28px; color: var(--azul-medio); flex: none; line-height: 1.1; }
 
 .aporte { display: flex; flex-direction: column; gap: 18px; padding: 36px 34px; }
 .aporte--borde { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
