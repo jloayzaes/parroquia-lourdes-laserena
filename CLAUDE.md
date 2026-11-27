@@ -94,6 +94,15 @@ Secretaría y el teléfono aparecen en varias páginas.
   | `--pendiente` | `[POR COMPLETAR]` y marcadores de foto. Para texto secundario real va `--texto-3`. |
   | `--error` · `--error-fondo` | Algo salió mal. Hoy: el aviso del formulario de certificados. |
   | `--exito` · `--exito-fondo` | Algo salió bien. Hoy: el visto y el recuadro de la confirmación de envío. |
+  | `--acento` | **Dónde estás**, y nada más. |
+
+  `--acento` (`#9C6B2E`) es el **único color cálido del sitio** y la única
+  excepción a que todo sea azul. Sale de la fotografía de la propia parroquia:
+  las tejas del techo y las llamas de los cirios de las acuarelas. Marca una
+  sola cosa —el ítem activo del menú, la pestaña activa y la categoría activa
+  del índice— y su fuerza viene justamente de eso: es lo único no azul en la
+  pantalla. **Repartirlo por antetítulos o enlaces lo convierte en un segundo
+  color de marca y deja de marcar nada**; se probó así y se descartó.
 
   Error y éxito están desaturados a propósito: al lado de este azul, un rojo o
   un verde vivos se leen como un cuerpo extraño. **Sin ellos el formulario no
@@ -101,7 +110,38 @@ Secretaría y el teléfono aparecen en varias páginas.
   nota informativa.
 - **Clases**: en español, estilo BEM suave — `.templo__nombre`,
   `.ficha--invertida`, `.indice__enlace--activo`.
-- **Tipografía**: solo Montserrat. **Íconos**: solo Phosphor Thin
+- **Tipografía**: solo Montserrat, en **diez tamaños y cuatro interlineados**.
+  Antes había veintitrés tamaños y dieciocho interlineados —nueve tamaños
+  distintos entre 17px y 26px, diferencias de 1px que nadie percibe como
+  jerarquía pero que hacían que cada página se sintiera levemente distinta—.
+  **Todo texto nuevo usa un paso de esta tabla**, no un valor intermedio:
+
+  | px | Peso | Interl. | Rol |
+  |---|---|---|---|
+  | 56 | 300 | 1.15 | Hero de portada y del 1% |
+  | 46 | 300 | 1.15 | Título de portada de sección |
+  | 38 | 300 | 1.15 | Título grande |
+  | 30 | 300 | 1.15 | Título medio y de categoría |
+  | 24 | 600 | 1.3 | Título de ficha · destacados (en 300) |
+  | 21 | 600 | 1.3 | Título de tarjeta, de templo, de paso |
+  | 19 | 400 | 1.6 | **Texto de lectura**: párrafos y descripciones |
+  | 17 | 400 | 1.6 | **Texto denso**: tarjetas, datos, listas, pie |
+  | 15 | — | 1.3 | Botones, pestañas, etiquetas de formulario |
+  | 13 | 500/600 | 1.3 | Rótulos en mayúsculas y menú |
+
+  Los pesos son **300, 400, 500, 600 y 700**. **El 200 se eliminó**: Montserrat
+  ExtraLight es un trazo de hilo y a 30px se desvanecía, justo lo contrario de
+  lo que necesita un lector de edad. Ya no se pide al CDN.
+
+  Tres excepciones deliberadas, no las unifiques:
+  - **Los lockups de marca** (`.marca__*`, `.pie__nombre`, `.pie__lockup-*`) son
+    un logotipo, no texto: conservan sus medidas propias.
+  - **`.banda-patrona h2`** va en peso 400, no 300, porque la parroquia pidió
+    expresamente que ese título fuera más grueso.
+  - **`.paso__numero`** usa `17px/38px`: el interlineado ahí centra el dígito
+    dentro del círculo, es un mecanismo de maquetación y no tipografía.
+
+  **Íconos**: solo Phosphor Thin
   (`<i class="ph-thin ph-church" aria-hidden="true">`), por CDN.
   Varias excepciones, todas porque Phosphor no tiene el glifo. **Dibujadas
   aquí, en SVG en línea** con el mismo trazo de 8 sobre un `viewBox` de 256: el

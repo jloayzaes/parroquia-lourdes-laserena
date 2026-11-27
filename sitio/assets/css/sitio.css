@@ -19,6 +19,14 @@
   --celeste-muy-claro: #F6FAFD;
   --celeste-sobre-azul: #BBD4EA;
 
+  /* Único color cálido del sitio, sacado de las tejas del techo y de las
+     llamas de los cirios de las acuarelas. Marca UNA sola cosa: dónde estás
+     —ítem activo del menú, pestaña activa, categoría activa del índice—.
+     Es lo único que no es azul en toda la pantalla, y de ahí viene su fuerza:
+     repartirlo por antetítulos o enlaces lo convierte en un segundo color de
+     marca y deja de marcar nada. */
+  --acento: #9C6B2E;
+
   /* Texto */
   --texto: #54637a;             /* absorbió a --texto-2, que era indistinguible */
   --texto-3: #606D82;           /* secundario: aclaraciones, ayudas, subtítulos */
@@ -112,7 +120,7 @@ html { scroll-behavior: smooth; }
   background: var(--azul);
   color: #fff;
   padding: 14px 22px;
-  font: 600 15px/1 var(--fuente);
+  font: 600 15px/1.3 var(--fuente);
 }
 .salto-contenido:focus { left: 0; color: #fff; }
 
@@ -143,7 +151,7 @@ html { scroll-behavior: smooth; }
   align-items: center;
   gap: 16px 28px;
   flex-wrap: wrap;
-  font: 500 13px/1.4 var(--fuente);
+  font: 500 13px/1.3 var(--fuente);
   letter-spacing: .07em;
   min-height: 44px;
 }
@@ -185,7 +193,7 @@ html { scroll-behavior: smooth; }
 
 .marca__horario { display: flex; align-items: center; gap: 14px; flex: none; }
 .marca__horario-icono { color: var(--celeste); flex: none; display: block; }
-.marca__horario-texto { font: 400 15px/1.5 var(--fuente); color: var(--texto); white-space: nowrap; }
+.marca__horario-texto { font: 400 15px/1.3 var(--fuente); color: var(--texto); white-space: nowrap; }
 
 /* --------------------------------------------------------------------------
    5. Menú principal
@@ -204,7 +212,7 @@ html { scroll-behavior: smooth; }
 .menu__enlace {
   display: block;
   padding: 17px 0;
-  font: 500 13px/1 var(--fuente);
+  font: 500 13px/1.3 var(--fuente);
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--azul);
@@ -216,11 +224,11 @@ html { scroll-behavior: smooth; }
   text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul);
 }
 .menu__item--activo > .menu__enlace {
-  color: var(--azul-medio);
+  color: var(--acento);
   font-weight: 700;
-  box-shadow: inset 0 -3px 0 var(--celeste);
+  box-shadow: inset 0 -3px 0 var(--acento);
 }
-.menu__item--activo > .menu__enlace:hover { color: var(--azul-medio); }
+.menu__item--activo > .menu__enlace:hover { color: var(--acento); }
 
 /* Avisos cierra la fila. Se distingue solo por el peso: mismo azul parroquial
    que los demás, en negrita. Cuando está activo sigue la regla general. */
@@ -253,7 +261,7 @@ html { scroll-behavior: smooth; }
 .menu__sub {
   display: block;
   padding: 13px 24px;
-  font: 500 16px/1.4 var(--fuente);
+  font: 500 17px/1.3 var(--fuente);
   color: var(--azul);
   white-space: nowrap;
 }
@@ -276,23 +284,23 @@ html { scroll-behavior: smooth; }
 }
 .antetitulo--claro { color: var(--celeste-sobre-azul); }
 
-.titulo-portada { font: 200 46px/1.12 var(--fuente); color: var(--azul); margin-bottom: 14px; }
-.titulo-grande { font: 200 38px/1.15 var(--fuente); color: var(--azul); }
-.titulo-medio { font: 200 34px/1.2 var(--fuente); color: var(--azul); }
-.titulo-ficha { font: 600 26px/1.3 var(--fuente); color: var(--azul); }
-.titulo-tarjeta { font: 600 20px/1.35 var(--fuente); color: var(--azul); }
-.titulo-tarjeta--grande { font-size: 21px; line-height: 1.25; }
+.titulo-portada { font: 300 46px/1.15 var(--fuente); color: var(--azul); margin-bottom: 14px; }
+.titulo-grande { font: 300 38px/1.15 var(--fuente); color: var(--azul); }
+.titulo-medio { font: 300 30px/1.15 var(--fuente); color: var(--azul); }
+.titulo-ficha { font: 600 24px/1.3 var(--fuente); color: var(--azul); }
+.titulo-tarjeta { font: 600 21px/1.3 var(--fuente); color: var(--azul); }
+.titulo-tarjeta--grande { font-size: 24px; line-height: 1.3; }
 strong, .fuerte { font-weight: 600; }
 .titulo-portada strong, .titulo-grande strong, .titulo-medio strong { font-weight: 600; }
 
-.parrafo { font: 400 19px/1.8 var(--fuente); color: var(--texto); text-wrap: pretty; }
-.parrafo--corto { font-size: 18px; line-height: 1.7; }
+.parrafo { font: 400 19px/1.6 var(--fuente); color: var(--texto); text-wrap: pretty; }
+.parrafo--corto { font-size: 17px; line-height: 1.6; }
 .bajada { font: 400 19px/1.6 var(--fuente); color: var(--texto); max-width: 76ch; text-wrap: pretty; }
-.texto-tarjeta { font: 400 17px/1.7 var(--fuente); color: var(--texto); }
+.texto-tarjeta { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 .pendiente { color: var(--pendiente); }
 
 .etiqueta-dato {
-  font: 600 12px/1.2 var(--fuente);
+  font: 600 13px/1.3 var(--fuente);
   letter-spacing: .14em;
   color: var(--azul-medio);
   text-transform: uppercase;
@@ -342,7 +350,7 @@ strong, .fuerte { font-weight: 600; }
      Con azul medio sube a 6,1:1, y era el color que ya tenía al pasar encima. */
   background: var(--azul-medio);
   color: #fff;
-  font: 700 14px/1 var(--fuente);
+  font: 700 15px/1.3 var(--fuente);
   letter-spacing: .1em;
   padding: 20px 28px;
   text-transform: uppercase;
@@ -362,15 +370,15 @@ strong, .fuerte { font-weight: 600; }
 .boton--linea-blanca { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .8); font-weight: 600; }
 .boton--linea-blanca:hover { background: rgba(255, 255, 255, .14); border-color: #fff; color: #fff; }
 
-.boton--linea { background: transparent; color: var(--azul-medio); border: 1px solid var(--celeste); font: 600 13px/1 var(--fuente); padding: 15px 20px; }
+.boton--linea { background: transparent; color: var(--azul-medio); border: 1px solid var(--celeste); font: 700 15px/1.3 var(--fuente); padding: 15px 20px; }
 .boton--linea:hover { background: var(--celeste-claro); color: var(--azul-medio); }
 
 .boton--pequeno { font-size: 13px; padding: 17px 24px; }
-.boton--grande { font-size: 15px; padding: 23px 34px; }
+.boton--grande { font-size: 17px; padding: 23px 34px; }
 
 .enlace-flecha {
   display: inline-block;
-  font: 600 13px/1 var(--fuente);
+  font: 600 13px/1.3 var(--fuente);
   letter-spacing: .1em;
   color: var(--azul-medio);
   text-transform: uppercase;
@@ -456,8 +464,8 @@ strong, .fuerte { font-weight: 600; }
 img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
 .ficha__cuerpo { padding: 34px 34px 36px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-.ficha__subtitulo { font: 400 16px/1.5 var(--fuente); color: var(--texto-3); margin-top: 6px; }
-.ficha__descripcion { font: 400 18px/1.75 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
+.ficha__subtitulo { font: 400 17px/1.6 var(--fuente); color: var(--texto-3); margin-top: 6px; }
+.ficha__descripcion { font: 400 19px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
 
 /* --------------------------------------------------------------------------
    12. Inicio
@@ -476,9 +484,9 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   background: linear-gradient(90deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .78) 46%, rgba(255, 255, 255, .38) 100%);
 }
 .hero__contenido { position: relative; max-width: 700px; }
-.hero__titulo { font: 200 58px/1.06 var(--fuente); color: var(--azul); letter-spacing: -.005em; margin-bottom: 24px; }
+.hero__titulo { font: 300 56px/1.15 var(--fuente); color: var(--azul); letter-spacing: -.005em; margin-bottom: 24px; }
 .hero__titulo strong { font-weight: 600; }
-.hero__horario { font: 400 23px/1.75 var(--fuente); color: var(--azul); margin-bottom: 32px; }
+.hero__horario { font: 400 24px/1.5 var(--fuente); color: var(--azul); margin-bottom: 32px; }
 .hero__horario strong { font-weight: 600; }
 .hero__botones { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -491,11 +499,11 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   gap: 24px 32px;
   flex-wrap: wrap;
 }
-.franja-uno__texto { font: 300 26px/1.35 var(--fuente); color: var(--azul); }
+.franja-uno__texto { font: 300 24px/1.3 var(--fuente); color: var(--azul); }
 .franja-uno__texto strong { font-weight: 700; }
 
 .acceso { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
-.acceso p { font: 400 18px/1.7 var(--fuente); color: var(--texto); }
+.acceso p { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 
 .banda-patrona {
   position: relative;
@@ -511,9 +519,9 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .banda-patrona__contenido { position: relative; max-width: 660px; }
 /* Peso 400 y no 200: sobre la fotografía, la Montserrat extrafina costaba
    de leer. La parroquia lo pidió expresamente. */
-.banda-patrona h2 { font: 400 42px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+.banda-patrona h2 { font: 400 46px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
 .banda-patrona h2 strong { font-weight: 700; }
-.banda-patrona p { font: 400 20px/1.6 var(--fuente); color: var(--azul); margin-bottom: 26px; }
+.banda-patrona p { font: 400 19px/1.6 var(--fuente); color: var(--azul); margin-bottom: 26px; }
 
 /* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
    así que necesita ancho: bajo 1180px pasa a una sola columna. */
@@ -539,17 +547,17 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso-tarjeta__cuerpo { display: flex; flex-direction: column; flex: 1; gap: 10px; padding: 24px 26px 26px; }
 .aviso-tarjeta__meta {
   display: flex; align-items: flex-start; gap: 8px;
-  font: 600 12px/1.4 var(--fuente); letter-spacing: .1em;
+  font: 600 13px/1.3 var(--fuente); letter-spacing: .1em;
   text-transform: uppercase; color: var(--azul-medio);
 }
 .aviso-tarjeta__meta i { font-size: 19px; line-height: 1; flex: none; }
-.aviso-tarjeta__titulo { font: 600 19px/1.35 var(--fuente); color: var(--azul); }
+.aviso-tarjeta__titulo { font: 600 21px/1.3 var(--fuente); color: var(--azul); }
 /* Sin recorte: la parroquia pidió que el aviso se lea completo en la portada.
    El cuerpo se queda en 17px, que es el mínimo del sitio. */
 .aviso-tarjeta__texto { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 .aviso-tarjeta__pie { margin-top: auto; border-top: 1px solid var(--borde); padding-top: 16px; }
 .aviso-tarjeta__enlace {
-  font: 700 12px/1 var(--fuente); letter-spacing: .12em;
+  font: 700 13px/1.3 var(--fuente); letter-spacing: .12em;
   text-transform: uppercase; color: var(--azul-medio);
 }
 /* El enlace del pie se estira sobre toda la tarjeta: se puede pinchar en
@@ -565,8 +573,8 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso { display: flex; gap: 20px; text-align: left; }
 /* object-fit recorta la foto al hueco sin deformarla; los marcadores <div> lo ignoran. */
 .aviso__foto { width: 200px; height: 152px; flex: none; object-fit: cover; }
-.aviso__fecha { font: 600 13px/1.4 var(--fuente); letter-spacing: .1em; color: var(--azul-medio); margin-bottom: 8px; }
-.aviso__titulo { font: 600 20px/1.35 var(--fuente); color: var(--azul); margin-bottom: 8px; }
+.aviso__fecha { font: 600 13px/1.3 var(--fuente); letter-spacing: .1em; color: var(--azul-medio); margin-bottom: 8px; }
+.aviso__titulo { font: 600 21px/1.3 var(--fuente); color: var(--azul); margin-bottom: 8px; }
 .aviso p { font: 400 17px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; }
 
 .aviso-destacado {
@@ -577,7 +585,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   gap: 26px;
 }
 
-.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 17px/1.5 var(--fuente); color: var(--texto); }
+.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 .lugar__fila { display: flex; align-items: flex-start; gap: 10px; }
 .lugar__fila i { font-size: 22px; color: var(--celeste); line-height: 1; flex: none; }
 
@@ -587,18 +595,18 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .pestanas { display: flex; border-bottom: 1px solid var(--borde); flex-wrap: wrap; }
 .pestana {
   padding: 16px 26px;
-  font: 500 15px/1 var(--fuente);
+  font: 500 15px/1.3 var(--fuente);
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--texto);
 }
 .pestana:hover, .pestana:focus-visible { color: var(--azul); text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul); }
-.pestana--activa { color: var(--azul); font-weight: 700; box-shadow: inset 0 -3px 0 var(--celeste); }
+.pestana--activa { color: var(--azul); font-weight: 700; box-shadow: inset 0 -3px 0 var(--acento); }
 
 .linea-tiempo {
   border-top: 1px solid var(--borde);
   padding-top: 20px;
-  font: 400 17px/1.9 var(--fuente);
+  font: 400 17px/1.6 var(--fuente);
   color: var(--texto);
 }
 .linea-tiempo strong { font-weight: 600; color: var(--azul); }
@@ -606,13 +614,13 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .cita {
   border-left: 3px solid var(--celeste);
   padding: 6px 0 6px 24px;
-  font: 300 30px/1.35 var(--fuente);
+  font: 300 30px/1.3 var(--fuente);
   color: var(--azul);
 }
-.cita__fuente { font: 400 16px/1.5 var(--fuente); color: var(--texto-3); margin-top: 12px; }
+.cita__fuente { font: 400 17px/1.6 var(--fuente); color: var(--texto-3); margin-top: 12px; }
 
 .cierre-oracion {
-  font: 400 19px/1.8 var(--fuente);
+  font: 400 19px/1.6 var(--fuente);
   font-style: italic;
   color: var(--azul);
   text-align: center;
@@ -624,12 +632,12 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 
 .recuadro-dato { display: flex; align-items: center; gap: 14px; background: var(--celeste-claro); padding: 20px 26px; }
 .recuadro-dato i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
-.recuadro-dato__valor { font: 600 20px/1.2 var(--fuente); color: var(--azul); }
+.recuadro-dato__valor { font: 600 21px/1.3 var(--fuente); color: var(--azul); }
 
 .sacerdote { border: 1px solid var(--borde); }
 .sacerdote__cuerpo { padding: 26px 28px 30px; }
-.sacerdote__cargo { font: 600 13px/1 var(--fuente); letter-spacing: .14em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 12px; }
-.sacerdote__nombre { font: 600 21px/1.35 var(--fuente); color: var(--azul); }
+.sacerdote__cargo { font: 600 13px/1.3 var(--fuente); letter-spacing: .14em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 12px; }
+.sacerdote__nombre { font: 600 21px/1.3 var(--fuente); color: var(--azul); }
 .sacerdote__nota { font: 400 17px/1.6 var(--fuente); color: var(--texto); margin-top: 10px; }
 
 /* --------------------------------------------------------------------------
@@ -638,28 +646,28 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .templo { border: 1px solid var(--borde); display: flex; flex-direction: column; }
 .templo--matriz { border-color: var(--celeste); grid-column: span 2; }
 .templo__cuerpo { padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1; }
-.templo__etiqueta { font: 600 13px/1 var(--fuente); letter-spacing: .16em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 12px; }
+.templo__etiqueta { font: 600 13px/1.3 var(--fuente); letter-spacing: .16em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 12px; }
 .templo__nombre { font: 600 21px/1.3 var(--fuente); color: var(--azul); margin-bottom: 10px; }
-.templo--matriz .templo__nombre { font-size: 26px; }
-.templo__direccion { font: 400 18px/1.6 var(--fuente); color: var(--texto); margin-bottom: 16px; }
+.templo--matriz .templo__nombre { font-size: 24px; }
+.templo__direccion { font: 400 19px/1.6 var(--fuente); color: var(--texto); margin-bottom: 16px; }
 .templo__misa { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
 .templo__misa i { font-size: 34px; color: var(--celeste); line-height: 1; flex: none; }
-.templo__misa-etiqueta { font: 600 14px/1 var(--fuente); letter-spacing: .1em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 8px; }
+.templo__misa-etiqueta { font: 600 13px/1.3 var(--fuente); letter-spacing: .1em; color: var(--azul-medio); text-transform: uppercase; margin-bottom: 8px; }
 .templo__misa-horas { font: 400 19px/1.6 var(--fuente); color: var(--azul); }
 .templo__especiales { margin-top: 22px; border-top: 1px solid var(--borde); padding-top: 20px; }
-.templo__especiales-lista { font: 400 18px/1.9 var(--fuente); color: var(--texto); }
+.templo__especiales-lista { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 .templo__acciones { margin-top: auto; padding-top: 22px; display: flex; gap: 12px 20px; flex-wrap: wrap; align-items: center; }
 
-.tarjeta-horario { font: 400 18px/1.75 var(--fuente); color: var(--texto); }
+.tarjeta-horario { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 /* Dato acompañado de su ícono: calendario para los días, reloj para las horas,
    ubicación, teléfono o sobre para el contacto. Mismo patrón que el pie. */
 .datos-icono { display: flex; flex-direction: column; gap: 12px; }
 .datos-icono li { display: flex; align-items: flex-start; gap: 12px; }
 .datos-icono i { font-size: 24px; color: var(--celeste); line-height: 1.15; flex: none; }
-.datos-icono span { font: 400 18px/1.55 var(--fuente); color: var(--texto); }
+.datos-icono span { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 .datos-icono a { color: var(--azul-medio); font-weight: 600; }
 /* Aclaración que acompaña a un dato: un punto más chica y en gris medio. */
-.aclaracion { font: 400 16px/1.6 var(--fuente); color: var(--texto-3); }
+.aclaracion { font: 400 17px/1.6 var(--fuente); color: var(--texto-3); }
 .aclaracion--cursiva { font-style: italic; }
 .tarjeta-horario strong { font-weight: 600; color: var(--azul-medio); }
 
@@ -688,9 +696,9 @@ div.templo__foto { display: flex; }
 .templo--matriz .templo__foto { aspect-ratio: 1400 / 400; }
 img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .foto-gruta { width: 100%; height: auto; aspect-ratio: 44 / 42; object-fit: cover; }
-.capilla__descripcion { font: 400 18px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
+.capilla__descripcion { font: 400 19px/1.6 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
 .capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--borde); padding-top: 22px; }
-.capilla__valor { font: 400 17px/1.55 var(--fuente); color: var(--azul); }
+.capilla__valor { font: 400 17px/1.6 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    16. Pastorales
@@ -698,7 +706,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .pastorales { display: grid; grid-template-columns: 308px 1fr; gap: 40px; align-items: start; }
 
 .indice { position: sticky; top: 20px; border: 1px solid var(--borde); }
-.indice__titulo { font: 600 12px/1 var(--fuente); letter-spacing: .16em; color: var(--azul-medio); text-transform: uppercase; padding: 22px 24px 16px; }
+.indice__titulo { font: 600 13px/1.3 var(--fuente); letter-spacing: .16em; color: var(--azul-medio); text-transform: uppercase; padding: 22px 24px 16px; }
 .indice__enlace {
   display: flex;
   align-items: center;
@@ -706,22 +714,22 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   gap: 14px;
   padding: 17px 24px;
   border-top: 1px solid var(--borde);
-  font: 500 16px/1.4 var(--fuente);
+  font: 500 17px/1.3 var(--fuente);
   color: var(--azul);
 }
 .indice__enlace:hover { color: var(--azul); background: var(--celeste-muy-claro); }
-.indice__enlace--activo { background: var(--celeste-claro); font-weight: 700; box-shadow: inset 3px 0 0 var(--celeste); }
-.indice__n { font: 600 14px/1 var(--fuente); color: var(--texto-3); }
+.indice__enlace--activo { background: var(--celeste-claro); font-weight: 700; box-shadow: inset 3px 0 0 var(--acento); }
+.indice__n { font: 600 15px/1.3 var(--fuente); color: var(--texto-3); }
 .indice__enlace--activo .indice__n { color: var(--azul-medio); }
 
 .categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--borde); }
-.categoria__titulo { font: 200 34px/1.2 var(--fuente); color: var(--azul); }
-.categoria__bajada { font: 400 18px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
+.categoria__titulo { font: 300 30px/1.15 var(--fuente); color: var(--azul); }
+.categoria__bajada { font: 400 19px/1.6 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
 .categoria__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 26px; }
 
 .grupo { border: 1px solid var(--borde); padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
 .grupo__pie { border-top: 1px solid var(--borde); padding-top: 18px; margin-top: auto; }
-.grupo__valor { font: 400 17px/1.55 var(--fuente); color: var(--azul); }
+.grupo__valor { font: 400 17px/1.6 var(--fuente); color: var(--azul); }
 
 .franja-inscripcion {
   background: var(--celeste-claro);
@@ -731,7 +739,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-.franja-inscripcion__datos { font: 400 17px/1.7 var(--fuente); color: var(--azul); }
+.franja-inscripcion__datos { font: 400 17px/1.6 var(--fuente); color: var(--azul); }
 
 /* Sin JavaScript se muestran todas las categorías, una tras otra */
 .js .categoria[hidden] { display: none; }
@@ -753,7 +761,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   text-align: center;
   flex: none;
 }
-.paso__titulo { font: 600 22px/1.3 var(--fuente); color: var(--azul); }
+.paso__titulo { font: 600 21px/1.3 var(--fuente); color: var(--azul); }
 .paso__campos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
 
 .campo { display: flex; flex-direction: column; gap: 9px; }
@@ -762,7 +770,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .campo input,
 .campo select,
 .campo textarea {
-  font: 400 18px/1.4 var(--fuente);
+  font: 400 19px/1.5 var(--fuente);
   color: var(--azul);
   padding: 16px;
   border: 1px solid var(--borde-campo);
@@ -774,14 +782,14 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .campo textarea { min-height: 110px; line-height: 1.5; resize: vertical; }
 .campo select { padding: 15px 46px 15px 16px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C5F92' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; }
 .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--celeste); outline: 2px solid var(--celeste); outline-offset: -2px; }
-.campo__ayuda { font: 400 16px/1.7 var(--fuente); color: var(--texto-3); }
+.campo__ayuda { font: 400 17px/1.6 var(--fuente); color: var(--texto-3); }
 
 .privacidad { display: flex; align-items: flex-start; gap: 14px; background: var(--celeste-claro); padding: 24px 26px; }
 .privacidad input { width: 24px; height: 24px; accent-color: var(--celeste); flex: none; margin: 2px 0 0; }
 .privacidad label { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 
 .formulario__envio { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.formulario__nota { font: 400 17px/1.5 var(--fuente); color: var(--texto); }
+.formulario__nota { font: 400 17px/1.6 var(--fuente); color: var(--texto); }
 /* Solo aparece cuando algo salió mal: tiene que distinguirse de una nota
    informativa, que es como se veía antes. */
 .formulario__aviso {
@@ -793,7 +801,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 }
 
 .aparte { border: 1px solid var(--borde); padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 18px; }
-.aparte__datos { font: 400 18px/1.8 var(--fuente); color: var(--texto); }
+.aparte__datos { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 .aparte__datos--separado { border-top: 1px solid var(--borde); padding-top: 18px; }
 .aparte__nota { font: 400 17px/1.6 var(--fuente); color: var(--texto-3); }
 
@@ -801,10 +809,10 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
    solicitud salió. */
 .exito .badge { background: var(--exito); }
 .exito { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
-.exito__titulo { font: 200 40px/1.15 var(--fuente); color: var(--azul); }
+.exito__titulo { font: 300 38px/1.15 var(--fuente); color: var(--azul); }
 .exito__titulo strong { font-weight: 600; }
-.exito p { font: 400 19px/1.7 var(--fuente); color: var(--texto); max-width: 60ch; }
-.exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 18px/1.8 var(--fuente); color: var(--azul); }
+.exito p { font: 400 19px/1.6 var(--fuente); color: var(--texto); max-width: 60ch; }
+.exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 19px/1.6 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    18. 1% a mi Iglesia
@@ -815,21 +823,21 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .uno-hero { position: relative; background: url("../img/uno-asamblea.jpg") center 45% / cover no-repeat; padding: 72px var(--canaleta); overflow: hidden; }
 .uno-hero__velo { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(238, 241, 245, .95) 0%, rgba(236, 239, 244, .88) 44%, rgba(232, 236, 241, .58) 100%); }
 .uno-hero__contenido { position: relative; max-width: 70ch; }
-.uno-hero h1 { font: 300 56px/1.08 var(--fuente); color: var(--azul); margin-bottom: 16px; }
+.uno-hero h1 { font: 300 56px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
 .uno-hero h1 strong { font-weight: 700; }
 .uno-hero p { font: 400 24px/1.5 var(--fuente); color: var(--azul); margin-bottom: 34px; }
 
-.destacado-celeste { background: var(--celeste-claro); padding: 34px 36px; font: 300 26px/1.5 var(--fuente); color: var(--azul); }
+.destacado-celeste { background: var(--celeste-claro); padding: 34px 36px; font: 300 24px/1.5 var(--fuente); color: var(--azul); }
 .destacado-celeste strong { font-weight: 600; }
 
 .ayuda { display: flex; flex-direction: column; gap: 18px; }
-.ayuda p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.ayuda p { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 
 .aporte { display: flex; flex-direction: column; gap: 18px; padding: 36px 34px; }
 .aporte--borde { border: 1px solid var(--borde); }
 .aporte--celeste { background: var(--celeste-claro); }
 .aporte h2, .aporte h3 { font: 600 24px/1.3 var(--fuente); color: var(--azul); }
-.aporte p { font: 400 18px/1.7 var(--fuente); color: var(--texto); }
+.aporte p { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
 .aporte__seccion { border-top: 1px solid var(--borde); padding-top: 20px; }
 .aporte__seccion--final { margin-top: auto; }
 .aporte--celeste .aporte__seccion { border-top-color: var(--borde-campo); }
@@ -840,7 +848,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 14px 22px;
-  font: 400 18px/1.5 var(--fuente);
+  font: 400 19px/1.6 var(--fuente);
 }
 .transferencia dt { color: var(--azul-medio); font-weight: 600; white-space: nowrap; }
 .transferencia dd { color: var(--azul); margin: 0; }
@@ -859,8 +867,8 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .pie__lockup-inf { letter-spacing: .22em; margin-top: 8px; }
 .pie__nombre { font: 300 21px/1.25 var(--fuente); color: #fff; margin-top: 6px; }
 .pie__nombre strong { font-weight: 700; }
-.pie__texto { font: 400 17px/1.75 var(--fuente); color: var(--celeste-sobre-azul); }
-.pie__titulo { font: 600 13px/1 var(--fuente); letter-spacing: .2em; color: var(--celeste-sobre-azul); margin-bottom: 20px; text-transform: uppercase; }
+.pie__texto { font: 400 17px/1.6 var(--fuente); color: var(--celeste-sobre-azul); }
+.pie__titulo { font: 600 13px/1.3 var(--fuente); letter-spacing: .2em; color: var(--celeste-sobre-azul); margin-bottom: 20px; text-transform: uppercase; }
 .pie__lista { font: 400 17px/1.6 var(--fuente); color: var(--celeste-sobre-azul); display: flex; flex-direction: column; gap: 14px; }
 .pie__fila { display: flex; align-items: flex-start; gap: 12px; }
 .pie__fila i { font-size: 24px; color: var(--celeste-sobre-azul); line-height: 1; flex: none; }
@@ -869,7 +877,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 .pie__credito {
   border-top: 1px solid rgba(255, 255, 255, .18);
   padding: 20px 0;
-  font: 400 14px/1.5 var(--fuente);
+  font: 400 15px/1.5 var(--fuente);
   color: var(--pie-credito);
   display: flex;
   justify-content: space-between;
@@ -924,7 +932,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
     justify-content: space-between;
     width: 100%;
     padding: 16px var(--lateral);
-    font: 700 14px/1 var(--fuente);
+    font: 700 15px/1.3 var(--fuente);
     letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--azul);
@@ -940,7 +948,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 
   .menu__item { display: flex; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--borde); }
   .menu__enlace { flex: 1; padding: 18px var(--lateral); font-size: 15px; min-height: 56px; display: flex; align-items: center; }
-  .menu__item--activo > .menu__enlace { box-shadow: inset 4px 0 0 var(--celeste); }
+  .menu__item--activo > .menu__enlace { box-shadow: inset 4px 0 0 var(--acento); }
 
   .menu__desplegar {
     display: flex;
@@ -1000,11 +1008,11 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 /* --- Hasta 860px: fichas y bloques a una columna -------------------------- */
 @media (max-width: 860px) {
   .titulo-portada { font-size: 38px; }
-  .titulo-grande { font-size: 32px; }
+  .titulo-grande { font-size: 30px; }
   .titulo-medio { font-size: 30px; }
-  .hero__titulo { font-size: 44px; }
-  .uno-hero h1 { font-size: 44px; }
-  .banda-patrona h2 { font-size: 34px; }
+  .hero__titulo { font-size: 46px; }
+  .uno-hero h1 { font-size: 46px; }
+  .banda-patrona h2 { font-size: 30px; }
 
   .rejilla--con-lateral { grid-template-columns: 1fr; gap: 32px; }
 
@@ -1014,9 +1022,9 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .ficha__cuerpo { padding: 28px 24px 30px; }
 
   .franja-uno { flex-direction: column; align-items: flex-start; }
-  .franja-uno__texto { font-size: 22px; }
+  .franja-uno__texto { font-size: 21px; }
 
-  .destacado-celeste { font-size: 22px; padding: 28px 26px; }
+  .destacado-celeste { font-size: 21px; padding: 28px 26px; }
   .franja-inscripcion { grid-template-columns: 1fr; }
 }
 
@@ -1027,7 +1035,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .datos-2, .capilla__datos, .categoria__grupos, .paso__campos { grid-template-columns: 1fr; }
   .campo--ancho { grid-column: span 1; }
 
-  .barra-superior { font-size: 12px; letter-spacing: .04em; padding: 12px var(--lateral); gap: 8px 18px; }
+  .barra-superior { font-size: 13px; letter-spacing: .04em; padding: 12px var(--lateral); gap: 8px 18px; }
   .barra-superior__grupo { gap: 8px 18px; }
 
   .marca { padding: 20px var(--lateral); gap: 16px; }
@@ -1055,7 +1063,7 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
     background-position: 38% 45%; }
   .hero__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93) 0%, rgba(255, 255, 255, .84) 100%); }
   .hero__titulo { font-size: 38px; }
-  .hero__horario { font-size: 20px; }
+  .hero__horario { font-size: 19px; }
   .hero__botones .boton { width: 100%; }
 
   .banda-patrona { min-height: 0; padding: 52px var(--canaleta);
@@ -1094,25 +1102,25 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 
   .cita { font-size: 24px; padding-left: 18px; }
   .pestanas { gap: 0; }
-  .pestana { padding: 14px 18px; font-size: 14px; }
+  .pestana { padding: 14px 18px; font-size: 15px; }
 
   .categoria__encabezado { flex-direction: column; gap: 16px; }
-  .categoria__titulo { font-size: 28px; }
+  .categoria__titulo { font-size: 24px; }
 }
 
 /* --- Hasta 460px ---------------------------------------------------------- */
 @media (max-width: 460px) {
   :root { --lateral: 18px; }
-  .hero__titulo { font-size: 32px; }
+  .hero__titulo { font-size: 30px; }
   .titulo-portada { font-size: 30px; }
   .marca__dibujo { height: 42px; }
   .marca__nombre { font-size: 17px; }
-  .uno-hero h1 { font-size: 36px; }
+  .uno-hero h1 { font-size: 38px; }
   .exito__titulo { font-size: 30px; }
   .paso__titulo { font-size: 19px; }
   /* Bajo 340px el badge y el título de la ficha ya no caben en una línea. */
   .ficha__encabezado .badge { --tam: 54px; }
-  .titulo-ficha { font-size: 23px; }
+  .titulo-ficha { font-size: 21px; }
 }
 
 /* --------------------------------------------------------------------------
