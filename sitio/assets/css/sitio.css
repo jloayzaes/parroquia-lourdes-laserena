@@ -502,8 +502,42 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .franja-uno__texto { font: 300 24px/1.3 var(--fuente); color: var(--azul); }
 .franja-uno__texto strong { font-weight: 700; }
 
-.acceso { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+/* Accesos prioritarios de la portada.
+   Eran seis bloques de texto centrado flotando en blanco, sin caja ni borde.
+   Dos problemas: un párrafo de datos —horarios, teléfonos, direcciones— en
+   tres líneas centradas se lee más lento, porque cada renglón empieza en un
+   punto distinto y el ojo tiene que buscar dónde; y al lado de las tarjetas
+   de aviso y de capilla, que sí tienen caja, el visitante aprende que «lo que
+   tiene caja se pincha» y estos quedaban fuera de esa regla.
+   Ahora son tarjetas con la misma caja del resto y el texto a la izquierda. */
+.acceso {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  padding: 30px 30px 32px;
+  border: 1px solid var(--borde);
+  background: #fff;
+}
+.acceso:hover, .acceso:focus-within { border-color: var(--celeste); }
 .acceso p { font: 400 19px/1.6 var(--fuente); color: var(--texto); }
+
+/* Cuatro de los seis llevan a alguna parte; los dos de contacto son solo
+   información y no inventan un destino. El pie va anclado abajo para que las
+   tarjetas de una misma fila terminen parejas. */
+.acceso__pie { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--borde); }
+.acceso__enlace {
+  font: 700 13px/1.3 var(--fuente);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--azul-medio);
+}
+/* Hace clicable la tarjeta entera sin anidar enlaces. Ojo: tapa cualquier otro
+   enlace que se agregue dentro, así que las tarjetas de contacto —que llevan
+   teléfono y correo en el texto— no tienen pie y por eso no tienen esta capa. */
+.acceso__enlace::after { content: ""; position: absolute; inset: 0; }
+.acceso:hover .acceso__enlace, .acceso:focus-within .acceso__enlace { color: var(--acento); }
 
 .banda-patrona {
   position: relative;
@@ -511,12 +545,28 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   background: url("../img/banda-gruta.jpg") center 40% / cover no-repeat;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
   padding: 64px var(--canaleta);
 }
-.banda-patrona__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .86)); }
-.banda-patrona__contenido { position: relative; max-width: 660px; }
+/* La gruta está al centro de la fotografía, con la Virgen a la altura del 56 %
+   del ancho. Un velo parejo —como el que había— la tapaba de lado a lado y
+   dejaba la banda como una mancha gris. Un velo denso al centro habría sido
+   peor todavía. La solución es la misma de las otras dos bandas: el texto se
+   corre a la izquierda y el velo se abre hacia la derecha, justo donde está
+   ella. El lado denso no se aclaró: sigue en .93. */
+.banda-patrona__velo {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, .95) 0%,
+    rgba(255, 255, 255, .93) 50%,
+    rgba(255, 255, 255, .52) 64%,
+    rgba(255, 255, 255, .30) 100%);
+}
+/* El ancho va en porcentaje y no solo en píxeles: con 660px fijos, en una
+   pantalla de 1024 el texto llegaba al 64 % de la banda, es decir dentro de la
+   zona transparente del velo, y el contraste caía a 2,5:1. Atado al 46 % se
+   queda siempre a la izquierda del quiebre del degradado. */
+.banda-patrona__contenido { position: relative; max-width: min(660px, 46%); }
 /* Peso 400 y no 200: sobre la fotografía, la Montserrat extrafina costaba
    de leer. La parroquia lo pidió expresamente. */
 .banda-patrona h2 { font: 400 46px/1.15 var(--fuente); color: var(--azul); margin-bottom: 16px; }
@@ -1068,6 +1118,12 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
 
   .banda-patrona { min-height: 0; padding: 52px var(--canaleta);
     background-image: url("../img/banda-gruta-movil.jpg"); }
+  /* Misma razón que en el 1%: aquí el texto ocupa todo el ancho y el degradado
+     horizontal lo dejaría sobre la parte clara. Parejo, de arriba abajo. */
+  .banda-patrona__velo { background: linear-gradient(180deg, rgba(255, 255, 255, .93), rgba(255, 255, 255, .87)); }
+  /* Y con el velo parejo, el texto recupera todo el ancho: el 46 % que lo
+     mantiene a la izquierda en escritorio aquí lo dejaría en 156px. */
+  .banda-patrona__contenido { max-width: none; }
 
   .aviso { flex-direction: column; gap: 14px; }
   .aviso__foto { width: 100%; height: 180px; }

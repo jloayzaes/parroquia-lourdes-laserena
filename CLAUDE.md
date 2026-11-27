@@ -362,6 +362,15 @@ Exportar al doble de la medida indicada (retina) y comprimir.
 navegador los usa como alto y el `aspect-ratio` del CSS no se aplica. Hay que
 agregar `height: auto` en la regla. Pasó en el par de la historia y en la gruta.
 
+La banda de la Patrona enseña una regla que vale para cualquier foto de fondo:
+**el velo se diseña contra la composición de la foto, no en abstracto**. Ahí la
+gruta está al centro y la Virgen a la altura del 56 % del ancho, así que tanto un
+velo parejo —el que había— como uno denso al centro la tapaban. La solución fue
+correr el texto a la izquierda y abrir el velo hacia la derecha. Y el ancho del
+texto va en **porcentaje**, `min(660px, 46%)`: con 660px fijos, en una pantalla
+de 1024 el texto llegaba al 64 % del ancho, ya dentro de la zona transparente,
+y el contraste caía a 2,5:1. Medir solo a 1440px no basta.
+
 Sobre las **tres** fotos de fondo va un **velo blanco**, no azul: la parroquia lo
 pidió así para que la fotografía se vea. Por eso el texto de esas bandas va
 en `--azul` y `--azul-medio`, y sus botones son el relleno normal y
