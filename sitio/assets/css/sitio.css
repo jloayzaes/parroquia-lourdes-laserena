@@ -198,6 +198,11 @@ html { scroll-behavior: smooth; }
 .barra-superior__grupo { display: flex; align-items: center; gap: 16px 28px; flex-wrap: wrap; }
 .barra-superior__dato { display: inline-flex; align-items: center; gap: 7px; }
 .barra-superior i { font-size: 18px; line-height: 1; flex: none; }
+/* El horario de Misa encabeza todas las páginas: es a lo que viene la gente.
+   La dirección y el correo salieron de aquí y siguen completos en el pie, que
+   es donde se buscan. */
+.barra-superior__misas strong { font-weight: 700; }
+.barra-superior__aviso a { text-decoration: underline; text-underline-offset: 3px; }
 
 .marca {
   padding: 22px var(--canaleta);
@@ -786,6 +791,14 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 }
 .capilla:first-of-type { padding-top: 0; }
 .capilla--invertida { grid-template-columns: 1fr 460px; }
+
+/* Mientras una comunidad no tenga foto, su ficha va a una sola columna. El
+   marcador rayado que había antes, al lado de cuatro capillas con fotografía
+   real, se leía como una imagen rota: es peor que no poner nada.
+   Va después de .capilla y de .capilla--invertida a propósito: misma
+   especificidad, gana la última. */
+.capilla--sin-foto { grid-template-columns: 1fr; }
+.capilla--sin-foto > div { max-width: 78ch; }
 .capilla--invertida .capilla__foto { order: 2; }
 /* Fotografías reales de los templos. Reemplazan al marcador <div class="foto">
    y ocupan el mismo hueco: object-fit recorta al alto pedido sin deformar. */
@@ -1285,7 +1298,45 @@ a, .boton, .pestana, .menu__enlace, .indice__enlace {
 .menu--fijo { box-shadow: 0 1px 0 var(--borde), 0 8px 24px -16px rgba(27, 58, 97, .45); }
 
 /* --------------------------------------------------------------------------
-   22. Visor de fotografías
+   22. Índice de anclas
+   Para las páginas largas: Sacramentos son siete fichas iguales en casi
+   5.000px, y llegar a la última son tres pantallas de scroll. El ancla activa
+   se marca sola con :target, sin JavaScript.
+   -------------------------------------------------------------------------- */
+.anclas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.anclas__enlace {
+  display: inline-block;
+  padding: 11px 18px;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  font: 600 14px/1.4 var(--fuente);
+  color: var(--azul-medio);
+}
+.anclas__enlace:hover {
+  color: var(--acento);
+  box-shadow: var(--sombra-alta);
+  transform: translateY(-2px);
+}
+/* El desplazamiento deja aire bajo el menú fijo, que si no tapa el título. */
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* --------------------------------------------------------------------------
+   23. Banda de comunidad
+   Media banda de fotografía a todo color, sin velo. Las otras tres bandas
+   llevan la foto debajo de un velo blanco; usar el recurso una cuarta vez lo
+   gasta, y además aquí el motivo es la gente, que es justo lo que no conviene
+   tapar. Es la única fotografía del sitio que se ve entera.
+   -------------------------------------------------------------------------- */
+.banda-comunidad { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; background: var(--blanco); }
+.banda-comunidad__foto { width: 100%; height: 100%; min-height: 440px; object-fit: cover; display: block; }
+.banda-comunidad__texto { display: flex; flex-direction: column; align-items: flex-start;
+  justify-content: center; gap: 18px; padding: 64px clamp(32px, 5vw, 80px); }
+.banda-comunidad__texto .bajada { max-width: 44ch; }
+
+/* --------------------------------------------------------------------------
+   24. Visor de fotografías
    -------------------------------------------------------------------------- */
 .visor {
   position: fixed; inset: 0; z-index: 200;
@@ -1311,3 +1362,9 @@ a, .boton, .pestana, .menu__enlace, .indice__enlace {
 }
 .visor__cerrar:hover { background: rgba(255, 255, 255, .14); }
 .ampliable { cursor: zoom-in; }
+
+@media (max-width: 860px) {
+  .banda-comunidad { grid-template-columns: 1fr; }
+  .banda-comunidad__foto { min-height: 240px; }
+  .banda-comunidad__texto { padding: 40px var(--lateral) 48px; }
+}

@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,300&family=Petrona:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
-<link rel="stylesheet" href="assets/css/sitio.css?v=bfdd1d01">
+<link rel="stylesheet" href="assets/css/sitio.css?v=9d525ddb">
 </head>
 <body>
 <a class="salto-contenido" href="#contenido">Ir al contenido</a>
@@ -33,12 +33,14 @@
   <!-- Barra superior de contacto -->
   <div class="barra-superior">
     <div class="barra-superior__grupo">
-      <span class="barra-superior__dato"><i class="ph-thin ph-map-pin" aria-hidden="true"></i><a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Balmaceda+1596%2C+La+Serena%2C+Chile" target="_blank" rel="noopener">Av. Balmaceda 1596, La Serena</a></span>
-      <span class="barra-superior__dato"><i class="ph-thin ph-phone" aria-hidden="true"></i><a href="tel:+56992803442">+56 9 9280 3442</a></span>
+      <span class="barra-superior__dato barra-superior__misas"><i class="ph-thin ph-church" aria-hidden="true"></i><span><strong>Santa Misa</strong> · Martes a sábado 19:00 hrs. · Domingos 11:00 hrs.</span></span>
     </div>
     <div class="barra-superior__grupo">
-      <span class="barra-superior__dato"><i class="ph-thin ph-envelope-simple" aria-hidden="true"></i><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a></span>
-      <span class="barra-superior__dato"><i class="ph-thin ph-instagram-logo" aria-hidden="true"></i><a href="https://www.instagram.com/lourdes_laserena/?hl=es" target="_blank" rel="noopener">Instagram</a></span>
+      <!-- AVISO DE LA BARRA · se repite en las doce páginas.
+           Para cambiarlo:  python3 herramientas/aviso-barra.py "Texto" "destino.html"
+           Para quitarlo:   python3 herramientas/aviso-barra.py --quitar          -->
+      <span class="barra-superior__dato barra-superior__aviso"><i class="ph-thin ph-calendar-dot" aria-hidden="true"></i><a href="avisos.html#aviso-kermes">Kermés parroquial · domingo 13 de septiembre</a></span>
+      <span class="barra-superior__dato"><i class="ph-thin ph-phone" aria-hidden="true"></i><a href="tel:+56992803442">+56 9 9280 3442</a></span>
     </div>
   </div>
 
@@ -208,6 +210,17 @@
           <h3 class="titulo-tarjeta titulo-tarjeta--grande">Comunícate con nosotros</h3>
           <p>Teléfono: <a href="tel:+56992803442">+56 9 9280 3442</a><br><a href="mailto:secretariaplourdes@gmail.com">secretariaplourdes@<wbr>gmail.com</a><br>Av. Balmaceda 1596, La Serena</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Comunidad -->
+    <section class="banda-comunidad">
+      <img class="banda-comunidad__foto ampliable" src="assets/img/uno-asamblea.jpg" alt="La asamblea reunida en el templo el Domingo de Ramos, con ramos de olivo en las manos" width="1600" height="900" loading="lazy">
+      <div class="banda-comunidad__texto">
+        <p class="antetitulo">Nuestra comunidad</p>
+        <h2 class="titulo-medio">Aquí hay un lugar <strong>para ti</strong></h2>
+        <p class="bajada">Somos una parroquia, un santuario y cinco capillas. Cada domingo nos reunimos a celebrar, y durante la semana hay catequesis, coros, grupos y servicio.</p>
+        <p><a class="boton" href="pastorales.html">Encuentra dónde participar</a></p>
       </div>
     </section>
 
