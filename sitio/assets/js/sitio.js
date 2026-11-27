@@ -190,11 +190,132 @@ var ENDPOINT_CERTIFICADOS = "";
     });
   }
 
+  /* ------------------------------------------------------------------------
+     4. Menú fijo
+     En páginas de casi 5.000px la navegación tiene que seguir a mano. El menú
+     queda pegado arriba por CSS; aquí solo se le avisa cuándo se despegó, para
+     que gane la sombra que lo separa del contenido.
+     ------------------------------------------------------------------------ */
+  function iniciarMenuFijo() {
+    var menu = document.querySelector(".menu");
+    if (!menu || !("IntersectionObserver" in window)) return;
+    var testigo = document.createElement("div");
+    testigo.setAttribute("aria-hidden", "true");
+    testigo.style.cssText = "position:absolute;top:0;height:1px;width:1px";
+    menu.parentNode.insertBefore(testigo, menu);
+    new IntersectionObserver(function (e) {
+      menu.classList.toggle("menu--fijo", !e[0].isIntersecting);
+    }).observe(testigo);
+  }
+
+  /* ------------------------------------------------------------------------
+     5. Aparición al entrar en pantalla
+     Se marcan las secciones y las tarjetas, nunca el texto corrido: lo que se
+     está leyendo no debe moverse. Si el visitante pidió menos animación, el
+     CSS ya no aplica la transición y esto queda en nada.
+     ------------------------------------------------------------------------ */
+  function iniciarRevelado() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var piezas = document.querySelectorAll(
+      ".acceso, .aviso-tarjeta, .ficha, .templo, .sacerdote, .grupo, .paso, .capilla, .banda-comunidad"
+    );
+    if (!piezas.length) return;
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("revelar--visible");
+        obs.unobserve(e.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    piezas.forEach(function (el, i) {
+      el.classList.add("revelar");
+      el.style.transitionDelay = (Math.min(i % 3, 2) * 70) + "ms";
+      // Lo que ya está a la vista al cargar no se esconde ni un instante.
+      if (el.getBoundingClientRect().top < window.innerHeight * 1.1) {
+        el.classList.add("revelar--visible");
+      } else {
+        obs.observe(el);
+      }
+    });
+
+    // Red de seguridad: si por lo que sea el observador no llegara a disparar,
+    // a los dos segundos y medio se muestra todo igual. Una animación que no
+    // ocurre es un detalle; contenido que no aparece es la página rota.
+    setTimeout(function () {
+      piezas.forEach(function (el) { el.classList.add("revelar--visible"); });
+    }, 2500);
+  }
+
+  /* ------------------------------------------------------------------------
+     6. Visor de fotografías
+     Cualquier <img class="ampliable"> se abre en grande. El alt de la imagen
+     sirve de pie, así que no hay que escribir el texto dos veces. Se cierra con
+     Escape, con el botón o pinchando fuera, y devuelve el foco a la foto.
+     ------------------------------------------------------------------------ */
+  function iniciarVisor() {
+    var fotos = document.querySelectorAll("img.ampliable");
+    if (!fotos.length) return;
+
+    var visor = document.createElement("div");
+    visor.className = "visor";
+    visor.setAttribute("role", "dialog");
+    visor.setAttribute("aria-modal", "true");
+    visor.setAttribute("aria-label", "Fotografía ampliada");
+    visor.innerHTML =
+      '<button class="visor__cerrar" type="button" aria-label="Cerrar">' +
+      '<i class="ph-thin ph-x" aria-hidden="true"></i></button>' +
+      '<figure class="visor__figura"><img class="visor__imagen" alt="">' +
+      '<figcaption class="visor__pie"></figcaption></figure>';
+    document.body.appendChild(visor);
+
+    var img = visor.querySelector(".visor__imagen");
+    var pie = visor.querySelector(".visor__pie");
+    var cerrar = visor.querySelector(".visor__cerrar");
+    var origen = null;
+
+    function abrir(foto) {
+      origen = foto;
+      img.src = foto.currentSrc || foto.src;
+      img.alt = foto.alt || "";
+      pie.textContent = foto.alt || "";
+      pie.hidden = !foto.alt;
+      visor.classList.add("visor--abierto");
+      document.body.style.overflow = "hidden";
+      cerrar.focus();
+    }
+    function ocultar() {
+      visor.classList.remove("visor--abierto");
+      document.body.style.overflow = "";
+      if (origen) { origen.focus(); origen = null; }
+    }
+
+    fotos.forEach(function (foto) {
+      foto.setAttribute("tabindex", "0");
+      foto.setAttribute("role", "button");
+      if (!foto.getAttribute("aria-label")) {
+        foto.setAttribute("aria-label", "Ampliar: " + (foto.alt || "fotografía"));
+      }
+      foto.addEventListener("click", function () { abrir(foto); });
+      foto.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(foto); }
+      });
+    });
+    cerrar.addEventListener("click", ocultar);
+    visor.addEventListener("click", function (e) { if (e.target === visor) ocultar(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && visor.classList.contains("visor--abierto")) ocultar();
+    });
+  }
+
   /* ------------------------------------------------------------------------ */
   function iniciar() {
     iniciarMenu();
     iniciarPastorales();
     iniciarCertificados();
+    iniciarMenuFijo();
+    iniciarRevelado();
+    iniciarVisor();
   }
 
   if (document.readyState === "loading") {

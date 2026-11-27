@@ -78,7 +78,11 @@
      esquina blanda es más amable y una sombra mínima es lo que hace que la
      tarjeta se apoye en el papel en vez de flotar. */
   --radio: 6px;
+  /* Dos niveles de elevación, no uno: reposo y hover. Que la tarjeta suba al
+     pasar por encima es lo que la convierte en un objeto y no en un dibujo. */
   --sombra: 0 1px 2px rgba(27, 58, 97, .05), 0 10px 28px -14px rgba(27, 58, 97, .18);
+  --sombra-alta: 0 2px 6px rgba(27, 58, 97, .07), 0 22px 44px -18px rgba(27, 58, 97, .30);
+  --curva: cubic-bezier(.4, 0, .2, 1);
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Marcador de fotografía pendiente */
@@ -159,7 +163,10 @@ html { scroll-behavior: smooth; }
   background-image: repeating-linear-gradient(
     0deg, rgba(255, 255, 255, .38) 0 1px, rgba(255, 255, 255, 0) 1px 3px);
   min-height: 100vh;
-  overflow-x: hidden;
+  /* clip y no hidden: los dos cortan lo que se sale de ancho, pero hidden
+     convierte a .pagina en un contenedor de scroll y eso anula el
+     position: sticky del menú. clip no. */
+  overflow-x: clip;
 }
 
 /* Bloque estándar: fondo a todo el ancho, contenido centrado y acotado */
@@ -1233,3 +1240,74 @@ img.capilla__foto { width: 100%; height: min(300px, 58vw); object-fit: cover; }
   .pie { background: #fff; color: #000; }
   .pie__texto, .pie__lista, .pie__credito { color: #000; }
 }
+
+
+/* --------------------------------------------------------------------------
+   21. Interacción
+   El público del sitio no es el que creía este archivo hasta noviembre de 2026:
+   son personas de mediana edad y jóvenes. Eso permite movimiento, siempre que
+   sea corto, con una sola curva y respetando a quien pide menos animación.
+   -------------------------------------------------------------------------- */
+.tarjeta, .ficha, .acceso, .aviso-tarjeta, .sacerdote, .templo, .grupo, .paso, .aparte {
+  transition: box-shadow .24s var(--curva), transform .24s var(--curva);
+}
+.tarjeta:hover, .ficha:hover, .acceso:hover, .aviso-tarjeta:hover,
+.sacerdote:hover, .templo:hover, .grupo:hover,
+.acceso:focus-within, .aviso-tarjeta:focus-within {
+  box-shadow: var(--sombra-alta);
+  transform: translateY(-3px);
+}
+
+a, .boton, .pestana, .menu__enlace, .indice__enlace {
+  transition: color .16s var(--curva), background-color .16s var(--curva),
+              border-color .16s var(--curva), box-shadow .16s var(--curva);
+}
+.boton:hover { transform: translateY(-1px); }
+.boton { transition: color .16s var(--curva), background-color .16s var(--curva),
+                     border-color .16s var(--curva), transform .16s var(--curva); }
+
+/* La foto de una tarjeta acompaña el gesto, sin salirse de su caja. */
+.aviso-tarjeta { overflow: hidden; }
+.aviso-tarjeta__foto { transition: transform .5s var(--curva); }
+.aviso-tarjeta:hover .aviso-tarjeta__foto { transform: scale(1.04); }
+
+/* Aparición al entrar en pantalla. Solo se activa si hay JavaScript —de ahí
+   el .js— para que sin él el contenido esté visible y no en blanco. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .revelar { opacity: 0; transform: translateY(16px);
+    transition: opacity .55s var(--curva), transform .55s var(--curva); }
+  .js .revelar--visible { opacity: 1; transform: none; }
+}
+
+/* El menú queda fijo arriba: en páginas de 5.000px la navegación tiene que
+   seguir a mano. Al despegarse gana una sombra que lo separa del contenido. */
+.menu { position: sticky; top: 0; z-index: 60; background: var(--blanco); }
+.menu--fijo { box-shadow: 0 1px 0 var(--borde), 0 8px 24px -16px rgba(27, 58, 97, .45); }
+
+/* --------------------------------------------------------------------------
+   22. Visor de fotografías
+   -------------------------------------------------------------------------- */
+.visor {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(13, 24, 40, .95);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s var(--curva);
+}
+.visor--abierto { opacity: 1; pointer-events: auto; }
+.visor__figura { margin: 0; display: flex; flex-direction: column; gap: 16px;
+  max-width: min(1100px, 100%); max-height: 100%; }
+.visor__imagen { max-width: 100%; max-height: calc(100vh - 160px);
+  object-fit: contain; border-radius: var(--radio); background: var(--blanco);
+  transform: scale(.97); transition: transform .25s var(--curva); }
+.visor--abierto .visor__imagen { transform: none; }
+.visor__pie { font: 400 17px/1.5 var(--fuente); color: #EAF0F7; text-align: center; }
+.visor__cerrar {
+  position: absolute; top: 18px; right: 18px;
+  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: var(--radio); color: #fff; font-size: 26px; cursor: pointer;
+}
+.visor__cerrar:hover { background: rgba(255, 255, 255, .14); }
+.ampliable { cursor: zoom-in; }

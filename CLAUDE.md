@@ -3,8 +3,15 @@
 Sitio parroquial público. **Todo se escribe en español** (es-CL): el contenido,
 los comentarios del código y los nombres de clases.
 
-El público objetivo son **adultos mayores y personas con poca experiencia
-digital**. Ante la duda entre elegancia y claridad, gana la claridad.
+El público objetivo son **personas de mediana edad y jóvenes**, con manejo
+digital normal. *(Corregido el 26 de noviembre de 2026: hasta entonces este
+archivo decía «adultos mayores y personas con poca experiencia digital», y esa
+premisa frenó decisiones de diseño durante meses. No volver a esa redacción.)*
+
+Eso **no** rebaja la accesibilidad, que sigue siendo requisito del cliente:
+contraste AA, 17px de cuerpo mínimo, áreas táctiles de 44px. Lo que cambia es el
+techo: el sitio puede permitirse interacción, movimiento y un acabado más
+ambicioso, en vez de resolverlo todo por la vía más conservadora.
 
 ## Qué se publica
 
@@ -204,7 +211,36 @@ Secretaría y el teléfono aparecen en varias páginas.
   porque es una figura ancha y con mucho aire.
 - **Sin `border-radius`** en tarjetas ni botones. Solo círculos perfectos en los
   badges de ícono (`.badge`).
-- **Sin animaciones decorativas.**
+- **Interacción.** El movimiento es corto, con una sola curva
+  (`var(--curva)`), y siempre dentro de `prefers-reduced-motion`. Hay cuatro
+  gestos y no más: las tarjetas suben 3px con sombra más alta al pasar por
+  encima, la foto de un aviso hace un zoom del 4 %, las piezas aparecen al
+  entrar en pantalla, y el menú se queda fijo arriba al despegarse.
+
+  **El revelado lleva red de seguridad y hay que conservarla.** Esconde las
+  piezas con `opacity: 0` hasta que el observador las ve; si ese observador no
+  dispara, el contenido se queda invisible y la página está rota. Por eso: lo
+  que ya está a la vista al cargar no se esconde nunca, y a los 2,5 segundos se
+  muestra todo pase lo que pase. Una animación que no ocurre es un detalle;
+  contenido que no aparece, no.
+
+  **`.pagina` lleva `overflow-x: clip`, no `hidden`.** Los dos cortan igual lo
+  que se sale de ancho, pero `hidden` convierte al elemento en contenedor de
+  scroll y eso anula el `position: sticky` del menú. Fue exactamente lo que
+  pasó al montarlo.
+
+- **Visor de fotografías.** Cualquier `<img class="ampliable">` se abre en
+  grande. El `alt` hace de pie de foto, así que no se escribe el texto dos
+  veces —y eso es un motivo más para que el `alt` describa de verdad—. Se
+  cierra con Escape, con el botón o pinchando fuera, y devuelve el foco a la
+  foto de origen. **No ponérselo a la foto de una tarjeta de aviso**: esa
+  tarjeta entera ya es un enlace y el clic tiene dueño.
+
+- **Versionado de los assets.** `sitio.css` y `sitio.js` se enlazan con `?v=`
+  más el hash de su contenido. Sin eso, quien ya visitó el sitio puede seguir
+  viendo el CSS viejo durante días, porque nada le dice al navegador que
+  caducó. **Correr `python3 herramientas/versionar-assets.py` antes de cualquier
+  commit que toque esos dos archivos**; la versión se calcula sola.
 - En hover de menú y pestañas se engruesa con `text-shadow`, **nunca** con
   `font-weight`: cambiar el peso mueve el layout.
 
