@@ -276,9 +276,29 @@ Secretaría y el teléfono aparecen en varias páginas.
   inscripción estaba cinco veces en Sacramentos, además de la barra superior y
   de la bajada de esa misma página.
 
-  **Capillas se queda a todo el ancho.** Se probó en dos columnas y bajaba un
-  25 %, pero es la página con mejor lectura del sitio y la parroquia prefirió
-  conservarla. No reintentarlo.
+  **Capillas se queda a todo el ancho, una comunidad por fila.** Se probó en
+  dos columnas y bajaba un 25 %, pero es la página con mejor lectura del sitio
+  y la parroquia prefirió conservarla. No reintentarlo.
+
+- **Las seis comunidades son seis tarjetas iguales** (`.lista-comunidades` y
+  `.comunidad`): caja blanca, fotografía a sangre por el lado izquierdo y la
+  hora de Misa en 24px arriba a la derecha. Reemplazó en noviembre de 2026 a
+  las fichas sin caja separadas por una línea, y el motivo no era de gusto:
+  **dos comunidades no tienen fotografía**, así que cuatro fichas iban a dos
+  columnas y dos a una, y las seis no se leían como lo mismo. La hora, que es
+  lo que se viene a buscar, era el segundo de tres datos en letra normal.
+
+  A las dos sin fotografía les va `.comunidad__foto--sello`, un panel celeste
+  con el ícono de iglesia. Es la misma regla de los marcadores rayados por el
+  otro lado: un dibujo deliberado se lee como un dibujo, un recuadro vacío se
+  lee como una imagen rota. **Cuando lleguen las fotos se cambia el panel por
+  un `<img class="comunidad__foto ampliable">` y nada más.**
+
+  La página pasó de 2.676 a 1.715px de fichas, un 36 % menos. Se probaron
+  también una rejilla de tarjetas (−56 %) y un directorio desplegable (−67 %),
+  y la parroquia eligió esta: las otras dos escondían las fotografías o la
+  historia de cada comunidad detrás de un clic, y esas historias son de lo
+  mejor que tiene el sitio.
 
 - **Los avisos caducan, y nadie avisa.** En noviembre de 2026 el sitio seguía
   anunciando la kermés del 13 de septiembre en la barra de las doce páginas,
@@ -360,6 +380,7 @@ Todo dato de contacto o de horario va acompañado de su ícono, siempre el mismo
 | Dirección | `ph-map-pin` |
 | Teléfono | `ph-phone` |
 | Correo | `ph-envelope-simple` |
+| Coordinador o coordinadora | `ph-user` |
 
 La estructura es `.datos-icono`, una lista donde cada `<li>` lleva el ícono y un
 `<span>`. Está en Horarios, Sacramentos, Servicios, Certificados y Pastorales:

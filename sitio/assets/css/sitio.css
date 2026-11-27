@@ -339,7 +339,7 @@ strong, .fuerte { font-weight: 600; }
    caracteres —peor que los 74 que había—. 39em deja la media en 68, dentro
    del rango cómodo. OJO: no usar la unidad ch; en Nunito Sans el glifo «0»
    vale 0,6em y 68ch daban 652px, es decir 88 caracteres. */
-.parrafo, .bajada, .ficha__descripcion, .capilla__descripcion,
+.parrafo, .bajada, .ficha__descripcion, .comunidad__desc,
 .categoria__bajada, .aporte p, .exito p { max-width: 39em; }
 .parrafo--corto { font-size: 18px; line-height: 1.6; }
 .bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 76ch; text-wrap: pretty; }
@@ -824,25 +824,54 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 /* --------------------------------------------------------------------------
    15. Capillas
    -------------------------------------------------------------------------- */
-.capilla {
-  display: grid;
-  grid-template-columns: 460px 1fr;
-  gap: 36px;
-  align-items: center;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--papel-linea);
-}
-.capilla:first-of-type { padding-top: 0; }
-.capilla--invertida { grid-template-columns: 1fr 460px; }
+/* Cada comunidad es una tarjeta blanca con la fotografía a sangre por el lado
+   izquierdo y la hora de Misa en grande, como en los accesos de la portada.
 
-/* Mientras una comunidad no tenga foto, su ficha va a una sola columna. El
-   marcador rayado que había antes, al lado de cuatro capillas con fotografía
-   real, se leía como una imagen rota: es peor que no poner nada.
-   Va después de .capilla y de .capilla--invertida a propósito: misma
-   especificidad, gana la última. */
-.capilla--sin-foto { grid-template-columns: 1fr; }
-.capilla--sin-foto > div { max-width: 78ch; }
-.capilla--invertida .capilla__foto { order: 2; }
+   Antes eran fichas sin caja separadas por una línea, y la mitad iba a dos
+   columnas y la otra mitad a una, porque dos comunidades todavía no tienen
+   fotografía: las seis no se leían como lo mismo. Hoy todas tienen la misma
+   caja, y a las dos sin foto les va un panel celeste con el ícono de iglesia
+   —.comunidad__foto--sello—, que se lee como un dibujo y no como una imagen
+   que no cargó. Es el mismo motivo por el que se quitaron los marcadores
+   rayados; cuando lleguen las fotografías se cambia el panel por un <img>.
+
+   La hora estaba escondida como el segundo de tres datos en letra normal, y es
+   justo lo que se viene a buscar. */
+.lista-comunidades { display: grid; gap: 20px; }
+.comunidad {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  transition: transform .25s var(--curva), box-shadow .25s var(--curva);
+}
+.comunidad:hover { transform: translateY(-3px); box-shadow: var(--sombra-alta); }
+.comunidad__visual { background: var(--celeste-claro); }
+.comunidad__foto { width: 100%; height: 100%; min-height: 236px; object-fit: cover; display: block; }
+.comunidad__foto--sello {
+  display: flex; align-items: center; justify-content: center;
+  height: 100%; min-height: 236px; background: var(--celeste-claro);
+}
+.comunidad__foto--sello i { font-size: 76px; color: var(--celeste); }
+.comunidad__cuerpo { padding: 26px 30px 24px; display: flex; flex-direction: column; }
+/* El nombre y la hora comparten línea base y los separa la línea de la caja. */
+.comunidad__encabezado {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--borde);
+}
+.comunidad__nombre { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
+.comunidad__misa { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.comunidad__dia { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); }
+.comunidad__hora { font: 600 24px/1.1 var(--fuente); color: var(--azul); }
+.comunidad__desc { font: 400 16px/1.65 var(--fuente); color: var(--texto); margin: 16px 0 20px; }
+/* margin-top:auto deja el botón abajo aunque las descripciones midan distinto. */
+.comunidad__pie {
+  margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+  gap: 28px; flex-wrap: wrap;
+}
+.comunidad__datos { gap: 6px; }
 /* Fotografías reales de los templos. Reemplazan al marcador <div class="foto">
    y ocupan el mismo hueco: object-fit recorta al alto pedido sin deformar. */
 /* 46/18 y no 46/30: la foto se llevaba 438 de los 723px de la tarjeta, para
@@ -855,11 +884,7 @@ div.templo__foto { display: flex; }
 /* La ficha de la parroquia ocupa las dos columnas, así que su foto es
    una banda más ancha que la de las capillas. */
 .templo--matriz .templo__foto { aspect-ratio: 1400 / 300; }
-img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .foto-gruta { width: 100%; height: auto; aspect-ratio: 44 / 42; object-fit: cover; }
-.capilla__descripcion { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
-.capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--papel-linea); padding-top: 22px; }
-.capilla__valor { font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    16. Pastorales
@@ -1167,8 +1192,11 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 
   .certificados { grid-template-columns: 1fr; }
 
-  .capilla, .capilla--invertida { grid-template-columns: 1fr; gap: 24px; }
-  .capilla--invertida .capilla__foto { order: 0; }
+  /* Bajo 960 la foto pasa arriba: 320px de columna dejarían el texto en 540. */
+  .comunidad { grid-template-columns: 1fr; }
+  .comunidad__foto, .comunidad__foto--sello { min-height: 0; height: min(220px, 46vw); }
+  .comunidad__encabezado { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .comunidad__cuerpo { padding: 22px 24px 20px; }
 
   /* La ficha de la parroquia deja de ocupar dos columnas, así que su foto
      tampoco es ya una banda: pasa a la proporción de las demás y muestra
@@ -1207,7 +1235,7 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 @media (max-width: 760px) {
   .rejilla--2, .rejilla--3, .rejilla--4 { grid-template-columns: 1fr; }
   .avisos-portada { grid-template-columns: 1fr; }
-  .datos-2, .capilla__datos, .categoria__grupos, .paso__campos { grid-template-columns: 1fr; }
+  .datos-2, .categoria__grupos, .paso__campos { grid-template-columns: 1fr; }
   .campo--ancho { grid-column: span 1; }
 
   .barra-superior { font-size: 14px; padding: 12px var(--lateral); gap: 8px 18px; }
@@ -1289,7 +1317,6 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
   .transferencia dt { margin-top: 12px; }
   .transferencia dt:first-child { margin-top: 0; }
 
-  .capilla:first-of-type { padding-top: 0; }
   .templo__acciones .boton--linea { width: 100%; }
 
   .cita { font-size: 18px; padding-left: 18px; }
