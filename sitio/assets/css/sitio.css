@@ -104,7 +104,7 @@ body {
   margin: 0;
   background: var(--papel);
   font-family: var(--fuente);
-  font-size: 17px;              /* Mínimo de accesibilidad acordado */
+  font-size: 16px;              /* Alineado con Vatican News (15), Cedarcrest y Holy Family (16) */
   color: var(--texto);
   -webkit-font-smoothing: antialiased;
   /* Cifras de ancho fijo: los horarios y los teléfonos quedan alineados en
@@ -146,7 +146,7 @@ html { scroll-behavior: smooth; }
   background: var(--azul);
   color: #fff;
   padding: 14px 22px;
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
 }
 .salto-contenido:focus { left: 0; color: #fff; }
 
@@ -190,7 +190,7 @@ html { scroll-behavior: smooth; }
   align-items: center;
   gap: 16px 28px;
   flex-wrap: wrap;
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   min-height: 44px;
 }
 .barra-superior a { color: #fff; }
@@ -236,7 +236,7 @@ html { scroll-behavior: smooth; }
 
 .marca__horario { display: flex; align-items: center; gap: 14px; flex: none; }
 .marca__horario-icono { color: var(--celeste); flex: none; display: block; }
-.marca__horario-texto { font: 600 14px/1.4 var(--fuente); color: var(--texto); white-space: nowrap; }
+.marca__horario-texto { font: 600 13px/1.4 var(--fuente); color: var(--texto); white-space: nowrap; }
 
 /* --------------------------------------------------------------------------
    5. Menú principal
@@ -255,7 +255,7 @@ html { scroll-behavior: smooth; }
 .menu__enlace {
   display: block;
   padding: 17px 0;
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--azul);
 }
 /* Engrosado óptico: nunca cambiar font-weight en hover, movería el layout */
@@ -302,7 +302,7 @@ html { scroll-behavior: smooth; }
 .menu__sub {
   display: block;
   padding: 13px 24px;
-  font: 400 18px/1.65 var(--fuente);
+  font: 400 16px/1.65 var(--fuente);
   color: var(--azul);
   white-space: nowrap;
 }
@@ -334,18 +334,24 @@ html { scroll-behavior: smooth; }
 strong, .fuerte { font-weight: 600; }
 .titulo-portada strong, .titulo-grande strong, .titulo-medio strong { font-weight: 600; }
 
-.parrafo { font: 400 18px/1.65 var(--fuente); color: var(--texto); text-wrap: pretty; }
+.parrafo { font: 400 16px/1.65 var(--fuente); color: var(--texto); text-wrap: pretty; }
+/* Tope de medida. Al bajar el cuerpo de 18 a 16 la línea se alargaba a 88
+   caracteres —peor que los 74 que había—. 39em deja la media en 68, dentro
+   del rango cómodo. OJO: no usar la unidad ch; en Nunito Sans el glifo «0»
+   vale 0,6em y 68ch daban 652px, es decir 88 caracteres. */
+.parrafo, .bajada, .ficha__descripcion, .capilla__descripcion,
+.categoria__bajada, .aporte p, .exito p { max-width: 39em; }
 .parrafo--corto { font-size: 18px; line-height: 1.6; }
-.bajada { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 76ch; text-wrap: pretty; }
-.texto-tarjeta { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 76ch; text-wrap: pretty; }
+.texto-tarjeta { font: 400 17px/1.65 var(--fuente); color: var(--texto); }
 .pendiente { color: var(--pendiente); }
 
 .etiqueta-dato {
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--azul-medio);
   margin-bottom: 8px;
 }
-.valor-dato { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
+.valor-dato { font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    7. Portada de sección
@@ -392,7 +398,7 @@ strong, .fuerte { font-weight: 600; }
      Con azul medio sube a 6,1:1, y era el color que ya tenía al pasar encima. */
   background: var(--azul-medio);
   color: #fff;
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   padding: 20px 28px;
   text-align: center;
   border: 1px solid var(--azul-medio);
@@ -410,7 +416,7 @@ strong, .fuerte { font-weight: 600; }
 .boton--linea-blanca { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .8); font-weight: 600; }
 .boton--linea-blanca:hover { background: rgba(255, 255, 255, .14); border-color: #fff; color: #fff; }
 
-.boton--linea { background: transparent; color: var(--azul-medio); border: 1px solid var(--celeste); font: 600 14px/1.4 var(--fuente); padding: 15px 20px; }
+.boton--linea { background: transparent; color: var(--azul-medio); border: 1px solid var(--celeste); font: 600 13px/1.4 var(--fuente); padding: 15px 20px; }
 .boton--linea:hover { background: var(--celeste-claro); color: var(--azul-medio); }
 
 .boton--pequeno { font-size: 14px; padding: 17px 24px; }
@@ -418,7 +424,7 @@ strong, .fuerte { font-weight: 600; }
 
 .enlace-flecha {
   display: inline-block;
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--azul-medio);
   padding: 15px 0;
 }
@@ -502,8 +508,8 @@ strong, .fuerte { font-weight: 600; }
 img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
 .ficha__cuerpo { padding: 26px 32px 28px; }
 .ficha__encabezado { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-.ficha__subtitulo { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); margin-top: 6px; }
-.ficha__descripcion { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
+.ficha__subtitulo { font: 400 15px/1.65 var(--fuente); color: var(--texto-3); margin-top: 6px; }
+.ficha__descripcion { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-bottom: 24px; }
 
 /* --------------------------------------------------------------------------
    12. Inicio
@@ -573,7 +579,9 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 }
 .acceso .badge i { color: var(--azul-medio); font-size: 44px; }
 .acceso .badge--imagen { width: 44px; height: 44px; }
-.acceso p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+/* 17 y no 16: la tarjeta de acceso es una columna estrecha y a 16 la línea
+   bajaba a 58 caracteres, por debajo del rango cómodo. */
+.acceso p { font: 400 17px/1.65 var(--fuente); color: var(--texto); }
 
 /* El horario, en grande.
    Antes los datos iban como texto corrido con <br>, y la hora —que es a lo que
@@ -583,7 +591,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    dato: se lee sin leer. */
 .acceso__horario + .acceso__horario { margin-top: 2px; }
 .acceso__dia {
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--azul-medio);
   margin-bottom: 1px;
 }
@@ -596,7 +604,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   display: flex;
   align-items: center;
   gap: 9px;
-  font: 400 17px/1.5 var(--fuente);
+  font: 400 15px/1.5 var(--fuente);
   color: var(--texto-3);
 }
 .acceso__lugar i { font-size: 20px; color: var(--celeste); flex: none; }
@@ -606,7 +614,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    tarjetas de una misma fila terminen parejas. */
 .acceso__pie { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--borde); }
 .acceso__enlace {
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--azul-medio);
 }
 /* Hace clicable la tarjeta entera sin anidar enlaces. Ojo: tapa cualquier otro
@@ -651,7 +659,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    está aceptado. */
 .banda-patrona h2 { font: 600 44px/1.1 var(--display); color: var(--azul); margin-bottom: 16px; }
 .banda-patrona h2 strong { font-weight: 700; }
-.banda-patrona p { font: 400 18px/1.65 var(--fuente); color: var(--azul); margin-bottom: 26px; }
+.banda-patrona p { font: 400 16px/1.65 var(--fuente); color: var(--azul); margin-bottom: 26px; }
 
 /* Rejilla de avisos. Con dos columnas, cada ficha es foto de 200px + texto,
    así que necesita ancho: bajo 1180px pasa a una sola columna. */
@@ -682,16 +690,16 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso-tarjeta__cuerpo { display: flex; flex-direction: column; flex: 1; gap: 9px; padding: 20px 24px 22px; }
 .aviso-tarjeta__meta {
   display: flex; align-items: flex-start; gap: 8px;
-  font: 600 14px/1.4 var(--fuente); color: var(--azul-medio);
+  font: 600 13px/1.4 var(--fuente); color: var(--azul-medio);
 }
 .aviso-tarjeta__meta i { font-size: 19px; line-height: 1; flex: none; }
 .aviso-tarjeta__titulo { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
 /* Sin recorte: la parroquia pidió que el aviso se lea completo en la portada.
    El cuerpo se queda en 17px, que es el mínimo del sitio. */
-.aviso-tarjeta__texto { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.aviso-tarjeta__texto { font: 400 17px/1.65 var(--fuente); color: var(--texto); }
 .aviso-tarjeta__pie { margin-top: auto; border-top: 1px solid var(--borde); padding-top: 16px; }
 .aviso-tarjeta__enlace {
-  font: 600 14px/1.4 var(--fuente); color: var(--azul-medio);
+  font: 600 13px/1.4 var(--fuente); color: var(--azul-medio);
 }
 /* El enlace del pie se estira sobre toda la tarjeta: se puede pinchar en
    cualquier parte sin anidar enlaces y sin que el lector de pantalla lea la
@@ -706,9 +714,9 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .aviso { display: flex; gap: 20px; text-align: left; }
 /* object-fit recorta la foto al hueco sin deformarla; los marcadores <div> lo ignoran. */
 .aviso__foto { width: 200px; height: 152px; flex: none; object-fit: cover; }
-.aviso__fecha { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 8px; }
+.aviso__fecha { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 8px; }
 .aviso__titulo { font: 700 21px/1.25 var(--fuente); color: var(--azul); margin-bottom: 8px; }
-.aviso p { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; }
+.aviso p { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; }
 
 .aviso-destacado {
   background: var(--celeste-claro);
@@ -718,7 +726,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   gap: 26px;
 }
 
-.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.lugar__filas { display: flex; flex-direction: column; gap: 10px; font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 .lugar__fila { display: flex; align-items: flex-start; gap: 10px; }
 .lugar__fila i { font-size: 22px; color: var(--celeste); line-height: 1; flex: none; }
 
@@ -728,7 +736,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .pestanas { display: flex; border-bottom: 1px solid var(--papel-linea); flex-wrap: wrap; }
 .pestana {
   padding: 16px 26px;
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--texto);
 }
 .pestana:hover, .pestana:focus-visible { color: var(--azul); text-shadow: 0 0 .6px var(--azul), 0 0 .6px var(--azul); }
@@ -737,7 +745,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .linea-tiempo {
   border-top: 1px solid var(--papel-linea);
   padding-top: 20px;
-  font: 400 18px/1.65 var(--fuente);
+  font: 400 16px/1.65 var(--fuente);
   color: var(--texto);
 }
 .linea-tiempo strong { font-weight: 600; color: var(--azul); }
@@ -749,10 +757,10 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
   font: 300 20px/1.35 var(--display);
   color: var(--azul);
 }
-.cita__fuente { font: 600 14px/1.4 var(--fuente); color: var(--texto-3); margin-top: 12px; }
+.cita__fuente { font: 600 13px/1.4 var(--fuente); color: var(--texto-3); margin-top: 12px; }
 
 .cierre-oracion {
-  font: 400 18px/1.65 var(--fuente);
+  font: 400 16px/1.65 var(--fuente);
   font-style: italic;
   color: var(--azul);
   text-align: center;
@@ -772,9 +780,9 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    marcador rayado que había —azul frío sobre el arena— se leía como una imagen
    rota, y encima de una persona con nombre y apellido queda peor. */
 .sacerdote--sin-foto .sacerdote__cuerpo { padding: 34px 28px 36px; }
-.sacerdote__cargo { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
+.sacerdote__cargo { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
 .sacerdote__nombre { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
-.sacerdote__nota { font: 400 18px/1.65 var(--fuente); color: var(--texto); margin-top: 10px; }
+.sacerdote__nota { font: 400 16px/1.65 var(--fuente); color: var(--texto); margin-top: 10px; }
 
 /* --------------------------------------------------------------------------
    14. Horarios
@@ -782,25 +790,25 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
 .templo { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); display: flex; flex-direction: column; }
 .templo--matriz { border-color: var(--celeste); grid-column: span 2; }
 .templo__cuerpo { padding: 20px 24px 22px; display: flex; flex-direction: column; flex: 1; }
-.templo__etiqueta { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
+.templo__etiqueta { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 12px; }
 .templo__nombre { font: 700 21px/1.25 var(--fuente); color: var(--azul); margin-bottom: 10px; }
 .templo--matriz .templo__nombre { font-size: 21px; }
-.templo__direccion { font: 400 18px/1.65 var(--fuente); color: var(--texto); margin-bottom: 16px; }
+.templo__direccion { font: 400 16px/1.65 var(--fuente); color: var(--texto); margin-bottom: 16px; }
 .templo__misa { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
 .templo__misa i { font-size: 32px; color: var(--celeste); line-height: 1; flex: none; }
-.templo__misa-etiqueta { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 8px; }
-.templo__misa-horas { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
+.templo__misa-etiqueta { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); margin-bottom: 8px; }
+.templo__misa-horas { font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 .templo__especiales { margin-top: 22px; border-top: 1px solid var(--borde); padding-top: 20px; }
-.templo__especiales-lista { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.templo__especiales-lista { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 .templo__acciones { margin-top: auto; padding-top: 22px; display: flex; gap: 12px 20px; flex-wrap: wrap; align-items: center; }
 
-.tarjeta-horario { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.tarjeta-horario { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 /* Dato acompañado de su ícono: calendario para los días, reloj para las horas,
    ubicación, teléfono o sobre para el contacto. Mismo patrón que el pie. */
 .datos-icono { display: flex; flex-direction: column; gap: 12px; }
 .datos-icono li { display: flex; align-items: flex-start; gap: 12px; }
 .datos-icono i { font-size: 24px; color: var(--celeste); line-height: 1.15; flex: none; }
-.datos-icono span { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.datos-icono span { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 .datos-icono a { color: var(--azul-medio); font-weight: 600; }
 /* Aclaración que acompaña a un dato: un punto más chica y en gris medio. */
 /* 17px, no 13: el documento de tipografía fija las notas en 13px, pero aquí
@@ -809,7 +817,7 @@ img.ficha__foto { width: 100%; height: 100%; object-fit: contain; padding: 12px;
    previa»—. Manda el mínimo de 17px que pidió la parroquia. Los 13px quedan
    solo para lo accesorio de verdad: el crédito del pie y los marcadores de
    foto. */
-.aclaracion { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); }
+.aclaracion { font: 400 15px/1.65 var(--fuente); color: var(--texto-3); max-width: 42em; }
 .aclaracion--cursiva { font-style: italic; }
 .tarjeta-horario strong { font-weight: 600; color: var(--azul-medio); }
 
@@ -849,9 +857,9 @@ div.templo__foto { display: flex; }
 .templo--matriz .templo__foto { aspect-ratio: 1400 / 300; }
 img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .foto-gruta { width: 100%; height: auto; aspect-ratio: 44 / 42; object-fit: cover; }
-.capilla__descripcion { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
+.capilla__descripcion { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; margin-bottom: 22px; }
 .capilla__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; border-top: 1px solid var(--papel-linea); padding-top: 22px; }
-.capilla__valor { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
+.capilla__valor { font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    16. Pastorales
@@ -859,7 +867,7 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .pastorales { display: grid; grid-template-columns: 308px 1fr; gap: 40px; align-items: start; }
 
 .indice { position: sticky; top: 20px; background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
-.indice__titulo { font: 600 14px/1.4 var(--fuente); color: var(--azul-medio); padding: 22px 24px 16px; }
+.indice__titulo { font: 600 13px/1.4 var(--fuente); color: var(--azul-medio); padding: 22px 24px 16px; }
 .indice__enlace {
   display: flex;
   align-items: center;
@@ -867,22 +875,22 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
   gap: 14px;
   padding: 17px 24px;
   border-top: 1px solid var(--borde);
-  font: 400 18px/1.65 var(--fuente);
+  font: 400 16px/1.65 var(--fuente);
   color: var(--azul);
 }
 .indice__enlace:hover { color: var(--azul); background: var(--celeste-muy-claro); }
 .indice__enlace--activo { background: var(--celeste-claro); font-weight: 700; box-shadow: inset 3px 0 0 var(--acento); }
-.indice__n { font: 600 14px/1.4 var(--fuente); color: var(--texto-3); }
+.indice__n { font: 600 13px/1.4 var(--fuente); color: var(--texto-3); }
 .indice__enlace--activo .indice__n { color: var(--azul-medio); }
 
 .categoria__encabezado { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 26px; border-bottom: 1px solid var(--papel-linea); }
 .categoria__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
-.categoria__bajada { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
+.categoria__bajada { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 62ch; margin-top: 10px; }
 .categoria__grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 26px; }
 
 .grupo { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
 .grupo__pie { border-top: 1px solid var(--borde); padding-top: 18px; margin-top: auto; }
-.grupo__valor { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
+.grupo__valor { font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 .franja-inscripcion {
   background: var(--celeste-claro);
@@ -892,7 +900,7 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-.franja-inscripcion__datos { font: 400 18px/1.65 var(--fuente); color: var(--azul); }
+.franja-inscripcion__datos { font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 /* Sin JavaScript se muestran todas las categorías, una tras otra */
 .js .categoria[hidden] { display: none; }
@@ -919,11 +927,11 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 
 .campo { display: flex; flex-direction: column; gap: 9px; }
 .campo--ancho { grid-column: span 2; }
-.campo label { font: 600 14px/1.4 var(--fuente); color: var(--azul); }
+.campo label { font: 600 13px/1.4 var(--fuente); color: var(--azul); }
 .campo input,
 .campo select,
 .campo textarea {
-  font: 400 18px/1.4 var(--fuente);
+  font: 400 16px/1.4 var(--fuente);
   color: var(--azul);
   padding: 16px;
   border: 1px solid var(--borde-campo);
@@ -935,18 +943,18 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .campo textarea { min-height: 110px; line-height: 1.5; resize: vertical; }
 .campo select { padding: 15px 46px 15px 16px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C5F92' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; }
 .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--celeste); outline: 2px solid var(--celeste); outline-offset: -2px; }
-.campo__ayuda { font: 400 17px/1.65 var(--fuente); color: var(--texto-3); }
+.campo__ayuda { font: 400 15px/1.65 var(--fuente); color: var(--texto-3); }
 
 .privacidad { display: flex; align-items: flex-start; gap: 14px; background: var(--celeste-claro); padding: 24px 26px; }
 .privacidad input { width: 24px; height: 24px; accent-color: var(--celeste); flex: none; margin: 2px 0 0; }
-.privacidad label { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.privacidad label { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 
 .formulario__envio { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.formulario__nota { font: 400 17px/1.65 var(--fuente); color: var(--texto); }
+.formulario__nota { font: 400 15px/1.65 var(--fuente); color: var(--texto); }
 /* Solo aparece cuando algo salió mal: tiene que distinguirse de una nota
    informativa, que es como se veía antes. */
 .formulario__aviso {
-  font: 400 18px/1.65 var(--fuente);
+  font: 400 16px/1.65 var(--fuente);
   color: var(--error);
   background: var(--error-fondo);
   border-left: 3px solid var(--error);
@@ -954,9 +962,9 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 }
 
 .aparte { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 18px; }
-.aparte__datos { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.aparte__datos { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 .aparte__datos--separado { border-top: 1px solid var(--borde); padding-top: 18px; }
-.aparte__nota { font: 400 18px/1.65 var(--fuente); color: var(--texto-3); }
+.aparte__nota { font: 400 16px/1.65 var(--fuente); color: var(--texto-3); }
 
 /* El visto del envío va en verde, no en celeste: es la única señal de que la
    solicitud salió. */
@@ -964,8 +972,8 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .exito { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; }
 .exito__titulo { font: 300 32px/1.2 var(--display); color: var(--azul); }
 .exito__titulo strong { font-weight: 600; }
-.exito p { font: 400 18px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; }
-.exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 18px/1.65 var(--fuente); color: var(--azul); }
+.exito p { font: 400 16px/1.65 var(--fuente); color: var(--texto); max-width: 60ch; }
+.exito__datos { background: var(--exito-fondo); padding: 26px 30px; font: 400 16px/1.65 var(--fuente); color: var(--azul); }
 
 /* --------------------------------------------------------------------------
    18. 1% a mi Iglesia
@@ -1006,7 +1014,7 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .aporte--borde { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
 .aporte--celeste { background: var(--celeste-claro); }
 .aporte h2, .aporte h3 { font: 700 21px/1.25 var(--fuente); color: var(--azul); }
-.aporte p { font: 400 18px/1.65 var(--fuente); color: var(--texto); }
+.aporte p { font: 400 16px/1.65 var(--fuente); color: var(--texto); }
 .aporte__seccion { border-top: 1px solid var(--borde); padding-top: 20px; }
 .aporte__seccion--final { margin-top: auto; }
 .aporte--celeste .aporte__seccion { border-top-color: var(--borde-campo); }
@@ -1017,7 +1025,7 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 14px 22px;
-  font: 400 18px/1.65 var(--fuente);
+  font: 400 16px/1.65 var(--fuente);
 }
 .transferencia dt { color: var(--azul-medio); font-weight: 600; white-space: nowrap; }
 .transferencia dd { color: var(--azul); margin: 0; }
@@ -1036,9 +1044,9 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
 .pie__lockup-inf { letter-spacing: .22em; margin-top: 8px; }
 .pie__nombre { font: 300 21px/1.25 var(--fuente); color: #fff; margin-top: 6px; }
 .pie__nombre strong { font-weight: 700; }
-.pie__texto { font: 400 18px/1.65 var(--fuente); color: var(--celeste-sobre-azul); }
-.pie__titulo { font: 600 14px/1.4 var(--fuente); color: var(--celeste-sobre-azul); margin-bottom: 20px; }
-.pie__lista { font: 400 18px/1.65 var(--fuente); color: var(--celeste-sobre-azul); display: flex; flex-direction: column; gap: 14px; }
+.pie__texto { font: 400 16px/1.65 var(--fuente); color: var(--celeste-sobre-azul); }
+.pie__titulo { font: 600 13px/1.4 var(--fuente); color: var(--celeste-sobre-azul); margin-bottom: 20px; }
+.pie__lista { font: 400 16px/1.65 var(--fuente); color: var(--celeste-sobre-azul); display: flex; flex-direction: column; gap: 14px; }
 .pie__fila { display: flex; align-items: flex-start; gap: 12px; }
 .pie__fila i { font-size: 24px; color: var(--celeste-sobre-azul); line-height: 1; flex: none; }
 .pie a { color: var(--celeste-sobre-azul); }
@@ -1101,7 +1109,7 @@ img.capilla__foto { width: 100%; height: min(240px, 50vw); object-fit: cover; }
     justify-content: space-between;
     width: 100%;
     padding: 16px var(--lateral);
-    font: 600 14px/1.4 var(--fuente);
+    font: 600 13px/1.4 var(--fuente);
     color: var(--azul);
     min-height: 56px;
   }
@@ -1375,7 +1383,7 @@ a, .boton, .pestana, .menu__enlace, .indice__enlace {
   background: var(--blanco);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
-  font: 600 14px/1.4 var(--fuente);
+  font: 600 13px/1.4 var(--fuente);
   color: var(--azul-medio);
 }
 .anclas__enlace:hover {

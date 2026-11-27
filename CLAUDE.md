@@ -130,6 +130,23 @@ Secretaría y el teléfono aparecen en varias páginas.
   tiene build. Lo que sí aplica —la familia, los grosores, la escala y las
   reglas de redacción visual— está traducido a `sitio.css`.
 
+  **El cuerpo son 16px, no 17.** Se midió el tamaño dominante de las tres
+  referencias —Vatican News 15px, Cedarcrest 16, Holy Family 16— y el sitio
+  estaba en 18, herencia del público equivocado que este archivo daba por bueno
+  hasta noviembre de 2026. Bajó a 16, el secundario a 15 y los rótulos a 13, y
+  el sitio pasó de 40,8 a 37,6 pantallas.
+
+  **Dos excepciones a 17px, y tienen motivo medido**: `.acceso p`,
+  `.aviso-tarjeta__texto` y `.texto-tarjeta` viven en columnas estrechas, y a
+  16 su línea bajaba a 47–53 caracteres, por debajo del rango cómodo.
+
+  **Bajar el cuerpo obliga a acotar la medida.** Sin tope, los párrafos pasaban
+  de 74 caracteres por línea a 88. Hay `max-width: 39em` en el texto de lectura
+  y 42em en `.aclaracion`; hoy la media del sitio es de 65 caracteres.
+  **No usar la unidad `ch`**: mide el ancho del glifo «0», que en Nunito Sans
+  vale 0,6em, así que `68ch` daban 652px, es decir 88 caracteres. Se cometió
+  ese error y solo apareció al medir las líneas reales.
+
   **Grosores: 300, 400, 600 y 700.** No hay 200 ni 500, y no se piden al CDN.
   El contraste lo da el grosor, no una segunda familia.
 
