@@ -766,6 +766,28 @@ PY
 
 3. Revisar la consola del navegador: debe estar limpia.
 
+## Dominio y metadatos
+
+El dominio es **plourdeslaserena.cl**, comprado en NIC Chile el 28 de noviembre
+de 2026. En Vercel están dados de alta el dominio y su `www`, que redirige al
+dominio sin www con un 308.
+
+Las doce páginas llevan `canonical` y `og:url` **propios de cada una**, y los
+dos tienen que coincidir siempre: si se agrega una página hay que ponerle los
+dos y sumarla a `sitemap.xml`, que es la lista de las doce.
+
+La vista previa al compartir usa `assets/img/og-portada.jpg`, de **1200×630**,
+que es la medida que piden WhatsApp, Facebook y X. Sale de recortar
+`portada-parroquia.jpg` soltando el pavimento de abajo, y por eso conserva la
+cruz del campanario y el Cristo del frontis. **No usar el logo**: es casi
+cuadrado y con transparencia, y WhatsApp lo rellena de negro. Por la misma
+razón el `twitter:card` es `summary_large_image` y no `summary`.
+
+Los valores de DNS que da Vercel para este proyecto son `A 76.76.21.21` y
+`CNAME cname.vercel-dns.com`, pero **ya no son los mismos para todos los
+proyectos**: si alguna vez hay que rehacerlos, se miran en Settings → Domains,
+no en un tutorial.
+
 ## Despliegue
 
 GitHub + Vercel. En Vercel, **Root Directory = `sitio`** y framework *Other*

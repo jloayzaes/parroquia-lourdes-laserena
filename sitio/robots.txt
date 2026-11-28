@@ -1,0 +1,5 @@
+# Parroquia Nuestra Señora de Lourdes · La Serena
+User-agent: *
+Allow: /
+
+Sitemap: https://plourdeslaserena.cl/sitemap.xml
